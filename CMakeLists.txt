@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 2655958)
+  GIT_TAG 89950b2)
 
 FetchContent_Declare(
   fmt
@@ -54,9 +54,13 @@ add_library(python_dag_generators src/generators.cpp)
 target_link_libraries(python_dag_generators PRIVATE
   dag fmt Metal pybind11::pybind11)
 
+add_library(python_dag_algorithms src/algorithms.cpp)
+target_link_libraries(python_dag_algorithms PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
 pybind11_add_module(dag_ext src/main.cpp)
 target_link_libraries(dag_ext PRIVATE
     dag fmt Metal
     python_dag_static_networks python_dag_static_edges
     python_dag_temporal_edges python_dag_temporal_networks
-    python_dag_generators)
+    python_dag_generators python_dag_algorithms)

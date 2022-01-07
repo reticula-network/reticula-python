@@ -4,6 +4,7 @@
 #include <string>
 
 #include <fmt/format.h>
+#include <fmt/ranges.h>
 
 template<typename T> struct type_str {
     std::string operator()();
@@ -45,9 +46,16 @@ struct type_str<double> { std::string operator()()      { return "double"; } };
 template <>
 struct type_str<long double> { std::string operator()() { return "ldouble"; } };
 
-// signed integer
+// non-integer types
 template <>
 struct type_str<std::string> { std::string operator()() { return "string"; } };
+
+template <typename T1, typename T2>
+struct type_str<std::pair<T1, T2>> {
+  std::string operator()() {
+    return fmt::format("pair_{}_{}", type_str<T1>{}(), type_str<T2>{}());
+  }
+};
 
 // static edge
 template <typename VertT>

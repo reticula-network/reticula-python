@@ -16,6 +16,7 @@ void declare_typed_static_networks(py::module& m);
 void declare_typed_temporal_edges(py::module& m);
 void declare_typed_temporal_networks(py::module& m);
 void declare_typed_generators(py::module& m);
+void declare_typed_algorithms(py::module& m);
 
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
@@ -37,6 +38,7 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_temporal_networks(m);
 
     declare_typed_generators(m);
+    declare_typed_algorithms(m);
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 #else
