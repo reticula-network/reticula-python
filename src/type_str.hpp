@@ -5,6 +5,7 @@
 
 #include <fmt/format.h>
 #include <fmt/ranges.h>
+#include <dag/dag.hpp>
 
 template<typename T> struct type_str {
     std::string operator()();
@@ -255,6 +256,13 @@ struct fmt::formatter<dag::directed_delayed_temporal_edge<VertT, TimeT>> {
         type_str<dag::directed_delayed_temporal_edge<VertT, TimeT>>{}(),
         a.tail(), a.head(), a.cause_time(), a.effect_time());
   }
+};
+
+// random_state
+
+template <>
+struct type_str<std::mt19937_64> {
+  std::string operator()() { return "mersenne_twister"; }
 };
 
 #endif  // SRC_TYPE_STR_HPP_

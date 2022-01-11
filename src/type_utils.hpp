@@ -2,6 +2,7 @@
 #define SRC_TYPE_UTILS_HPP_
 
 #include <utility>
+#include <random>
 
 #include <metal.hpp>
 #include <dag/dag.hpp>
@@ -27,12 +28,18 @@ namespace types {
   using integer_vert_types = metal::list<
     uint16_t, uint32_t, uint64_t,
     int16_t, int32_t, int64_t>;
+
+  using random_state_types = metal::list<
+    std::mt19937_64>;
 #else  // debug release
   using time_types = metal::list<
     int64_t, long double>;
 
   using integer_vert_types = metal::list<
     int64_t>;
+
+  using random_state_types = metal::list<
+    std::mt19937_64>;
 #endif
 
   using noninteger_vert_types = metal::list<std::string>;

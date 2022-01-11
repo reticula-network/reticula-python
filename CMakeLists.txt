@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 89950b2)
+  GIT_TAG 667e8bf)
 
 FetchContent_Declare(
   fmt
@@ -50,8 +50,16 @@ add_library(python_dag_temporal_networks src/temporal_networks.cpp)
 target_link_libraries(python_dag_temporal_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
 
+add_library(python_dag_random_state src/random_state.cpp)
+target_link_libraries(python_dag_random_state PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
 add_library(python_dag_generators src/generators.cpp)
 target_link_libraries(python_dag_generators PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
+add_library(python_dag_random_networks src/random_networks.cpp)
+target_link_libraries(python_dag_random_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
 
 add_library(python_dag_algorithms src/algorithms.cpp)
@@ -63,4 +71,6 @@ target_link_libraries(dag_ext PRIVATE
     dag fmt Metal
     python_dag_static_networks python_dag_static_edges
     python_dag_temporal_edges python_dag_temporal_networks
-    python_dag_generators python_dag_algorithms)
+    python_dag_random_state
+    python_dag_generators python_dag_random_networks
+    python_dag_algorithms)
