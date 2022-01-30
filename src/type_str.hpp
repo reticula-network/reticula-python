@@ -62,14 +62,28 @@ struct type_str<std::pair<T1, T2>> {
 template <typename VertT>
 struct type_str<dag::undirected_edge<VertT>> {
     std::string operator()() {
-        return fmt::format("UndirectedEdge_{}", type_str<VertT>{}());
+        return fmt::format("undirected_edge_{}", type_str<VertT>{}());
     }
 };
 
 template <typename VertT>
 struct type_str<dag::directed_edge<VertT>> {
     std::string operator()() {
-        return fmt::format("DirectedEdge_{}", type_str<VertT>{}());
+        return fmt::format("directed_edge_{}", type_str<VertT>{}());
+    }
+};
+
+template <typename VertT>
+struct type_str<dag::undirected_hyperedge<VertT>> {
+    std::string operator()() {
+        return fmt::format("undirected_hyperedge_{}", type_str<VertT>{}());
+    }
+};
+
+template <typename VertT>
+struct type_str<dag::directed_hyperedge<VertT>> {
+    std::string operator()() {
+        return fmt::format("directed_hyperedge_{}", type_str<VertT>{}());
     }
 };
 
@@ -77,7 +91,7 @@ struct type_str<dag::directed_edge<VertT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::undirected_temporal_edge<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("UndirectedTemporalEdge_{}_{}",
+        return fmt::format("undirected_temporal_edge_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
@@ -85,7 +99,7 @@ struct type_str<dag::undirected_temporal_edge<VertT, TimeT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::directed_temporal_edge<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("DirectedTemporalEdge_{}_{}",
+        return fmt::format("directed_temporal_edge_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
@@ -93,7 +107,31 @@ struct type_str<dag::directed_temporal_edge<VertT, TimeT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::directed_delayed_temporal_edge<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("DirectedDelayedTemporalEdge_{}_{}",
+        return fmt::format("directed_delayed_temporal_edge_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::undirected_temporal_hyperedge<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("undirected_temporal_hyperedge_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::directed_temporal_hyperedge<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("directed_temporal_hyperedge_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::directed_delayed_temporal_hyperedge<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("directed_delayed_temporal_hyperedge_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
@@ -102,14 +140,28 @@ struct type_str<dag::directed_delayed_temporal_edge<VertT, TimeT>> {
 template <typename VertT>
 struct type_str<dag::undirected_network<VertT>> {
     std::string operator()() {
-        return fmt::format("UndirectedNetwork_{}", type_str<VertT>{}());
+        return fmt::format("undirected_network_{}", type_str<VertT>{}());
     }
 };
 
 template <typename VertT>
 struct type_str<dag::directed_network<VertT>> {
     std::string operator()() {
-        return fmt::format("DirectedNetwork_{}", type_str<VertT>{}());
+        return fmt::format("directed_network_{}", type_str<VertT>{}());
+    }
+};
+
+template <typename VertT>
+struct type_str<dag::undirected_hypernetwork<VertT>> {
+    std::string operator()() {
+        return fmt::format("undirected_hypernetwork_{}", type_str<VertT>{}());
+    }
+};
+
+template <typename VertT>
+struct type_str<dag::directed_hypernetwork<VertT>> {
+    std::string operator()() {
+        return fmt::format("directed_hypernetwork_{}", type_str<VertT>{}());
     }
 };
 
@@ -117,7 +169,7 @@ struct type_str<dag::directed_network<VertT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::undirected_temporal_network<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("UndirectedTemporalNetwork_{}_{}",
+        return fmt::format("undirected_temporal_network_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
@@ -125,7 +177,7 @@ struct type_str<dag::undirected_temporal_network<VertT, TimeT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::directed_temporal_network<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("DirectedTemporalNetwork_{}_{}",
+        return fmt::format("directed_temporal_network_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
@@ -133,10 +185,66 @@ struct type_str<dag::directed_temporal_network<VertT, TimeT>> {
 template <typename VertT, typename TimeT>
 struct type_str<dag::directed_delayed_temporal_network<VertT, TimeT>> {
     std::string operator()() {
-        return fmt::format("DirectedDelayedTemporalNetwork_{}_{}",
+        return fmt::format("directed_delayed_temporal_network_{}_{}",
             type_str<VertT>{}(), type_str<TimeT>{}());
     }
 };
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::undirected_temporal_hypernetwork<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("undirected_temporal_hypernetwork_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::directed_temporal_hypernetwork<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("directed_temporal_hypernetwork_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+template <typename VertT, typename TimeT>
+struct type_str<dag::directed_delayed_temporal_hypernetwork<VertT, TimeT>> {
+    std::string operator()() {
+        return fmt::format("directed_delayed_temporal_hypernetwork_{}_{}",
+            type_str<VertT>{}(), type_str<TimeT>{}());
+    }
+};
+
+// components
+template <dag::network_vertex VertT>
+struct type_str<dag::component<VertT>> {
+    std::string operator()() {
+        return fmt::format("component_{}",
+            type_str<VertT>{}());
+    }
+};
+
+template <dag::network_vertex VertT>
+struct type_str<dag::component_size<VertT>> {
+    std::string operator()() {
+        return fmt::format("component_size_{}",
+            type_str<VertT>{}());
+    }
+};
+
+template <dag::network_vertex VertT>
+struct type_str<dag::component_size_estimate<VertT>> {
+    std::string operator()() {
+        return fmt::format("component_size_estimate_{}",
+            type_str<VertT>{}());
+    }
+};
+
+// random_state
+template <>
+struct type_str<std::mt19937_64> {
+  std::string operator()() { return "mersenne_twister"; }
+};
+
 
 // Formatters
 template <dag::network_edge EdgeT>
@@ -194,6 +302,44 @@ struct fmt::formatter<dag::directed_edge<VertT>> {
         "<dag.{}({}, {})>",
         type_str<dag::directed_edge<VertT>>{}(),
         a.tail(), a.head());
+  }
+};
+
+template <dag::network_vertex VertT>
+struct fmt::formatter<dag::undirected_hyperedge<VertT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(const dag::undirected_hyperedge<VertT>& a, FormatContext& ctx)
+  -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(), "<dag.{}({})>",
+        type_str<dag::undirected_hyperedge<VertT>>{}(),
+        fmt::join(a.incident_verts(), ", "));
+  }
+};
+
+
+template <dag::network_vertex VertT>
+struct fmt::formatter<dag::directed_hyperedge<VertT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(const dag::directed_hyperedge<VertT>& a, FormatContext& ctx)
+  -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{}({}, {})>",
+        type_str<dag::directed_hyperedge<VertT>>{}(),
+        a.tails(), a.heads());
   }
 };
 
@@ -258,11 +404,132 @@ struct fmt::formatter<dag::directed_delayed_temporal_edge<VertT, TimeT>> {
   }
 };
 
-// random_state
+template <dag::network_vertex VertT, typename TimeT>
+struct fmt::formatter<dag::undirected_temporal_hyperedge<VertT, TimeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
 
-template <>
-struct type_str<std::mt19937_64> {
-  std::string operator()() { return "mersenne_twister"; }
+  template <typename FormatContext>
+  auto format(
+      const dag::undirected_temporal_hyperedge<VertT, TimeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(), "<dag.{}({}, t={})>",
+        type_str<dag::undirected_temporal_hyperedge<VertT, TimeT>>{}(),
+        fmt::join(a.incident_verts(), ", "),
+        a.effect_time());
+  }
+};
+
+template <dag::network_vertex VertT, typename TimeT>
+struct fmt::formatter<dag::directed_temporal_hyperedge<VertT, TimeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::directed_temporal_hyperedge<VertT, TimeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{}({}, {}, t={})>",
+        type_str<dag::directed_temporal_hyperedge<VertT, TimeT>>{}(),
+        a.tails(), a.heads(), a.effect_time());
+  }
+};
+
+template <dag::network_vertex VertT, typename TimeT>
+struct fmt::formatter<dag::directed_delayed_temporal_hyperedge<VertT, TimeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::directed_delayed_temporal_hyperedge<VertT, TimeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{}({}, {}, t_start={}, t_end={})>",
+        type_str<dag::directed_delayed_temporal_hyperedge<VertT, TimeT>>{}(),
+        a.tails(), a.heads(), a.cause_time(), a.effect_time());
+  }
+};
+
+// components
+
+// dag::component is a range. We should make it ineligible for normal
+// fmt::formatter defined for ranges to make our own. otherwise it'll
+// get confused.
+template <dag::network_vertex VertT>
+struct fmt::is_range<dag::component<VertT>, char> : std::false_type {};
+
+template <dag::network_vertex VertT>
+struct fmt::formatter<dag::component<VertT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::component<VertT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    std::size_t size = a.size();
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{} of {} nodes: {{{}{}}})>",
+        type_str<dag::component<VertT>>{}(), size,
+        fmt::join(std::ranges::take_view{a, 10}, ", "),
+        (size > 10) ? ", ..." : "");
+  }
+};
+
+template <dag::network_vertex VertT>
+struct fmt::formatter<dag::component_size<VertT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::component_size<VertT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{} of {} nodes>",
+        type_str<dag::component_size<VertT>>{}(), a.size());
+  }
+};
+
+template <dag::network_vertex VertT>
+struct fmt::formatter<dag::component_size_estimate<VertT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::component_size_estimate<VertT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{} of ~{:1.2e}±1.1\% nodes>",
+        type_str<dag::component_size_estimate<VertT>>{}(), a.size_estimate());
+  }
 };
 
 #endif  // SRC_TYPE_STR_HPP_

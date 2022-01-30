@@ -17,12 +17,21 @@ struct declare_static_edges {
     using Undirected = dag::undirected_edge<VertT>;
     py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
       .def(py::init<VertT, VertT>())
-      .def("mutated_verts",   &Undirected::mutated_verts)
-      .def("mutator_verts",   &Undirected::mutator_verts)
-      .def("incident_verts",  &Undirected::incident_verts)
-      .def("is_incident",     &Undirected::is_incident, "vert"_a)
-      .def("is_in_incident",  &Undirected::is_in_incident, "vert"_a)
-      .def("is_out_incident", &Undirected::is_out_incident, "vert"_a)
+      .def("mutated_verts",
+          &Undirected::mutated_verts)
+      .def("mutator_verts",
+          &Undirected::mutator_verts)
+      .def("incident_verts",
+          &Undirected::incident_verts)
+      .def("is_incident",
+          &Undirected::is_incident,
+          "vert"_a)
+      .def("is_in_incident",
+          &Undirected::is_in_incident,
+          "vert"_a)
+      .def("is_out_incident",
+          &Undirected::is_out_incident,
+          "vert"_a)
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
@@ -33,7 +42,8 @@ struct declare_static_edges {
         py::overload_cast<
             const Undirected&,
             const Undirected&>(
-          &dag::adjacent<VertT>), "edge1"_a, "edge2"_a);
+          &dag::adjacent<VertT>),
+            "edge1"_a, "edge2"_a);
     m.def("effect_lt",
         py::overload_cast<
             const Undirected&,
@@ -42,13 +52,27 @@ struct declare_static_edges {
 
     using Directed = dag::directed_edge<VertT>;
     py::class_<Directed>(m, type_str<Directed>{}().c_str())
-      .def(py::init<VertT, VertT>())
-      .def("mutated_verts",   &Directed::mutated_verts)
-      .def("mutator_verts",   &Directed::mutator_verts)
-      .def("incident_verts",  &Directed::incident_verts)
-      .def("is_incident",     &Directed::is_incident, "vert"_a)
-      .def("is_in_incident",  &Directed::is_in_incident, "vert"_a)
-      .def("is_out_incident", &Directed::is_out_incident, "vert"_a)
+      .def(py::init<VertT, VertT>(),
+          "tail"_a, "head"_a)
+      .def("mutated_verts",
+          &Directed::mutated_verts)
+      .def("mutator_verts",
+          &Directed::mutator_verts)
+      .def("head",
+          &Directed::head)
+      .def("tail",
+          &Directed::tail)
+      .def("incident_verts",
+          &Directed::incident_verts)
+      .def("is_incident",
+          &Directed::is_incident,
+          "vert"_a)
+      .def("is_in_incident",
+          &Directed::is_in_incident,
+          "vert"_a)
+      .def("is_out_incident",
+          &Directed::is_out_incident,
+          "vert"_a)
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
@@ -59,29 +83,22 @@ struct declare_static_edges {
         py::overload_cast<
             const Directed&,
             const Directed&>(
-          &dag::adjacent<VertT>), "edge1"_a, "edge2"_a);
+          &dag::adjacent<VertT>),
+            "edge1"_a, "edge2"_a);
     m.def("effect_lt",
         py::overload_cast<
             const Directed&,
             const Directed&>(
-          &dag::effect_lt<VertT>), "edge1"_a, "edge2"_a);
+          &dag::effect_lt<VertT>),
+            "edge1"_a, "edge2"_a);
   }
 };
 
 
 void declare_typed_static_edges(py::module& m) {
+  // simple (first order) temporal edges
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_edges>,
-      types::first_order_vert_types>>{}(m);
-
-  types::run_each<
-    metal::transform<
-      metal::lambda<declare_static_edges>,
-      types::first_order_temporal_edges>>{}(m);
-
-  /* types::run_each< */
-  /*   metal::transform< */
-  /*     metal::lambda<declare_static_edges>, */
-  /*     types::first_order_temporal_hyperedges>>{}(m); */
+      types::all_vert_types>>{}(m);
 }

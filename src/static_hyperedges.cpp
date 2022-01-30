@@ -1,3 +1,4 @@
+#include <metal.hpp>
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
@@ -10,13 +11,13 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <typename VertT, typename TimeT>
-struct declare_temporal_edges {
+template <typename VertT>
+struct declare_static_hyperedges {
   void operator()(py::module &m) {
-    using Undirected = dag::undirected_temporal_edge<VertT, TimeT>;
+    using Undirected = dag::undirected_hyperedge<VertT>;
     py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT>(),
-          "v1"_a, "v2"_a, "time"_a)
+      .def(py::init<std::vector<VertT>>(),
+          "verts"_a)
       .def("mutated_verts",
           &Undirected::mutated_verts)
       .def("mutator_verts",
@@ -42,27 +43,29 @@ struct declare_temporal_edges {
         py::overload_cast<
             const Undirected&,
             const Undirected&>(
-          &dag::adjacent<VertT, TimeT>),
+          &dag::adjacent<VertT>),
             "edge1"_a, "edge2"_a);
     m.def("effect_lt",
         py::overload_cast<
             const Undirected&,
             const Undirected&>(
-          &dag::effect_lt<VertT, TimeT>),
+          &dag::effect_lt<VertT>),
             "edge1"_a, "edge2"_a);
 
-    using Directed = dag::directed_temporal_edge<VertT, TimeT>;
+    using Directed = dag::directed_hyperedge<VertT>;
     py::class_<Directed>(m, type_str<Directed>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT>(),
-          "tail"_a, "head"_a, "time"_a)
+      .def(py::init<
+          std::vector<VertT>,
+          std::vector<VertT>>(),
+          "tails"_a, "heads"_a)
       .def("mutated_verts",
           &Directed::mutated_verts)
       .def("mutator_verts",
           &Directed::mutator_verts)
-      .def("head",
-          &Directed::head)
-      .def("tail",
-          &Directed::tail)
+      .def("heads",
+          &Directed::heads)
+      .def("tails",
+          &Directed::tails)
       .def("incident_verts",
           &Directed::incident_verts)
       .def("is_incident",
@@ -84,66 +87,21 @@ struct declare_temporal_edges {
         py::overload_cast<
             const Directed&,
             const Directed&>(
-          &dag::adjacent<VertT, TimeT>),
+          &dag::adjacent<VertT>),
             "edge1"_a, "edge2"_a);
     m.def("effect_lt",
         py::overload_cast<
             const Directed&,
             const Directed&>(
-          &dag::effect_lt<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
-
-    using DirectedDelayed =
-      dag::directed_delayed_temporal_edge<VertT, TimeT>;
-    py::class_<DirectedDelayed>(m,
-        type_str<DirectedDelayed>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT, TimeT>(),
-          "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a)
-      .def("mutated_verts",
-          &DirectedDelayed::mutated_verts)
-      .def("mutator_verts",
-          &DirectedDelayed::mutator_verts)
-      .def("head",
-          &DirectedDelayed::head)
-      .def("tail",
-          &DirectedDelayed::tail)
-      .def("incident_verts",
-          &DirectedDelayed::incident_verts)
-      .def("is_incident",
-          &DirectedDelayed::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &DirectedDelayed::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &DirectedDelayed::is_out_incident,
-          "vert"_a)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def("__repr__", [](const DirectedDelayed& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const DirectedDelayed&,
-            const DirectedDelayed&>(
-          &dag::adjacent<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const DirectedDelayed&,
-            const DirectedDelayed&>(
-          &dag::effect_lt<VertT, TimeT>),
+          &dag::effect_lt<VertT>),
             "edge1"_a, "edge2"_a);
   }
 };
 
-void declare_typed_temporal_edges(py::module& m) {
+
+void declare_typed_static_hyperedges(py::module& m) {
   types::run_each<
     metal::transform<
-      metal::partial<
-        metal::lambda<metal::apply>,
-        metal::lambda<declare_temporal_edges>>,
-      types::first_order_temporal_type_parameter_combinations>>{}(m);
+      metal::lambda<declare_static_hyperedges>,
+      types::all_vert_types>>{}(m);
 }

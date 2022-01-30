@@ -20,14 +20,20 @@ namespace types {
   };
 
 #ifdef NDEBUG
+  /* using time_types = metal::list< */
+  /*   uint16_t, uint32_t, uint64_t, */
+  /*   int16_t, int32_t, int64_t, */
+  /*   float, double, long double>; */
+
   using time_types = metal::list<
-    uint16_t, uint32_t, uint64_t,
-    int16_t, int32_t, int64_t,
-    float, double, long double>;
+    int64_t, long double>;
+
+  /* using integer_vert_types = metal::list< */
+  /*   uint16_t, uint32_t, uint64_t, */
+  /*   int16_t, int32_t, int64_t>; */
 
   using integer_vert_types = metal::list<
-    uint16_t, uint32_t, uint64_t,
-    int16_t, int32_t, int64_t>;
+    int64_t>;
 
   using random_state_types = metal::list<
     std::mt19937_64>;
@@ -59,65 +65,116 @@ namespace types {
   using first_order_vert_types = metal::join<
     simple_vert_types, compount_vert_type>;
 
-  // using simple_static_hyperedges = join<
-  //   first_order_vert_wrap<dag::undirected_hyperedge>,
-  //   first_order_vert_wrap<dag::directed_hyperedge>
-  //     >::type;
 
-  // simple (first order) temporal edges
+  // first-order static edges
+  using first_order_undirected_edges =
+    metal::transform<
+      metal::lambda<dag::undirected_edge>,
+      first_order_vert_types>;
+
+  using first_order_directed_edges =
+    metal::transform<
+      metal::lambda<dag::directed_edge>,
+      first_order_vert_types>;
+
+  using first_order_undirected_hyperedges =
+    metal::transform<
+      metal::lambda<dag::undirected_hyperedge>,
+      first_order_vert_types>;
+
+  using first_order_directed_hyperedges =
+    metal::transform<
+      metal::lambda<dag::directed_hyperedge>,
+      first_order_vert_types>;
+
+  using first_order_static_edges = metal::join<
+    first_order_undirected_edges,
+    first_order_undirected_hyperedges,
+    first_order_directed_edges,
+    first_order_directed_hyperedges>;
+
+  // first-order temporal edges
+  using first_order_temporal_type_parameter_combinations =
+    metal::cartesian<types::first_order_vert_types, types::time_types>;
 
   using first_order_undirected_temporal_edges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<dag::undirected_temporal_edge>>,
-      metal::cartesian<first_order_vert_types, time_types>>;
+      first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_temporal_edges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<dag::directed_temporal_edge>>,
-      metal::cartesian<first_order_vert_types, time_types>>;
+      first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_delayed_temporal_edges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<dag::directed_delayed_temporal_edge>>,
-      metal::cartesian<first_order_vert_types, time_types>>;
+      first_order_temporal_type_parameter_combinations>;
 
+  // simple (first order) temporal hyperedges
+  using first_order_undirected_temporal_hyperedges =
+    metal::transform<
+      metal::partial<
+        metal::lambda<metal::apply>,
+        metal::lambda<dag::undirected_temporal_hyperedge>>,
+      first_order_temporal_type_parameter_combinations>;
+
+  using first_order_directed_temporal_hyperedges =
+    metal::transform<
+      metal::partial<
+        metal::lambda<metal::apply>,
+        metal::lambda<dag::directed_temporal_hyperedge>>,
+      first_order_temporal_type_parameter_combinations>;
+
+  using first_order_directed_delayed_temporal_hyperedges =
+    metal::transform<
+      metal::partial<
+        metal::lambda<metal::apply>,
+        metal::lambda<dag::directed_delayed_temporal_hyperedge>>,
+      first_order_temporal_type_parameter_combinations>;
+
+  // all together now
   using first_order_temporal_edges = metal::join<
     first_order_undirected_temporal_edges,
     first_order_directed_temporal_edges,
-    first_order_directed_delayed_temporal_edges>;
+    first_order_directed_delayed_temporal_edges,
+    first_order_undirected_temporal_hyperedges,
+    first_order_directed_temporal_hyperedges,
+    first_order_directed_delayed_temporal_hyperedges>;
 
-  // simple (first order) temporal hyperedges
+  // second order static edges
+  // For now, let's only define static (non-hyper) edges of temporal edges (ala
+  // event graph)
+  using second_order_undirected_edges =
+    metal::transform<
+      metal::lambda<dag::undirected_edge>,
+      first_order_temporal_edges>;
 
-  /* using simple_undirected_temporal_hyperedges = */
-  /*   metal::transform< */
-  /*     metal::partial< */
-  /*       metal::lambda<metal::apply>, */
-  /*       metal::lambda<dag::undirected_temporal_hyperedge>>, */
-  /*     metal::cartesian<first_order_vert_types, time_types>>; */
+  using second_order_directed_edges =
+    metal::transform<
+      metal::lambda<dag::directed_edge>,
+      first_order_temporal_edges>;
 
-  /* using simple_directed_temporal_edges = */
-  /*   metal::transform< */
-  /*     metal::partial< */
-  /*       metal::lambda<metal::apply>, */
-  /*       metal::lambda<dag::directed_temporal_hyperedge>>, */
-  /*     metal::cartesian<first_order_vert_types, time_types>>; */
+  using second_order_static_edges = metal::join<
+    second_order_undirected_edges,
+    second_order_directed_edges>;
 
-  /* using simple_directed_delayed_temporal_hyperedges = */
-  /*   metal::transform< */
-  /*     metal::partial< */
-  /*       metal::lambda<metal::apply>, */
-  /*       metal::lambda<dag::directed_delayed_temporal_hyperedge>>, */
-  /*     metal::cartesian<first_order_vert_types, time_types>>; */
+  // all vert_types
+  using all_vert_types = metal::join<
+    first_order_vert_types,
+    first_order_temporal_edges>;
 
-  /* using simple_temporal_hyperedges = metal::join< */
-  /*   simple_undirected_temporal_hyperedges, */
-  /*   simple_directed_temporal_hyperedges, */
-  /*   simple_directed_delayed_temporal_hyperedges>; */
+  // all edge_types
+  using all_edge_types = metal::join<
+    first_order_static_edges,
+    first_order_temporal_edges,
+    second_order_static_edges>;
 }  // namespace types
 #endif  // SRC_TYPE_UTILS_HPP_

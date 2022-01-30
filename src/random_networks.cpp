@@ -9,21 +9,49 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <typename VertT, std::uniform_random_bit_generator Gen>
+template <dag::integer_vertex VertT, std::uniform_random_bit_generator Gen>
 struct declare_random_network_models {
   void operator()(py::module& m) {
-    m.def(("gnp_random_graph_"+type_str<VertT>{}()).c_str(),
-        &dag::gnp_random_graph<VertT, Gen>,
-        "n"_a, "p"_a, "random_state"_a);
+    m.def(("random_gnp_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_gnp_graph<VertT, Gen>,
+        "n"_a, "p"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
 
-    m.def(("ba_random_graph_"+type_str<VertT>{}()).c_str(),
-        &dag::ba_random_graph<VertT, Gen>,
-        "n"_a, "m"_a, "random_state"_a);
+    m.def(("random_barabasi_albert_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_barabasi_albert_graph<VertT, Gen>,
+        "n"_a, "m"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def(("random_regular_graph_"+type_str<VertT>{}()).c_str(),
         &dag::random_regular_graph<VertT, Gen>,
-        "size"_a, "degree"_a, "random_state"_a);
+        "size"_a, "degree"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_expected_degree_sequence_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_expected_degree_sequence_graph<
+          VertT, std::vector<double>, Gen>,
+        "weight_sequence"_a, "random_state"_a, "self_loops"_a = false,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_directed_expected_degree_sequence_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_directed_expected_degree_sequence_graph<
+          VertT, std::vector<std::pair<double, double>>, Gen>,
+        "in_out_weight_sequence"_a, "random_state"_a, "self_loops"_a = false,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_degree_sequence_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_degree_sequence_graph<
+          VertT, std::vector<VertT>, Gen>,
+        "degree_sequence"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_directed_degree_sequence_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::random_directed_degree_sequence_graph<
+          VertT, std::vector<std::pair<VertT, VertT>>, Gen>,
+        "in_out_degree_sequence"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
+
 };
 
 void declare_typed_random_networks(py::module& m) {

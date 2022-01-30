@@ -9,12 +9,12 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 667e8bf)
+  GIT_TAG 794cc6a)
 
 FetchContent_Declare(
   fmt
   GIT_REPOSITORY https://github.com/fmtlib/fmt
-  GIT_TAG 8.0.1)
+  GIT_TAG 8.1.1)
 
 FetchContent_Declare(
   pybind11
@@ -34,20 +34,24 @@ endif()
 
 FetchContent_MakeAvailable(dag fmt metal)
 
-add_library(python_dag_static_edges src/static_edges.cpp)
-target_link_libraries(python_dag_static_edges PRIVATE
-  dag fmt Metal pybind11::pybind11)
-
-add_library(python_dag_static_networks src/static_networks.cpp)
-target_link_libraries(python_dag_static_networks PRIVATE
-  dag fmt Metal pybind11::pybind11)
-
 add_library(python_dag_temporal_edges src/temporal_edges.cpp)
 target_link_libraries(python_dag_temporal_edges PRIVATE
   dag fmt Metal pybind11::pybind11)
 
-add_library(python_dag_temporal_networks src/temporal_networks.cpp)
-target_link_libraries(python_dag_temporal_networks PRIVATE
+add_library(python_dag_temporal_hyperedges src/temporal_hyperedges.cpp)
+target_link_libraries(python_dag_temporal_hyperedges PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
+add_library(python_dag_static_edges src/static_edges.cpp)
+target_link_libraries(python_dag_static_edges PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
+add_library(python_dag_static_hyperedges src/static_hyperedges.cpp)
+target_link_libraries(python_dag_static_hyperedges PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
+add_library(python_dag_networks src/networks.cpp)
+target_link_libraries(python_dag_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
 
 add_library(python_dag_random_state src/random_state.cpp)
@@ -62,6 +66,10 @@ add_library(python_dag_random_networks src/random_networks.cpp)
 target_link_libraries(python_dag_random_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
 
+add_library(python_dag_components src/components.cpp)
+target_link_libraries(python_dag_components PRIVATE
+  dag fmt Metal pybind11::pybind11)
+
 add_library(python_dag_algorithms src/algorithms.cpp)
 target_link_libraries(python_dag_algorithms PRIVATE
   dag fmt Metal pybind11::pybind11)
@@ -69,8 +77,11 @@ target_link_libraries(python_dag_algorithms PRIVATE
 pybind11_add_module(dag_ext src/main.cpp)
 target_link_libraries(dag_ext PRIVATE
     dag fmt Metal
-    python_dag_static_networks python_dag_static_edges
-    python_dag_temporal_edges python_dag_temporal_networks
+    python_dag_temporal_edges python_dag_temporal_hyperedges
+    python_dag_static_edges python_dag_static_hyperedges
+    python_dag_networks
     python_dag_random_state
-    python_dag_generators python_dag_random_networks
+    python_dag_generators
+    python_dag_random_networks
+    python_dag_components
     python_dag_algorithms)

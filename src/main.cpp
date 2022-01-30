@@ -11,15 +11,19 @@
 namespace py = pybind11;
 
 void declare_typed_static_edges(py::module& m);
-void declare_typed_static_networks(py::module& m);
+void declare_typed_static_hyperedges(py::module& m);
 
 void declare_typed_temporal_edges(py::module& m);
-void declare_typed_temporal_networks(py::module& m);
+void declare_typed_temporal_hyperedges(py::module& m);
+
+void declare_typed_networks(py::module& m);
 
 void declare_random_states(py::module& m);
 
 void declare_typed_generators(py::module& m);
 void declare_typed_random_networks(py::module& m);
+
+void declare_typed_components(py::module& m);
 
 void declare_typed_algorithms(py::module& m);
 
@@ -36,16 +40,21 @@ PYBIND11_MODULE(dag_ext, m) {
            add
            subtract
     )pbdoc";
-    declare_typed_static_edges(m);
-    declare_typed_static_networks(m);
-
     declare_typed_temporal_edges(m);
-    declare_typed_temporal_networks(m);
+    declare_typed_temporal_hyperedges(m);
+
+
+    declare_typed_static_edges(m);
+    declare_typed_static_hyperedges(m);
+
+    declare_typed_networks(m);
 
     declare_random_states(m);
 
     declare_typed_generators(m);
     declare_typed_random_networks(m);
+
+    declare_typed_components(m);
 
     declare_typed_algorithms(m);
 #ifdef VERSION_INFO

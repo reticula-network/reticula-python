@@ -11,12 +11,16 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <typename VertT, typename TimeT>
-struct declare_temporal_edges {
+struct declare_temporal_hyperedges {
   void operator()(py::module &m) {
-    using Undirected = dag::undirected_temporal_edge<VertT, TimeT>;
-    py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT>(),
-          "v1"_a, "v2"_a, "time"_a)
+    using Undirected =
+      dag::undirected_temporal_hyperedge<VertT, TimeT>;
+    py::class_<Undirected>(m,
+        type_str<Undirected>{}().c_str())
+      .def(py::init<
+          std::vector<VertT>,
+          TimeT>(),
+          "verts"_a, "time"_a)
       .def("mutated_verts",
           &Undirected::mutated_verts)
       .def("mutator_verts",
@@ -51,18 +55,23 @@ struct declare_temporal_edges {
           &dag::effect_lt<VertT, TimeT>),
             "edge1"_a, "edge2"_a);
 
-    using Directed = dag::directed_temporal_edge<VertT, TimeT>;
-    py::class_<Directed>(m, type_str<Directed>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT>(),
-          "tail"_a, "head"_a, "time"_a)
+    using Directed =
+      dag::directed_temporal_hyperedge<VertT, TimeT>;
+    py::class_<Directed>(m,
+        type_str<Directed>{}().c_str())
+      .def(py::init<
+          std::vector<VertT>,
+          std::vector<VertT>,
+          TimeT>(),
+          "tails"_a, "heads"_a, "time"_a)
       .def("mutated_verts",
           &Directed::mutated_verts)
       .def("mutator_verts",
           &Directed::mutator_verts)
-      .def("head",
-          &Directed::head)
-      .def("tail",
-          &Directed::tail)
+      .def("heads",
+          &Directed::heads)
+      .def("tails",
+          &Directed::tails)
       .def("incident_verts",
           &Directed::incident_verts)
       .def("is_incident",
@@ -94,19 +103,22 @@ struct declare_temporal_edges {
             "edge1"_a, "edge2"_a);
 
     using DirectedDelayed =
-      dag::directed_delayed_temporal_edge<VertT, TimeT>;
+      dag::directed_delayed_temporal_hyperedge<VertT, TimeT>;
     py::class_<DirectedDelayed>(m,
         type_str<DirectedDelayed>{}().c_str())
-      .def(py::init<VertT, VertT, TimeT, TimeT>(),
-          "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a)
+      .def(py::init<
+          std::vector<VertT>,
+          std::vector<VertT>,
+          TimeT, TimeT>(),
+          "tails"_a, "heads"_a, "cause_time"_a, "effect_time"_a)
       .def("mutated_verts",
           &DirectedDelayed::mutated_verts)
       .def("mutator_verts",
           &DirectedDelayed::mutator_verts)
-      .def("head",
-          &DirectedDelayed::head)
-      .def("tail",
-          &DirectedDelayed::tail)
+      .def("heads",
+          &DirectedDelayed::heads)
+      .def("tails",
+          &DirectedDelayed::tails)
       .def("incident_verts",
           &DirectedDelayed::incident_verts)
       .def("is_incident",
@@ -139,11 +151,11 @@ struct declare_temporal_edges {
   }
 };
 
-void declare_typed_temporal_edges(py::module& m) {
+void declare_typed_temporal_hyperedges(py::module& m) {
   types::run_each<
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<declare_temporal_edges>>,
+        metal::lambda<declare_temporal_hyperedges>>,
       types::first_order_temporal_type_parameter_combinations>>{}(m);
 }
