@@ -7,6 +7,14 @@
 #include <metal.hpp>
 #include <dag/dag.hpp>
 
+#ifndef BUILD_TOTAL_PARTS
+#define BUILD_TOTAL_PARTS 1
+#endif
+
+#ifndef BUILD_CURRENT_PART
+#define BUILD_CURRENT_PART 0
+#endif
+
 namespace types {
   template <typename List>
   struct run_each;
@@ -18,6 +26,19 @@ namespace types {
       (Ts{}(std::forward<Args>(args)...), ...);
     }
   };
+
+  using total_parts = metal::number<BUILD_TOTAL_PARTS>;
+  using current_part = metal::number<BUILD_CURRENT_PART>;
+
+  template <typename List>
+  using current_build_types = metal::slice<
+    List, current_part,
+    metal::div<
+      metal::add<
+        metal::size<List>,
+        metal::sub<total_parts, current_part, metal::number<1>>>,
+      total_parts>,
+    total_parts>;
 
 #ifdef NDEBUG
   /* using time_types = metal::list< */
@@ -42,7 +63,7 @@ namespace types {
     int64_t, long double>;
 
   using integer_vert_types = metal::list<
-    int64_t>;
+    int16_t, int32_t, int64_t>;
 
   using random_state_types = metal::list<
     std::mt19937_64>;
@@ -62,9 +83,9 @@ namespace types {
 
   using compount_vert_type = metal::join<pair_vert_types>;
 
-  using first_order_vert_types = metal::join<
-    simple_vert_types, compount_vert_type>;
-
+  using first_order_vert_types =
+    current_build_types<
+      metal::join<simple_vert_types, compount_vert_type>>;
 
   // first-order static edges
   using first_order_undirected_edges =
@@ -95,7 +116,7 @@ namespace types {
 
   // first-order temporal edges
   using first_order_temporal_type_parameter_combinations =
-    metal::cartesian<types::first_order_vert_types, types::time_types>;
+    metal::cartesian<first_order_vert_types, time_types>;
 
   using first_order_undirected_temporal_edges =
     metal::transform<
@@ -152,14 +173,15 @@ namespace types {
   // second order static edges
   // For now, let's only define static (non-hyper) edges of temporal edges (ala
   // event graph)
-  using second_order_undirected_edges =
-    metal::transform<
-      metal::lambda<dag::undirected_edge>,
-      first_order_temporal_edges>;
 
   using second_order_directed_edges =
     metal::transform<
       metal::lambda<dag::directed_edge>,
+      first_order_temporal_edges>;
+
+  using second_order_undirected_edges =
+    metal::transform<
+      metal::lambda<dag::undirected_edge>,
       first_order_temporal_edges>;
 
   using second_order_static_edges = metal::join<

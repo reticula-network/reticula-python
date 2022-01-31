@@ -96,7 +96,6 @@ struct declare_static_edges {
 
 
 void declare_typed_static_edges(py::module& m) {
-  // simple (first order) temporal edges
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_edges>,
