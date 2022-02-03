@@ -60,8 +60,7 @@ void declare_typed_random_networks(py::module& m) {
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<declare_random_network_models>>,
-      types::current_build_types<
-        metal::cartesian<
-          types::integer_vert_types,
-          types::random_state_types>>>>{}(m);
+      metal::cartesian<
+        types::integer_vert_types,
+        types::random_state_types>>>{}(m);
 }

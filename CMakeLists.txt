@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 210f276)
+  GIT_TAG c4e799f)
 
 FetchContent_Declare(
   fmt
@@ -35,10 +35,7 @@ endif()
 FetchContent_MakeAvailable(dag fmt metal)
 
 
-set(total_parts 10)
-
 pybind11_add_module(dag_ext src/main.cpp)
-
 target_link_libraries(dag_ext PRIVATE dag fmt Metal)
 
 add_library(python_dag_random_state src/random_state.cpp)
@@ -46,44 +43,53 @@ target_link_libraries(python_dag_random_state PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE python_dag_random_state)
 
-
-function(add_partial_library name source parts)
-  foreach(n RANGE ${parts})
-    add_library(python_dag_${name}_${n} ${source})
-    target_compile_definitions(python_dag_${name}_${n} PRIVATE
-      BUILD_TOTAL_PARTS=${parts} BUILD_CURRENT_PART=${n})
-    target_link_libraries(python_dag_${name}_${n} PRIVATE ${ARGN})
-    target_link_libraries(dag_ext PRIVATE python_dag_${name}_${n})
-  endforeach()
-endfunction()
-
-add_partial_library(temporal_edges src/temporal_edges.cpp ${total_parts}
+add_library(${PROJECT_NAME}_temporal_edges src/temporal_edges.cpp)
+target_link_libraries(${PROJECT_NAME}_temporal_edges PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_edges)
 
-add_partial_library(temporal_hyperedges src/temporal_hyperedges.cpp ${total_parts}
+add_library(${PROJECT_NAME}_temporal_hyperedges src/temporal_hyperedges.cpp)
+target_link_libraries(${PROJECT_NAME}_temporal_hyperedges PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_hyperedges)
 
-add_partial_library(static_edges src/static_edges.cpp ${total_parts}
+
+add_library(${PROJECT_NAME}_static_edges src/static_edges.cpp)
+target_link_libraries(${PROJECT_NAME}_static_edges PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_edges)
 
-add_partial_library(static_hyperedges src/static_hyperedges.cpp ${total_parts}
+add_library(${PROJECT_NAME}_static_hyperedges src/static_hyperedges.cpp)
+target_link_libraries(${PROJECT_NAME}_static_hyperedges PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_hyperedges)
 
 
-add_partial_library(networks src/networks.cpp ${total_parts}
+add_library(${PROJECT_NAME}_networks src/networks.cpp)
+target_link_libraries(${PROJECT_NAME}_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_networks)
 
-add_partial_library(generators src/generators.cpp ${total_parts}
+
+add_library(${PROJECT_NAME}_generators src/generators.cpp)
+target_link_libraries(${PROJECT_NAME}_generators PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_generators)
 
 
-add_partial_library(random_networks src/random_networks.cpp ${total_parts}
+add_library(${PROJECT_NAME}_random_networks src/random_networks.cpp)
+target_link_libraries(${PROJECT_NAME}_random_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_networks)
 
 
-add_partial_library(components src/components.cpp ${total_parts}
+add_library(${PROJECT_NAME}_components src/components.cpp)
+target_link_libraries(${PROJECT_NAME}_components PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_components)
 
 
-add_partial_library(algorithms src/algorithms.cpp ${total_parts}
+add_library(${PROJECT_NAME}_algorithms src/algorithms.cpp)
+target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
   dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)

@@ -7,14 +7,6 @@
 #include <metal.hpp>
 #include <dag/dag.hpp>
 
-#ifndef BUILD_TOTAL_PARTS
-#define BUILD_TOTAL_PARTS 1
-#endif
-
-#ifndef BUILD_CURRENT_PART
-#define BUILD_CURRENT_PART 0
-#endif
-
 namespace types {
   template <typename List>
   struct run_each;
@@ -27,46 +19,27 @@ namespace types {
     }
   };
 
-  using total_parts = metal::number<BUILD_TOTAL_PARTS>;
-  using current_part = metal::number<BUILD_CURRENT_PART>;
-
-  template <typename List>
-  using current_build_types = metal::slice<
-    List, current_part,
-    metal::div<
-      metal::add<
-        metal::size<List>,
-        metal::sub<total_parts, current_part, metal::number<1>>>,
-      total_parts>,
-    total_parts>;
-
 #ifdef NDEBUG
   /* using time_types = metal::list< */
   /*   uint16_t, uint32_t, uint64_t, */
   /*   int16_t, int32_t, int64_t, */
   /*   float, double, long double>; */
 
-  using time_types = metal::list<
-    int64_t, long double>;
+  using time_types = metal::list<double>;
 
   /* using integer_vert_types = metal::list< */
   /*   uint16_t, uint32_t, uint64_t, */
   /*   int16_t, int32_t, int64_t>; */
 
-  using integer_vert_types = metal::list<
-    int64_t>;
+  using integer_vert_types = metal::list<int64_t>;
 
-  using random_state_types = metal::list<
-    std::mt19937_64>;
+  using random_state_types = metal::list<std::mt19937_64>;
 #else  // debug release
-  using time_types = metal::list<
-    int64_t, long double>;
+  using time_types = metal::list<double>;
 
-  using integer_vert_types = metal::list<
-    int16_t, int32_t, int64_t>;
+  using integer_vert_types = metal::list<int64_t>;
 
-  using random_state_types = metal::list<
-    std::mt19937_64>;
+  using random_state_types = metal::list<std::mt19937_64>;
 #endif
 
   using noninteger_vert_types = metal::list<std::string>;
@@ -84,8 +57,7 @@ namespace types {
   using compount_vert_type = metal::join<pair_vert_types>;
 
   using first_order_vert_types =
-    current_build_types<
-      metal::join<simple_vert_types, compount_vert_type>>;
+      metal::join<simple_vert_types, compount_vert_type>;
 
   // first-order static edges
   using first_order_undirected_edges =

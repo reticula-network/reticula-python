@@ -39,6 +39,5 @@ void declare_typed_generators(py::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_generators>,
-      types::current_build_types<
-        types::integer_vert_types>>>{}(m);
+      types::integer_vert_types>>{}(m);
 }

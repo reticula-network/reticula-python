@@ -17,6 +17,24 @@ using namespace pybind11::literals;
 template <dag::static_directed_edge EdgeT>
 struct declare_directed_network_algorithms {
   void operator()(py::module& m) {
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, std::vector<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, dag::component<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, std::vector<EdgeT>>,
+        "network"_a, "verts"_a);
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, dag::component<EdgeT>>,
+        "network"_a, "verts"_a);
+
     m.def("is_acyclic",
         &dag::is_acyclic<EdgeT>,
         "directed_network"_a,
@@ -65,6 +83,10 @@ struct declare_directed_network_algorithms {
         &dag::weakly_connected_component<EdgeT>,
         "directed_network"_a, "vert"_a, "size_hint"_a = 0,
         py::call_guard<py::gil_scoped_release>());
+    m.def("is_weakly_connected",
+        &dag::is_weakly_connected<EdgeT>,
+        "directed_network"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("weakly_connected_components",
         &dag::weakly_connected_components<EdgeT>,
         "directed_network"_a, "singletons"_a = true,
@@ -75,9 +97,31 @@ struct declare_directed_network_algorithms {
 template <dag::static_undirected_edge EdgeT>
 struct declare_undirected_network_algorithms {
   void operator()(py::module& m) {
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, std::vector<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, dag::component<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, std::vector<EdgeT>>,
+        "network"_a, "verts"_a);
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, dag::component<EdgeT>>,
+        "network"_a, "verts"_a);
+
     m.def("connected_component",
         &dag::connected_component<EdgeT>,
         "undirected_network"_a, "vert"_a, "size_hint"_a = 0,
+        py::call_guard<py::gil_scoped_release>());
+    m.def("is_connected",
+        &dag::is_connected<EdgeT>,
+        "undirected_network"_a,
         py::call_guard<py::gil_scoped_release>());
     m.def("connected_components",
         &dag::connected_components<EdgeT>,
@@ -99,7 +143,8 @@ struct declare_relabel_nodes {
 template <typename VertT1, typename VertT2>
 struct declare_cartesian_product {
   void operator()(py::module& m) {
-    m.def("cartesian_product", &dag::cartesian_product<VertT1, VertT2>,
+    m.def("cartesian_product",
+        &dag::cartesian_product<VertT1, VertT2>,
         "undirected_net_1"_a, "undirected_net_2"_a);
   }
 };
@@ -107,8 +152,42 @@ struct declare_cartesian_product {
 template <typename T>
 struct declare_is_graphic {
   void operator()(py::module& m) {
-    m.def("is_graphic", &dag::is_graphic<std::vector<T>>,
+    m.def("is_graphic",
+        &dag::is_graphic<std::vector<T>>,
         "degree_seq"_a);
+  }
+};
+
+template <dag::temporal_edge EdgeT>
+struct declare_temporal_network_algorithms {
+  void operator()(py::module& m) {
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, std::vector<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+    m.def("vertex_induced_subgraph",
+        &dag::vertex_induced_subgraph<
+          EdgeT, dag::component<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a);
+
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, std::vector<EdgeT>>,
+        "network"_a, "verts"_a);
+    m.def("edge_induced_subgraph",
+        &dag::edge_induced_subgraph<
+          EdgeT, dag::component<EdgeT>>,
+        "network"_a, "verts"_a);
+
+    m.def("time_window",
+        &dag::time_window<EdgeT>,
+        "temporal_network"_a);
+    m.def("cause_time_window",
+        &dag::cause_time_window<EdgeT>,
+        "temporal_network"_a);
+    m.def("effect_time_window",
+        &dag::effect_time_window<EdgeT>,
+        "temporal_network"_a);
   }
 };
 
@@ -151,10 +230,9 @@ void declare_typed_algorithms(py::module& m) {
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<declare_cartesian_product>>,
-      types::current_build_types<
-        metal::cartesian<
-          types::simple_vert_types,
-          types::simple_vert_types>>>>{}(m);
+      metal::cartesian<
+        types::simple_vert_types,
+        types::simple_vert_types>>>{}(m);
 
   types::run_each<
     metal::transform<
