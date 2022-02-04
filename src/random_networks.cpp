@@ -50,6 +50,13 @@ struct declare_random_network_models {
           VertT, std::vector<std::pair<VertT, VertT>>, Gen>,
         "in_out_degree_sequence"_a, "random_state"_a,
         py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_fully_mixed_temporal_network_"+type_str<VertT>{}()).c_str(),
+        &dag::random_fully_mixed_temporal_network<VertT, Gen>,
+        "size"_a, "rate"_a, "max_t"_a, "random_state"_a);
+    m.def(("random_directed_fully_mixed_temporal_network_"+type_str<VertT>{}()).c_str(),
+        &dag::random_directed_fully_mixed_temporal_network<VertT, Gen>,
+        "size"_a, "rate"_a, "max_t"_a, "random_state"_a);
   }
 
 };
