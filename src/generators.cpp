@@ -32,6 +32,10 @@ struct declare_generators {
         &dag::complete_graph<VertT>,
         "size"_a,
         py::call_guard<py::gil_scoped_release>());
+    m.def(("complete_directed_graph_"+type_str<VertT>{}()).c_str(),
+        &dag::complete_directed_graph<VertT>,
+        "size"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 
