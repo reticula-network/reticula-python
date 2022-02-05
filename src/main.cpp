@@ -18,6 +18,8 @@ void declare_typed_temporal_hyperedges(py::module& m);
 
 void declare_typed_networks(py::module& m);
 
+void declare_typed_temporal_adjacency_class(py::module& m);
+
 void declare_random_states(py::module& m);
 
 void declare_typed_generators(py::module& m);
@@ -48,6 +50,9 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_static_hyperedges(m);
 
     declare_typed_networks(m);
+
+    py::module_ adj_m = m.def_submodule("temporal_adjacency");
+    declare_typed_temporal_adjacency_class(adj_m);
 
     declare_random_states(m);
 

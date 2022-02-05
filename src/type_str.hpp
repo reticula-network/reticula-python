@@ -245,6 +245,31 @@ struct type_str<std::mt19937_64> {
   std::string operator()() { return "mersenne_twister"; }
 };
 
+// temporal adjacency
+template <dag::temporal_edge EdgeT>
+struct type_str<dag::temporal_adjacency::simple<EdgeT>> {
+  std::string operator()() {
+      return fmt::format("simple_{}",
+              type_str<EdgeT>{}());
+  }
+};
+
+template <dag::temporal_edge EdgeT>
+struct type_str<dag::temporal_adjacency::limited_waiting_time<EdgeT>> {
+  std::string operator()() {
+      return fmt::format("limited_waiting_time_{}",
+              type_str<EdgeT>{}());
+  }
+};
+
+template <dag::temporal_edge EdgeT>
+struct type_str<dag::temporal_adjacency::exponential<EdgeT>> {
+  std::string operator()() {
+      return fmt::format("exponential_{}",
+              type_str<EdgeT>{}());
+  }
+};
+
 
 // Formatters
 template <dag::network_edge EdgeT>
@@ -529,6 +554,66 @@ struct fmt::formatter<dag::component_size_estimate<VertT>> {
         ctx.out(),
         "<dag.{} of ~{:1.2e}±1.1\% nodes>",
         type_str<dag::component_size_estimate<VertT>>{}(), a.size_estimate());
+  }
+};
+
+// temporal_adjacency
+
+template <dag::temporal_edge EdgeT>
+struct fmt::formatter<dag::temporal_adjacency::simple<EdgeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::temporal_adjacency::simple<EdgeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.temporal_adjacency.{}>",
+        type_str<dag::temporal_adjacency::simple<EdgeT>>{}());
+  }
+};
+
+
+template <dag::temporal_edge EdgeT>
+struct fmt::formatter<dag::temporal_adjacency::limited_waiting_time<EdgeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::temporal_adjacency::limited_waiting_time<EdgeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.temporal_adjacency.{} dt={}>",
+        type_str<dag::temporal_adjacency::limited_waiting_time<EdgeT>>{}(), a.dt());
+  }
+};
+
+template <dag::temporal_edge EdgeT>
+struct fmt::formatter<dag::temporal_adjacency::exponential<EdgeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::temporal_adjacency::exponential<EdgeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.temporal_adjacency.{} expected_dt={}>",
+        type_str<dag::temporal_adjacency::exponential<EdgeT>>{}(), a.expected_dt());
   }
 };
 

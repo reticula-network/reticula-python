@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG c4e799f)
+  GIT_TAG 0dfd9d2)
 
 FetchContent_Declare(
   fmt
@@ -71,6 +71,12 @@ target_link_libraries(${PROJECT_NAME}_networks PRIVATE
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_networks)
 
 
+add_library(${PROJECT_NAME}_temporal_adjacency src/temporal_adjacency.cpp)
+target_link_libraries(${PROJECT_NAME}_temporal_adjacency PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_adjacency)
+
+
 add_library(${PROJECT_NAME}_generators src/generators.cpp)
 target_link_libraries(${PROJECT_NAME}_generators PRIVATE
   dag fmt Metal pybind11::pybind11)
@@ -89,7 +95,11 @@ target_link_libraries(${PROJECT_NAME}_components PRIVATE
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_components)
 
 
-add_library(${PROJECT_NAME}_algorithms src/algorithms.cpp)
+add_library(${PROJECT_NAME}_algorithms
+  src/algorithms.cpp
+  src/algorithms/directed.cpp
+  src/algorithms/undirected.cpp
+  src/algorithms/temporal.cpp)
 target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)
