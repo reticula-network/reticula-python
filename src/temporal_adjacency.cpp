@@ -14,30 +14,44 @@ struct declare_temporal_adjacency_class {
     py::class_<Simple>(m,
         type_str<Simple>{}().c_str())
       .def(py::init<>())
-      .def("cutoff_time",
-          &Simple::cutoff_time)
-      .def("cutoff_dt",
-          &Simple::cutoff_dt);
+      .def("linger",
+          &Simple::linger)
+      .def("maximum_linger",
+          &Simple::maximum_linger);
 
     using LWT = dag::temporal_adjacency::limited_waiting_time<EdgeT>;
     py::class_<LWT>(m,
         type_str<LWT>{}().c_str())
       .def(py::init<typename EdgeT::TimeType>(),
           "dt"_a)
-      .def("cutoff_time",
-          &LWT::cutoff_time)
-      .def("cutoff_dt",
-          &LWT::cutoff_dt);
+      .def("linger",
+          &LWT::linger)
+      .def("maximum_linger",
+          &LWT::maximum_linger);
 
-    using Exp = dag::temporal_adjacency::exponential<EdgeT>;
-    py::class_<Exp>(m,
-        type_str<Exp>{}().c_str())
-      .def(py::init<typename EdgeT::TimeType, std::size_t>(),
-          "expected_dt"_a, "seed"_a)
-      .def("cutoff_time",
-          &Exp::cutoff_time)
-      .def("cutoff_dt",
-          &Exp::cutoff_dt);
+    if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
+      using Exp = dag::temporal_adjacency::exponential<EdgeT>;
+      py::class_<Exp>(m,
+          type_str<Exp>{}().c_str())
+        .def(py::init<typename EdgeT::TimeType, std::size_t>(),
+            "rate"_a, "seed"_a)
+        .def("linger",
+            &Exp::linger)
+        .def("maximum_linger",
+            &Exp::maximum_linger);
+    }
+
+    if constexpr (std::is_integral_v<typename EdgeT::TimeType>) {
+      using Exp = dag::temporal_adjacency::geometric<EdgeT>;
+      py::class_<Exp>(m,
+          type_str<Exp>{}().c_str())
+        .def(py::init<double, std::size_t>(),
+            "p"_a, "seed"_a)
+        .def("linger",
+            &Exp::linger)
+        .def("maximum_linger",
+            &Exp::maximum_linger);
+    }
   }
 };
 

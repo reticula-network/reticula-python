@@ -56,7 +56,7 @@ struct declare_directed_network_algorithms {
         py::call_guard<py::gil_scoped_release>());
     m.def("out_component_size_estimates",
         &dag::out_component_size_estimates<EdgeT>,
-        "directed_network"_a,
+        "directed_network"_a, "seed"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("in_component",
@@ -73,7 +73,7 @@ struct declare_directed_network_algorithms {
         py::call_guard<py::gil_scoped_release>());
     m.def("in_component_size_estimates",
         &dag::in_component_size_estimates<EdgeT>,
-        "directed_network"_a,
+        "directed_network"_a, "seed"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("weakly_connected_component",
