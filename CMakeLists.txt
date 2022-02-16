@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG edbb9f3)
+  GIT_TAG 6e392aa)
 
 FetchContent_Declare(
   fmt
@@ -75,6 +75,12 @@ add_library(${PROJECT_NAME}_temporal_adjacency src/temporal_adjacency.cpp)
 target_link_libraries(${PROJECT_NAME}_temporal_adjacency PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_adjacency)
+
+
+add_library(${PROJECT_NAME}_implicit_event_graphs src/implicit_event_graphs.cpp)
+target_link_libraries(${PROJECT_NAME}_implicit_event_graphs PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_implicit_event_graphs)
 
 
 add_library(${PROJECT_NAME}_generators src/generators.cpp)

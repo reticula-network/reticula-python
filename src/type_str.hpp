@@ -270,6 +270,25 @@ struct type_str<dag::temporal_adjacency::exponential<EdgeT>> {
   }
 };
 
+template <dag::temporal_edge EdgeT>
+struct type_str<dag::temporal_adjacency::geometric<EdgeT>> {
+  std::string operator()() {
+      return fmt::format("geometric_{}",
+              type_str<EdgeT>{}());
+  }
+};
+
+// implicit event graph
+template <
+  dag::temporal_edge EdgeT,
+  dag::temporal_adjacency::temporal_adjacency AdjT>
+struct type_str<dag::implicit_event_graph<EdgeT, AdjT>> {
+  std::string operator()() {
+      return fmt::format("implicit_event_graph_{}_{}",
+              type_str<EdgeT>{}(), type_str<AdjT>{}());
+  }
+};
+
 
 // Formatters
 template <dag::network_edge EdgeT>
@@ -614,6 +633,31 @@ struct fmt::formatter<dag::temporal_adjacency::exponential<EdgeT>> {
         ctx.out(),
         "<dag.temporal_adjacency.{} expected_dt={}>",
         type_str<dag::temporal_adjacency::exponential<EdgeT>>{}(), a.expected_dt());
+  }
+};
+
+
+template <
+  dag::temporal_edge EdgeT,
+  dag::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::formatter<dag::implicit_event_graph<EdgeT, AdjT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::implicit_event_graph<EdgeT, AdjT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{} with {} verts, {} events and temporal adjacency {}>",
+        type_str<dag::implicit_event_graph<EdgeT, AdjT>>{}(),
+        a.temporal_net_vertices().size(),
+        a.events_cause().size(),
+        a.temporal_adjacency());
   }
 };
 

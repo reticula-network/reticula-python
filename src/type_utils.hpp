@@ -170,5 +170,32 @@ namespace types {
     first_order_static_edges,
     first_order_temporal_edges,
     second_order_static_edges>;
+
+
+  template <dag::temporal_edge T>
+  using is_integral_time = std::is_integral<typename T::TimeType>;
+
+  template <dag::temporal_edge T>
+  using is_floating_point_time = std::is_floating_point<typename T::TimeType>;
+
+  // temporal adjacency types
+  using first_order_temporal_adjacency_types = metal::join<
+    metal::transform<
+      metal::lambda<dag::temporal_adjacency::simple>,
+      first_order_temporal_edges>,
+    metal::transform<
+      metal::lambda<dag::temporal_adjacency::limited_waiting_time>,
+      first_order_temporal_edges>,
+    metal::transform<
+      metal::lambda<dag::temporal_adjacency::geometric>,
+      metal::copy_if<
+        first_order_temporal_edges,
+        metal::trait<is_integral_time>>>,
+    metal::transform<
+      metal::lambda<dag::temporal_adjacency::exponential>,
+      metal::copy_if<
+        first_order_temporal_edges,
+        metal::trait<is_floating_point_time>>>
+    >;
 }  // namespace types
 #endif  // SRC_TYPE_UTILS_HPP_
