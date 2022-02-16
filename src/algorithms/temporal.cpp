@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <dag/algorithms.hpp>
+#include <dag/temporal_algorithms.hpp>
 
 #include "../type_str.hpp"
 #include "../type_utils.hpp"
