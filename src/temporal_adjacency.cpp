@@ -27,7 +27,9 @@ struct declare_temporal_adjacency_class {
       .def("linger",
           &LWT::linger)
       .def("maximum_linger",
-          &LWT::maximum_linger);
+          &LWT::maximum_linger)
+      .def("dt",
+          &LWT::dt);
 
     if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
       using Exp = dag::temporal_adjacency::exponential<EdgeT>;
@@ -38,19 +40,23 @@ struct declare_temporal_adjacency_class {
         .def("linger",
             &Exp::linger)
         .def("maximum_linger",
-            &Exp::maximum_linger);
+            &Exp::maximum_linger)
+        .def("rate",
+            &Exp::rate);
     }
 
     if constexpr (std::is_integral_v<typename EdgeT::TimeType>) {
-      using Exp = dag::temporal_adjacency::geometric<EdgeT>;
-      py::class_<Exp>(m,
-          type_str<Exp>{}().c_str())
+      using Geom = dag::temporal_adjacency::geometric<EdgeT>;
+      py::class_<Geom>(m,
+          type_str<Geom>{}().c_str())
         .def(py::init<double, std::size_t>(),
             "p"_a, "seed"_a)
         .def("linger",
-            &Exp::linger)
+            &Geom::linger)
         .def("maximum_linger",
-            &Exp::maximum_linger);
+            &Geom::maximum_linger)
+        .def("p",
+            &Geom::p);
     }
   }
 };
