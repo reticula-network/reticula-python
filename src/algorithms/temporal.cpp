@@ -32,6 +32,10 @@ struct declare_temporal_network_algorithms {
           EdgeT, dag::component<EdgeT>>,
         "network"_a, "verts"_a);
 
+    m.def("graph_union",
+        &dag::graph_union<EdgeT>,
+        "g1"_a, "g2"_a);
+
     m.def("time_window",
         &dag::time_window<EdgeT>,
         "temporal_network"_a);

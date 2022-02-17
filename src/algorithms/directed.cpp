@@ -32,6 +32,10 @@ struct declare_directed_network_algorithms {
           EdgeT, dag::component<EdgeT>>,
         "network"_a, "verts"_a);
 
+    m.def("graph_union",
+        &dag::graph_union<EdgeT>,
+        "g1"_a, "g2"_a);
+
     m.def("is_acyclic",
         &dag::is_acyclic<EdgeT>,
         "directed_network"_a,
