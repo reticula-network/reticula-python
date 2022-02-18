@@ -10,6 +10,9 @@
 
 namespace py = pybind11;
 
+void declare_random_states(py::module& m);
+void declare_typed_interval_sets(py::module& m);
+
 void declare_typed_static_edges(py::module& m);
 void declare_typed_static_hyperedges(py::module& m);
 
@@ -21,8 +24,7 @@ void declare_typed_networks(py::module& m);
 void declare_typed_temporal_adjacency_class(py::module& m);
 
 void declare_typed_implicit_event_graphs(py::module& m);
-
-void declare_random_states(py::module& m);
+void declare_typed_implicit_event_graph_components(py::module& m);
 
 void declare_typed_generators(py::module& m);
 void declare_typed_random_networks(py::module& m);
@@ -35,6 +37,9 @@ void declare_typed_algorithms(py::module& m);
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
 PYBIND11_MODULE(dag_ext, m) {
+    declare_random_states(m);
+    declare_typed_interval_sets(m);
+
     declare_typed_temporal_edges(m);
     declare_typed_temporal_hyperedges(m);
 
@@ -48,8 +53,7 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_temporal_adjacency_class(adj_m);
 
     declare_typed_implicit_event_graphs(m);
-
-    declare_random_states(m);
+    declare_typed_implicit_event_graph_components(m);
 
     declare_typed_generators(m);
     declare_typed_random_networks(m);

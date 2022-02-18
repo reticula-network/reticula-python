@@ -47,7 +47,10 @@ struct declare_implicit_event_graph_class {
           "event"_a, "just_first"_a = true)
       .def("neighbours",
           &Net::neighbours,
-          "event"_a, "just_first"_a = true);
+          "event"_a, "just_first"_a = true)
+      .def("__repr__", [](const Net& a) {
+        return fmt::format("{}", a);
+      });
   }
 };
 

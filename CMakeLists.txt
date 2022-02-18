@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG c8fb092)
+  GIT_TAG 41b12cd)
 
 FetchContent_Declare(
   fmt
@@ -42,6 +42,11 @@ add_library(python_dag_random_state src/random_state.cpp)
 target_link_libraries(python_dag_random_state PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE python_dag_random_state)
+
+add_library(python_dag_interval_sets src/interval_sets.cpp)
+target_link_libraries(python_dag_interval_sets PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE python_dag_interval_sets)
 
 add_library(${PROJECT_NAME}_temporal_edges src/temporal_edges.cpp)
 target_link_libraries(${PROJECT_NAME}_temporal_edges PRIVATE
@@ -81,6 +86,13 @@ add_library(${PROJECT_NAME}_implicit_event_graphs src/implicit_event_graphs.cpp)
 target_link_libraries(${PROJECT_NAME}_implicit_event_graphs PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_implicit_event_graphs)
+
+add_library(${PROJECT_NAME}_implicit_event_graph_components
+  src/implicit_event_graph_components.cpp)
+target_link_libraries(${PROJECT_NAME}_implicit_event_graph_components PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE
+  ${PROJECT_NAME}_implicit_event_graph_components)
 
 
 add_library(${PROJECT_NAME}_generators src/generators.cpp)

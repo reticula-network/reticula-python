@@ -289,6 +289,15 @@ struct type_str<dag::implicit_event_graph<EdgeT, AdjT>> {
   }
 };
 
+// interval sets
+template <typename TimeT>
+struct type_str<dag::interval_set<TimeT>> {
+  std::string operator()() {
+      return fmt::format("interval_set_{}",
+              type_str<TimeT>{}());
+  }
+};
+
 
 // Formatters
 template <dag::network_edge EdgeT>
@@ -588,7 +597,7 @@ struct fmt::formatter<dag::temporal_adjacency::simple<EdgeT>> {
 
   template <typename FormatContext>
   auto format(
-      const dag::temporal_adjacency::simple<EdgeT>& a,
+      const dag::temporal_adjacency::simple<EdgeT>& /* a */,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
@@ -631,11 +640,30 @@ struct fmt::formatter<dag::temporal_adjacency::exponential<EdgeT>> {
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "<dag.temporal_adjacency.{} expected_dt={}>",
-        type_str<dag::temporal_adjacency::exponential<EdgeT>>{}(), a.expected_dt());
+        "<dag.temporal_adjacency.{} rate={}>",
+        type_str<dag::temporal_adjacency::exponential<EdgeT>>{}(), a.rate());
   }
 };
 
+
+template <dag::temporal_edge EdgeT>
+struct fmt::formatter<dag::temporal_adjacency::geometric<EdgeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::temporal_adjacency::geometric<EdgeT>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.temporal_adjacency.{} rate={}>",
+        type_str<dag::temporal_adjacency::geometric<EdgeT>>{}(), a.p());
+  }
+};
 
 template <
   dag::temporal_edge EdgeT,
@@ -661,4 +689,25 @@ struct fmt::formatter<dag::implicit_event_graph<EdgeT, AdjT>> {
   }
 };
 
+template <typename TimeT>
+struct fmt::is_range<dag::interval_set<TimeT>, char> : std::false_type {};
+
+template <typename TimeT>
+struct fmt::formatter<dag::interval_set<TimeT>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const dag::interval_set<TimeT>& /* a */,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(
+        ctx.out(),
+        "<dag.{}>",
+        type_str<dag::interval_set<TimeT>>{}());
+  }
+};
 #endif  // SRC_TYPE_STR_HPP_
