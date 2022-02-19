@@ -18,10 +18,10 @@ struct declare_component_types {
     using Component = dag::component<VertT>;
     py::class_<Component>(m,
         type_str<Component>{}().c_str())
-      .def(py::init<std::size_t, std::size_t>(),
-          "size_hint"_a = 0, "seed"_a = 0)
-      .def(py::init<std::vector<VertT>, std::size_t, std::size_t>(),
-          "vertices"_a, "size_hint"_a = 0, "seed"_a = 0)
+      .def(py::init<std::size_t>(),
+          "size_hint"_a = 0)
+      .def(py::init<std::vector<VertT>, std::size_t>(),
+          "vertices"_a, "size_hint"_a = 0)
       .def("insert",
           static_cast<void (Component::*)(
             const VertT&)>(
