@@ -105,6 +105,17 @@ struct declare_directed_network_algorithms {
   }
 };
 
+template <dag::static_directed_edge EdgeT>
+struct declare_directed_density_algorithm {
+  void operator()(py::module& m) {
+    m.def("density",
+        py::overload_cast<const dag::network<EdgeT>&>(
+            &dag::density<typename EdgeT::VertexType>),
+        "directed_network"_a);
+  }
+};
+
+
 void declare_typed_directed_algorithms(py::module& m) {
   types::run_each<
     metal::transform<
@@ -112,5 +123,12 @@ void declare_typed_directed_algorithms(py::module& m) {
       metal::join<
         types::first_order_directed_edges,
         types::first_order_directed_hyperedges,
+        types::second_order_directed_edges>>>{}(m);
+
+  types::run_each<
+    metal::transform<
+      metal::lambda<declare_directed_density_algorithm>,
+      metal::join<
+        types::first_order_directed_edges,
         types::second_order_directed_edges>>>{}(m);
 }

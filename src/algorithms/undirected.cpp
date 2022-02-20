@@ -56,8 +56,18 @@ struct declare_undirected_network_algorithms {
 
     m.def("is_reachable",
         &dag::is_reachable<EdgeT>,
-        "directed_network"_a, "source"_a, "destination"_a,
+        "undirected_network"_a, "source"_a, "destination"_a,
         py::call_guard<py::gil_scoped_release>());
+  }
+};
+
+template <dag::static_undirected_edge EdgeT>
+struct declare_undirected_density_algorithm {
+  void operator()(py::module& m) {
+    m.def("density",
+        py::overload_cast<const dag::network<EdgeT>&>(
+          &dag::density<typename EdgeT::VertexType>),
+        "undirected_network"_a);
   }
 };
 
@@ -68,5 +78,12 @@ void declare_typed_undirected_algorithms(py::module& m) {
       metal::join<
         types::first_order_undirected_edges,
         types::first_order_undirected_hyperedges,
+        types::second_order_undirected_edges>>>{}(m);
+
+  types::run_each<
+    metal::transform<
+      metal::lambda<declare_undirected_density_algorithm>,
+      metal::join<
+        types::first_order_undirected_edges,
         types::second_order_undirected_edges>>>{}(m);
 }
