@@ -35,6 +35,7 @@ struct declare_temporal_edges {
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
+      .def(py::hash(py::self))
       .def("__repr__", [](const Undirected& a) {
         return fmt::format("{}", a);
       });

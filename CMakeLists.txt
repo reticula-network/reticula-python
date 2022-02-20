@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG e912717)
+  GIT_TAG 5e39452)
 
 FetchContent_Declare(
   fmt
@@ -94,11 +94,6 @@ target_link_libraries(${PROJECT_NAME}_implicit_event_graph_components PRIVATE
 target_link_libraries(dag_ext PRIVATE
   ${PROJECT_NAME}_implicit_event_graph_components)
 
-add_library(${PROJECT_NAME}_temporal_clusters src/temporal_clusters.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_clusters PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
-
 add_library(${PROJECT_NAME}_generators src/generators.cpp)
 target_link_libraries(${PROJECT_NAME}_generators PRIVATE
   dag fmt Metal pybind11::pybind11)
@@ -110,6 +105,10 @@ target_link_libraries(${PROJECT_NAME}_random_networks PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_networks)
 
+add_library(${PROJECT_NAME}_temporal_clusters src/temporal_clusters.cpp)
+target_link_libraries(${PROJECT_NAME}_temporal_clusters PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
 
 add_library(${PROJECT_NAME}_components src/components.cpp)
 target_link_libraries(${PROJECT_NAME}_components PRIVATE

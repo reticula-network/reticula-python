@@ -1,4 +1,5 @@
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 #include <pybind11/operators.h>
 
 #include <fmt/format.h>
@@ -79,7 +80,7 @@ struct declare_temporal_cluster_types {
           &ClusterSizeEstimate::volume_estimate)
       .def("mass_estimate",
           &ClusterSizeEstimate::mass_estimate)
-      .def("__repr__", [](const ClusterSize& c) {
+      .def("__repr__", [](const ClusterSizeEstimate& c) {
           return fmt::format("{}", c);
       });
   }

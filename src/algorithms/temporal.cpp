@@ -68,6 +68,67 @@ struct declare_temporal_network_adjacency_algorithms {
         &dag::is_reachable<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
         "source"_a, "t0"_a, "destination"_a, "t1"_a);
+
+    m.def("out_cluster",
+        py::overload_cast<
+          const dag::network<EdgeT>&,
+          const AdjT&,
+          const typename EdgeT::VertexType&,
+          typename EdgeT::TimeType>(
+            &dag::out_cluster<EdgeT, AdjT>),
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "vertex"_a, "time"_a);
+
+    m.def("out_cluster",
+        py::overload_cast<
+          const dag::network<EdgeT>&,
+          const AdjT&,
+          const EdgeT&>(
+            &dag::out_cluster<EdgeT, AdjT>),
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "event"_a);
+
+    m.def("out_clusters",
+        &dag::out_clusters<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a);
+    m.def("out_cluster_sizes",
+        &dag::out_cluster_sizes<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a);
+    m.def("out_cluster_size_estimates",
+        &dag::out_cluster_size_estimates<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "time_resolution"_a, "seed"_a);
+
+
+    m.def("in_cluster",
+        py::overload_cast<
+          const dag::network<EdgeT>&,
+          const AdjT&,
+          const typename EdgeT::VertexType&,
+          typename EdgeT::TimeType>(
+            &dag::in_cluster<EdgeT, AdjT>),
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "vertex"_a, "time"_a);
+
+    m.def("in_cluster",
+        py::overload_cast<
+          const dag::network<EdgeT>&,
+          const AdjT&,
+          const EdgeT&>(
+            &dag::in_cluster<EdgeT, AdjT>),
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "event"_a);
+
+    m.def("in_clusters",
+        &dag::in_clusters<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a);
+    m.def("in_cluster_sizes",
+        &dag::in_cluster_sizes<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a);
+    m.def("in_cluster_size_estimates",
+        &dag::in_cluster_size_estimates<EdgeT, AdjT>,
+        "temporal_network"_a, "temporal_adjacency"_a,
+        "time_resolution"_a, "seed"_a);
   }
 };
 
