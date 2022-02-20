@@ -17,24 +17,29 @@ struct declare_directed_network_algorithms {
     m.def("vertex_induced_subgraph",
         &dag::vertex_induced_subgraph<
           EdgeT, std::vector<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a);
+        "network"_a, "verts"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("vertex_induced_subgraph",
         &dag::vertex_induced_subgraph<
           EdgeT, dag::component<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a);
+        "network"_a, "verts"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("edge_induced_subgraph",
         &dag::edge_induced_subgraph<
           EdgeT, std::vector<EdgeT>>,
-        "network"_a, "verts"_a);
+        "network"_a, "verts"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("edge_induced_subgraph",
         &dag::edge_induced_subgraph<
           EdgeT, dag::component<EdgeT>>,
-        "network"_a, "verts"_a);
+        "network"_a, "verts"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("graph_union",
         &dag::graph_union<EdgeT>,
-        "g1"_a, "g2"_a);
+        "g1"_a, "g2"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("is_acyclic",
         &dag::is_acyclic<EdgeT>,
@@ -91,6 +96,11 @@ struct declare_directed_network_algorithms {
     m.def("weakly_connected_components",
         &dag::weakly_connected_components<EdgeT>,
         "directed_network"_a, "singletons"_a = true,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def("is_reachable",
+        &dag::is_reachable<EdgeT>,
+        "directed_network"_a, "source"_a, "destination"_a,
         py::call_guard<py::gil_scoped_release>());
   }
 };

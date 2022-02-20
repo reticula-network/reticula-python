@@ -16,7 +16,8 @@ struct declare_relabel_nodes {
   void operator()(py::module& m) {
     m.def(fmt::format("relabel_nodes_{}", type_str<OutVert>{}()).c_str(),
         &dag::relabel_nodes<OutVert, InVert>,
-        "network"_a);
+        "network"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 
@@ -25,7 +26,8 @@ struct declare_cartesian_product {
   void operator()(py::module& m) {
     m.def("cartesian_product",
         &dag::cartesian_product<VertT1, VertT2>,
-        "undirected_net_1"_a, "undirected_net_2"_a);
+        "undirected_net_1"_a, "undirected_net_2"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 
@@ -34,11 +36,13 @@ struct declare_degree_sequence_algorithms {
   void operator()(py::module& m) {
     m.def("is_graphic",
         &dag::is_graphic<std::vector<T>>,
-        "degree_seq"_a);
+        "degree_seq"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("is_digraphic",
         &dag::is_digraphic<std::vector<std::pair<T, T>>>,
-        "in_out_degree_seq"_a);
+        "in_out_degree_seq"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 
