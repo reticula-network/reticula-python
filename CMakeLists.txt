@@ -38,15 +38,20 @@ FetchContent_MakeAvailable(dag fmt metal)
 pybind11_add_module(dag_ext src/main.cpp)
 target_link_libraries(dag_ext PRIVATE dag fmt Metal)
 
-add_library(python_dag_random_state src/random_state.cpp)
-target_link_libraries(python_dag_random_state PRIVATE
+add_library(${PROJECT_NAME}_scaler_types src/scalar_types.cpp)
+target_link_libraries(${PROJECT_NAME}_scaler_types PRIVATE
   dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE python_dag_random_state)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_scaler_types)
 
-add_library(python_dag_interval_sets src/interval_sets.cpp)
-target_link_libraries(python_dag_interval_sets PRIVATE
+add_library(${PROJECT_NAME}_random_state src/random_state.cpp)
+target_link_libraries(${PROJECT_NAME}_random_state PRIVATE
   dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE python_dag_interval_sets)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_state)
+
+add_library(${PROJECT_NAME}_interval_sets src/interval_sets.cpp)
+target_link_libraries(${PROJECT_NAME}_interval_sets PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_interval_sets)
 
 add_library(${PROJECT_NAME}_temporal_edges src/temporal_edges.cpp)
 target_link_libraries(${PROJECT_NAME}_temporal_edges PRIVATE
