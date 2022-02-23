@@ -1,7 +1,7 @@
 import sys
 
 from .. import generic_attribute
-from dag_ext import temporal_adjacency as dag_ext_adj
+from ...dag_ext import temporal_adjacency as dag_ext_adj
 
 temporal_edge_types = set()
 

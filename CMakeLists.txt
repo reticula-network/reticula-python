@@ -129,3 +129,15 @@ add_library(${PROJECT_NAME}_algorithms
 target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)
+
+install(TARGETS dag_ext DESTINATION .)
+
+set(lib_path "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${lib_path}" is_system)
+if ("${is_system}" STREQUAL "-1")
+    # The following is necessary for installation in a virtual
+    # environment `python -m pip venv env`
+    set_target_properties(murmurhash3 PROPERTIES
+        INSTALL_RPATH_USE_LINK_PATH TRUE
+        INSTALL_RPATH "${lib_path}")
+endif()

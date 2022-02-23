@@ -1,8 +1,8 @@
 import sys
 import itertools
 
-import dag_ext
-from dag_ext import *
+from . import dag_ext
+from .dag_ext import *
 
 __all__ = ["temporal_adjacency"]
 
@@ -11,7 +11,6 @@ class generic_attribute:
         self.choices = choices
         self.attr_prefix = attr_prefix
         self.module = module
-        print(attr_prefix, self.choices)
     def __getitem__(self, keys):
         if len(self.choices) == 1:
             keys = (keys,)
