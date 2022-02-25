@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 5e39452)
+  GIT_TAG ff17e58)
 
 FetchContent_Declare(
   fmt
@@ -137,7 +137,7 @@ list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${lib_path}" is_system)
 if ("${is_system}" STREQUAL "-1")
     # The following is necessary for installation in a virtual
     # environment `python -m pip venv env`
-    set_target_properties(murmurhash3 PROPERTIES
+    set_target_properties(dag_ext PROPERTIES
         INSTALL_RPATH_USE_LINK_PATH TRUE
         INSTALL_RPATH "${lib_path}")
 endif()
