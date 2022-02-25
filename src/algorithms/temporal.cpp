@@ -129,6 +129,10 @@ struct declare_temporal_network_adjacency_algorithms {
         &dag::in_cluster_size_estimates<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
         "time_resolution"_a, "seed"_a);
+
+    m.def("static_projection",
+        &dag::static_projection<EdgeT>,
+        "temporal_network"_a);
   }
 };
 
