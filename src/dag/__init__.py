@@ -2,7 +2,6 @@ import sys
 import itertools
 
 from . import dag_ext
-from .dag_ext import *
 
 __all__ = ["temporal_adjacency"]
 
@@ -88,3 +87,36 @@ random_network_generic_attrs = [
 for a in random_network_generic_attrs:
     setattr(sys.modules[__name__],
             a, generic_attribute(a, [integer_vert_types]))
+
+# import overloaded funcitons
+from .dag_ext import (
+        cartesian_product, is_graphic, is_digraphic)
+
+from .dag_ext import (
+        vertex_induced_subgraph, edge_induced_subgraph, graph_union, density)
+
+from .dag_ext import (
+        is_acyclic, topological_order, out_component, out_components,
+        out_component_sizes, out_component_size_estimates,
+        in_component, in_components,
+        in_component_sizes, in_component_size_estimates,
+        weakly_connected_component, weakly_connected_components,
+        is_reachable)
+
+from .dag_ext import (
+        is_connected, connected_component, connected_components)
+
+from .dag_ext import (
+        time_window, cause_time_window, effect_time_window, event_graph,
+        out_cluster, out_clusters,
+        out_cluster_sizes, out_cluster_size_estimates,
+        in_cluster, in_clusters,
+        in_cluster_sizes, in_cluster_size_estimates,
+        static_projection, link_timeline, link_timelines)
+
+from .dag_ext import (
+        mersenne_twister)
+
+# import scalar type "tags"
+from .dag_ext import (
+        int64, double, string)
