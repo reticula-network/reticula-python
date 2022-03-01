@@ -133,6 +133,13 @@ struct declare_temporal_network_adjacency_algorithms {
     m.def("static_projection",
         &dag::static_projection<EdgeT>,
         "temporal_network"_a);
+
+    m.def("link_timeline",
+        &dag::link_timeline<EdgeT>,
+        "temporal_network"_a, "static_link"_a);
+    m.def("link_timelines",
+        &dag::link_timelines<EdgeT>,
+        "temporal_network"_a);
   }
 };
 
