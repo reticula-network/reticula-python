@@ -3,7 +3,7 @@ import itertools
 
 from . import dag_ext
 
-__all__ = ["temporal_adjacency"]
+__all__ = ["temporal_adjacency", "microcanonical_reference_models"]
 
 class generic_attribute:
     def __init__(self, attr_prefix, choices, module=dag_ext):

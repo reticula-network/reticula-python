@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG fd6978d)
+  GIT_TAG 4de9049)
 
 FetchContent_Declare(
   fmt
@@ -129,6 +129,14 @@ add_library(${PROJECT_NAME}_algorithms
 target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)
+
+
+add_library(${PROJECT_NAME}_microcanonical_reference_models
+  src/microcanonical_reference_models.cpp)
+target_link_libraries(${PROJECT_NAME}_microcanonical_reference_models PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE
+  ${PROJECT_NAME}_microcanonical_reference_models)
 
 install(TARGETS dag_ext DESTINATION .)
 

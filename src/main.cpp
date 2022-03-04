@@ -33,6 +33,8 @@ void declare_typed_temporal_clusters(py::module& m);
 
 void declare_typed_algorithms(py::module& m);
 
+void declare_typed_mrrm_algorithms(py::module& m);
+
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
@@ -64,6 +66,9 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_temporal_clusters(m);
 
     declare_typed_algorithms(m);
+
+    py::module_ mrrm_m = m.def_submodule("microcanonical_reference_models");
+    declare_typed_mrrm_algorithms(mrrm_m);
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 #else
