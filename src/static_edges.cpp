@@ -3,9 +3,11 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
 
-#include "type_str.hpp"
+#include <dag/static_edges.hpp>
+
+#include "type_str/scalars.hpp"
+#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -15,7 +17,7 @@ template <typename VertT>
 struct declare_static_edges {
   void operator()(py::module &m) {
     using Undirected = dag::undirected_edge<VertT>;
-    py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
+    py::class_<Undirected>(m, python_type_str<Undirected>().c_str())
       .def(py::init<VertT, VertT>())
       .def("mutated_verts",
           &Undirected::mutated_verts)
@@ -52,7 +54,7 @@ struct declare_static_edges {
           &dag::effect_lt<VertT>), "edge1"_a, "edge2"_a);
 
     using Directed = dag::directed_edge<VertT>;
-    py::class_<Directed>(m, type_str<Directed>{}().c_str())
+    py::class_<Directed>(m, python_type_str<Directed>().c_str())
       .def(py::init<VertT, VertT>(),
           "tail"_a, "head"_a)
       .def("mutated_verts",

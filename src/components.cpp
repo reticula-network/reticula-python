@@ -4,9 +4,9 @@
 #include <pybind11/operators.h>
 
 #include <fmt/format.h>
-#include <dag/dag.hpp>
+#include <dag/components.hpp>
 
-#include "type_str.hpp"
+#include "type_str/components.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -17,7 +17,7 @@ struct declare_component_types {
   void operator()(py::module &m) {
     using Component = dag::component<VertT>;
     py::class_<Component>(m,
-        type_str<Component>{}().c_str())
+        python_type_str<Component>().c_str())
       .def(py::init<std::size_t>(),
           "size_hint"_a = 0)
       .def(py::init<std::vector<VertT>, std::size_t>(),
@@ -48,7 +48,7 @@ struct declare_component_types {
 
     using ComponentSize = dag::component_size<VertT>;
     py::class_<ComponentSize>(m,
-        type_str<ComponentSize>{}().c_str())
+        python_type_str<ComponentSize>().c_str())
       .def("size", &ComponentSize::size)
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
@@ -57,7 +57,7 @@ struct declare_component_types {
     using ComponentSizeEstimate =
       dag::component_size_estimate<VertT>;
     py::class_<ComponentSizeEstimate>(m,
-        type_str<ComponentSizeEstimate>{}().c_str())
+        python_type_str<ComponentSizeEstimate>().c_str())
       .def("size_estimate",
           &ComponentSizeEstimate::size_estimate)
       .def("__repr__", [](const ComponentSizeEstimate& c) {

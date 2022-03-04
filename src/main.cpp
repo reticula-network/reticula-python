@@ -4,9 +4,6 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
-
-#include "type_str.hpp"
 
 namespace py = pybind11;
 

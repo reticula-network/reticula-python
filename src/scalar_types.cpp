@@ -1,7 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
 
-#include "type_str.hpp"
+#include "type_str/scalars.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -11,7 +11,7 @@ template <typename T>
 struct declare_scalar_types {
   void operator()(py::module &m) {
     py::class_<T>(m,
-        type_str<T>{}().c_str())
+        python_type_str<T>().c_str())
       .def("__repr__", [](const T& a) {
         return fmt::format("{}", a);
       });

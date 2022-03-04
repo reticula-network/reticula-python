@@ -3,9 +3,9 @@
 #include <pybind11/operators.h>
 
 #include <fmt/format.h>
-#include <dag/dag.hpp>
+#include <dag/temporal_clusters.hpp>
 
-#include "type_str.hpp"
+#include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -17,7 +17,7 @@ struct declare_temporal_cluster_types {
     using EdgeT = AdjT::EdgeType;
     using Cluster = dag::temporal_cluster<EdgeT, AdjT>;
     py::class_<Cluster>(m,
-        type_str<Cluster>{}().c_str())
+        python_type_str<Cluster>().c_str())
       .def(py::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0)
       .def(py::init<std::vector<EdgeT>, AdjT, std::size_t>(),
@@ -59,7 +59,7 @@ struct declare_temporal_cluster_types {
 
     using ClusterSize = dag::temporal_cluster_size<EdgeT, AdjT>;
     py::class_<ClusterSize>(m,
-        type_str<ClusterSize>{}().c_str())
+        python_type_str<ClusterSize>().c_str())
       .def("lifetime",
           &ClusterSize::lifetime)
       .def("volume",
@@ -73,7 +73,7 @@ struct declare_temporal_cluster_types {
     using ClusterSizeEstimate =
       dag::temporal_cluster_size_estimate<EdgeT, AdjT>;
     py::class_<ClusterSizeEstimate>(m,
-        type_str<ClusterSizeEstimate>{}().c_str())
+        python_type_str<ClusterSizeEstimate>().c_str())
       .def("lifetime",
           &ClusterSizeEstimate::lifetime)
       .def("volume_estimate",

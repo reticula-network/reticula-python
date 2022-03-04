@@ -1,13 +1,13 @@
 #include <vector>
 
 #include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
 #include <pybind11/stl.h>
+
 #include <fmt/format.h>
 
 #include <dag/implicit_event_graph.hpp>
 
-#include "type_str.hpp"
+#include "type_str/implicit_event_graphs.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -19,7 +19,7 @@ struct declare_implicit_event_graph_class {
     using EdgeT = AdjT::EdgeType;
     using Net = dag::implicit_event_graph<EdgeT, AdjT>;
     py::class_<Net>(m,
-        type_str<Net>{}().c_str())
+        python_type_str<Net>().c_str())
       .def(py::init<std::vector<EdgeT>, AdjT>(),
           "events"_a, "temporal_adjacency"_a)
       .def(py::init<

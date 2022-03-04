@@ -5,7 +5,13 @@
 #include <random>
 
 #include <metal.hpp>
-#include <dag/dag.hpp>
+
+#include <dag/networks.hpp>
+#include <dag/static_edges.hpp>
+#include <dag/temporal_edges.hpp>
+#include <dag/static_hyperedges.hpp>
+#include <dag/temporal_hyperedges.hpp>
+#include <dag/temporal_adjacency.hpp>
 
 namespace types {
   template <typename List>

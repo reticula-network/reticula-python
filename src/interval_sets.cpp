@@ -5,7 +5,7 @@
 
 #include <dag/intervals.hpp>
 
-#include "type_str.hpp"
+#include "type_str/intervals.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -16,7 +16,7 @@ struct declare_interval_set_types {
   void operator()(py::module &m) {
     using IntSet = dag::interval_set<TimeT>;
     py::class_<IntSet>(m,
-        type_str<IntSet>{}().c_str())
+        python_type_str<IntSet>().c_str())
       .def(py::init<>())
       .def("insert",
           &IntSet::insert,

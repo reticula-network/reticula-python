@@ -3,9 +3,11 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
 
-#include "type_str.hpp"
+#include <dag/static_hyperedges.hpp>
+
+#include "type_str/scalars.hpp"
+#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -15,7 +17,7 @@ template <typename VertT>
 struct declare_static_hyperedges {
   void operator()(py::module &m) {
     using Undirected = dag::undirected_hyperedge<VertT>;
-    py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
+    py::class_<Undirected>(m, python_type_str<Undirected>().c_str())
       .def(py::init<std::vector<VertT>>(),
           "verts"_a)
       .def("mutated_verts",
@@ -53,7 +55,7 @@ struct declare_static_hyperedges {
             "edge1"_a, "edge2"_a);
 
     using Directed = dag::directed_hyperedge<VertT>;
-    py::class_<Directed>(m, type_str<Directed>{}().c_str())
+    py::class_<Directed>(m, python_type_str<Directed>().c_str())
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>>(),

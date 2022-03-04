@@ -4,9 +4,10 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
 
-#include "type_str.hpp"
+#include <dag/networks.hpp>
+
+#include "type_str/networks.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -17,7 +18,7 @@ struct declare_network_class {
   void operator()(py::module &m) {
     using Net = dag::network<EdgeT>;
     py::class_<Net>(m,
-        type_str<Net>{}().c_str())
+        python_type_str<Net>().c_str())
       .def(py::init<std::vector<EdgeT>>(),
           "edges"_a)
       .def(py::init<

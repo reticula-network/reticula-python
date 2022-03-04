@@ -1,7 +1,7 @@
 #include <pybind11/pybind11.h>
-#include <dag/dag.hpp>
+#include <dag/temporal_adjacency.hpp>
 
-#include "type_str.hpp"
+#include "type_str/temporal_adjacency.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -12,7 +12,7 @@ struct declare_temporal_adjacency_class {
   void operator()(py::module &m) {
     using Simple = dag::temporal_adjacency::simple<EdgeT>;
     py::class_<Simple>(m,
-        type_str<Simple>{}().c_str())
+        python_type_str<Simple>().c_str())
       .def(py::init<>())
       .def("linger",
           &Simple::linger)
@@ -21,7 +21,7 @@ struct declare_temporal_adjacency_class {
 
     using LWT = dag::temporal_adjacency::limited_waiting_time<EdgeT>;
     py::class_<LWT>(m,
-        type_str<LWT>{}().c_str())
+        python_type_str<LWT>().c_str())
       .def(py::init<typename EdgeT::TimeType>(),
           "dt"_a)
       .def("linger",
@@ -34,7 +34,7 @@ struct declare_temporal_adjacency_class {
     if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
       using Exp = dag::temporal_adjacency::exponential<EdgeT>;
       py::class_<Exp>(m,
-          type_str<Exp>{}().c_str())
+          python_type_str<Exp>().c_str())
         .def(py::init<typename EdgeT::TimeType, std::size_t>(),
             "rate"_a, "seed"_a)
         .def("linger",
@@ -48,7 +48,7 @@ struct declare_temporal_adjacency_class {
     if constexpr (std::is_integral_v<typename EdgeT::TimeType>) {
       using Geom = dag::temporal_adjacency::geometric<EdgeT>;
       py::class_<Geom>(m,
-          type_str<Geom>{}().c_str())
+          python_type_str<Geom>().c_str())
         .def(py::init<double, std::size_t>(),
             "p"_a, "seed"_a)
         .def("linger",

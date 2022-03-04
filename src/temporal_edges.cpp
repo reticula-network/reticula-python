@@ -2,9 +2,11 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
 
-#include "type_str.hpp"
+#include <dag/temporal_edges.hpp>
+
+#include "type_str/scalars.hpp"
+#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -14,7 +16,7 @@ template <typename VertT, typename TimeT>
 struct declare_temporal_edges {
   void operator()(py::module &m) {
     using Undirected = dag::undirected_temporal_edge<VertT, TimeT>;
-    py::class_<Undirected>(m, type_str<Undirected>{}().c_str())
+    py::class_<Undirected>(m, python_type_str<Undirected>().c_str())
       .def(py::init<VertT, VertT, TimeT>(),
           "v1"_a, "v2"_a, "time"_a)
       .def("mutated_verts",
@@ -53,7 +55,7 @@ struct declare_temporal_edges {
             "edge1"_a, "edge2"_a);
 
     using Directed = dag::directed_temporal_edge<VertT, TimeT>;
-    py::class_<Directed>(m, type_str<Directed>{}().c_str())
+    py::class_<Directed>(m, python_type_str<Directed>().c_str())
       .def(py::init<VertT, VertT, TimeT>(),
           "tail"_a, "head"_a, "time"_a)
       .def("mutated_verts",
@@ -97,7 +99,7 @@ struct declare_temporal_edges {
     using DirectedDelayed =
       dag::directed_delayed_temporal_edge<VertT, TimeT>;
     py::class_<DirectedDelayed>(m,
-        type_str<DirectedDelayed>{}().c_str())
+        python_type_str<DirectedDelayed>().c_str())
       .def(py::init<VertT, VertT, TimeT, TimeT>(),
           "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a)
       .def("mutated_verts",

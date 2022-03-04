@@ -6,7 +6,6 @@
 #include <dag/implicit_event_graph.hpp>
 #include <dag/implicit_event_graph_components.hpp>
 
-#include "type_str.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;

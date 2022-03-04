@@ -5,7 +5,9 @@
 
 #include <dag/algorithms.hpp>
 
-#include "type_str.hpp"
+#include "type_str/edges.hpp"
+#include "type_str/scalars.hpp"
+
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -14,7 +16,7 @@ using namespace pybind11::literals;
 template <typename OutVert, typename InVert>
 struct declare_relabel_nodes {
   void operator()(py::module& m) {
-    m.def(fmt::format("relabel_nodes_{}", type_str<OutVert>{}()).c_str(),
+    m.def(fmt::format("relabel_nodes_{}", python_type_str<OutVert>()).c_str(),
         &dag::relabel_nodes<OutVert, InVert>,
         "network"_a,
         py::call_guard<py::gil_scoped_release>());

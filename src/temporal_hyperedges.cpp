@@ -2,9 +2,11 @@
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 #include <fmt/format.h>
-#include <dag/dag.hpp>
 
-#include "type_str.hpp"
+#include <dag/temporal_hyperedges.hpp>
+
+#include "type_str/scalars.hpp"
+#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
 namespace py = pybind11;
@@ -16,7 +18,7 @@ struct declare_temporal_hyperedges {
     using Undirected =
       dag::undirected_temporal_hyperedge<VertT, TimeT>;
     py::class_<Undirected>(m,
-        type_str<Undirected>{}().c_str())
+        python_type_str<Undirected>().c_str())
       .def(py::init<
           std::vector<VertT>,
           TimeT>(),
@@ -58,7 +60,7 @@ struct declare_temporal_hyperedges {
     using Directed =
       dag::directed_temporal_hyperedge<VertT, TimeT>;
     py::class_<Directed>(m,
-        type_str<Directed>{}().c_str())
+        python_type_str<Directed>().c_str())
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>,
@@ -105,7 +107,7 @@ struct declare_temporal_hyperedges {
     using DirectedDelayed =
       dag::directed_delayed_temporal_hyperedge<VertT, TimeT>;
     py::class_<DirectedDelayed>(m,
-        type_str<DirectedDelayed>{}().c_str())
+        python_type_str<DirectedDelayed>().c_str())
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>,

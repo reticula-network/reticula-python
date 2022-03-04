@@ -5,7 +5,6 @@
 
 #include <dag/algorithms.hpp>
 
-#include "../type_str.hpp"
 #include "../type_utils.hpp"
 
 namespace py = pybind11;
