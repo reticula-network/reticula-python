@@ -26,11 +26,19 @@ calculation time for list comprehensions.
 
 Run this example for 100 random networks of size 10000 nodes:
 ```
-$ time python examples/random_network_percolation/random_network_percolation.py\
-                  --size 10000 --ens /tmp/figure.svg /tmp/report.json
+$ time python examples/random_network_percolation/random_network_percolation.py --size 10000 --ens /tmp/figure.svg /tmp/report.json
+100%|█████████████████████████████████████████████████████████████| 20000/20000 [01:48<00:00, 183.95it/s]
+
+real    2m11.495s
+user    9m15.110s
+sys     0m2.580s
 ```
+
+Note the difference between user+sys times and the real "clock" time. This
+signifies a speedup of around 4.2 times, achieved on an 4-core Intel Core
+i7-6700HQ laptop CPU supporting a total of 8 SMT threads.
 
 The output figure should look something like this:
 ![4 plot showing changes in compoent size and susceptibility][fig]
 
-[fig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/random_network_percolation/figure.svg
+[eig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/random_network_percolation/figure.svg
