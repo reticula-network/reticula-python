@@ -49,9 +49,8 @@ Generate a random static network and investigate:
 <dag.undirected_network[dag.int64] with 93 verts and 109 edges>
 ```
 A more complete example of static network percolation analysis, running on
-multiple threads, can be found in [`examples/random_network_percolation.py`][perc_examples].
-
-[perc_examples]: examples/random_network_percolation.py
+multiple threads, can be found in
+[`examples/random_network_percolation/`](examples/random_network_percolation/)
 
 Create a random fully-mixed temporal network and calculate simple
 (unconstrained) reachability from node 0 at time 0 to all nodes and times.
