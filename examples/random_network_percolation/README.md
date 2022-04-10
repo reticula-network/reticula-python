@@ -41,4 +41,4 @@ i7-6700HQ laptop CPU supporting a total of 8 SMT threads.
 The output figure should look something like this:
 ![4 plot showing changes in compoent size and susceptibility][fig]
 
-[eig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/random_network_percolation/figure.svg
+[fig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/random_network_percolation/figure.svg
