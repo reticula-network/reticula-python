@@ -33,4 +33,4 @@ $ time python examples/random_network_percolation/random_network_percolation.py\
 The output figure should look something like this:
 ![4 plot showing changes in compoent size and susceptibility][fig]
 
-[fig]: https://raw.github.com/arashbm/dag-python/examples/random_network_percolation/figure.svg?sanitize=true
+[fig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/random_network_percolation/figure.svg
