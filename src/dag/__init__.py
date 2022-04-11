@@ -25,6 +25,12 @@ class generic_attribute:
                 raise AttributeError(f"Template type {i} ({k}) is not a valid "
                         "choise. Valid options are: {cs}")
         return self.module.__getattribute__(attr_name)
+    def __call__(self, *args, **kwargs):
+        raise TypeError(f"No type information was paased to a generic function "
+                f"or type. This usually means that you forgot to add square "
+                f"brackets and type information before parentheses, e.g. "
+                f"`{__name__}.{self.attr_prefix}[types...]` "
+                f"Valid options are: {self.choices}")
 
 
 static_edge_prefixes = [
@@ -87,6 +93,9 @@ random_network_generic_attrs = [
 for a in random_network_generic_attrs:
     setattr(sys.modules[__name__],
             a, generic_attribute(a, [integer_vert_types]))
+
+simple_edge_types = set()
+read_edgelist = generic_attribute("read_edgelist", [simple_edge_types])
 
 # import overloaded funcitons
 from .dag_ext import (

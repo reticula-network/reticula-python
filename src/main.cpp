@@ -1,4 +1,5 @@
 #include <string>
+#include <filesystem>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
@@ -35,6 +36,8 @@ void declare_typed_algorithms(py::module& m);
 
 void declare_typed_mrrm_algorithms(py::module& m);
 
+void declare_typed_io_functions(py::module& m);
+
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
@@ -69,6 +72,8 @@ PYBIND11_MODULE(dag_ext, m) {
 
     py::module_ mrrm_m = m.def_submodule("microcanonical_reference_models");
     declare_typed_mrrm_algorithms(mrrm_m);
+
+    declare_typed_io_functions(m);
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 #else
