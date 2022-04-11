@@ -26,7 +26,7 @@ calculation time for list comprehensions.
 
 Run this example for 100 random networks of size 10000 nodes:
 ```
-$ time python examples/random_network_percolation/random_network_percolation.py --size 10000 --ens /tmp/figure.svg /tmp/report.json
+$ time python examples/random_network_percolation/random_network_percolation.py --size 10000 --ens 100 /tmp/figure.svg /tmp/report.json
 100%|█████████████████████████████████████████████████████████████| 20000/20000 [01:48<00:00, 183.95it/s]
 
 real    2m11.495s
