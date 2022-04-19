@@ -28,17 +28,39 @@ struct declare_temporal_network_algorithms {
     m.def("edge_induced_subgraph",
         &dag::edge_induced_subgraph<
           EdgeT, std::vector<EdgeT>>,
-        "network"_a, "verts"_a,
+        "network"_a, "edges"_a,
         py::call_guard<py::gil_scoped_release>());
     m.def("edge_induced_subgraph",
         &dag::edge_induced_subgraph<
           EdgeT, dag::component<EdgeT>>,
-        "network"_a, "verts"_a,
+        "network"_a, "edges"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("graph_union",
         &dag::graph_union<EdgeT>,
         "g1"_a, "g2"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def("with_edges",
+        &dag::with_edges<
+          EdgeT, std::vector<EdgeT>>,
+        "network"_a, "edges"_a,
+        py::call_guard<py::gil_scoped_release>());
+    m.def("with_edges",
+        &dag::edge_induced_subgraph<
+          EdgeT, dag::component<EdgeT>>,
+        "network"_a, "edges"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def("with_vertices",
+        &dag::with_vertices<
+          EdgeT, std::vector<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a,
+        py::call_guard<py::gil_scoped_release>());
+    m.def("with_vertices",
+        &dag::vertex_induced_subgraph<
+          EdgeT, dag::component<typename EdgeT::VertexType>>,
+        "network"_a, "verts"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("time_window",
