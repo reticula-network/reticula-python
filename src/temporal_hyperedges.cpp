@@ -38,6 +38,10 @@ struct declare_temporal_hyperedges {
       .def("is_out_incident",
           &Undirected::is_out_incident,
           "vert"_a)
+      .def("cause_time",
+          &Undirected::cause_time)
+      .def("effect_time",
+          &Undirected::effect_time)
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
@@ -85,6 +89,10 @@ struct declare_temporal_hyperedges {
       .def("is_out_incident",
           &Directed::is_out_incident,
           "vert"_a)
+      .def("cause_time",
+          &Directed::cause_time)
+      .def("effect_time",
+          &Directed::effect_time)
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
@@ -132,6 +140,10 @@ struct declare_temporal_hyperedges {
       .def("is_out_incident",
           &DirectedDelayed::is_out_incident,
           "vert"_a)
+      .def("cause_time",
+          &DirectedDelayed::cause_time)
+      .def("effect_time",
+          &DirectedDelayed::effect_time)
       .def(py::self == py::self)
       .def(py::self != py::self)
       .def(py::self < py::self)
