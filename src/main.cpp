@@ -30,7 +30,9 @@ void declare_typed_generators(py::module& m);
 void declare_typed_random_networks(py::module& m);
 
 void declare_typed_components(py::module& m);
+void declare_typed_component_containers(py::module& m);
 void declare_typed_temporal_clusters(py::module& m);
+void declare_typed_temporal_cluster_containers(py::module& m);
 
 void declare_typed_algorithms(py::module& m);
 
@@ -66,7 +68,9 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_random_networks(m);
 
     declare_typed_components(m);
+    declare_typed_component_containers(m);
     declare_typed_temporal_clusters(m);
+    declare_typed_temporal_cluster_containers(m);
 
     declare_typed_algorithms(m);
 

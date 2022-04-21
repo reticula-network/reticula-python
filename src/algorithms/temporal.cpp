@@ -11,6 +11,36 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
+namespace pybind11 {
+    namespace detail {
+        template <
+            dag::temporal_edge EdgeT,
+            dag::temporal_adjacency::temporal_adjacency AdjT>
+        class type_caster<std::vector<
+            std::pair<EdgeT, dag::temporal_cluster<EdgeT, AdjT>>>>
+            : public type_caster_base<std::vector<
+                std::pair<EdgeT,
+                    dag::temporal_cluster<EdgeT, AdjT>>>> {};
+
+        template <
+            dag::temporal_edge EdgeT,
+            dag::temporal_adjacency::temporal_adjacency AdjT>
+        class type_caster<std::vector<
+            std::pair<EdgeT, dag::temporal_cluster_size<EdgeT, AdjT>>>>
+            : public type_caster_base<std::vector<
+                std::pair<EdgeT,
+                    dag::temporal_cluster_size<EdgeT, AdjT>>>> {};
+        template <
+            dag::temporal_edge EdgeT,
+            dag::temporal_adjacency::temporal_adjacency AdjT>
+        class type_caster<std::vector<
+            std::pair<EdgeT, dag::temporal_cluster_size_estimate<EdgeT, AdjT>>>>
+            : public type_caster_base<std::vector<
+                std::pair<EdgeT,
+                    dag::temporal_cluster_size_estimate<EdgeT, AdjT>>>> {};
+    }
+}
+
 template <dag::temporal_edge EdgeT>
 struct declare_temporal_network_algorithms {
   void operator()(py::module& m) {
@@ -84,12 +114,14 @@ struct declare_temporal_network_adjacency_algorithms {
     using EdgeT = AdjT::EdgeType;
     m.def("event_graph",
         &dag::event_graph<EdgeT, AdjT>,
-        "temporal_network"_a, "adjacency"_a);
+        "temporal_network"_a, "adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("is_reachable",
         &dag::is_reachable<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
-        "source"_a, "t0"_a, "destination"_a, "t1"_a);
+        "source"_a, "t0"_a, "destination"_a, "t1"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("out_cluster",
         py::overload_cast<
@@ -99,7 +131,8 @@ struct declare_temporal_network_adjacency_algorithms {
           typename EdgeT::TimeType>(
             &dag::out_cluster<EdgeT, AdjT>),
         "temporal_network"_a, "temporal_adjacency"_a,
-        "vertex"_a, "time"_a);
+        "vertex"_a, "time"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("out_cluster",
         py::overload_cast<
@@ -108,18 +141,22 @@ struct declare_temporal_network_adjacency_algorithms {
           const EdgeT&>(
             &dag::out_cluster<EdgeT, AdjT>),
         "temporal_network"_a, "temporal_adjacency"_a,
-        "event"_a);
+        "event"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("out_clusters",
         &dag::out_clusters<EdgeT, AdjT>,
-        "temporal_network"_a, "temporal_adjacency"_a);
+        "temporal_network"_a, "temporal_adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("out_cluster_sizes",
         &dag::out_cluster_sizes<EdgeT, AdjT>,
-        "temporal_network"_a, "temporal_adjacency"_a);
+        "temporal_network"_a, "temporal_adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("out_cluster_size_estimates",
         &dag::out_cluster_size_estimates<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
-        "time_resolution"_a, "seed"_a);
+        "time_resolution"_a, "seed"_a,
+        py::call_guard<py::gil_scoped_release>());
 
 
     m.def("in_cluster",
@@ -130,7 +167,8 @@ struct declare_temporal_network_adjacency_algorithms {
           typename EdgeT::TimeType>(
             &dag::in_cluster<EdgeT, AdjT>),
         "temporal_network"_a, "temporal_adjacency"_a,
-        "vertex"_a, "time"_a);
+        "vertex"_a, "time"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("in_cluster",
         py::overload_cast<
@@ -139,29 +177,36 @@ struct declare_temporal_network_adjacency_algorithms {
           const EdgeT&>(
             &dag::in_cluster<EdgeT, AdjT>),
         "temporal_network"_a, "temporal_adjacency"_a,
-        "event"_a);
+        "event"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("in_clusters",
         &dag::in_clusters<EdgeT, AdjT>,
-        "temporal_network"_a, "temporal_adjacency"_a);
+        "temporal_network"_a, "temporal_adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("in_cluster_sizes",
         &dag::in_cluster_sizes<EdgeT, AdjT>,
-        "temporal_network"_a, "temporal_adjacency"_a);
+        "temporal_network"_a, "temporal_adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("in_cluster_size_estimates",
         &dag::in_cluster_size_estimates<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
-        "time_resolution"_a, "seed"_a);
+        "time_resolution"_a, "seed"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("static_projection",
         &dag::static_projection<EdgeT>,
-        "temporal_network"_a);
+        "temporal_network"_a,
+        py::call_guard<py::gil_scoped_release>());
 
     m.def("link_timeline",
         &dag::link_timeline<EdgeT>,
-        "temporal_network"_a, "static_link"_a);
+        "temporal_network"_a, "static_link"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("link_timelines",
         &dag::link_timelines<EdgeT>,
-        "temporal_network"_a);
+        "temporal_network"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 

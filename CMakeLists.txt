@@ -115,10 +115,22 @@ target_link_libraries(${PROJECT_NAME}_temporal_clusters PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
 
+add_library(${PROJECT_NAME}_temporal_cluster_containers
+  src/temporal_cluster_containers.cpp)
+target_link_libraries(${PROJECT_NAME}_temporal_cluster_containers PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE
+  ${PROJECT_NAME}_temporal_cluster_containers)
+
 add_library(${PROJECT_NAME}_components src/components.cpp)
 target_link_libraries(${PROJECT_NAME}_components PRIVATE
   dag fmt Metal pybind11::pybind11)
 target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_components)
+
+add_library(${PROJECT_NAME}_component_containers src/component_containers.cpp)
+target_link_libraries(${PROJECT_NAME}_component_containers PRIVATE
+  dag fmt Metal pybind11::pybind11)
+target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_component_containers)
 
 add_library(${PROJECT_NAME}_io src/io.cpp)
 target_link_libraries(${PROJECT_NAME}_io PRIVATE

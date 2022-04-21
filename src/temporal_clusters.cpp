@@ -70,6 +70,7 @@ struct declare_temporal_cluster_types {
           return fmt::format("{}", c);
       });
 
+
     using ClusterSizeEstimate =
       dag::temporal_cluster_size_estimate<EdgeT, AdjT>;
     py::class_<ClusterSizeEstimate>(m,

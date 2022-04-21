@@ -10,6 +10,42 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
+namespace pybind11 {
+    namespace detail {
+        template <dag::network_vertex VertT>
+        class type_caster<std::vector<dag::component<VertT>>>
+            : public type_caster_base<
+              std::vector<dag::component<VertT>>> {};
+        template <dag::network_vertex VertT>
+        class type_caster<std::vector<std::pair<VertT, dag::component<VertT>>>>
+            : public type_caster_base<
+              std::vector<
+                  std::pair<VertT, dag::component<VertT>>>> {};
+
+        template <dag::network_vertex VertT>
+        class type_caster<std::vector<dag::component_size<VertT>>>
+            : public type_caster_base<
+              std::vector<dag::component_size<VertT>>> {};
+        template <dag::network_vertex VertT>
+        class type_caster<
+            std::vector<std::pair<VertT, dag::component_size<VertT>>>>
+            : public type_caster_base<
+            std::vector<
+                std::pair<VertT, dag::component_size<VertT>>>> {};
+
+        template <dag::network_vertex VertT>
+        class type_caster<std::vector<dag::component_size_estimate<VertT>>>
+            : public type_caster_base<
+              std::vector<dag::component_size_estimate<VertT>>> {};
+        template <dag::network_vertex VertT>
+        class type_caster<
+            std::vector<std::pair<VertT, dag::component_size_estimate<VertT>>>>
+            : public type_caster_base<
+              std::vector<
+                  std::pair<VertT, dag::component_size_estimate<VertT>>>> {};
+    }
+}
+
 template <dag::static_undirected_edge EdgeT>
 struct declare_undirected_network_algorithms {
   void operator()(py::module& m) {
@@ -88,7 +124,8 @@ struct declare_undirected_density_algorithm {
     m.def("density",
         py::overload_cast<const dag::network<EdgeT>&>(
           &dag::density<typename EdgeT::VertexType>),
-        "undirected_network"_a);
+        "undirected_network"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 
