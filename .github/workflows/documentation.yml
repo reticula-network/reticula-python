@@ -1,0 +1,26 @@
+name: documentation
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.4.2
+
+    - name: Build ⚙️
+      uses: ammaraskar/sphinx-action@0.4
+      with:
+        docs-folder: docs/
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.3.2
+      with:
+          branch: gh-pages
+          folder: docs/_build
+          clean: true
+          single-commit: true
