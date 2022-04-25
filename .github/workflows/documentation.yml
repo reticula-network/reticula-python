@@ -11,11 +11,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2.4.2
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+
+    - name: Prerequisits
+      run: pip install sphinx
+
 
     - name: Build ⚙️
-      uses: ammaraskar/sphinx-action@0.4
-      with:
-        docs-folder: docs/
+      working-directory: docs/
+      run: make html
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.2
