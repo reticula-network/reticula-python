@@ -29,5 +29,4 @@ jobs:
       with:
           branch: gh-pages
           folder: docs/_build/html
-          clean: true
-          single-commit: true
+          clean: false
