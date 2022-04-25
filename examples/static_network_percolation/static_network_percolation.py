@@ -1,4 +1,5 @@
 import concurrent.futures
+import os
 import argparse
 import json
 
@@ -31,6 +32,8 @@ if __name__ == "__main__":
     parser.add_argument("output", type=str, help="output json filename")
     parser.add_argument("--size", type=int, default=10000, help="system size")
     parser.add_argument("--ens", type=int, default=100, help="ensemble size")
+    parser.add_argument("-j", "--jobs", type=int, default=os.cpu_count(),
+            help="number of parallel workers")
     args = parser.parse_args()
 
     seeds = range(args.ens)
@@ -41,7 +44,8 @@ if __name__ == "__main__":
     classic_chis = {}
     expected_comps = {}
     isotropic_chis = {}
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor(
+            max_workers=args.jobs) as executor:
         futures = []
         for p in p_values:
             for seed in seeds:
