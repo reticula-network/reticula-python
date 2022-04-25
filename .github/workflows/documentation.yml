@@ -28,6 +28,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.3.2
       with:
           branch: gh-pages
-          folder: docs/_build
+          folder: docs/_build/html
           clean: true
           single-commit: true
