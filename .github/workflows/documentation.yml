@@ -18,7 +18,7 @@ jobs:
         docs-folder: docs/
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.3.2
+      uses: JamesIves/github-pages-deploy-action@v4.3.2
       with:
           branch: gh-pages
           folder: docs/_build
