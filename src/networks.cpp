@@ -70,6 +70,9 @@ struct declare_network_class {
             &Net::out_edges, py::const_))
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
+      })
+      .def_static("edge_type", []() {
+        return py::type::of<typename Net::EdgeType>();
       });
   }
 };
