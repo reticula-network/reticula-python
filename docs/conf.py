@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'DAG'
-copyright = '2022, Arash Badie-Modiri'
+copyright = '2022'
 author = 'Arash Badie-Modiri'
 
 # The full version, including alpha/beta/rc tags
@@ -41,6 +41,20 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+primary_domain = None
+
+nitpicky = True
+nitpick_ignore = [('cpp:identifier', 'dag')]
+
+rst_prolog = """
+.. role:: py(code)
+    :language: python
+    :class: highlight
+
+.. role:: cpp(code)
+    :language: cpp
+    :class: highlight
+"""
 
 # -- Options for HTML output -------------------------------------------------
 
