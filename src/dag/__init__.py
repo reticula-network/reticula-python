@@ -5,7 +5,7 @@ from . import dag_ext as _dag_ext
 
 __all__ = ["temporal_adjacency", "microcanonical_reference_models"]
 
-class generic_attribute:
+class _generic_attribute:
     def __init__(self, attr_prefix, choices, module=_dag_ext):
         self.choices = choices
         self.attr_prefix = attr_prefix
@@ -43,10 +43,10 @@ _vert_types = _non_integer_vert_types | _integer_vert_types
 
 for _e in _static_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, generic_attribute(_e, [_vert_types]))
+            _e, _generic_attribute(_e, [_vert_types]))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, generic_attribute(_n, [_vert_types]))
+            _n, _generic_attribute(_n, [_vert_types]))
 
 _temporal_edge_prefixes = [
         "undirected_temporal_edge",
@@ -60,17 +60,17 @@ _time_types = set()
 
 for _e in _temporal_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, generic_attribute(_e, [_vert_types, _time_types]))
+            _e, _generic_attribute(_e, [_vert_types, _time_types]))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, generic_attribute(_n, [_vert_types, _time_types]))
+            _n, _generic_attribute(_n, [_vert_types, _time_types]))
 
 
 _vertex_generic_attrs = [
         "component", "component_size", "component_size_estimate"]
 for _a in _vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, generic_attribute(_a, [_vert_types]))
+            _a, _generic_attribute(_a, [_vert_types]))
 
 
 _integer_vertex_generic_attrs = [
@@ -79,9 +79,9 @@ _integer_vertex_generic_attrs = [
 
 for _a in _integer_vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, generic_attribute(_a, [_integer_vert_types]))
+            _a, _generic_attribute(_a, [_integer_vert_types]))
 
-interval_set = generic_attribute("interval_set", [_time_types])
+interval_set = _generic_attribute("interval_set", [_time_types])
 
 _random_network_generic_attrs = [
         "random_gnp_graph",
@@ -95,10 +95,18 @@ _random_network_generic_attrs = [
         "random_directed_fully_mixed_temporal_network"]
 for _a in _random_network_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, generic_attribute(_a, [_integer_vert_types]))
+            _a, _generic_attribute(_a, [_integer_vert_types]))
 
 _simple_edge_types = set()
-read_edgelist = generic_attribute("read_edgelist", [_simple_edge_types])
+read_edgelist = _generic_attribute("read_edgelist", [_simple_edge_types])
+
+_all_edge_types = set()
+is_network_edge = _generic_attribute("is_network_edge", [_all_edge_types])
+is_static_edge = _generic_attribute("is_static_edge", [_all_edge_types])
+is_temporal_edge = _generic_attribute("is_temporal_edge", [_all_edge_types])
+is_instantaneous = _generic_attribute("is_instantaneous", [_all_edge_types])
+is_undirected = _generic_attribute("is_undirected", [_all_edge_types])
+is_dyadic = _generic_attribute("is_dyadic", [_all_edge_types])
 
 # import overloaded funcitons
 from .dag_ext import (
@@ -133,3 +141,32 @@ from .dag_ext import (
 # import scalar type "tags"
 from .dag_ext import (
         int64, double, string)
+
+def to_nx(network, create_using=None):
+    edge_type = network.edge_type()
+    if not is_dyadic[edge_type]():
+        raise ValueError("only dyadic networks can be tranlated into NetworkX "
+                "graphs")
+    if is_temporal_edge[edge_type]():
+        raise ValueError("only static networks can be tranlated into NetworkX "
+                "graphs")
+
+    import networkx as nx
+    if create_using is None:
+        if is_undirected[edge_type]():
+            create_using = nx.Graph()
+        else:
+            create_using = nx.DiGraph()
+
+    g = nx.empty_graph(0, create_using)
+
+    g.add_nodes_from(network.vertices())
+    for e in network.edges():
+        if is_undirected[edge_type]():
+            verts = e.incident_verts()
+            # support self-edges which have one incident vertices
+            u, v = verts*2 if len(verts) == 1 else verts
+            g.add_edge(u, v)
+        else:
+            g.add_edge(e.tail(), e.head())
+    return g

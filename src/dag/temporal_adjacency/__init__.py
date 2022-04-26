@@ -1,6 +1,6 @@
 import sys as _sys
 
-from .. import generic_attribute
+from .. import _generic_attribute
 from ..dag_ext import temporal_adjacency as _dag_ext_adj
 
 _temporal_edge_types = set()
@@ -12,6 +12,6 @@ _generic_adjacency_attrs = [
         "geometric"]
 for _a in _generic_adjacency_attrs:
     setattr(_sys.modules[__name__],
-            _a, generic_attribute(
+            _a, _generic_attribute(
                 _a, [_temporal_edge_types],
                 module=_dag_ext_adj))
