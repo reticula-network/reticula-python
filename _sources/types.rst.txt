@@ -20,16 +20,16 @@ All network types are immutable. This means that all functions operating or
 seemingly "modifying" networks actually return a modified **copy** of the input
 networks.
 
-The network types in python are based on statically typed C++. This imposes
-restrictions on the type of vertices a network can carry. In C++, this is
-indicated by template instantiation, e.g., the class
+The network and edge types in python are based on statically typed C++ classes.
+This imposes restrictions on the type of vertices or timestamps a network can
+store. In C++, this is indicated by template instantiation, e.g., the class
 ``dag::undirected_network<std::int64_t>`` indicates an undirected static network
 with 64-bit signed integer vertices. The Python API, which by necessity has to
 carry the same information, simulates this in a form similar to the existing
 `type annotation`_ syntax: ``dag.undirected_network[dag.int64]``. Temporal
-networks also need to know about the timestamp type that they should store. For
+networks also need to know about the time type that they should store. For
 example ``dag.undirected_temporal_network[dag.int64, dag.double]`` marks a
-continious time undirected temporal network with integer vertices.
+continuous time undirected temporal network with integer vertices.
 
 If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to type in your code. This way you can avoid
@@ -48,12 +48,6 @@ repeating yourself without compromising on type safety:
 
 .. _`type annotation`: https://docs.python.org/3/library/typing.html
 
-Types
-^^^^^
-
-..
-   A list of edge/network types, their properties (what they store)
-
 
 Construction
 ^^^^^^^^^^^^
@@ -70,7 +64,7 @@ tuples that implicitly convert to the correct edge type:
                edges=[(1, 2), (2, 3)], verts=[1, 2, 3, 4, 5, 6])
 
 
-This mimmics the C++ brace initialisation sysntax:
+This mimics the C++ brace initialisation syntax:
 
 .. code-block:: c++
 
@@ -82,7 +76,7 @@ This mimmics the C++ brace initialisation sysntax:
 
 
 The list of vertices is not required, but providing it can inform the network
-that a vertice of with that name exists, even if there are not edges connected
+that a vertex of with that name exists, even if there are not edges connected
 to it.
 
 .. note::
@@ -91,3 +85,12 @@ to it.
    numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
    2-tuple of integers, it cannot perform an implicit conversion. It is however
    okay to use a list instead of a tuple and vice versa.
+
+
+Types
+-----
+
+..
+   A list of acceptible vertex types and time types
+   A list of edge/network types, their properties (what they store)
+

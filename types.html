@@ -48,16 +48,16 @@ network types.</p>
 <p>All network types are immutable. This means that all functions operating or
 seemingly “modifying” networks actually return a modified <strong>copy</strong> of the input
 networks.</p>
-<p>The network types in python are based on statically typed C++. This imposes
-restrictions on the type of vertices a network can carry. In C++, this is
-indicated by template instantiation, e.g., the class
+<p>The network and edge types in python are based on statically typed C++ classes.
+This imposes restrictions on the type of vertices or timestamps a network can
+store. In C++, this is indicated by template instantiation, e.g., the class
 <code class="docutils literal notranslate"><span class="pre">dag::undirected_network&lt;std::int64_t&gt;</span></code> indicates an undirected static network
 with 64-bit signed integer vertices. The Python API, which by necessity has to
 carry the same information, simulates this in a form similar to the existing
 <a class="reference external" href="https://docs.python.org/3/library/typing.html">type annotation</a> syntax: <code class="docutils literal notranslate"><span class="pre">dag.undirected_network[dag.int64]</span></code>. Temporal
-networks also need to know about the timestamp type that they should store. For
+networks also need to know about the time type that they should store. For
 example <code class="docutils literal notranslate"><span class="pre">dag.undirected_temporal_network[dag.int64,</span> <span class="pre">dag.double]</span></code> marks a
-continious time undirected temporal network with integer vertices.</p>
+continuous time undirected temporal network with integer vertices.</p>
 <p>If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to type in your code. This way you can avoid
 repeating yourself without compromising on type safety:</p>
@@ -70,9 +70,6 @@ repeating yourself without compromising on type safety:</p>
 <span class="n">g1</span> <span class="o">=</span> <span class="n">network_type</span><span class="p">(</span><span class="n">edges</span><span class="o">=</span><span class="p">[</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
-<section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
-</section>
 <section id="construction">
 <h3>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
 <p>Networks can be initialised empty, by a list of edges, or by a list of edges and
@@ -84,7 +81,7 @@ tuples that implicitly convert to the correct edge type:</p>
          <span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>This mimmics the C++ brace initialisation sysntax:</p>
+<p>This mimics the C++ brace initialisation syntax:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g1</span><span class="p">;</span><span class="w"> </span><span class="c1">// an empty network</span>
 <span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g2</span><span class="p">({{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}});</span><span class="w"></span>
 <span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g3</span><span class="p">(</span><span class="w"></span>
@@ -93,7 +90,7 @@ tuples that implicitly convert to the correct edge type:</p>
 </pre></div>
 </div>
 <p>The list of vertices is not required, but providing it can inform the network
-that a vertice of with that name exists, even if there are not edges connected
+that a vertex of with that name exists, even if there are not edges connected
 to it.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -103,6 +100,9 @@ numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
 okay to use a list instead of a tuple and vice versa.</p>
 </div>
 </section>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 
@@ -128,6 +128,7 @@ okay to use a list instead of a tuple and vice versa.</p>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Network Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties-of-networks">General properties of networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#types">Types</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">IO and Interpolation</a></li>
