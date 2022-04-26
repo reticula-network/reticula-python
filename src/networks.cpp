@@ -19,6 +19,7 @@ struct declare_network_class {
     using Net = dag::network<EdgeT>;
     py::class_<Net>(m,
         python_type_str<Net>().c_str())
+      .def(py::init<>())
       .def(py::init<std::vector<EdgeT>>(),
           "edges"_a)
       .def(py::init<

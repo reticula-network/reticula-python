@@ -21,15 +21,27 @@ struct declare_static_hyperedges {
       .def(py::init<std::vector<VertT>>(),
           "verts"_a);
 
+    py::implicitly_convertible<
+      std::vector<VertT>,
+      dag::undirected_hyperedge<VertT>>();
+
     define_basic_edge_concept<dag::directed_hyperedge<VertT>>(m)
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>>(),
           "tails"_a, "heads"_a)
+      .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>> t) {
+            return dag::directed_hyperedge<VertT>(
+                std::get<0>(t), std::get<1>(t));
+          }), "tuple"_a)
       .def("heads",
           &dag::directed_hyperedge<VertT>::heads)
       .def("tails",
           &dag::directed_hyperedge<VertT>::tails);
+
+    py::implicitly_convertible<
+      std::pair<std::vector<VertT>, std::vector<VertT>>,
+      dag::directed_hyperedge<VertT>>();
   }
 };
 

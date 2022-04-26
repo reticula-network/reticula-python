@@ -21,7 +21,15 @@ struct declare_temporal_hyperedges {
       .def(py::init<
           std::vector<VertT>,
           TimeT>(),
-          "verts"_a, "time"_a);
+          "verts"_a, "time"_a)
+      .def(py::init([](std::tuple<std::vector<VertT>, TimeT> t) {
+            return dag::undirected_temporal_hyperedge<VertT, TimeT>(
+                    std::get<0>(t), std::get<1>(t));
+        }), "tuple"_a);
+
+    py::implicitly_convertible<
+      std::pair<std::vector<VertT>, TimeT>,
+      dag::undirected_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
         dag::directed_temporal_hyperedge<VertT, TimeT>>(m)
@@ -30,10 +38,19 @@ struct declare_temporal_hyperedges {
           std::vector<VertT>,
           TimeT>(),
           "tails"_a, "heads"_a, "time"_a)
+      .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>,
+                      TimeT> t) {
+            return dag::directed_temporal_hyperedge<VertT, TimeT>(
+                    std::get<0>(t), std::get<1>(t), std::get<2>(t));
+        }), "tuple"_a)
       .def("heads",
           &dag::directed_temporal_hyperedge<VertT, TimeT>::heads)
       .def("tails",
           &dag::directed_temporal_hyperedge<VertT, TimeT>::tails);
+
+    py::implicitly_convertible<
+      std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT>,
+      dag::directed_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
         dag::directed_delayed_temporal_hyperedge<VertT, TimeT>>(m)
@@ -42,10 +59,20 @@ struct declare_temporal_hyperedges {
           std::vector<VertT>,
           TimeT, TimeT>(),
           "tails"_a, "heads"_a, "cause_time"_a, "effect_time"_a)
+      .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>,
+                      TimeT, TimeT> t) {
+            return dag::directed_delayed_temporal_hyperedge<VertT, TimeT>(
+                    std::get<0>(t), std::get<1>(t),
+                    std::get<2>(t), std::get<3>(t));
+        }), "tuple"_a)
       .def("heads",
           &dag::directed_delayed_temporal_hyperedge<VertT, TimeT>::heads)
       .def("tails",
           &dag::directed_delayed_temporal_hyperedge<VertT, TimeT>::tails);
+
+    py::implicitly_convertible<
+      std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT, TimeT>,
+      dag::directed_delayed_temporal_hyperedge<VertT, TimeT>>();
   }
 };
 
