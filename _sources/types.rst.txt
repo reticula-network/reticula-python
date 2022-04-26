@@ -23,13 +23,13 @@ networks.
 The network and edge types in python are based on statically typed C++ classes.
 This imposes restrictions on the type of vertices or timestamps a network can
 store. In C++, this is indicated by template instantiation, e.g., the class
-``dag::undirected_network<std::int64_t>`` indicates an undirected static network
-with 64-bit signed integer vertices. The Python API, which by necessity has to
-carry the same information, simulates this in a form similar to the existing
-`type annotation`_ syntax: ``dag.undirected_network[dag.int64]``. Temporal
-networks also need to know about the time type that they should store. For
-example ``dag.undirected_temporal_network[dag.int64, dag.double]`` marks a
-continuous time undirected temporal network with integer vertices.
+:cpp:`dag::undirected_network<std::int64_t>` indicates an undirected static
+network with 64-bit signed integer vertices. The Python API, which by necessity
+has to carry the same information, simulates this in a form similar to the
+existing `type annotation`_ syntax: :py:`dag.undirected_network[dag.int64]`.
+Temporal networks also need to know about the time type that they should store.
+For example :py:`dag.undirected_temporal_network[dag.int64, dag.double]`
+marks a continuous time undirected temporal network with integer vertices.
 
 If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to type in your code. This way you can avoid
@@ -66,7 +66,7 @@ tuples that implicitly convert to the correct edge type:
 
 This mimics the C++ brace initialisation syntax:
 
-.. code-block:: c++
+.. code-block:: cpp
 
       dag::undirected_network<std::int64_t> g1; // an empty network
       dag::undirected_network<std::int64_t> g2({{1, 2}, {2, 3}});
@@ -90,7 +90,57 @@ to it.
 Types
 -----
 
+.. cpp:class:: template <dag::network_edge EdgeT> dag::network<EdgeT>
+
+.. cpp:class:: template <dag::network_vertex VertT> \
+   dag::undirected_network<VertT>
+
+.. cpp:class:: template <dag::network_vertex VertT> \
+   dag::directed_network<VertT>
+
+.. cpp:class:: template <dag::network_vertex VertT> \
+   dag::undirected_hypernetwork<VertT>
+
+.. cpp:class:: template <dag::network_vertex VertT> \
+   dag::directed_hypernetwork<VertT>
+
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::undirected_temporal_network<VertT, TimeT>
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::directed_temporal_network<VertT, TimeT>
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::directed_delayed_temporal_network<VertT, TimeT>
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::undirected_temporal_hypernetwork<VertT, TimeT>
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::directed_temporal_hypernetwork<VertT, TimeT>
+
+.. cpp:class:: template <dag::network_vertex VertT, typename TimeT> \
+   dag::directed_delayed_temporal_hypernetwork<VertT, TimeT>
+
 ..
    A list of acceptible vertex types and time types
    A list of edge/network types, their properties (what they store)
 
+
+Concepts
+--------
+
+.. cpp:concept:: template <typename T> dag::network_vertex
+
+Any type that is totally ordered (satisfies :cpp:`std::totally_ordered<T>`) and
+hashable with the struct :cpp:struct:`dag::hash` can be a network vertex.
+
+.. cpp:concept:: template <typename T> dag::integer_vertex
+
+A :cpp:concept:`dag::network_vertex` that is also an arithmetic integer type,
+i.e., trait :cpp:`std::numeric_limits<T>::is_integer` should have a true value
+for that type.
+
+..
+   network_edge, static edge and temporal edge concepts

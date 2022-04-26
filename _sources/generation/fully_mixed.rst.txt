@@ -1,0 +1,2 @@
+Fully-mixed temporal network
+============================
