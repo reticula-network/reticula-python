@@ -35,6 +35,75 @@
             
   <section id="network-types">
 <h1>Network Types<a class="headerlink" href="#network-types" title="Permalink to this headline">¶</a></h1>
+<p>DAG support static and temporal networks involving two (dyadic) or more
+(hypergraph) vertices in each event. The events can have an inherent
+directionality and possibly a time delay.</p>
+<p>It is also built with extensibility in mind. Adding a custom network type is, in
+theory, as easy as introducing a new edge class in C++ that satisfies certain
+concepts and defines certain type traits.</p>
+<p>In this section, we will discuss the properties of the different edge and
+network types.</p>
+<section id="general-properties-of-networks">
+<h2>General properties of networks<a class="headerlink" href="#general-properties-of-networks" title="Permalink to this headline">¶</a></h2>
+<p>All network types are immutable. This means that all functions operating or
+seemingly “modifying” networks actually return a modified <strong>copy</strong> of the input
+networks.</p>
+<p>The network types in python are based on statically typed C++. This imposes
+restrictions on the type of vertices a network can carry. In C++, this is
+indicated by template instantiation, e.g., the class
+<code class="docutils literal notranslate"><span class="pre">dag::undirected_network&lt;std::int64_t&gt;</span></code> indicates an undirected static network
+with 64-bit signed integer vertices. The Python API, which by necessity has to
+carry the same information, simulates this in a form similar to the existing
+<a class="reference external" href="https://docs.python.org/3/library/typing.html">type annotation</a> syntax: <code class="docutils literal notranslate"><span class="pre">dag.undirected_network[dag.int64]</span></code>. Temporal
+networks also need to know about the timestamp type that they should store. For
+example <code class="docutils literal notranslate"><span class="pre">dag.undirected_temporal_network[dag.int64,</span> <span class="pre">dag.double]</span></code> marks a
+continious time undirected temporal network with integer vertices.</p>
+<p>If the type syntax looks verbose, remember that you can, and probably should,
+assign a human-readable name to type in your code. This way you can avoid
+repeating yourself without compromising on type safety:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">network_type</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">dag</span><span class="o">.</span><span class="n">int64</span><span class="p">]</span>
+<span class="n">edge_type</span> <span class="o">=</span> <span class="n">network_type</span><span class="o">.</span><span class="n">edge_type</span><span class="p">()</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="n">edge_type</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">edge_type</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">g1</span> <span class="o">=</span> <span class="n">network_type</span><span class="p">(</span><span class="n">edges</span><span class="o">=</span><span class="p">[</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<section id="types">
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="construction">
+<h3>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
+<p>Networks can be initialised empty, by a list of edges, or by a list of edges and
+vertices. In addition to explicitly stating a list of edge objects, you can use
+tuples that implicitly convert to the correct edge type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">dag</span><span class="o">.</span><span class="n">int64</span><span class="p">]()</span> <span class="c1"># an empty network</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">dag</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">g3</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">dag</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span>
+         <span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This mimmics the C++ brace initialisation sysntax:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g1</span><span class="p">;</span><span class="w"> </span><span class="c1">// an empty network</span>
+<span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g2</span><span class="p">({{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}});</span><span class="w"></span>
+<span class="n">dag</span><span class="o">::</span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g3</span><span class="p">(</span><span class="w"></span>
+<span class="w">   </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}},</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The list of vertices is not required, but providing it can inform the network
+that a vertice of with that name exists, even if there are not edges connected
+to it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python implicit conversion is currently sensetive to mixing different
+numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
+2-tuple of integers, it cannot perform an implicit conversion. It is however
+okay to use a list instead of a tuple and vice versa.</p>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -57,7 +126,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Network Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-properties-of-networks">General properties of networks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">IO and Interpolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/index.html">Generating Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shuffling/index.html">Network Randomisation</a></li>
