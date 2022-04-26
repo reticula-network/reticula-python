@@ -8,6 +8,7 @@
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
+#include "common_edge_properties.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -15,142 +16,26 @@ using namespace pybind11::literals;
 template <typename VertT, typename TimeT>
 struct declare_temporal_edges {
   void operator()(py::module &m) {
-    using Undirected = dag::undirected_temporal_edge<VertT, TimeT>;
-    py::class_<Undirected>(m, python_type_str<Undirected>().c_str())
+    define_basic_edge_concept<dag::undirected_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT>(),
-          "v1"_a, "v2"_a, "time"_a)
-      .def("mutated_verts",
-          &Undirected::mutated_verts)
-      .def("mutator_verts",
-          &Undirected::mutator_verts)
-      .def("incident_verts",
-          &Undirected::incident_verts)
-      .def("is_incident",
-          &Undirected::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &Undirected::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &Undirected::is_out_incident,
-          "vert"_a)
-      .def("cause_time",
-          &Undirected::cause_time)
-      .def("effect_time",
-          &Undirected::effect_time)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def(py::hash(py::self))
-      .def("__repr__", [](const Undirected& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const Undirected&,
-            const Undirected&>(
-          &dag::adjacent<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const Undirected&,
-            const Undirected&>(
-          &dag::effect_lt<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
+          "v1"_a, "v2"_a, "time"_a);
 
-    using Directed = dag::directed_temporal_edge<VertT, TimeT>;
-    py::class_<Directed>(m, python_type_str<Directed>().c_str())
+    define_basic_edge_concept<dag::directed_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT>(),
           "tail"_a, "head"_a, "time"_a)
-      .def("mutated_verts",
-          &Directed::mutated_verts)
-      .def("mutator_verts",
-          &Directed::mutator_verts)
       .def("head",
-          &Directed::head)
+          &dag::directed_temporal_edge<VertT, TimeT>::head)
       .def("tail",
-          &Directed::tail)
-      .def("incident_verts",
-          &Directed::incident_verts)
-      .def("is_incident",
-          &Directed::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &Directed::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &Directed::is_out_incident,
-          "vert"_a)
-      .def("cause_time",
-          &Directed::cause_time)
-      .def("effect_time",
-          &Directed::effect_time)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def("__repr__", [](const Directed& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const Directed&,
-            const Directed&>(
-          &dag::adjacent<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const Directed&,
-            const Directed&>(
-          &dag::effect_lt<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
+          &dag::directed_temporal_edge<VertT, TimeT>::tail);
 
-    using DirectedDelayed =
-      dag::directed_delayed_temporal_edge<VertT, TimeT>;
-    py::class_<DirectedDelayed>(m,
-        python_type_str<DirectedDelayed>().c_str())
+    define_basic_edge_concept<
+        dag::directed_delayed_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT, TimeT>(),
           "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a)
-      .def("mutated_verts",
-          &DirectedDelayed::mutated_verts)
-      .def("mutator_verts",
-          &DirectedDelayed::mutator_verts)
       .def("head",
-          &DirectedDelayed::head)
+          &dag::directed_delayed_temporal_edge<VertT, TimeT>::head)
       .def("tail",
-          &DirectedDelayed::tail)
-      .def("incident_verts",
-          &DirectedDelayed::incident_verts)
-      .def("is_incident",
-          &DirectedDelayed::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &DirectedDelayed::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &DirectedDelayed::is_out_incident,
-          "vert"_a)
-      .def("cause_time",
-          &DirectedDelayed::cause_time)
-      .def("effect_time",
-          &DirectedDelayed::effect_time)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def("__repr__", [](const DirectedDelayed& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const DirectedDelayed&,
-            const DirectedDelayed&>(
-          &dag::adjacent<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const DirectedDelayed&,
-            const DirectedDelayed&>(
-          &dag::effect_lt<VertT, TimeT>),
-            "edge1"_a, "edge2"_a);
+          &dag::directed_delayed_temporal_edge<VertT, TimeT>::tail);
   }
 };
 

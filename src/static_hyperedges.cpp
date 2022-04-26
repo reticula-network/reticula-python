@@ -9,6 +9,7 @@
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
+#include "common_edge_properties.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -16,87 +17,19 @@ using namespace pybind11::literals;
 template <typename VertT>
 struct declare_static_hyperedges {
   void operator()(py::module &m) {
-    using Undirected = dag::undirected_hyperedge<VertT>;
-    py::class_<Undirected>(m, python_type_str<Undirected>().c_str())
+    define_basic_edge_concept<dag::undirected_hyperedge<VertT>>(m)
       .def(py::init<std::vector<VertT>>(),
-          "verts"_a)
-      .def("mutated_verts",
-          &Undirected::mutated_verts)
-      .def("mutator_verts",
-          &Undirected::mutator_verts)
-      .def("incident_verts",
-          &Undirected::incident_verts)
-      .def("is_incident",
-          &Undirected::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &Undirected::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &Undirected::is_out_incident,
-          "vert"_a)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def("__repr__", [](const Undirected& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const Undirected&,
-            const Undirected&>(
-          &dag::adjacent<VertT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const Undirected&,
-            const Undirected&>(
-          &dag::effect_lt<VertT>),
-            "edge1"_a, "edge2"_a);
+          "verts"_a);
 
-    using Directed = dag::directed_hyperedge<VertT>;
-    py::class_<Directed>(m, python_type_str<Directed>().c_str())
+    define_basic_edge_concept<dag::directed_hyperedge<VertT>>(m)
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>>(),
           "tails"_a, "heads"_a)
-      .def("mutated_verts",
-          &Directed::mutated_verts)
-      .def("mutator_verts",
-          &Directed::mutator_verts)
       .def("heads",
-          &Directed::heads)
+          &dag::directed_hyperedge<VertT>::heads)
       .def("tails",
-          &Directed::tails)
-      .def("incident_verts",
-          &Directed::incident_verts)
-      .def("is_incident",
-          &Directed::is_incident,
-          "vert"_a)
-      .def("is_in_incident",
-          &Directed::is_in_incident,
-          "vert"_a)
-      .def("is_out_incident",
-          &Directed::is_out_incident,
-          "vert"_a)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def(py::self < py::self)
-      .def("__repr__", [](const Directed& a) {
-        return fmt::format("{}", a);
-      });
-    m.def("adjacent",
-        py::overload_cast<
-            const Directed&,
-            const Directed&>(
-          &dag::adjacent<VertT>),
-            "edge1"_a, "edge2"_a);
-    m.def("effect_lt",
-        py::overload_cast<
-            const Directed&,
-            const Directed&>(
-          &dag::effect_lt<VertT>),
-            "edge1"_a, "edge2"_a);
+          &dag::directed_hyperedge<VertT>::tails);
   }
 };
 
