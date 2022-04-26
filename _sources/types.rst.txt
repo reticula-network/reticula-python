@@ -79,6 +79,16 @@ The list of vertices is not required, but providing it can inform the network
 that a vertex of with that name exists, even if there are not edges connected
 to it.
 
+Edges and vertices
+^^^^^^^^^^^^^^^^^^
+
+Edges and vertices are accessible through member functions of the same name.
+
+.. code-block:: python
+
+      g3.edges() # list of two edges
+      g3.vertices() # list six vertices
+
 .. note::
 
    The Python implicit conversion is currently sensetive to mixing different

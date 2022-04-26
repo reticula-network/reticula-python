@@ -92,6 +92,14 @@ tuples that implicitly convert to the correct edge type:</p>
 <p>The list of vertices is not required, but providing it can inform the network
 that a vertex of with that name exists, even if there are not edges connected
 to it.</p>
+</section>
+<section id="edges-and-vertices">
+<h3>Edges and vertices<a class="headerlink" href="#edges-and-vertices" title="Permalink to this headline">¶</a></h3>
+<p>Edges and vertices are accessible through member functions of the same name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span> <span class="c1"># list of two edges</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="c1"># list six vertices</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Python implicit conversion is currently sensetive to mixing different
