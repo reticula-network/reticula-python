@@ -15,6 +15,7 @@ DAG: Temporal network and hypergraphs
    dynamics/index
    examples/index
    citing
+   bibliography
 
 
 DAG is a general purpose C++ library and Python package for fast and efficient

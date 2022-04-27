@@ -17,7 +17,7 @@ jobs:
         architecture: 'x64'
 
     - name: Prerequisits
-      run: pip install sphinx
+      run: pip install sphinx sphinxcontrib-bibtex
 
 
     - name: Build ⚙️

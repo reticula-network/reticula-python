@@ -31,6 +31,7 @@ release = '0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+        'sphinxcontrib.bibtex'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -55,6 +56,10 @@ rst_prolog = """
     :language: cpp
     :class: highlight
 """
+
+bibtex_bibfiles = ['references.bib']
+bibtex_default_style = 'unsrt'
+
 
 # -- Options for HTML output -------------------------------------------------
 
