@@ -1,4 +1,4 @@
-Networks and network Types
+Networks and network types
 ==========================
 
 DAG support static and temporal networks involving two (dyadic) or more
