@@ -35,6 +35,21 @@
             
   <section id="fully-mixed-temporal-network">
 <h1>Fully-mixed temporal network<a class="headerlink" href="#fully-mixed-temporal-network" title="Permalink to this headline">¶</a></h1>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen">
+<span id="_CPPv3I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkE5VertTdR3Gen"></span><span id="_CPPv2I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkE5VertTdR3Gen"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="../types.html#_CPPv4I0EN3dag14integer_vertexE" title="dag::integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">undirected_temporal_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen" title="dag::random_fully_mixed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">random_fully_mixed_temporal_network</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen" title="dag::random_fully_mixed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rate</span></span>, <a class="reference internal" href="#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen" title="dag::random_fully_mixed_temporal_network::Gen"><span class="n"><span class="pre">Gen</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">generator</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dag.random_fully_mixed_temporal_network[vert_type](</span>&#160;&#160; <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">rate:</span> <span class="pre">float,</span> <span class="pre">random_state)</span> <span class="pre">-&gt;</span> <span class="pre">dag.undirected_temporal_network[vert_type,</span> <span class="pre">dag.double]</span></span></dt>
+<dd></dd></dl>
+
+<p>Generates a random temporal network of size <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">size</span></span></code> where each link
+(connection between two edges) is activated on times determined by an
+exponential inter-event time distribution.</p>
 </section>
 
 
@@ -57,12 +72,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../types.html">Network Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">IO and Interpolation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Generating Networks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cycle.html">Cycle graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regular_ring_lattice.html">Regular ring lattice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="square_grid_graph.html">Square grid graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="complete_graph.html">Complete graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="complete_graph.html#complete-directed-graphs">Complete directed graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnp.html">Random Erdős–Rényi network</a></li>
@@ -81,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../dynamics/index.html">Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
 <div class="relations">
