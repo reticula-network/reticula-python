@@ -19,4 +19,6 @@ Generating Networks
    fully_mixed
    activation
 
-The library allows users to generate a variety of synthetic networks. In this section you can see a different functions for generating deterministic or random networks based on 
+The library allows users to generate a variety of synthetic networks. In this
+section you can see a different functions for generating deterministic or random
+networks based on established models.
