@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Graphicallity &#8212; DAG 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dynamics" href="../dynamics/index.html" />
+    <link rel="prev" title="Graph operations" href="graph_operations.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="graphicallity">
+<h1>Graphicallity<a class="headerlink" href="#graphicallity" title="Permalink to this headline">¶</a></h1>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_NSt6ranges13forward_rangeEEIQN3dag12degree_rangeI5RangeEEE10is_graphicbRK5Range">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">forward_range</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Range</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">requires</span></span><span class="w"> </span><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">degree_range</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_NSt6ranges13forward_rangeEEIQN3dag12degree_rangeI5RangeEEE10is_graphicbRK5Range" title="is_graphic::Range"><span class="n"><span class="pre">Range</span></span></a><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_graphic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_NSt6ranges13forward_rangeEEIQN3dag12degree_rangeI5RangeEEE10is_graphicbRK5Range" title="is_graphic::Range"><span class="n"><span class="pre">Range</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">degree_sequence</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_NSt6ranges13forward_rangeEEIQN3dag12degree_rangeI5RangeEEE10is_graphicbRK5Range" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dag.is_graphic">
+<span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">is_graphic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#dag.is_graphic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="digraphicallity">
+<h1>Digraphicallity<a class="headerlink" href="#digraphicallity" title="Permalink to this headline">¶</a></h1>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_range</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PairRange</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">requires</span></span><span class="w"> </span><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">degree_pair_range</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange" title="is_digraphic::PairRange"><span class="n"><span class="pre">PairRange</span></span></a><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_digraphic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange" title="is_digraphic::PairRange"><span class="n"><span class="pre">PairRange</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">in_out_degree_sequence</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dag.is_digraphic">
+<span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">is_digraphic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_out_degree_sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#dag.is_digraphic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DAG</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">IO and Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/index.html">Generating Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shuffling/index.html">Network Randomisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Algorithms</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Graphicallity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#digraphicallity">Digraphicallity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamics/index.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing DAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Algorithms</a><ul>
+      <li>Previous: <a href="graph_operations.html" title="previous chapter">Graph operations</a></li>
+      <li>Next: <a href="../dynamics/index.html" title="next chapter">Dynamics</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/algorithms/graphicallity.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
