@@ -40,6 +40,13 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
@@ -57,11 +64,21 @@
 </li>
         <li><a href="algorithms/graph_operations.html#dag.graph_union">dag.graph_union()</a>
 </li>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_connected">dag.is_connected()</a>
+</li>
         <li><a href="algorithms/graphicallity.html#dag.is_digraphic">dag.is_digraphic()</a>
 </li>
         <li><a href="algorithms/graphicallity.html#dag.is_graphic">dag.is_graphic()</a>
 </li>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_reachable">dag.is_reachable()</a>
+</li>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_weakly_connected">dag.is_weakly_connected()</a>
+</li>
         <li><a href="algorithms/graph_operations.html#dag.vertex_induced_subgraph">dag.vertex_induced_subgraph()</a>
+</li>
+        <li><a href="algorithms/static_network_reachability.html#dag.weakly_connected_component">dag.weakly_connected_component()</a>
+</li>
+        <li><a href="algorithms/static_network_reachability.html#dag.weakly_connected_components">dag.weakly_connected_components()</a>
 </li>
         <li><a href="algorithms/graph_operations.html#dag.with_edges">dag.with_edges()</a>
 </li>
@@ -75,6 +92,24 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="algorithms/graph_operations.html#_CPPv4I_N3dag14network_vertexE_N3dag14network_vertexEE17cartesian_productN3dag18undirected_networkINSt4pairI6VertT16VertT2EEEERKN3dag18undirected_networkI6VertT1EERKN3dag18undirected_networkI6VertT2EE">cartesian_product (C++ function)</a>
+</li>
+      <li><a href="generation/complete_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag23complete_directed_graphEN3dag16directed_networkI5VertTEE5VertT">complete_directed_graph (C++ function)</a>
+</li>
+      <li><a href="generation/complete_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag14complete_graphEN3dag18undirected_networkI5VertTEE5VertT">complete_graph (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag14network_vertexEEN3dag9componentE">component (C++ class)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag14network_vertexEEN3dag18component_estimateE">component_estimate (C++ class)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag14network_vertexEEN3dag14component_sizeE">component_size (C++ class)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag22static_undirected_edgeEEN3dag19connected_componentEN3dag9componentIN5EdgeT10VertexTypeEEERKN3dag7networkI5EdgeTEERKN5EdgeT10VertexTypeENSt6size_tE">connected_component (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_22static_undirected_edgeEN3dag20connected_componentsENSt6vectorIN3dag9componentIN5EdgeT10VertexTypeEEEEERKN3dag7networkI5EdgeTEEb">connected_components (C++ function)</a>
+</li>
+      <li><a href="generation/cycle.html#_CPPv4I_N3dag14integer_vertexEEN3dag11cycle_graphEN3dag18undirected_networkI5VertTEE5VertT">cycle_graph (C++ function)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -108,6 +143,13 @@
       <li><a href="types.html#dag.int64">dag.int64 (built-in class)</a>
 </li>
       <li>
+    dag.is_connected()
+
+      <ul>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_connected">built-in function</a>
+</li>
+      </ul></li>
+      <li>
     dag.is_digraphic()
 
       <ul>
@@ -121,6 +163,22 @@
         <li><a href="algorithms/graphicallity.html#dag.is_graphic">built-in function</a>
 </li>
       </ul></li>
+      <li>
+    dag.is_reachable()
+
+      <ul>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_reachable">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    dag.is_weakly_connected()
+
+      <ul>
+        <li><a href="algorithms/static_network_reachability.html#dag.is_weakly_connected">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="types.html#dag.string">dag.string (built-in class)</a>
 </li>
       <li>
@@ -128,6 +186,20 @@
 
       <ul>
         <li><a href="algorithms/graph_operations.html#dag.vertex_induced_subgraph">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    dag.weakly_connected_component()
+
+      <ul>
+        <li><a href="algorithms/static_network_reachability.html#dag.weakly_connected_component">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    dag.weakly_connected_components()
+
+      <ul>
+        <li><a href="algorithms/static_network_reachability.html#dag.weakly_connected_components">built-in function</a>
 </li>
       </ul></li>
       <li>
@@ -144,67 +216,17 @@
         <li><a href="algorithms/graph_operations.html#dag.with_vertices">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="generation/complete_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag23complete_directed_graphEN3dag16directed_networkI5VertTEE5VertT">dag::complete_directed_graph (C++ function)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag38directed_delayed_temporal_hypernetworkI5VertT5TimeTEE">directed_delayed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
-      <li><a href="generation/complete_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag14complete_graphEN3dag18undirected_networkI5VertTEE5VertT">dag::complete_graph (C++ function)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag33directed_delayed_temporal_networkI5VertT5TimeTEE">directed_delayed_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
-      <li><a href="generation/cycle.html#_CPPv4I_N3dag14integer_vertexEEN3dag11cycle_graphEN3dag18undirected_networkI5VertTEE5VertT">dag::cycle_graph (C++ function)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag21directed_hypernetworkI5VertTEE">directed_hypernetwork&lt;VertT&gt; (C++ class)</a>
 </li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag38directed_delayed_temporal_hypernetworkI5VertT5TimeTEE">dag::directed_delayed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag16directed_networkI5VertTEE">directed_network&lt;VertT&gt; (C++ class)</a>
 </li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag33directed_delayed_temporal_networkI5VertT5TimeTEE">dag::directed_delayed_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag30directed_temporal_hypernetworkI5VertT5TimeTEE">directed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag21directed_hypernetworkI5VertTEE">dag::directed_hypernetwork&lt;VertT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag16directed_networkI5VertTEE">dag::directed_network&lt;VertT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag30directed_temporal_hypernetworkI5VertT5TimeTEE">dag::directed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag25directed_temporal_networkI5VertT5TimeTEE">dag::directed_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I0EN3dag14integer_vertexE">dag::integer_vertex (C++ concept)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag12network_edgeEEN3dag7networkI5EdgeTEE">dag::network&lt;EdgeT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I0EN3dag12network_edgeE">dag::network_edge (C++ concept)</a>
-</li>
-      <li><a href="types.html#_CPPv4I0EN3dag14network_vertexE">dag::network_vertex (C++ concept)</a>
-</li>
-      <li><a href="generation/path.html#_CPPv4I_N3dag14integer_vertexEEN3dag10path_graphEN3dag18undirected_networkI5VertTEE5VertTb">dag::path_graph (C++ function)</a>
-</li>
-      <li><a href="generation/barabasi.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag28random_barabasi_albert_graphEN3dag18undirected_networkI5VertTEE5VertT5VertTR3Gen">dag::random_barabasi_albert_graph (C++ function)</a>
-</li>
-      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag12degree_rangeI5RangeEENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEEN3dag28random_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK5RangeR3Gen">dag::random_degree_sequence_graph (C++ function)</a>
-</li>
-      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag17degree_pair_rangeI9PairRangeEEN3dag14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEEEN3dag37random_directed_degree_sequence_graphEN3dag16directed_networkI5VertTEERK9PairRangeR3Gen">dag::random_directed_degree_sequence_graph (C++ function)</a>
-</li>
-      <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag17weight_pair_rangeI9PairRangeEEEN3dag46random_directed_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK9PairRangeR3Gen">dag::random_directed_expected_degree_sequence_graph (C++ function)</a>
-</li>
-      <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag12weight_rangeI5RangeEEEN3dag37random_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK5RangeR3Gen">dag::random_expected_degree_sequence_graph (C++ function)</a>
-</li>
-      <li><a href="generation/fully_mixed.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen">dag::random_fully_mixed_temporal_network (C++ function)</a>
-</li>
-      <li><a href="generation/gnp.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag16random_gnp_graphEN3dag18undirected_networkI5VertTEE5VertTdR3Gen">dag::random_gnp_graph (C++ function)</a>
-</li>
-      <li><a href="generation/regular.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag20random_regular_graphEN3dag18undirected_networkI5VertTEE5VertT5VertTR3Gen">dag::random_regular_graph (C++ function)</a>
-</li>
-      <li><a href="generation/regular_ring_lattice.html#_CPPv4I_N3dag14integer_vertexEEN3dag20regular_ring_latticeEN3dag18undirected_networkI5VertTEE5VertT5VertT">dag::regular_ring_lattice (C++ function)</a>
-</li>
-      <li><a href="generation/square_grid_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag17square_grid_graphEN3dag18undirected_networkI5VertTEE5VertTNSt6size_tEb">dag::square_grid_graph (C++ function)</a>
-</li>
-      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag12degree_rangeI5RangeEENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEEN3dag32try_random_degree_sequence_graphENSt8optionalIN3dag18undirected_networkI5VertTEEEERK5RangeR3GenNSt6size_tE">dag::try_random_degree_sequence_graph (C++ function)</a>, <a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag17degree_pair_rangeI9PairRangeEEN3dag14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEEEN3dag32try_random_degree_sequence_graphENSt8optionalIN3dag16directed_networkI5VertTEEEERK9PairRangeR3GenNSt6size_tE">[1]</a>
-</li>
-      <li><a href="generation/regular.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag24try_random_regular_graphENSt8optionalIN3dag18undirected_networkI5VertTEEEE5VertT5VertTR3GenNSt6size_tE">dag::try_random_regular_graph (C++ function)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag23undirected_hypernetworkI5VertTEE">dag::undirected_hypernetwork&lt;VertT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag18undirected_networkI5VertTEE">dag::undirected_network&lt;VertT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag32undirected_temporal_hypernetworkI5VertT5TimeTEE">dag::undirected_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
-</li>
-      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag27undirected_temporal_networkI5VertT5TimeTEE">dag::undirected_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag25directed_temporal_networkI5VertT5TimeTEE">directed_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -228,11 +250,127 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="algorithms/graphicallity.html#_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange">is_digraphic (C++ function)</a>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag12in_componentEN3dag9componentIN5EdgeT10VertexTypeEEERKN3dag7networkI5EdgeTEERKN5EdgeT10VertexTypeENSt6size_tE">in_component (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag27in_component_size_estimatesENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag23component_size_estimateIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEENSt6size_tE">in_component_size_estimates (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag18in_component_sizesENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag14component_sizeIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEE">in_component_sizes (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag13in_componentsENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag9componentIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEE">in_components (C++ function)</a>
+</li>
+      <li><a href="types.html#_CPPv4I0EN3dag14integer_vertexE">integer_vertex (C++ concept)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag22static_undirected_edgeEEN3dag12is_connectedEbRKN3dag7networkI5EdgeTEE">is_connected (C++ function)</a>
+</li>
+      <li><a href="algorithms/graphicallity.html#_CPPv4I_NSt6ranges11input_rangeEEIQN3dag17degree_pair_rangeI9PairRangeEEE12is_digraphicbRK9PairRange">is_digraphic (C++ function)</a>
+</li>
       <li><a href="algorithms/graphicallity.html#_CPPv4I_NSt6ranges13forward_rangeEEIQN3dag12degree_rangeI5RangeEEE10is_graphicbRK5Range">is_graphic (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag11static_edgeEEN3dag12is_reachableEbRKN3dag7networkI5EdgeTEERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE">is_reachable (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag19is_weakly_connectedEbRKN3dag7networkI5EdgeTEE">is_weakly_connected (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="types.html#_CPPv4I_N3dag12network_edgeEEN3dag7networkI5EdgeTEE">network&lt;EdgeT&gt; (C++ class)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="types.html#_CPPv4I0EN3dag12network_edgeE">network_edge (C++ concept)</a>
+</li>
+      <li><a href="types.html#_CPPv4I0EN3dag14network_vertexE">network_vertex (C++ concept)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag13out_componentEN3dag9componentIN5EdgeT10VertexTypeEEERKN3dag7networkI5EdgeTEERKN5EdgeT10VertexTypeENSt6size_tE">out_component (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag28out_component_size_estimatesENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag23component_size_estimateIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEENSt6size_tE">out_component_size_estimates (C++ function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag19out_component_sizesENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag14component_sizeIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEE">out_component_sizes (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_N3dag20static_directed_edgeEEN3dag14out_componentsENSt6vectorINSt4pairIN5EdgeT10VertexTypeEN3dag9componentIN5EdgeT10VertexTypeEEEEEEERKN3dag7networkI5EdgeTEE">out_components (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/path.html#_CPPv4I_N3dag14integer_vertexEEN3dag10path_graphEN3dag18undirected_networkI5VertTEE5VertTb">path_graph (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/barabasi.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag28random_barabasi_albert_graphEN3dag18undirected_networkI5VertTEE5VertT5VertTR3Gen">random_barabasi_albert_graph (C++ function)</a>
+</li>
+      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag12degree_rangeI5RangeEENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEEN3dag28random_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK5RangeR3Gen">random_degree_sequence_graph (C++ function)</a>
+</li>
+      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag17degree_pair_rangeI9PairRangeEEN3dag14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEEEN3dag37random_directed_degree_sequence_graphEN3dag16directed_networkI5VertTEERK9PairRangeR3Gen">random_directed_degree_sequence_graph (C++ function)</a>
+</li>
+      <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag17weight_pair_rangeI9PairRangeEEEN3dag46random_directed_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK9PairRangeR3Gen">random_directed_expected_degree_sequence_graph (C++ function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag12weight_rangeI5RangeEEEN3dag37random_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK5RangeR3Gen">random_expected_degree_sequence_graph (C++ function)</a>
+</li>
+      <li><a href="generation/fully_mixed.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen">random_fully_mixed_temporal_network (C++ function)</a>
+</li>
+      <li><a href="generation/gnp.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag16random_gnp_graphEN3dag18undirected_networkI5VertTEE5VertTdR3Gen">random_gnp_graph (C++ function)</a>
+</li>
+      <li><a href="generation/regular.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag20random_regular_graphEN3dag18undirected_networkI5VertTEE5VertT5VertTR3Gen">random_regular_graph (C++ function)</a>
+</li>
+      <li><a href="generation/regular_ring_lattice.html#_CPPv4I_N3dag14integer_vertexEEN3dag20regular_ring_latticeEN3dag18undirected_networkI5VertTEE5VertT5VertT">regular_ring_lattice (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/square_grid_graph.html#_CPPv4I_N3dag14integer_vertexEEN3dag17square_grid_graphEN3dag18undirected_networkI5VertTEE5VertTNSt6size_tEb">square_grid_graph (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag12degree_rangeI5RangeEENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEEN3dag32try_random_degree_sequence_graphENSt8optionalIN3dag18undirected_networkI5VertTEEEERK5RangeR3GenNSt6size_tE">try_random_degree_sequence_graph (C++ function)</a>, <a href="generation/degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaaN3dag17degree_pair_rangeI9PairRangeEEN3dag14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEEEN3dag32try_random_degree_sequence_graphENSt8optionalIN3dag16directed_networkI5VertTEEEERK9PairRangeR3GenNSt6size_tE">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generation/regular.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag24try_random_regular_graphENSt8optionalIN3dag18undirected_networkI5VertTEEEE5VertT5VertTR3GenNSt6size_tE">try_random_regular_graph (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag23undirected_hypernetworkI5VertTEE">undirected_hypernetwork&lt;VertT&gt; (C++ class)</a>
+</li>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexEEN3dag18undirected_networkI5VertTEE">undirected_network&lt;VertT&gt; (C++ class)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag32undirected_temporal_hypernetworkI5VertT5TimeTEE">undirected_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
+</li>
+      <li><a href="types.html#_CPPv4I_N3dag14network_vertexE0EN3dag27undirected_temporal_networkI5VertT5TimeTEE">undirected_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -248,10 +386,14 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="algorithms/graph_operations.html#_CPPv4I_N3dag12network_edgeE_NSt6ranges11input_rangeEEIQNSt7same_asINSt6ranges13range_value_tI9EdgeRangeEE5EdgeTEEE10with_edgesN3dag7networkI5EdgeTEERKN3dag7networkI5EdgeTEERK9EdgeRange">with_edges (C++ function)</a>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_20static_directed_edgeE26weakly_connected_componentN3dag9componentIN5EdgeT10VertexTypeEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE">weakly_connected_component (C++ function)</a>
+</li>
+      <li><a href="algorithms/static_network_reachability.html#_CPPv4I_20static_directed_edgeE27weakly_connected_componentsNSt6vectorIN3dag9componentIN5EdgeT10VertexTypeEEEEERK7networkI5EdgeTEb">weakly_connected_components (C++ function)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="algorithms/graph_operations.html#_CPPv4I_N3dag12network_edgeE_NSt6ranges11input_rangeEEIQNSt7same_asINSt6ranges13range_value_tI9EdgeRangeEE5EdgeTEEE10with_edgesN3dag7networkI5EdgeTEERKN3dag7networkI5EdgeTEERK9EdgeRange">with_edges (C++ function)</a>
+</li>
       <li><a href="algorithms/graph_operations.html#_CPPv4I_N3dag12network_edgeE_NSt6ranges11input_rangeEEIQNSt7same_asINSt6ranges13range_value_tI9VertRangeEEN5EdgeT9VetexTypeEEEE13with_verticesN3dag7networkI5EdgeTEERKN3dag7networkI5EdgeTEERK9VertRange">with_vertices (C++ function)</a>
 </li>
   </ul></td>

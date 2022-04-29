@@ -15,7 +15,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dynamics" href="../dynamics/index.html" />
+    <link rel="next" title="Static network reachability" href="static_network_reachability.html" />
     <link rel="prev" title="Graph operations" href="graph_operations.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -47,6 +47,9 @@
 <span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">is_graphic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#dag.is_graphic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<p>Checks if the sequence can be the degree sequence of a valid undirected graph,
+containing no multi-edges or loops, based on the Erdős–Gallai algorithm
+<span id="id1">[<a class="reference internal" href="../bibliography.html#id7" title="Paul Erdös and Tibor Gallai. Graphs with prescribed degrees of vertices. Mat. Lapok, 11:264–274, 1960.">6</a>, <a class="reference internal" href="../bibliography.html#id9" title="Sheshayya A Choudum. A simple proof of the erdos-gallai theorem on graph sequences. Bulletin of the Australian Mathematical Society, 33(1):67–70, 1986. doi:10.1017/S0004972700002872.">7</a>]</span>.</p>
 </section>
 <section id="digraphicallity">
 <h1>Digraphicallity<a class="headerlink" href="#digraphicallity" title="Permalink to this headline">¶</a></h1>
@@ -62,6 +65,9 @@
 <span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">is_digraphic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_out_degree_sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#dag.is_digraphic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<p>Checks if the sequence can be the degree sequence of a valid directed graph,
+containing no multi-edges or loops, based on the algorithm by Kleitman and Wang
+<span id="id2">Kleitman and Wang [<a class="reference internal" href="../bibliography.html#id8" title="Daniel J Kleitman and Da-Lun Wang. Algorithms for constructing graphs and digraphs with given valences and factors. Discrete Mathematics, 6(1):79–88, 1973. doi:10.1016/0012-365X(73)90037-X.">8</a>]</span>.</p>
 </section>
 
 
@@ -92,6 +98,8 @@
 <li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#digraphicallity">Digraphicallity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static_network_reachability.html">Static network reachability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="temporal_network_reachability.html">Temporal network reachability</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dynamics/index.html">Dynamics</a></li>
@@ -106,7 +114,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Algorithms</a><ul>
       <li>Previous: <a href="graph_operations.html" title="previous chapter">Graph operations</a></li>
-      <li>Next: <a href="../dynamics/index.html" title="next chapter">Dynamics</a></li>
+      <li>Next: <a href="static_network_reachability.html" title="next chapter">Static network reachability</a></li>
   </ul></li>
   </ul></li>
 </ul>
