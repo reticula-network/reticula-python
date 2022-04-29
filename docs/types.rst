@@ -185,6 +185,8 @@ Directed delayed temporal hyper-networks
    A list of edge/network types, their properties (what they store)
 
 
+.. _vertex-types:
+
 Vertex types
 ------------
 

@@ -63,8 +63,8 @@ C++
 
 .. cpp:function:: template <dag::network_edge EdgeT, \
        std::ranges::input_range VertRange> \
-    requires std::same_as<std::ranges::range_value_t<EdgeRange>, \
-       EdgeT:VetexType> \
+    requires std::same_as<std::ranges::range_value_t<VertRange>,\
+      EdgeT::VetexType> \
     dag::network<EdgeT> \
     with_vertices(const dag::network<EdgeT>& net, const VertRange& verts)
 
@@ -79,7 +79,7 @@ Graph Union
 
 C++
 
-.. cpp:function:: template <dag::network_edge EdgeT>
+.. cpp:function:: template <dag::network_edge EdgeT> \
     dag::network<EdgeT> \
     graph_union(const dag::network<EdgeT>& g1, const dag::network<EdgeT>& g2)
 
@@ -97,7 +97,7 @@ Cartesian Product
 C++
 
 .. cpp:function:: template <dag::network_vertex VertT1, \
-       dag::network_vertex VertT2>
+       dag::network_vertex VertT2> \
     dag::undirected_network<std::pair<VertT1, VertT2>> \
     cartesian_product(\
        const dag::undirected_network<VertT1>& g1, \
@@ -114,9 +114,10 @@ Calculates graph cartesian product of two undirected networks :cpp:`g1` and
 :cpp:`g1`.
 
 .. note:: While in C++ there are no limits on the types of vertices
-   of the network (as long as they satisfy :cpp:constraint:`dag:network_vertex`)
-   the Python binding only supports certain vertex types. This function is not
-   implemented for cases that would produce output vertices too complex to
-   display, i.e., when :py:`vertex_type1` or :py:`vertex_type2` are not a
-   simple numerical or string type. In these cases you might want to relabel the
-   vertices of the networks before calling this function.
+   of the network (as long as they satisfy :cpp:concept:`dag::network_vertex`)
+   the Python binding only supports certain :ref:`vertex types <vertex-types>`.
+   This function is not implemented for cases that would produce output vertices
+   too complex to be predefined, i.e., when :py:`vertex_type1` or
+   :py:`vertex_type2` are not a simple numerical or string type. In these cases
+   you might want to relabel the vertices of the networks before calling this
+   function.
