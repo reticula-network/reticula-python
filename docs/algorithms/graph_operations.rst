@@ -121,3 +121,11 @@ Calculates graph cartesian product of two undirected networks :cpp:`g1` and
    :py:`vertex_type2` are not a simple numerical or string type. In these cases
    you might want to relabel the vertices of the networks before calling this
    function.
+
+
+Relabling vertices
+------------------
+
+.. warning:: Experimental API. We are still trying to find the right balance
+  with these functions. The function name, parameters and available variations
+  will probably change in the future versions.

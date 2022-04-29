@@ -47,6 +47,8 @@ primary_domain = None
 nitpicky = True
 nitpick_ignore = [('cpp:identifier', 'dag')]
 
+cpp_index_common_prefix = ["dag::"]
+
 rst_prolog = """
 .. role:: py(code)
     :language: python
