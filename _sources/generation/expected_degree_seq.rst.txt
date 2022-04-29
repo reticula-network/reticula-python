@@ -39,7 +39,7 @@ C++:
       std::ranges::forward_range PairRange, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::weight_pair_range<Range> \
+      dag::weight_pair_range<PairRange> \
    dag::undirected_network<VertT> \
    dag::random_directed_expected_degree_sequence_graph(\
       const PairRange& in_out_weight_sequence, Gen& generator)

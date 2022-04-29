@@ -247,6 +247,51 @@ okay to use a list instead of a tuple and vice versa.</p>
 
 </section>
 </section>
+<section id="vertex-types">
+<span id="id2"></span><h2>Vertex types<a class="headerlink" href="#vertex-types" title="Permalink to this headline">¶</a></h2>
+<section id="simple-types">
+<h3>Simple types<a class="headerlink" href="#simple-types" title="Permalink to this headline">¶</a></h3>
+<p>The only requirement for a valid vertex type in C++ is to satisfy
+<a class="reference internal" href="#_CPPv4I0EN3dag14network_vertexE" title="dag::network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">dag::network_vertex</span></code></a>. This means that the numeric types,
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span></code>, <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span></code>, <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">tuple</span></span></code> and all standard library
+ordered containers are accepted. On the other hand the python implementation
+requires a predefined list of types at compile time, meaning that we have to
+make a choice as to what vertex types would be available. At the moment certain
+fundamental types are defined</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="dag.int64">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">int64</span></span><a class="headerlink" href="#dag.int64" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="kt"><span class="pre">int64_t</span></span></code> 64-bit signed integers.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dag.double">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">double</span></span><a class="headerlink" href="#dag.double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="kt"><span class="pre">double</span></span></code> double precision floating-point type, almost
+always an implementation of the IEEE-754 binary64 format.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dag.string">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dag.</span></span><span class="sig-name descname"><span class="pre">string</span></span><a class="headerlink" href="#dag.string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span></code>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dag.pair[type1,</span> <span class="pre">type2]</span></span></dt>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Type1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">Type2</span></span><span class="o"><span class="pre">&gt;</span></span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="higher-order-networks">
+<h3>Higher-order networks<a class="headerlink" href="#higher-order-networks" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the vertex types listed above, the Python binding supports
+one level of higher-order networks, where vertices of the network can be any of
+the defined edge types as long as that edge type uses one of the above “simple”
+vertex types.</p>
+</section>
+</section>
 <section id="concepts">
 <h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
 <section id="vertices">
@@ -254,27 +299,25 @@ okay to use a list instead of a tuple and vice versa.</p>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN3dag14network_vertexE">
 <span id="_CPPv3I0EN3dag14network_vertexE"></span><span id="_CPPv2I0EN3dag14network_vertexE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0EN3dag14network_vertexE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Any type that is totally ordered (satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">totally_ordered</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">&gt;</span></span></code>)
+and hashable with the struct <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">dag::hash</span></code> can be a network vertex.</p>
+</dd></dl>
 
-<p>Any type that is totally ordered (satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">totally_ordered</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">&gt;</span></span></code>) and
-hashable with the struct <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">dag::hash</span></code> can be a network vertex.</p>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN3dag14integer_vertexE">
 <span id="_CPPv3I0EN3dag14integer_vertexE"></span><span id="_CPPv2I0EN3dag14integer_vertexE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">integer_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0EN3dag14integer_vertexE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p>A <a class="reference internal" href="#_CPPv4I0EN3dag14network_vertexE" title="dag::network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">dag::network_vertex</span></code></a> that is also an arithmetic integer type,
+<dd><p>A <a class="reference internal" href="#_CPPv4I0EN3dag14network_vertexE" title="dag::network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">dag::network_vertex</span></code></a> that is also an arithmetic integer type,
 i.e., trait <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">numeric_limits</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">&gt;::</span></span><span class="n"><span class="pre">is_integer</span></span></code> should have a true value
 for that type.</p>
+</dd></dl>
+
 </section>
 <section id="edges">
 <h3>Edges<a class="headerlink" href="#edges" title="Permalink to this headline">¶</a></h3>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN3dag12network_edgeE">
 <span id="_CPPv3I0EN3dag12network_edgeE"></span><span id="_CPPv2I0EN3dag12network_edgeE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0EN3dag12network_edgeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p>Any type can be a network edge if it is totally ordered (satisfies
+<dd><p>Any type can be a network edge if it is totally ordered (satisfies
 <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">totally_ordered</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">&gt;</span></span></code>), hashable with both <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">hash</span></span></code> and
 <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">dag::hash</span></code>, defines a <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">VertexType</span></span></code> member type and certain
 function members: <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">mutated_verts</span></span><span class="p"><span class="pre">()</span></span></code>, <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">mutator_verts</span></span><span class="p"><span class="pre">()</span></span></code>,
@@ -282,6 +325,8 @@ function members: <code class="code highlight cpp docutils literal notranslate">
 <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">is_out_incident</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">)</span></span></code>.</p>
 <p>The type must also provide specialisations for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">dag::effect_lt()</span></code> and
 <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">dag::adjacent()</span></code>.</p>
+</dd></dl>
+
 </section>
 </section>
 </section>
@@ -309,6 +354,7 @@ function members: <code class="code highlight cpp docutils literal notranslate">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Networks and network types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-properties-of-networks">General properties of networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#network-types">Network types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vertex-types">Vertex types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#concepts">Concepts</a></li>
 </ul>
 </li>

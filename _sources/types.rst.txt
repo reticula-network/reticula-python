@@ -185,6 +185,46 @@ Directed delayed temporal hyper-networks
    A list of edge/network types, their properties (what they store)
 
 
+.. _vertex-types:
+
+Vertex types
+------------
+
+Simple types
+^^^^^^^^^^^^
+The only requirement for a valid vertex type in C++ is to satisfy
+:cpp:concept:`dag::network_vertex`. This means that the numeric types,
+:cpp:`std::string`, :cpp:`std::pair`, :cpp:`std::tuple` and all standard library
+ordered containers are accepted. On the other hand the python implementation
+requires a predefined list of types at compile time, meaning that we have to
+make a choice as to what vertex types would be available. At the moment certain
+fundamental types are defined
+
+.. py:class:: dag.int64
+
+  Corresponding to :cpp:`std::int64_t` 64-bit signed integers.
+
+.. py:class:: dag.double
+
+  Corresponding to :cpp:`double` double precision floating-point type, almost
+  always an implementation of the IEEE-754 binary64 format.
+
+.. py:class:: dag.string
+
+  Corresponding to :cpp:`std::string`.
+
+.. py:class:: dag.pair[type1, type2]
+
+  Corresponding to :cpp:`std::pair<Type1, Type2>`.
+
+Higher-order networks
+^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the vertex types listed above, the Python binding supports
+one level of higher-order networks, where vertices of the network can be any of
+the defined edge types as long as that edge type uses one of the above "simple"
+vertex types.
+
 Concepts
 --------
 
@@ -193,29 +233,29 @@ Vertices
 
 .. cpp:concept:: template <typename T> dag::network_vertex
 
-Any type that is totally ordered (satisfies :cpp:`std::totally_ordered<T>`) and
-hashable with the struct :cpp:struct:`dag::hash` can be a network vertex.
+  Any type that is totally ordered (satisfies :cpp:`std::totally_ordered<T>`)
+  and hashable with the struct :cpp:struct:`dag::hash` can be a network vertex.
 
 .. cpp:concept:: template <typename T> dag::integer_vertex
 
-A :cpp:concept:`dag::network_vertex` that is also an arithmetic integer type,
-i.e., trait :cpp:`std::numeric_limits<T>::is_integer` should have a true value
-for that type.
+  A :cpp:concept:`dag::network_vertex` that is also an arithmetic integer type,
+  i.e., trait :cpp:`std::numeric_limits<T>::is_integer` should have a true value
+  for that type.
 
 Edges
 ^^^^^
 
 .. cpp:concept:: template <typename T> dag::network_edge
 
-Any type can be a network edge if it is totally ordered (satisfies
-:cpp:`std::totally_ordered<T>`), hashable with both :cpp:`std::hash` and
-:cpp:struct:`dag::hash`, defines a :cpp:`VertexType` member type and certain
-function members: :cpp:`mutated_verts()`, :cpp:`mutator_verts()`,
-:cpp:`is_incident(VertexType v)`, :cpp:`is_in_incident(VertexType v)` and
-:cpp:`is_out_incident(VertexType v)`.
+  Any type can be a network edge if it is totally ordered (satisfies
+  :cpp:`std::totally_ordered<T>`), hashable with both :cpp:`std::hash` and
+  :cpp:struct:`dag::hash`, defines a :cpp:`VertexType` member type and certain
+  function members: :cpp:`mutated_verts()`, :cpp:`mutator_verts()`,
+  :cpp:`is_incident(VertexType v)`, :cpp:`is_in_incident(VertexType v)` and
+  :cpp:`is_out_incident(VertexType v)`.
 
-The type must also provide specialisations for :cpp:func:`dag::effect_lt` and
-:cpp:func:`dag::adjacent`.
+  The type must also provide specialisations for :cpp:func:`dag::effect_lt` and
+  :cpp:func:`dag::adjacent`.
 
 ..
    network_edge, static edge and temporal edge concepts
