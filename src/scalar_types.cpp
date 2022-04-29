@@ -11,10 +11,7 @@ template <typename T>
 struct declare_scalar_types {
   void operator()(py::module &m) {
     py::class_<T>(m,
-        python_type_str<T>().c_str())
-      .def("__repr__", [](const T& a) {
-        return fmt::format("{}", a);
-      });
+        python_type_str<T>().c_str());
   }
 };
 
@@ -33,5 +30,5 @@ void declare_typed_scalar(py::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_scalar_types>,
-      scalar_types>>{}(m);
+      metal::join<scalar_types, types::pair_vert_types>>>{}(m);
 }

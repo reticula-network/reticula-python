@@ -142,6 +142,9 @@ from .dag_ext import (
 from .dag_ext import (
         int64, double, string)
 
+_simple_vert_types = set()
+pair = _generic_attribute("pair", [_simple_vert_types, _simple_vert_types])
+
 def to_nx(network, create_using=None):
     edge_type = network.edge_type()
     if not is_dyadic[edge_type]():
