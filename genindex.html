@@ -94,6 +94,10 @@
 </li>
         <li><a href="algorithms/static_network_reachability.html#dag.out_components">dag.out_components()</a>
 </li>
+        <li><a href="io.html#dag.read_edgelist">dag.read_edgelist()</a>
+</li>
+        <li><a href="io.html#dag.to_nx">dag.to_nx()</a>
+</li>
         <li><a href="algorithms/graph_operations.html#dag.vertex_induced_subgraph">dag.vertex_induced_subgraph()</a>
 </li>
         <li><a href="algorithms/static_network_reachability.html#dag.weakly_connected_component">dag.weakly_connected_component()</a>
@@ -232,8 +236,6 @@
         <li><a href="algorithms/static_network_reachability.html#dag.is_reachable">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dag.is_weakly_connected()
 
@@ -241,6 +243,8 @@
         <li><a href="algorithms/static_network_reachability.html#dag.is_weakly_connected">built-in function</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dag.out_component()
 
@@ -269,8 +273,22 @@
         <li><a href="algorithms/static_network_reachability.html#dag.out_components">built-in function</a>
 </li>
       </ul></li>
+      <li>
+    dag.read_edgelist()
+
+      <ul>
+        <li><a href="io.html#dag.read_edgelist">built-in function</a>
+</li>
+      </ul></li>
       <li><a href="types.html#dag.string">dag.string (built-in class)</a>
 </li>
+      <li>
+    dag.to_nx()
+
+      <ul>
+        <li><a href="io.html#dag.to_nx">built-in function</a>
+</li>
+      </ul></li>
       <li>
     dag.vertex_induced_subgraph()
 
@@ -414,15 +432,17 @@
 </li>
       <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag17weight_pair_rangeI9PairRangeEEEN3dag46random_directed_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK9PairRangeR3Gen">random_directed_expected_degree_sequence_graph (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generation/expected_degree_seq.html#_CPPv4I_N3dag14integer_vertexE_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQN3dag12weight_rangeI5RangeEEEN3dag37random_expected_degree_sequence_graphEN3dag18undirected_networkI5VertTEERK5RangeR3Gen">random_expected_degree_sequence_graph (C++ function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generation/fully_mixed.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag35random_fully_mixed_temporal_networkEN3dag27undirected_temporal_networkI5VertTdEE5VertTdR3Gen">random_fully_mixed_temporal_network (C++ function)</a>
 </li>
       <li><a href="generation/gnp.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag16random_gnp_graphEN3dag18undirected_networkI5VertTEE5VertTdR3Gen">random_gnp_graph (C++ function)</a>
 </li>
       <li><a href="generation/regular.html#_CPPv4I_N3dag14integer_vertexE_NSt28uniform_random_bit_generatorEEN3dag20random_regular_graphEN3dag18undirected_networkI5VertTEE5VertT5VertTR3Gen">random_regular_graph (C++ function)</a>
+</li>
+      <li><a href="io.html#_CPPv4I_12network_edgeE13read_edgelistN3dag7networkI5EdgeTEENSt10filesystem4pathEcc">read_edgelist (C++ function)</a>
 </li>
       <li><a href="generation/regular_ring_lattice.html#_CPPv4I_N3dag14integer_vertexEEN3dag20regular_ring_latticeEN3dag18undirected_networkI5VertTEE5VertT5VertT">regular_ring_lattice (C++ function)</a>
 </li>
@@ -511,7 +531,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Networks and network types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="io.html">IO and Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and Interpolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/index.html">Generating Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shuffling/index.html">Network Randomisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/index.html">Algorithms</a></li>
