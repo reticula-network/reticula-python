@@ -45,6 +45,10 @@ can avoid repeating yourself without compromising on type safety:
 
       g1 = network_type(edges=[e1, e2], verts=[1, 2, 3, 4, 5])
 
+.. note:: It's probably a good idea to use more **meaningful** and **specific**
+  names than :py:`edge_type` and :py:`network_type`. For example, a study on
+  scientific citation temporal networks can use :py:`citation_event` for
+  temporal edges and :py:`citation_network` for the network type.
 
 .. _`type annotation`: https://docs.python.org/3/library/typing.html
 

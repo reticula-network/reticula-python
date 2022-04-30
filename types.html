@@ -70,6 +70,13 @@ can avoid repeating yourself without compromising on type safety:</p>
 <span class="n">g1</span> <span class="o">=</span> <span class="n">network_type</span><span class="p">(</span><span class="n">edges</span><span class="o">=</span><span class="p">[</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s probably a good idea to use more <strong>meaningful</strong> and <strong>specific</strong>
+names than <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">edge_type</span></span></code> and <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">network_type</span></span></code>. For example, a study on
+scientific citation temporal networks can use <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">citation_event</span></span></code> for
+temporal edges and <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">citation_network</span></span></code> for the network type.</p>
+</div>
 <section id="construction">
 <h3>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
 <p>Networks can be initialised empty, by a list of edges, or by a list of edges and
