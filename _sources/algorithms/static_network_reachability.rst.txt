@@ -93,13 +93,18 @@ vertices.
 In- and out-components
 ----------------------
 
+
+From a single source
+^^^^^^^^^^^^^^^^^^^^
+
+C++:
+
 .. cpp:function:: template <dag::static_directed_edge EdgeT> \
   dag::component<typename EdgeT::VertexType> \
   dag::in_component(\
       const dag::network<EdgeT>& dir, \
       const typename EdgeT::VertexType& root, \
       std::size_t size_hint = 0)
-
 
 .. cpp:function:: template <dag::static_directed_edge EdgeT> \
   dag::component<typename EdgeT::VertexType> \
@@ -108,7 +113,21 @@ In- and out-components
       const typename EdgeT::VertexType& root, \
       std::size_t size_hint = 0)
 
+Python:
 
+.. py:function:: dag.in_component(directed_network, vert: vert_type,\
+  size_hint: int = 0) -> dag.component[vert_type]
+
+.. py:function:: dag.out_component(directed_network, vert: vert_type,\
+  size_hint: int = 0) -> dag.component[vert_type]
+
+
+Calculate the in- or out-component of a vertex in a static directed network.
+
+From all vertices
+^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <dag::static_directed_edge EdgeT> \
   std::vector<std::pair<\
@@ -122,7 +141,21 @@ In- and out-components
     dag::component<typename EdgeT::VertexType>>> \
   dag::out_components(const dag::network<EdgeT>& dir)
 
+Python:
 
+.. py:function:: dag.in_components(directed_network) \
+  -> iterable[pair[vert_type, dag.component[vert_type]]]
+
+.. py:function:: dag.out_components(directed_network) \
+  -> iterable[pair[vert_type, dag.component[vert_type]]]
+
+Calculates the in- or out-components of all vertices in a static directed
+network.
+
+In- and out-component sizes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <dag::static_directed_edge EdgeT> \
   std::vector<std::pair<\
@@ -136,7 +169,22 @@ In- and out-components
     dag::component_size<typename EdgeT::VertexType>>> \
   dag::out_component_sizes(const dag::network<EdgeT>& dir)
 
+Python:
 
+.. py:function:: dag.in_component_sizes(directed_network) \
+  -> iterable[pair[vert_type, dag.component_size[vert_type]]]
+
+.. py:function:: dag.out_component_sizes(directed_network) \
+  -> iterable[pair[vert_type, dag.component_size[vert_type]]]
+
+Calculates the in- or out-component *sizes* of all vertices in a static
+directed network. Compared to calculating all in- or out-components, this uses
+less memory in some cases.
+
+In- and out-component size estimates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <dag::static_directed_edge EdgeT> \
   std::vector<std::pair<\
@@ -152,10 +200,27 @@ In- and out-components
   dag::out_component_size_estimates(\
     const dag::network<EdgeT>& dir, std::size_t seed = 0)
 
+Python:
 
+.. py:function:: dag.in_component_size_estimates(directed_network) \
+  -> iterable[pair[vert_type, dag.component_size_estimate[vert_type]]]
+
+.. py:function:: dag.out_component_size_estimates(directed_network) \
+  -> iterable[pair[vert_type, dag.component_size_estimate[vert_type]]]
+
+*Estimates* the in- or out-component sizes of all vertices in a static directed
+network. Compared to calculating all in- or out-components and in- and
+out-component sizes, this uses much less memory and is much faster to run in
+many cases.
 
 Undirected static networks
 --------------------------
+
+
+Connected component of a specific vertex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <dag::static_undirected_edge EdgeT> \
   dag::component<typename EdgeT::VertexType> \
@@ -164,6 +229,21 @@ Undirected static networks
       const typename EdgeT::VertexType& vert, \
       std::size_t size_hint = 0)
 
+Python:
+
+.. py:function:: dag.connected_component(\
+  undirected_network, vert: vert_type, size_hint : int = 0) -> \
+  dag.component[vert_type]
+
+Returns the connected component that vertex :cpp:`vert` belongs to. A connected
+compoent is a maximal subset of vertices of the network where all vertices can
+reach all others.
+
+
+All connected components
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <static_undirected_edge EdgeT> \
   std::vector<dag::component<typename EdgeT::VertexType>> \
@@ -171,15 +251,31 @@ Undirected static networks
       const dag::network<EdgeT>& net, \
       bool singletons = true)
 
+Python:
+
+.. py:function:: dag.connected_components(undirected_network, \
+  singletons: bool = True) -> Iterable[dag.components[vert_type]]
+
+Returns all connected components of the static undirected network.
+
+All connected components
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
 
 .. cpp:function:: template <dag::static_undirected_edge EdgeT> \
   bool dag::is_connected(const dag::network<EdgeT>& net);
 
+Python:
+
 .. py:function:: dag.is_connected(undirected_network) -> bool
 
+Returns :cpp:`true` if all vertices of the network are reachable from all other.
 
 Source-destination reachability
 -------------------------------
+
+C++:
 
 .. cpp:function:: template <dag::static_edge EdgeT> \
   bool dag::is_reachable(\
@@ -187,4 +283,10 @@ Source-destination reachability
       const typename EdgeT::VertexType& source, \
       const typename EdgeT::VertexType& destination)
 
-.. py:function:: dag.is_reachable(directed_network, source, destination)
+Python:
+
+.. py:function:: dag.is_reachable(directed_network, source, destination) -> bool
+
+Returns :cpp:`true` if the vertex :cpp:`destination` is reachable from the
+vertex :cpp:`source` by following edges in the legal direction. This function
+accepts all static network types.
