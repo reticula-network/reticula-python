@@ -83,6 +83,13 @@ The list of vertices is not required, but providing it can inform the network
 that a vertex of with that name exists, even if there are not edges connected
 to it.
 
+.. note::
+   The Python implicit conversion is currently sensetive to mixing different
+   numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
+   2-tuple of integers, it cannot perform an implicit conversion. It is however
+   okay to use a list instead of a tuple and vice versa.
+
+
 Edges and vertices
 ^^^^^^^^^^^^^^^^^^
 
@@ -93,12 +100,25 @@ Edges and vertices are accessible through member functions of the same name.
       g3.edges() # list of two edges
       g3.vertices() # list six vertices
 
-.. note::
+You can also get the network edges sorted by :cpp:`operator<`
+(:py:`operator.__lt__` in Python) or :cpp:func:`dag::effect_lt`
+(:py:func:`dag.effect_lt`) through functions `edges_cause` and `edges_effect`
+member functions. In a temporal network the result of the former will be sorted
+by cause time and the latter by effect time of the events. In static networks
+they return the same output.
 
-   The Python implicit conversion is currently sensetive to mixing different
-   numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
-   2-tuple of integers, it cannot perform an implicit conversion. It is however
-   okay to use a list instead of a tuple and vice versa.
+Incident edges
+^^^^^^^^^^^^^^
+
+Successors, predecessors and neighbours
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vertex degree
+^^^^^^^^^^^^^
+
+..
+  in hypergraphs and temporal networks
+
 
 
 Network types
