@@ -15,7 +15,7 @@ using namespace nanobind::literals;
 
 template <typename VertT, typename TimeT>
 struct declare_temporal_hyperedges {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     define_basic_edge_concept<
         dag::undirected_temporal_hyperedge<VertT, TimeT>>(m)
       .def(nb::init<
@@ -76,7 +76,7 @@ struct declare_temporal_hyperedges {
   }
 };
 
-void declare_typed_temporal_hyperedges(nb::module& m) {
+void declare_typed_temporal_hyperedges(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::partial<

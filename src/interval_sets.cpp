@@ -1,6 +1,6 @@
 #include <nanobind/nanobind.h>
 #include <nanobind/operators.h>
-#include <nanobind/stl.h>
+#include <nanobind/stl/vector.h>
 #include <fmt/format.h>
 
 #include <dag/intervals.hpp>
@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 
 template <typename TimeT>
 struct declare_interval_set_types {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     using IntSet = dag::interval_set<TimeT>;
     nb::class_<IntSet>(m,
         python_type_str<IntSet>().c_str())
@@ -42,7 +42,7 @@ struct declare_interval_set_types {
   }
 };
 
-void declare_typed_interval_sets(nb::module& m) {
+void declare_typed_interval_sets(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_interval_set_types>,

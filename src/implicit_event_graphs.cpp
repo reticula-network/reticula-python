@@ -15,7 +15,7 @@ using namespace nanobind::literals;
 
 template <dag::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_class {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     using EdgeT = AdjT::EdgeType;
     using Net = dag::implicit_event_graph<EdgeT, AdjT>;
     nb::class_<Net>(m,
@@ -54,7 +54,7 @@ struct declare_implicit_event_graph_class {
   }
 };
 
-void declare_typed_implicit_event_graphs(nb::module& m) {
+void declare_typed_implicit_event_graphs(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_implicit_event_graph_class>,

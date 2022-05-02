@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 
 template <dag::integer_vertex VertT, std::uniform_random_bit_generator Gen>
 struct declare_random_network_models {
-  void operator()(nb::module& m) {
+  void operator()(nb::module_& m) {
     m.def(("random_gnp_graph_"+python_type_str<VertT>()).c_str(),
         &dag::random_gnp_graph<VertT, Gen>,
         "n"_a, "p"_a, "random_state"_a,
@@ -72,7 +72,7 @@ struct declare_random_network_models {
   }
 };
 
-void declare_typed_random_networks(nb::module& m) {
+void declare_typed_random_networks(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::partial<

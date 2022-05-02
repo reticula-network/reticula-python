@@ -2,43 +2,41 @@
 #include <filesystem>
 
 #include <nanobind/nanobind.h>
-#include <nanobind/operators.h>
-#include <nanobind/stl.h>
 #include <fmt/format.h>
 
 namespace nb = nanobind;
 
-void declare_typed_scalar(nb::module& m);
+void declare_typed_scalar(nb::module_& m);
 
-void declare_random_states(nb::module& m);
-void declare_typed_interval_sets(nb::module& m);
+void declare_random_states(nb::module_& m);
+void declare_typed_interval_sets(nb::module_& m);
 
-void declare_typed_static_edges(nb::module& m);
-void declare_typed_static_hyperedges(nb::module& m);
+void declare_typed_static_edges(nb::module_& m);
+void declare_typed_static_hyperedges(nb::module_& m);
 
-void declare_typed_temporal_edges(nb::module& m);
-void declare_typed_temporal_hyperedges(nb::module& m);
+void declare_typed_temporal_edges(nb::module_& m);
+void declare_typed_temporal_hyperedges(nb::module_& m);
 
-void declare_typed_networks(nb::module& m);
+void declare_typed_networks(nb::module_& m);
 
-void declare_typed_temporal_adjacency_class(nb::module& m);
+void declare_typed_temporal_adjacency_class(nb::module_& m);
 
-void declare_typed_implicit_event_graphs(nb::module& m);
-void declare_typed_implicit_event_graph_components(nb::module& m);
+void declare_typed_implicit_event_graphs(nb::module_& m);
+void declare_typed_implicit_event_graph_components(nb::module_& m);
 
-void declare_typed_generators(nb::module& m);
-void declare_typed_random_networks(nb::module& m);
+void declare_typed_generators(nb::module_& m);
+void declare_typed_random_networks(nb::module_& m);
 
-void declare_typed_components(nb::module& m);
-void declare_typed_component_containers(nb::module& m);
-void declare_typed_temporal_clusters(nb::module& m);
-void declare_typed_temporal_cluster_containers(nb::module& m);
+void declare_typed_components(nb::module_& m);
+void declare_typed_component_containers(nb::module_& m);
+void declare_typed_temporal_clusters(nb::module_& m);
+void declare_typed_temporal_cluster_containers(nb::module_& m);
 
-void declare_typed_algorithms(nb::module& m);
+void declare_typed_algorithms(nb::module_& m);
 
-void declare_typed_mrrm_algorithms(nb::module& m);
+void declare_typed_mrrm_algorithms(nb::module_& m);
 
-void declare_typed_io_functions(nb::module& m);
+void declare_typed_io_functions(nb::module_& m);
 
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)

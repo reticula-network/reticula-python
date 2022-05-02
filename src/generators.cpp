@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 
 template <typename VertT>
 struct declare_generators {
-  void operator()(nb::module& m) {
+  void operator()(nb::module_& m) {
     m.def(("square_grid_graph_"+python_type_str<VertT>()).c_str(),
         &dag::square_grid_graph<VertT>,
         "side"_a, "dims"_a, "periodic"_a = false,
@@ -41,7 +41,7 @@ struct declare_generators {
   }
 };
 
-void declare_typed_generators(nb::module& m) {
+void declare_typed_generators(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_generators>,

@@ -15,7 +15,7 @@ using namespace nanobind::literals;
 
 template <typename VertT, typename TimeT>
 struct declare_temporal_edges {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     define_basic_edge_concept<dag::undirected_temporal_edge<VertT, TimeT>>(m)
       .def(nb::init<VertT, VertT, TimeT>(),
           "v1"_a, "v2"_a, "time"_a)
@@ -64,7 +64,7 @@ struct declare_temporal_edges {
   }
 };
 
-void declare_typed_temporal_edges(nb::module& m) {
+void declare_typed_temporal_edges(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::partial<

@@ -16,7 +16,7 @@ using namespace nanobind::literals;
 
 template <typename VertT>
 struct declare_static_hyperedges {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     define_basic_edge_concept<dag::undirected_hyperedge<VertT>>(m)
       .def(nb::init<std::vector<VertT>>(),
           "verts"_a);
@@ -46,7 +46,7 @@ struct declare_static_hyperedges {
 };
 
 
-void declare_typed_static_hyperedges(nb::module& m) {
+void declare_typed_static_hyperedges(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_hyperedges>,

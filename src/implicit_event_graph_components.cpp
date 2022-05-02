@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 
 template <dag::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_component_algorithms {
-  void operator()(nb::module& m) {
+  void operator()(nb::module_& m) {
     using EdgeT = AdjT::EdgeType;
     m.def("out_component",
         &dag::out_component<EdgeT, AdjT>,
@@ -60,7 +60,7 @@ struct declare_implicit_event_graph_component_algorithms {
   }
 };
 
-void declare_typed_implicit_event_graph_components(nb::module& m) {
+void declare_typed_implicit_event_graph_components(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_implicit_event_graph_component_algorithms>,

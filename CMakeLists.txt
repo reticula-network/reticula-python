@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 0378d84)
+  GIT_TAG 427fe93)
 
 FetchContent_Declare(
   fmt
@@ -51,125 +51,26 @@ endif()
 FetchContent_MakeAvailable(dag fmt metal)
 
 
-nanobind_add_module(dag_ext src/main.cpp)
-target_link_libraries(dag_ext PRIVATE dag fmt Metal)
-
-add_library(${PROJECT_NAME}_scaler_types src/scalar_types.cpp)
-target_link_libraries(${PROJECT_NAME}_scaler_types PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_scaler_types)
-
-add_library(${PROJECT_NAME}_random_state src/random_state.cpp)
-target_link_libraries(${PROJECT_NAME}_random_state PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_state)
-
-add_library(${PROJECT_NAME}_interval_sets src/interval_sets.cpp)
-target_link_libraries(${PROJECT_NAME}_interval_sets PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_interval_sets)
-
-add_library(${PROJECT_NAME}_temporal_edges src/temporal_edges.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_edges PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_edges)
-
-add_library(${PROJECT_NAME}_temporal_hyperedges src/temporal_hyperedges.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_hyperedges PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_hyperedges)
-
-
-add_library(${PROJECT_NAME}_static_edges src/static_edges.cpp)
-target_link_libraries(${PROJECT_NAME}_static_edges PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_edges)
-
-add_library(${PROJECT_NAME}_static_hyperedges src/static_hyperedges.cpp)
-target_link_libraries(${PROJECT_NAME}_static_hyperedges PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_hyperedges)
-
-
-add_library(${PROJECT_NAME}_networks src/networks.cpp)
-target_link_libraries(${PROJECT_NAME}_networks PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_networks)
-
-
-add_library(${PROJECT_NAME}_temporal_adjacency src/temporal_adjacency.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_adjacency PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_adjacency)
-
-
-add_library(${PROJECT_NAME}_implicit_event_graphs src/implicit_event_graphs.cpp)
-target_link_libraries(${PROJECT_NAME}_implicit_event_graphs PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_implicit_event_graphs)
-
-add_library(${PROJECT_NAME}_implicit_event_graph_components
-  src/implicit_event_graph_components.cpp)
-target_link_libraries(${PROJECT_NAME}_implicit_event_graph_components PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE
-  ${PROJECT_NAME}_implicit_event_graph_components)
-
-add_library(${PROJECT_NAME}_generators src/generators.cpp)
-target_link_libraries(${PROJECT_NAME}_generators PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_generators)
-
-
-add_library(${PROJECT_NAME}_random_networks src/random_networks.cpp)
-target_link_libraries(${PROJECT_NAME}_random_networks PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_networks)
-
-add_library(${PROJECT_NAME}_temporal_clusters src/temporal_clusters.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_clusters PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
-
-add_library(${PROJECT_NAME}_temporal_cluster_containers
-  src/temporal_cluster_containers.cpp)
-target_link_libraries(${PROJECT_NAME}_temporal_cluster_containers PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE
-  ${PROJECT_NAME}_temporal_cluster_containers)
-
-add_library(${PROJECT_NAME}_components src/components.cpp)
-target_link_libraries(${PROJECT_NAME}_components PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_components)
-
-add_library(${PROJECT_NAME}_component_containers src/component_containers.cpp)
-target_link_libraries(${PROJECT_NAME}_component_containers PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_component_containers)
-
-add_library(${PROJECT_NAME}_io src/io.cpp)
-target_link_libraries(${PROJECT_NAME}_io PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_io)
-
-
-add_library(${PROJECT_NAME}_algorithms
-  src/algorithms.cpp
-  src/algorithms/directed.cpp
-  src/algorithms/undirected.cpp
-  src/algorithms/temporal.cpp)
-target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)
-
-
-add_library(${PROJECT_NAME}_microcanonical_reference_models
+nanobind_add_module(dag_ext
+  src/main.cpp
+  src/scalar_types.cpp
+  src/random_state.cpp
+  src/interval_sets.cpp
+  src/temporal_edges.cpp src/temporal_hyperedges.cpp
+  src/static_edges.cpp src/static_hyperedges.cpp
+  src/networks.cpp
+  src/temporal_adjacency.cpp
+  src/implicit_event_graphs.cpp
+  src/implicit_event_graph_components.cpp
+  src/generators.cpp
+  src/random_networks.cpp
+  src/temporal_clusters.cpp src/temporal_cluster_containers.cpp
+  src/components.cpp src/component_containers.cpp
+  src/io.cpp
+  src/algorithms.cpp src/algorithms/directed.cpp src/algorithms/undirected.cpp src/algorithms/temporal.cpp
   src/microcanonical_reference_models.cpp)
-target_link_libraries(${PROJECT_NAME}_microcanonical_reference_models PRIVATE
-  dag fmt Metal nanobind-static)
-target_link_libraries(dag_ext PRIVATE
-  ${PROJECT_NAME}_microcanonical_reference_models)
+target_link_libraries(dag_ext PRIVATE dag fmt Metal cxx_std_20)
+
 
 install(TARGETS dag_ext DESTINATION .)
 

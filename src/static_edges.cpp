@@ -16,7 +16,7 @@ using namespace nanobind::literals;
 
 template <typename VertT>
 struct declare_static_edges {
-  void operator()(nb::module &m) {
+  void operator()(nb::module_ &m) {
     define_basic_edge_concept<dag::undirected_edge<VertT>>(m)
       .def(nb::init<VertT, VertT>(), "v1"_a, "v2"_a)
       .def(nb::init([](std::tuple<VertT, VertT> t) {
@@ -47,7 +47,7 @@ struct declare_static_edges {
 };
 
 
-void declare_typed_static_edges(nb::module& m) {
+void declare_typed_static_edges(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_edges>,
