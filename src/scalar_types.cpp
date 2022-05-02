@@ -1,16 +1,16 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/operators.h>
 
 #include "type_str/scalars.hpp"
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <typename T>
 struct declare_scalar_types {
-  void operator()(py::module &m) {
-    py::class_<T>(m,
+  void operator()(nb::module &m) {
+    nb::class_<T>(m,
         python_type_str<T>().c_str());
   }
 };
@@ -22,7 +22,7 @@ using unique = metal::accumulate<
     metal::lambda<metal::contains>, metal::_1,
     metal::lambda<metal::append>>, metal::list<>, seq>;
 
-void declare_typed_scalar(py::module& m) {
+void declare_typed_scalar(nb::module& m) {
   using scalar_types = unique<metal::join<
     types::time_types, types::simple_vert_types>>;
 

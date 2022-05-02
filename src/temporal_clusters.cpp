@@ -1,6 +1,6 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-#include <pybind11/operators.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/stl.h>
+#include <nanobind/operators.h>
 
 #include <fmt/format.h>
 #include <dag/temporal_clusters.hpp>
@@ -8,19 +8,19 @@
 #include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <dag::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
-  void operator()(py::module &m) {
+  void operator()(nb::module &m) {
     using EdgeT = AdjT::EdgeType;
     using Cluster = dag::temporal_cluster<EdgeT, AdjT>;
-    py::class_<Cluster>(m,
+    nb::class_<Cluster>(m,
         python_type_str<Cluster>().c_str())
-      .def(py::init<AdjT, std::size_t>(),
+      .def(nb::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0)
-      .def(py::init<std::vector<EdgeT>, AdjT, std::size_t>(),
+      .def(nb::init<std::vector<EdgeT>, AdjT, std::size_t>(),
           "events"_a,
           "temporal_adjacency"_a,
           "size_hint"_a = 0)
@@ -47,8 +47,8 @@ struct declare_temporal_cluster_types {
           &Cluster::volume)
       .def("mass",
           &Cluster::mass)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
+      .def(nb::self == nb::self)
+      .def(nb::self != nb::self)
       .def("__len__", &Cluster::size)
       .def("__contains__",
           &Cluster::contains,
@@ -58,7 +58,7 @@ struct declare_temporal_cluster_types {
       });
 
     using ClusterSize = dag::temporal_cluster_size<EdgeT, AdjT>;
-    py::class_<ClusterSize>(m,
+    nb::class_<ClusterSize>(m,
         python_type_str<ClusterSize>().c_str())
       .def("lifetime",
           &ClusterSize::lifetime)
@@ -73,7 +73,7 @@ struct declare_temporal_cluster_types {
 
     using ClusterSizeEstimate =
       dag::temporal_cluster_size_estimate<EdgeT, AdjT>;
-    py::class_<ClusterSizeEstimate>(m,
+    nb::class_<ClusterSizeEstimate>(m,
         python_type_str<ClusterSizeEstimate>().c_str())
       .def("lifetime",
           &ClusterSizeEstimate::lifetime)
@@ -87,7 +87,7 @@ struct declare_temporal_cluster_types {
   }
 };
 
-void declare_typed_temporal_clusters(py::module& m) {
+void declare_typed_temporal_clusters(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_temporal_cluster_types>,

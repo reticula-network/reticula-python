@@ -1,7 +1,7 @@
 #include <string>
 
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/stl.h>
 
 #include <dag/io.hpp>
 
@@ -9,24 +9,24 @@
 
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <dag::network_edge EdgeT>
 struct declare_io_functions {
-  void operator()(py::module& m) {
+  void operator()(nb::module& m) {
     m.def(fmt::format("read_edgelist_{}", python_type_str<EdgeT>()).c_str(),
         [](const std::string& path, char delimiter, char quote) {
           return dag::read_edgelist<EdgeT>(path, delimiter, quote);
         }, "path"_a, "delimiter"_a = ' ', "quote"_a = '"',
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
 using simple_temporal_type_parameter_combinations =
   metal::cartesian<types::simple_vert_types, types::time_types>;
 
-void declare_typed_io_functions(py::module& m) {
+void declare_typed_io_functions(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_io_functions>,

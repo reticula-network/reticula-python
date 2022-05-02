@@ -1,8 +1,8 @@
 #include <vector>
 
-#include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
-#include <pybind11/stl.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/operators.h>
+#include <nanobind/stl.h>
 #include <fmt/format.h>
 
 #include <dag/networks.hpp>
@@ -10,19 +10,19 @@
 #include "type_str/networks.hpp"
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <dag::network_edge EdgeT>
 struct declare_network_class {
-  void operator()(py::module &m) {
+  void operator()(nb::module &m) {
     using Net = dag::network<EdgeT>;
-    py::class_<Net>(m,
+    nb::class_<Net>(m,
         python_type_str<Net>().c_str())
-      .def(py::init<>())
-      .def(py::init<std::vector<EdgeT>>(),
+      .def(nb::init<>())
+      .def(nb::init<std::vector<EdgeT>>(),
           "edges"_a)
-      .def(py::init<
+      .def(nb::init<
             std::vector<EdgeT>,
             std::vector<typename EdgeT::VertexType>>(),
           "edges"_a, "verts"_a)
@@ -56,29 +56,29 @@ struct declare_network_class {
           &Net::neighbours,
           "vert"_a)
       .def("in_edges",
-          py::overload_cast<const typename EdgeT::VertexType&>(
-            &Net::in_edges, py::const_),
+          nb::overload_cast<const typename EdgeT::VertexType&>(
+            &Net::in_edges, nb::const_),
           "vert"_a)
       .def("out_edges",
-          py::overload_cast<const typename EdgeT::VertexType&>(
-            &Net::out_edges, py::const_),
+          nb::overload_cast<const typename EdgeT::VertexType&>(
+            &Net::out_edges, nb::const_),
           "vert"_a)
       .def("in_edges",
-          py::overload_cast<>(
-            &Net::in_edges, py::const_))
+          nb::overload_cast<>(
+            &Net::in_edges, nb::const_))
       .def("out_edges",
-          py::overload_cast<>(
-            &Net::out_edges, py::const_))
+          nb::overload_cast<>(
+            &Net::out_edges, nb::const_))
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
       })
       .def_static("edge_type", []() {
-        return py::type::of<typename Net::EdgeType>();
+        return nb::type::of<typename Net::EdgeType>();
       });
   }
 };
 
-void declare_typed_networks(py::module& m) {
+void declare_typed_networks(nb::module& m) {
   // declare network
   types::run_each<
     metal::transform<
