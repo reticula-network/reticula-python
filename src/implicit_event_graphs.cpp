@@ -1,7 +1,7 @@
 #include <vector>
 
-#include <nanobind/nanobind.h>
-#include <nanobind/stl.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include <fmt/format.h>
 
@@ -10,24 +10,24 @@
 #include "type_str/implicit_event_graphs.hpp"
 #include "type_utils.hpp"
 
-namespace nb = nanobind;
-using namespace nanobind::literals;
+namespace py = pybind11;
+using namespace pybind11::literals;
 
 template <dag::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_class {
-  void operator()(nb::module &m) {
+  void operator()(py::module &m) {
     using EdgeT = AdjT::EdgeType;
     using Net = dag::implicit_event_graph<EdgeT, AdjT>;
-    nb::class_<Net>(m,
+    py::class_<Net>(m,
         python_type_str<Net>().c_str())
-      .def(nb::init<std::vector<EdgeT>, AdjT>(),
+      .def(py::init<std::vector<EdgeT>, AdjT>(),
           "events"_a, "temporal_adjacency"_a)
-      .def(nb::init<
+      .def(py::init<
             std::vector<EdgeT>,
             std::vector<typename EdgeT::VertexType>,
             AdjT>(),
           "events"_a, "verts"_a, "temporal_adjacency"_a)
-      .def(nb::init<dag::network<EdgeT>, AdjT>(),
+      .def(py::init<dag::network<EdgeT>, AdjT>(),
           "temporal_network"_a, "temporal_adjacency"_a)
       .def("events_cause",
           &Net::events_cause)
@@ -54,7 +54,7 @@ struct declare_implicit_event_graph_class {
   }
 };
 
-void declare_typed_implicit_event_graphs(nb::module& m) {
+void declare_typed_implicit_event_graphs(py::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_implicit_event_graph_class>,

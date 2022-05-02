@@ -1,7 +1,7 @@
 #include <vector>
 
-#include <nanobind/nanobind.h>
-#include <nanobind/operators.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/operators.h>
 
 #include <fmt/format.h>
 #include <dag/components.hpp>
@@ -9,18 +9,18 @@
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
 
-namespace nb = nanobind;
-using namespace nanobind::literals;
+namespace py = pybind11;
+using namespace pybind11::literals;
 
 template <typename VertT>
 struct declare_component_types {
-  void operator()(nb::module &m) {
+  void operator()(py::module &m) {
     using Component = dag::component<VertT>;
-    nb::class_<Component>(m,
+    py::class_<Component>(m,
         python_type_str<Component>().c_str())
-      .def(nb::init<std::size_t>(),
+      .def(py::init<std::size_t>(),
           "size_hint"_a = 0)
-      .def(nb::init<std::vector<VertT>, std::size_t>(),
+      .def(py::init<std::vector<VertT>, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0)
       .def("insert",
           static_cast<void (Component::*)(
@@ -34,11 +34,11 @@ struct declare_component_types {
           "vertex"_a)
       .def("merge", &Component::merge,
           "other"_a)
-      .def(nb::self == nb::self)
-      .def(nb::self != nb::self)
+      .def(py::self == py::self)
+      .def(py::self != py::self)
       .def("__iter__", [](const Component& c) {
-            return nb::make_iterator(c.begin(), c.end());
-          }, nb::keep_alive<0, 1>())
+            return py::make_iterator(c.begin(), c.end());
+          }, py::keep_alive<0, 1>())
       .def("__len__", &Component::size)
       .def("__contains__", &Component::contains,
           "vertex"_a)
@@ -47,7 +47,7 @@ struct declare_component_types {
       });
 
     using ComponentSize = dag::component_size<VertT>;
-    nb::class_<ComponentSize>(m,
+    py::class_<ComponentSize>(m,
         python_type_str<ComponentSize>().c_str())
       .def("size", &ComponentSize::size)
       .def("__repr__", [](const ComponentSize& c) {
@@ -56,7 +56,7 @@ struct declare_component_types {
 
     using ComponentSizeEstimate =
       dag::component_size_estimate<VertT>;
-    nb::class_<ComponentSizeEstimate>(m,
+    py::class_<ComponentSizeEstimate>(m,
         python_type_str<ComponentSizeEstimate>().c_str())
       .def("size_estimate",
           &ComponentSizeEstimate::size_estimate)
@@ -66,7 +66,7 @@ struct declare_component_types {
   }
 };
 
-void declare_typed_components(nb::module& m) {
+void declare_typed_components(py::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_component_types>,

@@ -24,5 +24,5 @@ setup(
     cmake_install_dir="src/dag",
     include_package_data=True,
     extras_require={"test": ["pytest"]},
-    python_requires=">=3.8",
+    python_requires=">=3.6",
 )
