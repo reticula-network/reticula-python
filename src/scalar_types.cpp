@@ -9,7 +9,7 @@ using namespace nanobind::literals;
 
 template <typename T>
 struct declare_scalar_types {
-  void operator()(nb::module_ &m) {
+  void operator()(nb::module &m) {
     nb::class_<T>(m,
         python_type_str<T>().c_str());
   }
@@ -22,7 +22,7 @@ using unique = metal::accumulate<
     metal::lambda<metal::contains>, metal::_1,
     metal::lambda<metal::append>>, metal::list<>, seq>;
 
-void declare_typed_scalar(nb::module_& m) {
+void declare_typed_scalar(nb::module& m) {
   using scalar_types = unique<metal::join<
     types::time_types, types::simple_vert_types>>;
 

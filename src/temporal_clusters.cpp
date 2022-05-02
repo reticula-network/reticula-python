@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 
 template <dag::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
-  void operator()(nb::module_ &m) {
+  void operator()(nb::module &m) {
     using EdgeT = AdjT::EdgeType;
     using Cluster = dag::temporal_cluster<EdgeT, AdjT>;
     nb::class_<Cluster>(m,
@@ -87,7 +87,7 @@ struct declare_temporal_cluster_types {
   }
 };
 
-void declare_typed_temporal_clusters(nb::module_& m) {
+void declare_typed_temporal_clusters(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_temporal_cluster_types>,

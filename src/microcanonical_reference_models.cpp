@@ -9,7 +9,7 @@ using namespace nanobind::literals;
 
 template <dag::temporal_edge EdgeT, std::uniform_random_bit_generator Gen>
 struct declare_mrrm_algorithms {
-  void operator()(nb::module_& m) {
+  void operator()(nb::module& m) {
     m.def("instant_event_shuffling",
         &dag::mrrms::instant_event_shuffling<EdgeT, Gen>,
         "temporal_network"_a, "random_state"_a,
@@ -62,7 +62,7 @@ struct declare_mrrm_algorithms {
   }
 };
 
-void declare_typed_mrrm_algorithms(nb::module_& m) {
+void declare_typed_mrrm_algorithms(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::partial<

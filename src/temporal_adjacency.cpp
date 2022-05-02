@@ -9,7 +9,7 @@ using namespace nanobind::literals;
 
 template <dag::temporal_edge EdgeT>
 struct declare_temporal_adjacency_class {
-  void operator()(nb::module_ &m) {
+  void operator()(nb::module &m) {
     using Simple = dag::temporal_adjacency::simple<EdgeT>;
     nb::class_<Simple>(m,
         python_type_str<Simple>().c_str())
@@ -61,7 +61,7 @@ struct declare_temporal_adjacency_class {
   }
 };
 
-void declare_typed_temporal_adjacency_class(nb::module_& m) {
+void declare_typed_temporal_adjacency_class(nb::module& m) {
   // declare network
   types::run_each<
     metal::transform<

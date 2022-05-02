@@ -14,7 +14,7 @@ using namespace nanobind::literals;
 
 template <typename VertT>
 struct declare_component_types {
-  void operator()(nb::module_ &m) {
+  void operator()(nb::module &m) {
     using Component = dag::component<VertT>;
     nb::class_<Component>(m,
         python_type_str<Component>().c_str())
@@ -66,7 +66,7 @@ struct declare_component_types {
   }
 };
 
-void declare_typed_components(nb::module_& m) {
+void declare_typed_components(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_component_types>,

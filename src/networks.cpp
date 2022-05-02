@@ -15,7 +15,7 @@ using namespace nanobind::literals;
 
 template <dag::network_edge EdgeT>
 struct declare_network_class {
-  void operator()(nb::module_ &m) {
+  void operator()(nb::module &m) {
     using Net = dag::network<EdgeT>;
     nb::class_<Net>(m,
         python_type_str<Net>().c_str())
@@ -78,7 +78,7 @@ struct declare_network_class {
   }
 };
 
-void declare_typed_networks(nb::module_& m) {
+void declare_typed_networks(nb::module& m) {
   // declare network
   types::run_each<
     metal::transform<

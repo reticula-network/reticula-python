@@ -15,7 +15,7 @@ using namespace nanobind::literals;
 
 template <typename OutVert, typename InVert>
 struct declare_relabel_nodes {
-  void operator()(nb::module_& m) {
+  void operator()(nb::module& m) {
     m.def(fmt::format("relabel_nodes_{}", python_type_str<OutVert>()).c_str(),
         &dag::relabel_nodes<OutVert, InVert>,
         "network"_a,
@@ -25,7 +25,7 @@ struct declare_relabel_nodes {
 
 template <typename VertT1, typename VertT2>
 struct declare_cartesian_product {
-  void operator()(nb::module_& m) {
+  void operator()(nb::module& m) {
     m.def("cartesian_product",
         &dag::cartesian_product<VertT1, VertT2>,
         "undirected_net_1"_a, "undirected_net_2"_a,
@@ -35,7 +35,7 @@ struct declare_cartesian_product {
 
 template <typename T>
 struct declare_degree_sequence_algorithms {
-  void operator()(nb::module_& m) {
+  void operator()(nb::module& m) {
     m.def("is_graphic",
         &dag::is_graphic<std::vector<T>>,
         "degree_seq"_a,
@@ -49,11 +49,11 @@ struct declare_degree_sequence_algorithms {
 };
 
 
-void declare_typed_directed_algorithms(nb::module_& m);
-void declare_typed_undirected_algorithms(nb::module_& m);
-void declare_typed_temporal_algorithms(nb::module_& m);
+void declare_typed_directed_algorithms(nb::module& m);
+void declare_typed_undirected_algorithms(nb::module& m);
+void declare_typed_temporal_algorithms(nb::module& m);
 
-void declare_typed_algorithms(nb::module_& m) {
+void declare_typed_algorithms(nb::module& m) {
   types::run_each<
     metal::transform<
       metal::partial<
