@@ -24,7 +24,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   metal
   GIT_REPOSITORY https://github.com/brunocodutra/metal.git
-  GIT_TAG 2.1.3)
+  GIT_TAG v2.1.4)
 
 FetchContent_GetProperties(pybind11)
 if(NOT pybind11_POPULATED)
