@@ -1,7 +1,9 @@
+.. _static network reachability:
+
 Static network reachability
 ===========================
 
-The algorithms discribed in this page deal with the topic of reachability in
+The algorithms described in this page deal with the topic of reachability in
 different network types. **Reachability** is the ability to get from one vertex
 to another, but only through edges of the network. If the network is directed,
 the *path* between two vertices should always be following the directions of the
@@ -236,7 +238,7 @@ Python:
   dag.component[vert_type]
 
 Returns the connected component that vertex :cpp:`vert` belongs to. A connected
-compoent is a maximal subset of vertices of the network where all vertices can
+component is a maximal subset of vertices of the network where all vertices can
 reach all others.
 
 

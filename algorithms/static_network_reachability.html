@@ -34,8 +34,8 @@
           <div class="body" role="main">
             
   <section id="static-network-reachability">
-<h1>Static network reachability<a class="headerlink" href="#static-network-reachability" title="Permalink to this headline">¶</a></h1>
-<p>The algorithms discribed in this page deal with the topic of reachability in
+<span id="id1"></span><h1>Static network reachability<a class="headerlink" href="#static-network-reachability" title="Permalink to this headline">¶</a></h1>
+<p>The algorithms described in this page deal with the topic of reachability in
 different network types. <strong>Reachability</strong> is the ability to get from one vertex
 to another, but only through edges of the network. If the network is directed,
 the <em>path</em> between two vertices should always be following the directions of the
@@ -110,7 +110,7 @@ component size you expect to get. If not, you can rely on the default behaviour.
 
 <p>Returns all weakly-connected components of the parameter network. Implementation
 is based on consecutive unions on a disjoint-set data structure of vertices
-<span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">9</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">10</a>]</span>.</p>
+<span id="id2">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">9</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">10</a>]</span>.</p>
 <p>If you are not interested in weakly-connected components with only a single
 vertex, set the <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">singletons</span></span></code> to <code class="code highlight cpp docutils literal notranslate"><span class="nb"><span class="pre">false</span></span></code>.</p>
 <p>C++:</p>
@@ -260,7 +260,7 @@ many cases.</p>
 <dd></dd></dl>
 
 <p>Returns the connected component that vertex <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">vert</span></span></code> belongs to. A connected
-compoent is a maximal subset of vertices of the network where all vertices can
+component is a maximal subset of vertices of the network where all vertices can
 reach all others.</p>
 </section>
 <section id="all-connected-components">
@@ -279,8 +279,8 @@ reach all others.</p>
 
 <p>Returns all connected components of the static undirected network.</p>
 </section>
-<section id="id2">
-<h3>All connected components<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3>All connected components<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_N3dag22static_undirected_edgeEEN3dag12is_connectedEbRKN3dag7networkI5EdgeTEE">
