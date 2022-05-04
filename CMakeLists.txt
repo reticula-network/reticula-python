@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   dag
   GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG 0378d84)
+  GIT_TAG f3cc5d)
 
 FetchContent_Declare(
   fmt
