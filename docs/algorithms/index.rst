@@ -4,7 +4,7 @@ Algorithms
 .. toctree::
    :maxdepth: 1
 
-   graph_operations
    graphicallity
+   graph_operations
    static_network_reachability
    temporal_network_reachability
