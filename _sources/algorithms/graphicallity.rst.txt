@@ -1,6 +1,9 @@
 Graphicallity
 =============
 
+Undirected degree sequence
+--------------------------
+
 C++:
 
 .. cpp:function:: template <std::ranges::forward_range Range> \
@@ -17,9 +20,8 @@ containing no multi-edges or loops, based on the Erdős--Gallai algorithm
 :cite:p:`erdos1960graphs,choudum1986simple`.
 
 
-Digraphicallity
-===============
-
+Directed degree-pair sequence
+------------------------
 
 C++:
 
@@ -30,9 +32,13 @@ C++:
 
 Python:
 
-.. py:function:: dag.is_digraphic(in_out_degree_sequence: List[int, int]) \
-    -> bool
+.. py:function:: dag.is_digraphic(\
+    in_out_degree_sequence: List[Pair[int, int]]) -> bool
 
-Checks if the sequence can be the degree sequence of a valid directed graph,
-containing no multi-edges or loops, based on the algorithm by Kleitman and Wang
-:cite:t:`kleitman1973algorithms`.
+Checks if the sequence can be the degree-pair sequence of a valid directed
+graph, containing no multi-edges or loops, based on the algorithm by Kleitman
+and Wang :cite:p:`kleitman1973algorithms`.
+
+A degree pair sequence is a range (list) of pairs (2-tuples) of integers,
+where the first element of each item represents in-degree and the second item
+out-degree of one vertex.
