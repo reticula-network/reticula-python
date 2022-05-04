@@ -20,5 +20,5 @@ Generates a random Barabási--Albert network
 one-by-one and each vertex is connected to :cpp:`m` random existing vertices.
 
 The parameter :cpp:`m` needs to be smaller than :cpp:`n` and larger than or
-equal to 1, otherwise the the function fails by raising a :py:`ValueError`
-exception in Python or a :cpp:`std::invalid_argument` exception in C++.
+equal to 1, otherwise the function fails by raising a :py:`ValueError` exception
+in Python or a :cpp:`std::invalid_argument` exception in C++.
