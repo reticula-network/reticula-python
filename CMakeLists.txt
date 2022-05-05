@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(dag_python LANGUAGES CXX VERSION 0.1)
+project(dag_python LANGUAGES CXX VERSION 0.0.1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
@@ -36,7 +36,6 @@ FetchContent_MakeAvailable(dag fmt metal)
 
 
 pybind11_add_module(dag_ext src/main.cpp)
-target_link_libraries(dag_ext PRIVATE dag fmt Metal)
 
 add_library(${PROJECT_NAME}_scaler_types src/scalar_types.cpp)
 target_link_libraries(${PROJECT_NAME}_scaler_types PRIVATE
