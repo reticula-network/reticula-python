@@ -10,17 +10,8 @@ $ git clone https://github.com/arashbm/dag-python.git
 Build the Wheel:
 ```bash
 $ cd dag-python
-$ python setup.py bdist_wheel -- -- -j 3
+$ pip install .
 ```
-
-There should be Wheel (`.whl`) fil in a newly created `dist/` directory:
-```bash
-$ ls dist
-dag-X.X.X-XXX.whl
-$ pip install dist/dag-X.X.X-XXX.whl
-```
-It might be helpful to use the `--force-reinstall` flag for pip during
-development.
 
 ## Basic examples
 
