@@ -1,10 +1,49 @@
+[project]
+name = "dag"
+version = "0.0.1"
+description="Analyse temporal network and hypergraphs efficiently."
+authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+readme = "README.md"
+keywords = [
+    "Complex Networks", "Networks", "network",
+    "Graphs", "Graph Theory", "graph",
+    "Temporal Networks", "temporal network",
+    "Hypergraphs", "hypergraph", "hyper-graph"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Information Analysis"
+]
+
+[project.urls]
+homepage = "https://arashbm.github.io/dag-python/"
+documentation = "https://arashbm.github.io/dag-python/"
+repository = "https://github.com/arashbm/dag-python"
+bug-tracker= "https://github.com/arashbm/dag-python/issues"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
 [build-system]
 requires = [
     "setuptools>=42",
     "wheel",
     "ninja",
     "cmake>=3.22",
-    "scikit-build>=0.13",
+    "scikit-build>=0.14",
 ]
 
 build-backend = "setuptools.build_meta"

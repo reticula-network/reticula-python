@@ -11,18 +11,12 @@ except ImportError:
     )
     raise
 
+from skbuild.cmaker import get_cmake_version
 from setuptools import find_packages
 
 setup(
-    name="dag",
-    version="0.0.1",
-    description="(temporal) network analysis library",
-    author="Arash Badie Modiri",
-    license="MIT",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     cmake_install_dir="src/dag",
     include_package_data=True,
-    extras_require={"test": ["pytest"]},
-    python_requires=">=3.8",
 )
