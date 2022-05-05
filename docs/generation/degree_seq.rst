@@ -26,7 +26,7 @@ exactly equal to the input :cpp:`degree_sequence`. The output network has the
 same number of nodes as the length of the :cpp:`degree_sequence`.
 
 If the input :cpp:`degree_sequence` is not graphical, i.e., it is not possible
-to create a graph that produces that sequence, the funciton fails by raising a
+to create a graph that produces that sequence, the function fails by raising a
 :py:`ValueError` exception in Python or a :cpp:`std::invalid_argument` exception
 in C++.
 
@@ -47,7 +47,7 @@ this function to limit runtime to a limited set of tries:
    dag::try_random_degree_sequence_graph(\
       const Range& degree_sequence, Gen& generator, std::size_t max_tries)
 
-If this function succeeds in :cpp:`max_tries` tries, it will retrun the
+If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.
 
 Random directed degree-sequence network
@@ -102,5 +102,5 @@ possible to create a directed graph that produces that in- and out-degree
 sequence, the funciton fails by raising a :py:`ValueError` exception in Python
 or a :cpp:`std::invalid_argument` exception in C++.
 
-If this function succeeds in :cpp:`max_tries` tries, it will retrun the
+If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.

@@ -23,11 +23,12 @@ Generates a graph with the given weight-sequence, more specifically known as
 "Chung-Lu graphs" :cite:p:`chung2002connected`. As the network size increases,
 as determined by the length of the parameter :cpp:`weight_sequence`, the degree
 sequence of generated network approaches on average to the set of numbers in the
-parameter :cpp:`weight_sequence`. Existance of each two edges are independent of
-each other. The implementation is based on Ref. :cite:p:`miller2011efficient`.
+parameter :cpp:`weight_sequence`. The existence of each two edges are
+independent of each other. The implementation is based on Ref.
+:cite:p:`miller2011efficient`.
 
-The paramter :cpp:`weight_sequence` is expected to be a list of numericals, e.g.
-:cpp:`std::vector<double>` in C++ and :py:`List[float]` in python.
+The parameter :cpp:`weight_sequence` is expected to be a list of numericals,
+e.g., :cpp:`std::vector<double>` in C++ and :py:`List[float]` in python.
 
 Random expected directed degree-sequence network
 ================================================

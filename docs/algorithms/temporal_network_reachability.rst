@@ -217,10 +217,10 @@ Python:
 .. py:class:: dag.temporal_adjacency.simple[edge_type]()
 
 The simple temporal adjacency specifies the physical minimum requirements for
-two events to be considered adjacent. The 
+two events to be considered adjacent.
 
 .. note:: Two event happening at the same time cannot be adjacent. If your
-   network representation has low temporal resolutoin, you might need to
+   network representation has a low temporal resolution, you might need to
    manually adjust timestamps.
 
 Limited waiting-time adjacency

@@ -29,5 +29,5 @@ this function to limit runtime to a limited set of tries:
    dag::try_random_regular_graph(VertT size, VertT degree, Gen& generator, \
       std::size_t max_tries)
 
-If this function succeeds in :cpp:`max_tries` tries, it will retrun the
+If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.
