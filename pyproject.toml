@@ -39,7 +39,7 @@ test = ["pytest"]
 
 [build-system]
 requires = [
-    "setuptools>=42",
+    "setuptools>=62",
     "wheel",
     "ninja",
     "cmake>=3.22",
