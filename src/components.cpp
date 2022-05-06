@@ -8,6 +8,7 @@
 
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -44,6 +45,9 @@ struct declare_component_types {
           "vertex"_a)
       .def("__repr__", [](const Component& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename Component::VertexType>();
       });
 
     using ComponentSize = dag::component_size<VertT>;
@@ -52,6 +56,9 @@ struct declare_component_types {
       .def("size", &ComponentSize::size)
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename ComponentSize::VertexType>();
       });
 
     using ComponentSizeEstimate =
@@ -62,6 +69,9 @@ struct declare_component_types {
           &ComponentSizeEstimate::size_estimate)
       .def("__repr__", [](const ComponentSizeEstimate& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename ComponentSizeEstimate::VertexType>();
       });
   }
 };

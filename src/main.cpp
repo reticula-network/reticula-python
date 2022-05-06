@@ -34,9 +34,6 @@ void declare_typed_mrrm_algorithms(py::module& m);
 
 void declare_typed_io_functions(py::module& m);
 
-#define STRINGIFY(x) #x
-#define MACRO_STRINGIFY(x) STRINGIFY(x)
-
 PYBIND11_MODULE(dag_ext, m) {
     declare_typed_scalar(m);
 
@@ -72,9 +69,4 @@ PYBIND11_MODULE(dag_ext, m) {
     declare_typed_mrrm_algorithms(mrrm_m);
 
     declare_typed_io_functions(m);
-#ifdef VERSION_INFO
-    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
-#else
-    m.attr("__version__") = "dev";
-#endif
 }

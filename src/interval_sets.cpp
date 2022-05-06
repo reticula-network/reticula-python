@@ -7,6 +7,7 @@
 
 #include "type_str/intervals.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -38,6 +39,9 @@ struct declare_interval_set_types {
       .def(py::self == py::self)
       .def("__repr__", [](const IntSet& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("value_type", []() {
+        return types::handle_for<typename IntSet::ValueType>();
       });
   }
 };

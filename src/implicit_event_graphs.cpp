@@ -9,6 +9,7 @@
 
 #include "type_str/implicit_event_graphs.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -50,6 +51,12 @@ struct declare_implicit_event_graph_class {
           "event"_a, "just_first"_a = true)
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
+      })
+      .def_static("edge_type", []() {
+        return types::handle_for<typename Net::EdgeType>();
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename Net::VertexType>();
       });
   }
 };

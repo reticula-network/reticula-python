@@ -9,6 +9,7 @@
 
 #include "type_str/networks.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -73,7 +74,10 @@ struct declare_network_class {
         return fmt::format("{}", a);
       })
       .def_static("edge_type", []() {
-        return py::type::of<typename Net::EdgeType>();
+        return types::handle_for<typename Net::EdgeType>();
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename Net::VertexType>();
       });
   }
 };

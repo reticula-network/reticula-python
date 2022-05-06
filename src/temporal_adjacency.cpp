@@ -3,6 +3,7 @@
 
 #include "type_str/temporal_adjacency.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -17,7 +18,13 @@ struct declare_temporal_adjacency_class {
       .def("linger",
           &Simple::linger)
       .def("maximum_linger",
-          &Simple::maximum_linger);
+          &Simple::maximum_linger)
+      .def_static("edge_type", []() {
+        return types::handle_for<typename Simple::EdgeType>();
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename Simple::VertexType>();
+      });
 
     using LWT = dag::temporal_adjacency::limited_waiting_time<EdgeT>;
     py::class_<LWT>(m,
@@ -29,7 +36,13 @@ struct declare_temporal_adjacency_class {
       .def("maximum_linger",
           &LWT::maximum_linger)
       .def("dt",
-          &LWT::dt);
+          &LWT::dt)
+      .def_static("edge_type", []() {
+        return types::handle_for<typename LWT::EdgeType>();
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename LWT::VertexType>();
+      });
 
     if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
       using Exp = dag::temporal_adjacency::exponential<EdgeT>;
@@ -42,7 +55,13 @@ struct declare_temporal_adjacency_class {
         .def("maximum_linger",
             &Exp::maximum_linger)
         .def("rate",
-            &Exp::rate);
+            &Exp::rate)
+        .def_static("edge_type", []() {
+          return types::handle_for<typename Exp::EdgeType>();
+        })
+        .def_static("vertex_type", []() {
+          return types::handle_for<typename Exp::VertexType>();
+        });
     }
 
     if constexpr (std::is_integral_v<typename EdgeT::TimeType>) {
@@ -56,7 +75,13 @@ struct declare_temporal_adjacency_class {
         .def("maximum_linger",
             &Geom::maximum_linger)
         .def("p",
-            &Geom::p);
+            &Geom::p)
+        .def_static("edge_type", []() {
+          return types::handle_for<typename Geom::EdgeType>();
+        })
+        .def_static("vertex_type", []() {
+          return types::handle_for<typename Geom::VertexType>();
+        });
     }
   }
 };

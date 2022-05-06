@@ -4,6 +4,7 @@
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -33,6 +34,9 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     .def(py::hash(py::self))
     .def("__repr__", [](const EdgeT& a) {
       return fmt::format("{}", a);
+    })
+    .def_static("vertex_type", []() {
+      return types::handle_for<typename EdgeT::VertexType>();
     });
 
   using VertT = typename EdgeT::VertexType;
@@ -41,7 +45,10 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     cls.def("cause_time",
           &EdgeT::cause_time);
     cls.def("effect_time",
-          &EdgeT::effect_time);
+          &EdgeT::effect_time)
+    .def_static("time_type", []() {
+      return types::handle_for<typename EdgeT::TimeType>();
+    });
 
     m.def("adjacent",
       py::overload_cast<

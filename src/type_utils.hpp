@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <random>
+#include <concepts>
 
 #include <metal.hpp>
 

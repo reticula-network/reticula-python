@@ -7,6 +7,7 @@
 
 #include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
+#include "type_handles.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
@@ -55,6 +56,12 @@ struct declare_temporal_cluster_types {
           "event"_a)
       .def("__repr__", [](const Cluster& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename Cluster::VertexType>();
+      })
+      .def_static("adjacency_type", []() {
+        return types::handle_for<typename Cluster::AdjacencyType>();
       });
 
     using ClusterSize = dag::temporal_cluster_size<EdgeT, AdjT>;
@@ -68,6 +75,12 @@ struct declare_temporal_cluster_types {
           &ClusterSize::mass)
       .def("__repr__", [](const ClusterSize& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename ClusterSize::VertexType>();
+      })
+      .def_static("adjacency_type", []() {
+        return types::handle_for<typename ClusterSize::AdjacencyType>();
       });
 
 
@@ -83,6 +96,12 @@ struct declare_temporal_cluster_types {
           &ClusterSizeEstimate::mass_estimate)
       .def("__repr__", [](const ClusterSizeEstimate& c) {
           return fmt::format("{}", c);
+      })
+      .def_static("vertex_type", []() {
+        return types::handle_for<typename ClusterSizeEstimate::VertexType>();
+      })
+      .def_static("adjacency_type", []() {
+        return types::handle_for<typename ClusterSizeEstimate::AdjacencyType>();
       });
   }
 };
