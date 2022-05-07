@@ -1,5 +1,5 @@
 [project]
-name = "dag"
+name = "reticula"
 version = "0.0.1"
 description="Analyse temporal network and hypergraphs efficiently."
 authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
@@ -29,10 +29,10 @@ classifiers = [
 ]
 
 [project.urls]
-homepage = "https://arashbm.github.io/dag-python/"
-documentation = "https://arashbm.github.io/dag-python/"
-repository = "https://github.com/arashbm/dag-python"
-bug-tracker= "https://github.com/arashbm/dag-python/issues"
+homepage = "https://reticula.network/"
+documentation = "https://docs.reticula.network/"
+repository = "https://github.com/reticula-network/reticula-python"
+bug-tracker= "https://github.com/reticula-network/reticula-python/issues"
 
 [project.optional-dependencies]
 test = ["pytest"]

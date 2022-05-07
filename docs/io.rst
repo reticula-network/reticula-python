@@ -11,10 +11,10 @@ Reading an edgelist file
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. cpp:function:: template <network_edge EdgeT> \
-  dag::network<EdgeT> read_edgelist(std::filesystem::path path, \
+  network<EdgeT> read_edgelist(std::filesystem::path path, \
     char delimiter = ' ', char quote = '"')
 
-.. py:function:: dag.read_edgelist(path: str, \
+.. py:function:: read_edgelist(path: str, \
   delimiter: str = " ", quote: str = "\"")
 
 
@@ -28,7 +28,7 @@ Writing an edgelist file
 Interpolation with NetworkX
 ---------------------------
 
-.. py:function:: dag.to_nx(network, create_using = None)
+.. py:function:: to_nx(network, create_using = None)
 
   Creates a NetworkX graph from a dyadic static network. If :py:`created_using`
   is not provided, the type of the output is selected based in directionality of

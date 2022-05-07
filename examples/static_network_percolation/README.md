@@ -9,14 +9,14 @@ expected change in the expected component size after inducing a miniscule
 external field, called `isotropoc_chi`.
 
 The code tries to utilise all cores on your computer without using separate
-Python processes. Remember that while all the computations that run inside `dag`
-library functions can be parallelised, the more Python functions we run in
-the `cc_analysis` function, which is the multi-threaded part of your code,
-[the lower your overall speedup is going to be][amdahl]. In this
+Python processes. Remember that while almost all the computations that run
+inside Reticulum library functions can be parallelised, the more Python
+functions we run in the `cc_analysis` function, which is the multi-threaded part
+of your code, [the lower your overall speedup is going to be][amdahl]. In this
 example, the networks with a lower `p` values spend less calculation time in the
-`dag` library (i.e. the functions `dag.random_gnp_graph` and
-`dag.connected_components` run faster for less dense network) but slightly more
-time in the Python functions since larger number of components means more
+Reticulum library (i.e. the functions `reticulum.random_gnp_graph` and
+`reticulum.connected_components` run faster for less dense network) but slightly
+more time in the Python functions since larger number of components means more
 calculation time for list comprehensions.
 
 [gnp]: https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model
@@ -41,4 +41,4 @@ i7-6700HQ laptop CPU supporting a total of 8 SMT threads.
 The output figure should look something like this:
 ![4 plot showing changes in compoent size and susceptibility][fig]
 
-[fig]: https://raw.githubusercontent.com/arashbm/dag-python/main/examples/static_network_percolation/figure.svg
+[fig]: https://raw.githubusercontent.com/reticulum-network/reticulum-python/main/examples/static_network_percolation/figure.svg

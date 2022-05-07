@@ -5,7 +5,7 @@
 #include <pybind11/stl.h>
 #include <fmt/format.h>
 
-#include <dag/networks.hpp>
+#include <reticula/networks.hpp>
 
 #include "type_str/networks.hpp"
 #include "type_utils.hpp"
@@ -14,10 +14,10 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <dag::network_edge EdgeT>
+template <reticula::network_edge EdgeT>
 struct declare_network_class {
   void operator()(py::module &m) {
-    using Net = dag::network<EdgeT>;
+    using Net = reticula::network<EdgeT>;
     py::class_<Net>(m,
         python_type_str<Net>().c_str())
       .def(py::init<>())

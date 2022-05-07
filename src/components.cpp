@@ -4,7 +4,7 @@
 #include <pybind11/operators.h>
 
 #include <fmt/format.h>
-#include <dag/components.hpp>
+#include <reticula/components.hpp>
 
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
@@ -16,7 +16,7 @@ using namespace pybind11::literals;
 template <typename VertT>
 struct declare_component_types {
   void operator()(py::module &m) {
-    using Component = dag::component<VertT>;
+    using Component = reticula::component<VertT>;
     py::class_<Component>(m,
         python_type_str<Component>().c_str())
       .def(py::init<std::size_t>(),
@@ -50,7 +50,7 @@ struct declare_component_types {
         return types::handle_for<typename Component::VertexType>();
       });
 
-    using ComponentSize = dag::component_size<VertT>;
+    using ComponentSize = reticula::component_size<VertT>;
     py::class_<ComponentSize>(m,
         python_type_str<ComponentSize>().c_str())
       .def("size", &ComponentSize::size)
@@ -62,7 +62,7 @@ struct declare_component_types {
       });
 
     using ComponentSizeEstimate =
-      dag::component_size_estimate<VertT>;
+      reticula::component_size_estimate<VertT>;
     py::class_<ComponentSizeEstimate>(m,
         python_type_str<ComponentSizeEstimate>().c_str())
       .def("size_estimate",

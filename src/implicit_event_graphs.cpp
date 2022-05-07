@@ -5,7 +5,7 @@
 
 #include <fmt/format.h>
 
-#include <dag/implicit_event_graph.hpp>
+#include <reticula/implicit_event_graphs.hpp>
 
 #include "type_str/implicit_event_graphs.hpp"
 #include "type_utils.hpp"
@@ -14,11 +14,11 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <dag::temporal_adjacency::temporal_adjacency AdjT>
+template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_class {
   void operator()(py::module &m) {
     using EdgeT = AdjT::EdgeType;
-    using Net = dag::implicit_event_graph<EdgeT, AdjT>;
+    using Net = reticula::implicit_event_graph<EdgeT, AdjT>;
     py::class_<Net>(m,
         python_type_str<Net>().c_str())
       .def(py::init<std::vector<EdgeT>, AdjT>(),
@@ -28,7 +28,7 @@ struct declare_implicit_event_graph_class {
             std::vector<typename EdgeT::VertexType>,
             AdjT>(),
           "events"_a, "verts"_a, "temporal_adjacency"_a)
-      .def(py::init<dag::network<EdgeT>, AdjT>(),
+      .def(py::init<reticula::network<EdgeT>, AdjT>(),
           "temporal_network"_a, "temporal_adjacency"_a)
       .def("events_cause",
           &Net::events_cause)

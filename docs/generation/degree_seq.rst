@@ -4,21 +4,21 @@ Random degree-sequence network
 C++:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range Range, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::degree_range<Range> && \
+      degree_range<Range> && \
       std::convertible_to<std::ranges::range_value_t<Range>, VertT> \
-   dag::undirected_network<VertT> \
-   dag::random_degree_sequence_graph(\
+   undirected_network<VertT> \
+   random_degree_sequence_graph(\
       const Range& degree_sequence, Gen& generator)
 
 Python:
 
-.. py:function:: dag.random_degree_sequence_graph[vert_type](
+.. py:function:: random_degree_sequence_graph[vert_type](
       degree_sequence: List[int], random_state) \
-   -> dag.undirected_network[vert_type]
+   -> undirected_network[vert_type]
 
 
 Generates a random undirected network where the degree sequence of vertices is
@@ -37,14 +37,14 @@ difficult as the density increases. In C++, you can use the `try_` variant of
 this function to limit runtime to a limited set of tries:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range Range, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::degree_range<Range> && \
+      degree_range<Range> && \
       std::convertible_to<std::ranges::range_value_t<Range>, VertT> \
-   std::optional<dag::undirected_network<VertT>> \
-   dag::try_random_degree_sequence_graph(\
+   std::optional<undirected_network<VertT>> \
+   try_random_degree_sequence_graph(\
       const Range& degree_sequence, Gen& generator, std::size_t max_tries)
 
 If this function succeeds in :cpp:`max_tries` tries, it will return the
@@ -57,21 +57,21 @@ Random directed degree-sequence network
 C++:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range PairRange, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::degree_pair_range<PairRange> && \
-      dag::is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
-   dag::directed_network<VertT> \
-   dag::random_directed_degree_sequence_graph(\
+      degree_pair_range<PairRange> && \
+      is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
+   directed_network<VertT> \
+   random_directed_degree_sequence_graph(\
       const PairRange& in_out_degree_sequence, Gen& generator)
 
 Python:
 
-.. py:function:: dag.random_directed_degree_sequence_graph[vert_type](
+.. py:function:: random_directed_degree_sequence_graph[vert_type](
       in_out_degree_sequence: List[Tuple[int, int]], random_state) \
-   -> dag.directed_network[vert_type]
+   -> directed_network[vert_type]
 
 Similar to the case of `random degree-sequence network`_, the directed variant
 creates a graph that reproduces the input :cpp:`in_out_degree_sequence` for in-
@@ -86,14 +86,14 @@ The implementation is based on an extension of Ref.
 This function also provides a `try_` variant:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range PairRange, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::degree_pair_range<PairRange> && \
-      dag::is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
-   std::optional<dag::directed_network<VertT>> \
-   dag::try_random_degree_sequence_graph(\
+      degree_pair_range<PairRange> && \
+      is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
+   std::optional<directed_network<VertT>> \
+   try_random_degree_sequence_graph(\
       const PairRange& in_out_degree_sequence, Gen& generator, \
       std::size_t max_tries)
 

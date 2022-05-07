@@ -1,15 +1,15 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.12)
 
-project(dag_python LANGUAGES CXX VERSION 0.0.1)
+project(reticula_python LANGUAGES CXX VERSION 0.0.1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
 include(FetchContent)
 FetchContent_Declare(
-  dag
-  GIT_REPOSITORY https://github.com/arashbm/dag.git
-  GIT_TAG f3cc5d)
+  reticula
+  GIT_REPOSITORY https://github.com/reticula-network/reticula.git
+  GIT_TAG ad36e30)
 
 FetchContent_Declare(
   fmt
@@ -32,145 +32,145 @@ if(NOT pybind11_POPULATED)
     add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
 endif()
 
-FetchContent_MakeAvailable(dag fmt metal)
+FetchContent_MakeAvailable(reticula fmt metal)
 
 
-pybind11_add_module(dag_ext src/main.cpp)
+pybind11_add_module(reticula_ext src/main.cpp)
 
 add_library(${PROJECT_NAME}_scaler_types src/scalar_types.cpp)
 set_target_properties(${PROJECT_NAME}_scaler_types
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_scaler_types PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_scaler_types)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_scaler_types)
 
 add_library(${PROJECT_NAME}_random_state src/random_state.cpp)
 set_target_properties(${PROJECT_NAME}_random_state
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_random_state PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_state)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_random_state)
 
 add_library(${PROJECT_NAME}_interval_sets src/interval_sets.cpp)
 set_target_properties(${PROJECT_NAME}_interval_sets
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_interval_sets PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_interval_sets)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_interval_sets)
 
 add_library(${PROJECT_NAME}_temporal_edges src/temporal_edges.cpp)
 set_target_properties(${PROJECT_NAME}_temporal_edges
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_temporal_edges PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_edges)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_temporal_edges)
 
 add_library(${PROJECT_NAME}_temporal_hyperedges src/temporal_hyperedges.cpp)
 set_target_properties(${PROJECT_NAME}_temporal_hyperedges
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_temporal_hyperedges PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_hyperedges)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_temporal_hyperedges)
 
 
 add_library(${PROJECT_NAME}_static_edges src/static_edges.cpp)
 set_target_properties(${PROJECT_NAME}_static_edges
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_static_edges PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_edges)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_static_edges)
 
 add_library(${PROJECT_NAME}_static_hyperedges src/static_hyperedges.cpp)
 set_target_properties(${PROJECT_NAME}_static_hyperedges
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_static_hyperedges PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_static_hyperedges)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_static_hyperedges)
 
 
 add_library(${PROJECT_NAME}_networks src/networks.cpp)
 set_target_properties(${PROJECT_NAME}_networks
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_networks PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_networks)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_networks)
 
 
 add_library(${PROJECT_NAME}_temporal_adjacency src/temporal_adjacency.cpp)
 set_target_properties(${PROJECT_NAME}_temporal_adjacency
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_temporal_adjacency PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_adjacency)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_temporal_adjacency)
 
 
 add_library(${PROJECT_NAME}_implicit_event_graphs src/implicit_event_graphs.cpp)
 set_target_properties(${PROJECT_NAME}_implicit_event_graphs
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_implicit_event_graphs PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_implicit_event_graphs)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_implicit_event_graphs)
 
 add_library(${PROJECT_NAME}_implicit_event_graph_components
   src/implicit_event_graph_components.cpp)
 set_target_properties(${PROJECT_NAME}_implicit_event_graph_components
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_implicit_event_graph_components PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE
   ${PROJECT_NAME}_implicit_event_graph_components)
 
 add_library(${PROJECT_NAME}_generators src/generators.cpp)
 set_target_properties(${PROJECT_NAME}_generators
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_generators PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_generators)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_generators)
 
 
 add_library(${PROJECT_NAME}_random_networks src/random_networks.cpp)
 set_target_properties(${PROJECT_NAME}_random_networks
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_random_networks PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_random_networks)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_random_networks)
 
 add_library(${PROJECT_NAME}_temporal_clusters src/temporal_clusters.cpp)
 set_target_properties(${PROJECT_NAME}_temporal_clusters
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_temporal_clusters PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_temporal_clusters)
 
 add_library(${PROJECT_NAME}_temporal_cluster_containers
   src/temporal_cluster_containers.cpp)
 set_target_properties(${PROJECT_NAME}_temporal_cluster_containers
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_temporal_cluster_containers PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE
   ${PROJECT_NAME}_temporal_cluster_containers)
 
 add_library(${PROJECT_NAME}_components src/components.cpp)
 set_target_properties(${PROJECT_NAME}_components
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_components PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_components)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_components)
 
 add_library(${PROJECT_NAME}_component_containers src/component_containers.cpp)
 set_target_properties(${PROJECT_NAME}_component_containers
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_component_containers PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_component_containers)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_component_containers)
 
 add_library(${PROJECT_NAME}_io src/io.cpp)
 set_target_properties(${PROJECT_NAME}_io
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_io PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_io)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_io)
 
 
 add_library(${PROJECT_NAME}_algorithms
@@ -181,8 +181,8 @@ add_library(${PROJECT_NAME}_algorithms
 set_target_properties(${PROJECT_NAME}_algorithms
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_algorithms PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE ${PROJECT_NAME}_algorithms)
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_algorithms)
 
 
 add_library(${PROJECT_NAME}_microcanonical_reference_models
@@ -190,18 +190,18 @@ add_library(${PROJECT_NAME}_microcanonical_reference_models
 set_target_properties(${PROJECT_NAME}_microcanonical_reference_models
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(${PROJECT_NAME}_microcanonical_reference_models PRIVATE
-  dag fmt Metal pybind11::pybind11)
-target_link_libraries(dag_ext PRIVATE
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE
   ${PROJECT_NAME}_microcanonical_reference_models)
 
-install(TARGETS dag_ext DESTINATION .)
+install(TARGETS reticula_ext DESTINATION .)
 
 set(lib_path "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${lib_path}" is_system)
 if ("${is_system}" STREQUAL "-1")
     # The following is necessary for installation in a virtual
     # environment `python -m pip venv env`
-    set_target_properties(dag_ext PROPERTIES
+    set_target_properties(reticula_ext PROPERTIES
         INSTALL_RPATH_USE_LINK_PATH TRUE
         INSTALL_RPATH "${lib_path}")
 endif()

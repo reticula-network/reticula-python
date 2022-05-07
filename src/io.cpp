@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <dag/io.hpp>
+#include <reticula/io.hpp>
 
 #include "type_str/edges.hpp"
 
@@ -12,12 +12,12 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <dag::network_edge EdgeT>
+template <reticula::network_edge EdgeT>
 struct declare_io_functions {
   void operator()(py::module& m) {
     m.def(fmt::format("read_edgelist_{}", python_type_str<EdgeT>()).c_str(),
         [](const std::string& path, char delimiter, char quote) {
-          return dag::read_edgelist<EdgeT>(path, delimiter, quote);
+          return reticula::read_edgelist<EdgeT>(path, delimiter, quote);
         }, "path"_a, "delimiter"_a = ' ', "quote"_a = '"',
         py::call_guard<py::gil_scoped_release>());
   }
@@ -32,24 +32,24 @@ void declare_typed_io_functions(py::module& m) {
       metal::lambda<declare_io_functions>,
       metal::join<
         metal::transform<
-          metal::lambda<dag::undirected_edge>,
+          metal::lambda<reticula::undirected_edge>,
           types::simple_vert_types>,
         metal::transform<
-          metal::lambda<dag::directed_edge>,
+          metal::lambda<reticula::directed_edge>,
           types::simple_vert_types>,
         metal::transform<
           metal::partial<
             metal::lambda<metal::apply>,
-            metal::lambda<dag::undirected_temporal_edge>>,
+            metal::lambda<reticula::undirected_temporal_edge>>,
           simple_temporal_type_parameter_combinations>,
         metal::transform<
           metal::partial<
             metal::lambda<metal::apply>,
-            metal::lambda<dag::directed_temporal_edge>>,
+            metal::lambda<reticula::directed_temporal_edge>>,
           simple_temporal_type_parameter_combinations>,
         metal::transform<
           metal::partial<
             metal::lambda<metal::apply>,
-            metal::lambda<dag::directed_delayed_temporal_edge>>,
+            metal::lambda<reticula::directed_delayed_temporal_edge>>,
           simple_temporal_type_parameter_combinations>>>>{}(m);
 }

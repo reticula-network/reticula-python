@@ -3,15 +3,15 @@ Regular ring lattice
 
 C++:
 
-.. cpp:function:: template <dag::integer_vertex VertT> \
-   dag::undirected_network<VertT> \
-   dag::regular_ring_lattice(VertT size, VertT degree)
+.. cpp:function:: template <integer_vertex VertT> \
+   undirected_network<VertT> \
+   regular_ring_lattice(VertT size, VertT degree)
 
 
 Python:
 
-.. py:function:: dag.path_graph[vert_type](size: int, degree: int) \
-   -> dag.undirected_network[vert_type]
+.. py:function:: path_graph[vert_type](size: int, degree: int) \
+   -> undirected_network[vert_type]
 
 Generates a regular ring lattice of size :cpp:`size` and degree :cpp:`degree`. A
 ring-like structure that if arranged in a circle, each vertex would be connected

@@ -17,6 +17,6 @@ from setuptools import find_packages
 setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    cmake_install_dir="src/dag",
+    cmake_install_dir="src/reticula",
     include_package_data=True,
 )

@@ -4,16 +4,16 @@ Random Barabási--Albert network
 C++:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::uniform_random_bit_generator Gen> \
-   dag::undirected_network<VertT> \
-   dag::random_barabasi_albert_graph(VertT n, VertT m, Gen& generator)
+   undirected_network<VertT> \
+   random_barabasi_albert_graph(VertT n, VertT m, Gen& generator)
 
 Python:
 
-.. py:function:: dag.random_barabasi_albert_graph[vert_type](\
+.. py:function:: random_barabasi_albert_graph[vert_type](\
       n: int, p: float, random_state) \
-   -> dag.undirected_network[vert_type]
+   -> undirected_network[vert_type]
 
 Generates a random Barabási--Albert network
 :cite:p:`barabasi1999emergence` of size :cpp:`n`, vertices are added

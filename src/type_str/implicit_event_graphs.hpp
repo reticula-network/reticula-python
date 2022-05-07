@@ -5,7 +5,7 @@
 
 #include <fmt/format.h>
 
-#include <dag/implicit_event_graph.hpp>
+#include <reticula/implicit_event_graphs.hpp>
 
 #include "common.hpp"
 #include "scalars.hpp"
@@ -13,9 +13,9 @@
 #include "edges.hpp"
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct type_str<dag::implicit_event_graph<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct type_str<reticula::implicit_event_graph<EdgeT, AdjT>> {
   std::string operator()() {
       return fmt::format("implicit_event_graph[{}, {}]",
               type_str<EdgeT>{}(), type_str<AdjT>{}());
@@ -23,9 +23,9 @@ struct type_str<dag::implicit_event_graph<EdgeT, AdjT>> {
 };
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct fmt::formatter<dag::implicit_event_graph<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::formatter<reticula::implicit_event_graph<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
     if (it != end && *it != '}') throw format_error("invalid format");
@@ -34,12 +34,12 @@ struct fmt::formatter<dag::implicit_event_graph<EdgeT, AdjT>> {
 
   template <typename FormatContext>
   auto format(
-      const dag::implicit_event_graph<EdgeT, AdjT>& a,
+      const reticula::implicit_event_graph<EdgeT, AdjT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "<dag.{} with {} verts, {} events and temporal adjacency {}>",
-        type_str<dag::implicit_event_graph<EdgeT, AdjT>>{}(),
+        "<{} with {} verts, {} events and temporal adjacency {}>",
+        type_str<reticula::implicit_event_graph<EdgeT, AdjT>>{}(),
         a.temporal_net_vertices().size(),
         a.events_cause().size(),
         a.temporal_adjacency());

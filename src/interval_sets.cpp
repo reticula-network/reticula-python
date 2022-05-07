@@ -3,7 +3,7 @@
 #include <pybind11/stl.h>
 #include <fmt/format.h>
 
-#include <dag/intervals.hpp>
+#include <reticula/intervals.hpp>
 
 #include "type_str/intervals.hpp"
 #include "type_utils.hpp"
@@ -15,7 +15,7 @@ using namespace pybind11::literals;
 template <typename TimeT>
 struct declare_interval_set_types {
   void operator()(py::module &m) {
-    using IntSet = dag::interval_set<TimeT>;
+    using IntSet = reticula::interval_set<TimeT>;
     py::class_<IntSet>(m,
         python_type_str<IntSet>().c_str())
       .def(py::init<>())

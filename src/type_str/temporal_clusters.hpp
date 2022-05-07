@@ -6,16 +6,16 @@
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include <dag/temporal_clusters.hpp>
+#include <reticula/temporal_clusters.hpp>
 
 #include "common.hpp"
 #include "edges.hpp"
 #include "temporal_adjacency.hpp"
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct type_str<dag::temporal_cluster<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct type_str<reticula::temporal_cluster<EdgeT, AdjT>> {
   std::string operator()() {
       return fmt::format("temporal_cluster[{}, {}]",
               type_str<EdgeT>{}(),
@@ -24,9 +24,9 @@ struct type_str<dag::temporal_cluster<EdgeT, AdjT>> {
 };
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct type_str<dag::temporal_cluster_size<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct type_str<reticula::temporal_cluster_size<EdgeT, AdjT>> {
   std::string operator()() {
       return fmt::format("temporal_cluster_size[{}, {}]",
               type_str<EdgeT>{}(),
@@ -35,9 +35,9 @@ struct type_str<dag::temporal_cluster_size<EdgeT, AdjT>> {
 };
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct type_str<dag::temporal_cluster_size_estimate<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct type_str<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
   std::string operator()() {
       return fmt::format("temporal_cluster_size_estimate[{}, {}]",
               type_str<EdgeT>{}(),
@@ -48,15 +48,15 @@ struct type_str<dag::temporal_cluster_size_estimate<EdgeT, AdjT>> {
 // Formatters
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct fmt::is_range<dag::temporal_cluster<EdgeT, AdjT>, char> :
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::is_range<reticula::temporal_cluster<EdgeT, AdjT>, char> :
     std::false_type {};
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct fmt::formatter<dag::temporal_cluster<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::formatter<reticula::temporal_cluster<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
     if (it != end && *it != '}') throw format_error("invalid format");
@@ -65,12 +65,12 @@ struct fmt::formatter<dag::temporal_cluster<EdgeT, AdjT>> {
 
   template <typename FormatContext>
   auto format(
-      const dag::temporal_cluster<EdgeT, AdjT>& a,
+      const reticula::temporal_cluster<EdgeT, AdjT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "<dag.{} with volume {} and lifetime ({} {}]>",
-        type_str<dag::temporal_cluster<EdgeT, AdjT>>{}(),
+        "<{} with volume {} and lifetime ({} {}]>",
+        type_str<reticula::temporal_cluster<EdgeT, AdjT>>{}(),
         a.volume(),
         a.lifetime().first,
         a.lifetime().second);
@@ -78,9 +78,9 @@ struct fmt::formatter<dag::temporal_cluster<EdgeT, AdjT>> {
 };
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct fmt::formatter<dag::temporal_cluster_size<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::formatter<reticula::temporal_cluster_size<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
     if (it != end && *it != '}') throw format_error("invalid format");
@@ -89,12 +89,12 @@ struct fmt::formatter<dag::temporal_cluster_size<EdgeT, AdjT>> {
 
   template <typename FormatContext>
   auto format(
-      const dag::temporal_cluster_size<EdgeT, AdjT>& a,
+      const reticula::temporal_cluster_size<EdgeT, AdjT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "<dag.{} with mass {} volume {} and lifetime ({} {}]>",
-        type_str<dag::temporal_cluster_size<EdgeT, AdjT>>{}(),
+        "<{} with mass {} volume {} and lifetime ({} {}]>",
+        type_str<reticula::temporal_cluster_size<EdgeT, AdjT>>{}(),
         a.mass(),
         a.volume(),
         a.lifetime().first,
@@ -103,9 +103,9 @@ struct fmt::formatter<dag::temporal_cluster_size<EdgeT, AdjT>> {
 };
 
 template <
-  dag::temporal_edge EdgeT,
-  dag::temporal_adjacency::temporal_adjacency AdjT>
-struct fmt::formatter<dag::temporal_cluster_size_estimate<EdgeT, AdjT>> {
+  reticula::temporal_edge EdgeT,
+  reticula::temporal_adjacency::temporal_adjacency AdjT>
+struct fmt::formatter<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
     if (it != end && *it != '}') throw format_error("invalid format");
@@ -114,12 +114,12 @@ struct fmt::formatter<dag::temporal_cluster_size_estimate<EdgeT, AdjT>> {
 
   template <typename FormatContext>
   auto format(
-      const dag::temporal_cluster_size_estimate<EdgeT, AdjT>& a,
+      const reticula::temporal_cluster_size_estimate<EdgeT, AdjT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "<dag.{} with mass {}±1.1\% volume {}±1.1\% and lifetime ({} {}]>",
-        type_str<dag::temporal_cluster_size_estimate<EdgeT, AdjT>>{}(),
+        "<{} with mass {}±1.1\% volume {}±1.1\% and lifetime ({} {}]>",
+        type_str<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>>{}(),
         a.mass_estimate(),
         a.volume_estimate(),
         a.lifetime().first,

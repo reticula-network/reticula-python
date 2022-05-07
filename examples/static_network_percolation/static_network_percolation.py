@@ -3,17 +3,18 @@ import os
 import argparse
 import json
 
-import dag
+import reticula as ret
 import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
 
 def cc_analysis(n: int, p: float, seed: int):
-    state = dag.mersenne_twister(seed)
-    g = dag.random_gnp_graph[dag.int64](n, p, state)
-    ccs = [len(cc) for cc in dag.connected_components(g)]
-    largest_comp_size = max(ccs)
+    # The Reticula magic is happening in this paragraph:
+    state = ret.mersenne_twister(seed)
+    g = ret.random_gnp_graph[ret.int64](n, p, state)
+    ccs = [len(cc) for cc in ret.connected_components(g)]
 
+    largest_comp_size = max(ccs)
     sum_squares = sum([s**2 for s in ccs])
     sum_cubes = sum([s**3 for s in ccs])
     nom = sum_squares - largest_comp_size**2

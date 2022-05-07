@@ -4,20 +4,20 @@ Random expected degree-sequence network
 C++:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range Range, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::weight_range<Range> \
-   dag::undirected_network<VertT> \
-   dag::random_expected_degree_sequence_graph(\
+      weight_range<Range> \
+   undirected_network<VertT> \
+   random_expected_degree_sequence_graph(\
       const Range& weight_sequence, Gen& generator)
 
 Python:
 
-.. py:function:: dag.random_expected_degree_sequence_graph[vert_type](
+.. py:function:: random_expected_degree_sequence_graph[vert_type](
       weight_sequence: List[float], random_state) \
-   -> dag.undirected_network[vert_type]
+   -> undirected_network[vert_type]
 
 Generates a graph with the given weight-sequence, more specifically known as
 "Chung-Lu graphs" :cite:p:`chung2002connected`. As the network size increases,
@@ -36,20 +36,20 @@ Random expected directed degree-sequence network
 C++:
 
 .. cpp:function:: template <\
-      dag::integer_vertex VertT, \
+      integer_vertex VertT, \
       std::ranges::forward_range PairRange, \
       std::uniform_random_bit_generator Gen> \
    requires \
-      dag::weight_pair_range<PairRange> \
-   dag::undirected_network<VertT> \
-   dag::random_directed_expected_degree_sequence_graph(\
+      weight_pair_range<PairRange> \
+   undirected_network<VertT> \
+   random_directed_expected_degree_sequence_graph(\
       const PairRange& in_out_weight_sequence, Gen& generator)
 
 Python:
 
-.. py:function:: dag.random_directed_expected_degree_sequence_graph[vert_type](
+.. py:function:: random_directed_expected_degree_sequence_graph[vert_type](
       in_out_weight_sequence: List[float, float], random_state) \
-   -> dag.undirected_network[vert_type]
+   -> undirected_network[vert_type]
 
 Similar to the `random expected degree-sequence network`_, this function
 generates a directed graph with the given weight-sequence which for large graphs

@@ -7,12 +7,12 @@
 
 #include <metal.hpp>
 
-#include <dag/networks.hpp>
-#include <dag/static_edges.hpp>
-#include <dag/temporal_edges.hpp>
-#include <dag/static_hyperedges.hpp>
-#include <dag/temporal_hyperedges.hpp>
-#include <dag/temporal_adjacency.hpp>
+#include <reticula/networks.hpp>
+#include <reticula/static_edges.hpp>
+#include <reticula/temporal_edges.hpp>
+#include <reticula/static_hyperedges.hpp>
+#include <reticula/temporal_hyperedges.hpp>
+#include <reticula/temporal_adjacency.hpp>
 
 namespace types {
   template <typename List>
@@ -69,22 +69,22 @@ namespace types {
   // first-order static edges
   using first_order_undirected_edges =
     metal::transform<
-      metal::lambda<dag::undirected_edge>,
+      metal::lambda<reticula::undirected_edge>,
       first_order_vert_types>;
 
   using first_order_directed_edges =
     metal::transform<
-      metal::lambda<dag::directed_edge>,
+      metal::lambda<reticula::directed_edge>,
       first_order_vert_types>;
 
   using first_order_undirected_hyperedges =
     metal::transform<
-      metal::lambda<dag::undirected_hyperedge>,
+      metal::lambda<reticula::undirected_hyperedge>,
       first_order_vert_types>;
 
   using first_order_directed_hyperedges =
     metal::transform<
-      metal::lambda<dag::directed_hyperedge>,
+      metal::lambda<reticula::directed_hyperedge>,
       first_order_vert_types>;
 
   using first_order_static_edges = metal::join<
@@ -101,21 +101,21 @@ namespace types {
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::undirected_temporal_edge>>,
+        metal::lambda<reticula::undirected_temporal_edge>>,
       first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_temporal_edges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::directed_temporal_edge>>,
+        metal::lambda<reticula::directed_temporal_edge>>,
       first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_delayed_temporal_edges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::directed_delayed_temporal_edge>>,
+        metal::lambda<reticula::directed_delayed_temporal_edge>>,
       first_order_temporal_type_parameter_combinations>;
 
   // simple (first order) temporal hyperedges
@@ -123,21 +123,21 @@ namespace types {
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::undirected_temporal_hyperedge>>,
+        metal::lambda<reticula::undirected_temporal_hyperedge>>,
       first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_temporal_hyperedges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::directed_temporal_hyperedge>>,
+        metal::lambda<reticula::directed_temporal_hyperedge>>,
       first_order_temporal_type_parameter_combinations>;
 
   using first_order_directed_delayed_temporal_hyperedges =
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<dag::directed_delayed_temporal_hyperedge>>,
+        metal::lambda<reticula::directed_delayed_temporal_hyperedge>>,
       first_order_temporal_type_parameter_combinations>;
 
   // all together now
@@ -155,12 +155,12 @@ namespace types {
 
   using second_order_directed_edges =
     metal::transform<
-      metal::lambda<dag::directed_edge>,
+      metal::lambda<reticula::directed_edge>,
       first_order_temporal_edges>;
 
   using second_order_undirected_edges =
     metal::transform<
-      metal::lambda<dag::undirected_edge>,
+      metal::lambda<reticula::undirected_edge>,
       first_order_temporal_edges>;
 
   using second_order_static_edges = metal::join<
@@ -179,27 +179,27 @@ namespace types {
     second_order_static_edges>;
 
 
-  template <dag::temporal_edge T>
+  template <reticula::temporal_edge T>
   using is_integral_time = std::is_integral<typename T::TimeType>;
 
-  template <dag::temporal_edge T>
+  template <reticula::temporal_edge T>
   using is_floating_point_time = std::is_floating_point<typename T::TimeType>;
 
   // temporal adjacency types
   using first_order_temporal_adjacency_types = metal::join<
     metal::transform<
-      metal::lambda<dag::temporal_adjacency::simple>,
+      metal::lambda<reticula::temporal_adjacency::simple>,
       first_order_temporal_edges>,
     metal::transform<
-      metal::lambda<dag::temporal_adjacency::limited_waiting_time>,
+      metal::lambda<reticula::temporal_adjacency::limited_waiting_time>,
       first_order_temporal_edges>,
     metal::transform<
-      metal::lambda<dag::temporal_adjacency::geometric>,
+      metal::lambda<reticula::temporal_adjacency::geometric>,
       metal::copy_if<
         first_order_temporal_edges,
         metal::trait<is_integral_time>>>,
     metal::transform<
-      metal::lambda<dag::temporal_adjacency::exponential>,
+      metal::lambda<reticula::temporal_adjacency::exponential>,
       metal::copy_if<
         first_order_temporal_edges,
         metal::trait<is_floating_point_time>>>

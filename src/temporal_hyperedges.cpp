@@ -3,7 +3,7 @@
 #include <pybind11/stl.h>
 #include <fmt/format.h>
 
-#include <dag/temporal_hyperedges.hpp>
+#include <reticula/temporal_hyperedges.hpp>
 
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
@@ -17,22 +17,22 @@ template <typename VertT, typename TimeT>
 struct declare_temporal_hyperedges {
   void operator()(py::module &m) {
     define_basic_edge_concept<
-        dag::undirected_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::undirected_temporal_hyperedge<VertT, TimeT>>(m)
       .def(py::init<
           std::vector<VertT>,
           TimeT>(),
           "verts"_a, "time"_a)
       .def(py::init([](std::tuple<std::vector<VertT>, TimeT> t) {
-            return dag::undirected_temporal_hyperedge<VertT, TimeT>(
+            return reticula::undirected_temporal_hyperedge<VertT, TimeT>(
                     std::get<0>(t), std::get<1>(t));
         }), "tuple"_a);
 
     py::implicitly_convertible<
       std::pair<std::vector<VertT>, TimeT>,
-      dag::undirected_temporal_hyperedge<VertT, TimeT>>();
+      reticula::undirected_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
-        dag::directed_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::directed_temporal_hyperedge<VertT, TimeT>>(m)
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>,
@@ -40,20 +40,20 @@ struct declare_temporal_hyperedges {
           "tails"_a, "heads"_a, "time"_a)
       .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>,
                       TimeT> t) {
-            return dag::directed_temporal_hyperedge<VertT, TimeT>(
+            return reticula::directed_temporal_hyperedge<VertT, TimeT>(
                     std::get<0>(t), std::get<1>(t), std::get<2>(t));
         }), "tuple"_a)
       .def("heads",
-          &dag::directed_temporal_hyperedge<VertT, TimeT>::heads)
+          &reticula::directed_temporal_hyperedge<VertT, TimeT>::heads)
       .def("tails",
-          &dag::directed_temporal_hyperedge<VertT, TimeT>::tails);
+          &reticula::directed_temporal_hyperedge<VertT, TimeT>::tails);
 
     py::implicitly_convertible<
       std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT>,
-      dag::directed_temporal_hyperedge<VertT, TimeT>>();
+      reticula::directed_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
-        dag::directed_delayed_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>>(m)
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>,
@@ -61,18 +61,18 @@ struct declare_temporal_hyperedges {
           "tails"_a, "heads"_a, "cause_time"_a, "effect_time"_a)
       .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>,
                       TimeT, TimeT> t) {
-            return dag::directed_delayed_temporal_hyperedge<VertT, TimeT>(
+            return reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>(
                     std::get<0>(t), std::get<1>(t),
                     std::get<2>(t), std::get<3>(t));
         }), "tuple"_a)
       .def("heads",
-          &dag::directed_delayed_temporal_hyperedge<VertT, TimeT>::heads)
+          &reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>::heads)
       .def("tails",
-          &dag::directed_delayed_temporal_hyperedge<VertT, TimeT>::tails);
+          &reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>::tails);
 
     py::implicitly_convertible<
       std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT, TimeT>,
-      dag::directed_delayed_temporal_hyperedge<VertT, TimeT>>();
+      reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>>();
   }
 };
 

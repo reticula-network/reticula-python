@@ -34,7 +34,7 @@ void declare_typed_mrrm_algorithms(py::module& m);
 
 void declare_typed_io_functions(py::module& m);
 
-PYBIND11_MODULE(dag_ext, m) {
+PYBIND11_MODULE(reticula_ext, m) {
     declare_typed_scalar(m);
 
     declare_random_states(m);

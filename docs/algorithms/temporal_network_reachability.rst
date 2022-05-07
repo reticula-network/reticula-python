@@ -31,62 +31,62 @@ From/to a single point
 
 C++:
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  dag::temporal_cluster<EdgeT, AdjT> \
-  dag::in_cluster(\
-      const dag::network<EdgeT>& temp, \
+  temporal_cluster<EdgeT, AdjT> \
+  in_cluster(\
+      const network<EdgeT>& temp, \
       const AdjT& adj, \
       const typename EdgeT::VertexType& v, \
       typename EdgeT::TimeType t)
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  dag::temporal_cluster<EdgeT, AdjT> \
-  dag::in_cluster(\
-      const dag::network<EdgeT>& temp, \
+  temporal_cluster<EdgeT, AdjT> \
+  in_cluster(\
+      const network<EdgeT>& temp, \
       const AdjT& adj, \
       const EdgeT& e)
 
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  dag::temporal_cluster<EdgeT, AdjT> \
-  dag::out_cluster(\
-      const dag::network<EdgeT>& temp, \
+  temporal_cluster<EdgeT, AdjT> \
+  out_cluster(\
+      const network<EdgeT>& temp, \
       const AdjT& adj, \
       const typename EdgeT::VertexType& v, \
       typename EdgeT::TimeType t)
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  dag::temporal_cluster<EdgeT, AdjT> \
-  dag::out_cluster(\
-      const dag::network<EdgeT>& temp, \
+  temporal_cluster<EdgeT, AdjT> \
+  out_cluster(\
+      const network<EdgeT>& temp, \
       const AdjT& adj, \
       const EdgeT& e)
 
 Python:
 
-.. py:function:: dag.in_cluster(temporal_network, \
+.. py:function:: in_cluster(temporal_network, \
       temporal_adjacency: adjacency_type, \
       vertex: vert_type, time: time_type) \
-   -> dag.temporal_cluster[adjacency_type]
+   -> temporal_cluster[adjacency_type]
 
-.. py:function:: dag.in_cluster(temporal_network, \
+.. py:function:: in_cluster(temporal_network, \
       temporal_adjacency: adjacency_type, edge: edge_type) \
-   -> dag.temporal_cluster[adjacency_type]
+   -> temporal_cluster[adjacency_type]
    :noindex:
 
 
-.. py:function:: dag.out_cluster(temporal_network, \
+.. py:function:: out_cluster(temporal_network, \
       temporal_adjacency: adjacency_type, \
       vertex: vert_type, time: time_type) \
-   -> dag.temporal_cluster[adjacency_type]
+   -> temporal_cluster[adjacency_type]
 
-.. py:function:: dag.out_cluster(temporal_network, \
+.. py:function:: out_cluster(temporal_network, \
       temporal_adjacency: adjacency_type, edge: edge_type) \
-   -> dag.temporal_cluster[adjacency_type]
+   -> temporal_cluster[adjacency_type]
    :noindex:
 
 
@@ -95,50 +95,50 @@ From/to all points
 
 C++:
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  std::vector<std::pair<EdgeT, dag::temporal_cluster<EdgeT, AdjT>>> \
-  dag::in_clusters(const dag::network<EdgeT>& temp, const AdjT& adj)
+  std::vector<std::pair<EdgeT, temporal_cluster<EdgeT, AdjT>>> \
+  in_clusters(const network<EdgeT>& temp, const AdjT& adj)
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  std::vector<std::pair<EdgeT, dag::temporal_cluster<EdgeT, AdjT>>> \
-  dag::out_clusters(const dag::network<EdgeT>& temp, const AdjT& adj)
+  std::vector<std::pair<EdgeT, temporal_cluster<EdgeT, AdjT>>> \
+  out_clusters(const network<EdgeT>& temp, const AdjT& adj)
 
 Python:
 
-.. py:function:: dag.in_clusters(temporal_network, \
+.. py:function:: in_clusters(temporal_network, \
       temporal_adjacency: adjacency_type) \
-   -> Iterable[Pair[edge_type, dag.temporal_cluster[adjacency_type]]]
+   -> Iterable[Pair[edge_type, temporal_cluster[adjacency_type]]]
 
-.. py:function:: dag.out_clusters(temporal_network, \
+.. py:function:: out_clusters(temporal_network, \
       temporal_adjacency: adjacency_type) \
-   -> Iterable[Pair[edge_type, dag.temporal_cluster[adjacency_type]]]
+   -> Iterable[Pair[edge_type, temporal_cluster[adjacency_type]]]
 
 Cluster sizes from/to all points
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 C++:
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  std::vector<std::pair<EdgeT, dag::temporal_cluster_size<EdgeT, AdjT>>> \
-  dag::in_cluster_sizes(const dag::network<EdgeT>& temp, const AdjT& adj)
+  std::vector<std::pair<EdgeT, temporal_cluster_size<EdgeT, AdjT>>> \
+  in_cluster_sizes(const network<EdgeT>& temp, const AdjT& adj)
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
-  std::vector<std::pair<EdgeT, dag::temporal_cluster_size<EdgeT, AdjT>>> \
-  dag::out_cluster_sizes(const dag::network<EdgeT>& temp, const AdjT& adj)
+  std::vector<std::pair<EdgeT, temporal_cluster_size<EdgeT, AdjT>>> \
+  out_cluster_sizes(const network<EdgeT>& temp, const AdjT& adj)
 
 Python:
 
-.. py:function:: dag.in_cluster_sizes(temporal_network, \
+.. py:function:: in_cluster_sizes(temporal_network, \
       temporal_adjacency: adjacency_type) \
-   -> Iterable[Pair[edge_type, dag.temporal_cluster_size[adjacency_type]]]
+   -> Iterable[Pair[edge_type, temporal_cluster_size[adjacency_type]]]
 
-.. py:function:: dag.out_cluster_sizes(temporal_network, \
+.. py:function:: out_cluster_sizes(temporal_network, \
       temporal_adjacency: adjacency_type) \
-   -> Iterable[Pair[edge_type, dag.temporal_cluster_size[adjacency_type]]]
+   -> Iterable[Pair[edge_type, temporal_cluster_size[adjacency_type]]]
 
 
 Cluster size estimates from/to all points
@@ -146,37 +146,37 @@ Cluster size estimates from/to all points
 
 C++:
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
   std::vector<std::pair<EdgeT,\
-   dag::temporal_cluster_size<EdgeT, AdjT>>> \
-  dag::in_cluster_size_estimates(\
-   const dag::network<EdgeT>& temp, const AdjT& adj, \
+   temporal_cluster_size<EdgeT, AdjT>>> \
+  in_cluster_size_estimates(\
+   const network<EdgeT>& temp, const AdjT& adj, \
    typename EdgeT::TimeType time_resolution, \
    std::size_t seed)
 
-.. cpp:function:: template <dag::temporal_edge EdgeT, \
+.. cpp:function:: template <temporal_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> \
   std::vector<std::pair<EdgeT,\
-   dag::temporal_cluster_size_estimate<EdgeT, AdjT>>> \
-  dag::out_cluster_size_estimates(\
-   const dag::network<EdgeT>& temp, const AdjT& adj, \
+   temporal_cluster_size_estimate<EdgeT, AdjT>>> \
+  out_cluster_size_estimates(\
+   const network<EdgeT>& temp, const AdjT& adj, \
    typename EdgeT::TimeType time_resolution, \
    std::size_t seed)
 
 Python:
 
-.. py:function:: dag.in_cluster_size_estimates(temporal_network, \
+.. py:function:: in_cluster_size_estimates(temporal_network, \
       temporal_adjacency: adjacency_type, \
       time_resolution: time_type, seed: int) \
    -> Iterable[Pair[edge_type, \
-         dag.temporal_cluster_size_estimate[adjacency_type]]]
+         temporal_cluster_size_estimate[adjacency_type]]]
 
-.. py:function:: dag.out_cluster_size_estimates(temporal_network, \
+.. py:function:: out_cluster_size_estimates(temporal_network, \
       temporal_adjacency: adjacency_type, \
       time_resolution: time_type, seed: int) \
    -> Iterable[Pair[edge_type, \
-         dag.temporal_cluster_size_estimate[adjacency_type]]]
+         temporal_cluster_size_estimate[adjacency_type]]]
 
 
 Temporal adjacency
@@ -208,13 +208,13 @@ Simple adjacency
 
 C++:
 
-.. cpp:class:: template <temporal_edge EdgeT> dag::temporal_adjacency::simple
+.. cpp:class:: template <temporal_edge EdgeT> temporal_adjacency::simple
 
   .. cpp:function:: simple()
 
 Python:
 
-.. py:class:: dag.temporal_adjacency.simple[edge_type]()
+.. py:class:: temporal_adjacency.simple[edge_type]()
 
 The simple temporal adjacency specifies the physical minimum requirements for
 two events to be considered adjacent.
@@ -229,13 +229,13 @@ Limited waiting-time adjacency
 C++:
 
 .. cpp:class:: template <temporal_edge EdgeT> \
-   dag::temporal_adjacency::limited_waiting_time
+   temporal_adjacency::limited_waiting_time
 
   .. cpp:function:: limited_waiting_time(typename EdgeType::TimeType dt)
 
 Python:
 
-.. py:class:: dag.temporal_adjacency.limited_waiting_time[edge_type](\
+.. py:class:: temporal_adjacency.limited_waiting_time[edge_type](\
       dt: time_type)
 
 
@@ -245,7 +245,7 @@ Exponential adjacency
 C++:
 
 .. cpp:class:: template <temporal_edge EdgeT> \
-   dag::temporal_adjacency::exponential
+   temporal_adjacency::exponential
 
   .. cpp:function:: exponential(\
       typename EdgeType::TimeType rate, \
@@ -253,7 +253,7 @@ C++:
 
 Python:
 
-.. py:class:: dag.temporal_adjacency.exponential[edge_type](\
+.. py:class:: temporal_adjacency.exponential[edge_type](\
       rate: time_type, seed: int)
 
 In an exponential temporal adjacency regime, the effect remains on an affected
@@ -273,7 +273,7 @@ Geometric adjacency
 C++:
 
 .. cpp:class:: template <temporal_edge EdgeT> \
-   dag::temporal_adjacency::geometric
+   temporal_adjacency::geometric
 
   .. cpp:function:: geometric(\
       typename EdgeType::TimeType rate, \
@@ -281,7 +281,7 @@ C++:
 
 Python:
 
-.. py:class:: dag.temporal_adjacency.exponential[edge_type](\
+.. py:class:: temporal_adjacency.exponential[edge_type](\
       rate: time_type, seed: int)
 
 In an geometric temporal adjacency regime, the effect remains on an affected
@@ -299,10 +299,10 @@ network produces the same outcome every time.
 Your own temporal adjacency type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cpp:concept:: template <typename T> dag::temporal_adjacency
+.. cpp:concept:: template <typename T> temporal_adjacency
 
 In C++, you can use your own temporal adjacency type as long as it satisfies the
-concept :cpp:concept:`dag::temporal_adjacency`. To wit, that it should have well
+concept :cpp:concept:`temporal_adjacency`. To wit, that it should have well
 defined member types :cpp:`EdgeType` and :cpp:`VetexType` and defines member
 functions :cpp:`linger(EdgeType e, VetexType v)` and
 :cpp:`maximum_linger(VertexType v)`, the former describing how long vertex
@@ -352,8 +352,8 @@ also requires temporal information.
    .. cpp:function:: IteratorType end() const
 
    .. cpp:function:: const std::unordered_map<typename EdgeT::VertexType, \
-            dag::interval_set<typename EdgeT::TimeType>, \
-         dag::hash<typename EdgeT::VertexType>>& \
+            interval_set<typename EdgeT::TimeType>, \
+         hash<typename EdgeT::VertexType>>& \
          interval_sets() const
 
    .. cpp:function:: std::pair<\

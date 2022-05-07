@@ -1,43 +1,58 @@
-# Python bindings for DAG
+# Python bindings for [Reticula][reticula]
 
-## Instaling from source
+[reticula]: https://github.com/reticula-network/reticula
+
+## Installation
+
+The library offers pre-compiled Wheels for `manylinux2014` compatible systems.
+That is, Linux systems with GNU C Library (glibc) version 2.17 and newer. The
+library currently supports Python version 3.8, 3.9 and 3.10.
+
+```bash
+$ pip install reticula
+```
+
+### Installing from source
+Alternatively you can install the library from source:
 
 Clone the library:
 ```bash
-$ git clone https://github.com/arashbm/dag-python.git
+$ git clone https://github.com/arashbm/reticula-python.git
 ```
 
 Build the Wheel:
 ```bash
-$ cd dag-python
+$ cd reticula-python
 $ pip install .
 ```
+
+Note that compiling source requires an unbelievable amount of RAM.
 
 ## Basic examples
 
 Generate a random static network and investigate:
 ```python
->>> import dag
->>> state = dag.mersenne_twister(42)  # create a pseudorandom number generator
->>> g = dag.random_gnp_graph[dag.int64](n=100, p=0.02, random_state=state)
+>>> import reticula as ret
+>>> state = ret.mersenne_twister(42)  # create a pseudorandom number generator
+>>> g = ret.random_gnp_graph[ret.int64](n=100, p=0.02, random_state=state)
 >>> g
-<dag.undirected_network[dag.int64] with 100 verts and 110 edges>
+<undirected_network[int64] with 100 verts and 110 edges>
 >>> g.vertices()
 [0, 1, 2, 3, .... 99]
 >>> g.edges()
-[dag.undirected_edge[dag.int64](0, 16), dag.undirected_edge[dag.int64](0, 20),
-  dag.undirected_edge[dag.int64](0, 31), dag.undirected_edge[dag.int64](0, 51),
+[undirected_edge[int64](0, 16), undirected_edge[int64](0, 20),
+  undirected_edge[int64](0, 31), undirected_edge[int64](0, 51),
   ...]
->>> dag.connected_components(g)
-[<dag.component[dag.int64] of 1 nodes: {9}>,
-  <dag.component[dag.int64] of 1 node {33}>,
+>>> ret.connected_components(g)
+[<component[int64] of 1 nodes: {9}>,
+  <component[int64] of 1 node {33}>,
   ...]
->>> lcc = max(dag.connected_components(g), key=len)
+>>> lcc = max(ret.connected_components(g), key=len)
 >>> lcc
-<dag.component[dag.int64] of 93 nodes: {99, 96, 95, 94, ...}>
->>> g2 = dag.vertiex_induced_subgraph(g, lcc)
+<component[int64] of 93 nodes: {99, 96, 95, 94, ...}>
+>>> g2 = ret.vertiex_induced_subgraph(g, lcc)
 >>> g2
-<dag.undirected_network[dag.int64] with 93 verts and 109 edges>
+<undirected_network[int64] with 93 verts and 109 edges>
 ```
 A more complete example of static network percolation analysis, running on
 multiple threads, can be found in
@@ -46,18 +61,18 @@ multiple threads, can be found in
 Create a random fully-mixed temporal network and calculate simple
 (unconstrained) reachability from node 0 at time 0 to all nodes and times.
 ```python
->>> import dag
->>> import dag.temporal_adjacency
->>> state = dag.mersenne_twister(42)
->>> g = dag.random_fully_mixed_temporal_network[dag.int64](
+>>> import reticula as ret
+>>> import ret.temporal_adjacency
+>>> state = ret.mersenne_twister(42)
+>>> g = ret.random_fully_mixed_temporal_network[int64](
 ...       size=100, rate=0.01, max_t=1024, random_state=state)
->>> adj = dag.temporal_adjacency.simple[
-...       dag.undirected_temporal_edge[dag.int64, dag.double]]()
->>> cluster = dag.out_cluster(
+>>> adj = ret.temporal_adjacency.simple[
+...       ret.undirected_temporal_edge[ret.int64, ret.double]]()
+>>> cluster = ret.out_cluster(
 ...       temporal_network=g, temporal_adjacency=adj, vertex=0, time=0.0)
 >>> cluster
-<dag.temporal_cluster[undirected_temporal_edge[int64, double],
-  simple[dag.undirected_temporal_edge[dag.int64, dag.double]]] with volume 100
+<temporal_cluster[undirected_temporal_edge[int64, double],
+  simple[undirected_temporal_edge[int64, double]]] with volume 100
   and lifetime (0 1.7976931348623157e+308]>
 >>> cluster.covers(vertex=12, time=100.0)
 True
@@ -68,17 +83,17 @@ True
 
 Let's now try limited waiting-time (with dt = 5.0) reachability:
 ```python
->>> import dag
->>> import dag.temporal_adjacency
->>> state = dag.mersenne_twister(42)
->>> g = dag.random_fully_mixed_temporal_network[dag.int64](
+>>> import reticula as ret
+>>> import ret.temporal_adjacency
+>>> state = ret.mersenne_twister(42)
+>>> g = ret.random_fully_mixed_temporal_network[int64](
 ...       size=100, rate=0.01, max_t=1024, random_state=state)
->>> adj = dag.temporal_adjacency.limited_waiting_time[
-...       dag.undirected_temporal_edge[dag.int64, dag.double]](dt=5.0)
->>> cluster = dag.out_cluster(
+>>> adj = ret.temporal_adjacency.limited_waiting_time[
+...       ret.undirected_temporal_edge[ret.int64, ret.double]](dt=5.0)
+>>> cluster = ret.out_cluster(
 ...       temporal_network=g, temporal_adjacency=adj, vertex=0, time=0.0)
 >>> cluster
-<dag.temporal_cluster[undirected_temporal_edge[int64, double],
+<temporal_cluster[undirected_temporal_edge[int64, double],
   limited_waiting_time[undirected_temporal_edge[int64, double]]] with volume
   100 and lifetime (0 1028.9972186553928]>
 >>> cluster.covers(vertex=15, time=16.0)

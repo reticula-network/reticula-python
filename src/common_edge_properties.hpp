@@ -1,5 +1,5 @@
-#include <dag/type_traits.hpp>
-#include <dag/network_concepts.hpp>
+#include <reticula/type_traits.hpp>
+#include <reticula/network_concepts.hpp>
 
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
@@ -40,7 +40,7 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     });
 
   using VertT = typename EdgeT::VertexType;
-  if constexpr (dag::temporal_edge<EdgeT>) {
+  if constexpr (reticula::temporal_edge<EdgeT>) {
     using TimeT = typename EdgeT::TimeType;
     cls.def("cause_time",
           &EdgeT::cause_time);
@@ -54,46 +54,46 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
       py::overload_cast<
           const EdgeT&,
           const EdgeT&>(
-        &dag::adjacent<VertT, TimeT>),
+        &reticula::adjacent<VertT, TimeT>),
           "edge1"_a, "edge2"_a);
     m.def("effect_lt",
       py::overload_cast<
           const EdgeT&,
           const EdgeT&>(
-        &dag::effect_lt<VertT, TimeT>),
+        &reticula::effect_lt<VertT, TimeT>),
           "edge1"_a, "edge2"_a);
   } else {
     m.def("adjacent",
       py::overload_cast<
           const EdgeT&,
           const EdgeT&>(
-        &dag::adjacent<VertT>),
+        &reticula::adjacent<VertT>),
           "edge1"_a, "edge2"_a);
     m.def("effect_lt",
       py::overload_cast<
           const EdgeT&,
           const EdgeT&>(
-        &dag::effect_lt<VertT>), "edge1"_a, "edge2"_a);
+        &reticula::effect_lt<VertT>), "edge1"_a, "edge2"_a);
   }
 
   m.def(fmt::format("is_network_edge_{}",
             python_type_str<EdgeT>()).c_str(),
-          []{ return dag::network_edge<EdgeT>; });
+          []{ return reticula::network_edge<EdgeT>; });
   m.def(fmt::format("is_static_edge_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return dag::static_edge<EdgeT>; });
+          []{ return reticula::static_edge<EdgeT>; });
   m.def(fmt::format("is_temporal_edge_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return dag::temporal_edge<EdgeT>; });
+          []{ return reticula::temporal_edge<EdgeT>; });
   m.def(fmt::format("is_instantaneous_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return dag::is_instantaneous_v<EdgeT>; });
+          []{ return reticula::is_instantaneous_v<EdgeT>; });
   m.def(fmt::format("is_undirected_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return dag::is_undirected_v<EdgeT>; });
+          []{ return reticula::is_undirected_v<EdgeT>; });
   m.def(fmt::format("is_dyadic_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return dag::is_dyadic_v<EdgeT>; });
+          []{ return reticula::is_dyadic_v<EdgeT>; });
 
   return cls;
 }

@@ -3,7 +3,7 @@
 #include <pybind11/operators.h>
 
 #include <fmt/format.h>
-#include <dag/temporal_clusters.hpp>
+#include <reticula/temporal_clusters.hpp>
 
 #include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
@@ -12,11 +12,11 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <dag::temporal_adjacency::temporal_adjacency AdjT>
+template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
   void operator()(py::module &m) {
     using EdgeT = AdjT::EdgeType;
-    using Cluster = dag::temporal_cluster<EdgeT, AdjT>;
+    using Cluster = reticula::temporal_cluster<EdgeT, AdjT>;
     py::class_<Cluster>(m,
         python_type_str<Cluster>().c_str())
       .def(py::init<AdjT, std::size_t>(),
@@ -64,7 +64,7 @@ struct declare_temporal_cluster_types {
         return types::handle_for<typename Cluster::AdjacencyType>();
       });
 
-    using ClusterSize = dag::temporal_cluster_size<EdgeT, AdjT>;
+    using ClusterSize = reticula::temporal_cluster_size<EdgeT, AdjT>;
     py::class_<ClusterSize>(m,
         python_type_str<ClusterSize>().c_str())
       .def("lifetime",
@@ -85,7 +85,7 @@ struct declare_temporal_cluster_types {
 
 
     using ClusterSizeEstimate =
-      dag::temporal_cluster_size_estimate<EdgeT, AdjT>;
+      reticula::temporal_cluster_size_estimate<EdgeT, AdjT>;
     py::class_<ClusterSizeEstimate>(m,
         python_type_str<ClusterSizeEstimate>().c_str())
       .def("lifetime",

@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl_bind.h>
 
-#include <dag/components.hpp>
+#include <reticula/components.hpp>
 
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
@@ -14,7 +14,7 @@ using namespace pybind11::literals;
 template <typename VertT>
 struct declare_component_containers {
   void operator()(py::module &m) {
-    using Component = dag::component<VertT>;
+    using Component = reticula::component<VertT>;
     py::bind_vector<
       std::vector<std::pair<VertT, Component>>>(m,
           fmt::format("vector_pair_{}_{}",
@@ -25,7 +25,7 @@ struct declare_component_containers {
           fmt::format("vector_{}",
             python_type_str<Component>()).c_str());
 
-    using ComponentSize = dag::component_size<VertT>;
+    using ComponentSize = reticula::component_size<VertT>;
     py::bind_vector<
       std::vector<std::pair<VertT, ComponentSize>>>(m,
           fmt::format("vector_pair_{}_{}",
@@ -37,7 +37,7 @@ struct declare_component_containers {
             python_type_str<ComponentSize>()).c_str());
 
     using ComponentSizeEstimate =
-      dag::component_size_estimate<VertT>;
+      reticula::component_size_estimate<VertT>;
     py::bind_vector<
       std::vector<std::pair<VertT, ComponentSizeEstimate>>>(m,
           fmt::format("vector_pair_{}_{}",

@@ -1,12 +1,12 @@
 import sys as _sys
 import itertools as _itertools
 
-from . import dag_ext as _dag_ext
+from . import reticula_ext as _reticula_ext
 
 __all__ = ["temporal_adjacency", "microcanonical_reference_models"]
 
 class _generic_attribute:
-    def __init__(self, attr_prefix, choices, module=_dag_ext):
+    def __init__(self, attr_prefix, choices, module=_reticula_ext):
         self.choices = choices
         self.attr_prefix = attr_prefix
         self.module = module
@@ -109,14 +109,14 @@ is_undirected = _generic_attribute("is_undirected", [_all_edge_types])
 is_dyadic = _generic_attribute("is_dyadic", [_all_edge_types])
 
 # import overloaded funcitons
-from .dag_ext import (
+from .reticula_ext import (
         cartesian_product, is_graphic, is_digraphic)
 
-from .dag_ext import (
+from .reticula_ext import (
         vertex_induced_subgraph, edge_induced_subgraph, graph_union,
         with_edges, with_vertices, density)
 
-from .dag_ext import (
+from .reticula_ext import (
         is_acyclic, topological_order, out_component, out_components,
         out_component_sizes, out_component_size_estimates,
         in_component, in_components,
@@ -124,10 +124,10 @@ from .dag_ext import (
         weakly_connected_component, weakly_connected_components,
         is_reachable)
 
-from .dag_ext import (
+from .reticula_ext import (
         is_connected, connected_component, connected_components)
 
-from .dag_ext import (
+from .reticula_ext import (
         time_window, cause_time_window, effect_time_window, event_graph,
         out_cluster, out_clusters,
         out_cluster_sizes, out_cluster_size_estimates,
@@ -135,11 +135,11 @@ from .dag_ext import (
         in_cluster_sizes, in_cluster_size_estimates,
         static_projection, link_timeline, link_timelines)
 
-from .dag_ext import (
+from .reticula_ext import (
         mersenne_twister)
 
 # import scalar type "tags"
-from .dag_ext import (
+from .reticula_ext import (
         int64, double, string)
 
 _simple_vert_types = set()

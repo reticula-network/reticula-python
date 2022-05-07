@@ -1,5 +1,5 @@
 #include <pybind11/pybind11.h>
-#include <dag/temporal_adjacency.hpp>
+#include <reticula/temporal_adjacency.hpp>
 
 #include "type_str/temporal_adjacency.hpp"
 #include "type_utils.hpp"
@@ -8,10 +8,10 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <dag::temporal_edge EdgeT>
+template <reticula::temporal_edge EdgeT>
 struct declare_temporal_adjacency_class {
   void operator()(py::module &m) {
-    using Simple = dag::temporal_adjacency::simple<EdgeT>;
+    using Simple = reticula::temporal_adjacency::simple<EdgeT>;
     py::class_<Simple>(m,
         python_type_str<Simple>().c_str())
       .def(py::init<>())
@@ -26,7 +26,7 @@ struct declare_temporal_adjacency_class {
         return types::handle_for<typename Simple::VertexType>();
       });
 
-    using LWT = dag::temporal_adjacency::limited_waiting_time<EdgeT>;
+    using LWT = reticula::temporal_adjacency::limited_waiting_time<EdgeT>;
     py::class_<LWT>(m,
         python_type_str<LWT>().c_str())
       .def(py::init<typename EdgeT::TimeType>(),
@@ -45,7 +45,7 @@ struct declare_temporal_adjacency_class {
       });
 
     if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
-      using Exp = dag::temporal_adjacency::exponential<EdgeT>;
+      using Exp = reticula::temporal_adjacency::exponential<EdgeT>;
       py::class_<Exp>(m,
           python_type_str<Exp>().c_str())
         .def(py::init<typename EdgeT::TimeType, std::size_t>(),
@@ -65,7 +65,7 @@ struct declare_temporal_adjacency_class {
     }
 
     if constexpr (std::is_integral_v<typename EdgeT::TimeType>) {
-      using Geom = dag::temporal_adjacency::geometric<EdgeT>;
+      using Geom = reticula::temporal_adjacency::geometric<EdgeT>;
       py::class_<Geom>(m,
           python_type_str<Geom>().c_str())
         .def(py::init<double, std::size_t>(),

@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <dag/algorithms.hpp>
+#include <reticula/algorithms.hpp>
 
 #include "type_str/edges.hpp"
 #include "type_str/scalars.hpp"
@@ -17,7 +17,7 @@ template <typename OutVert, typename InVert>
 struct declare_relabel_nodes {
   void operator()(py::module& m) {
     m.def(fmt::format("relabel_nodes_{}", python_type_str<OutVert>()).c_str(),
-        &dag::relabel_nodes<OutVert, InVert>,
+        &reticula::relabel_nodes<OutVert, InVert>,
         "network"_a,
         py::call_guard<py::gil_scoped_release>());
   }
@@ -27,7 +27,7 @@ template <typename VertT1, typename VertT2>
 struct declare_cartesian_product {
   void operator()(py::module& m) {
     m.def("cartesian_product",
-        &dag::cartesian_product<VertT1, VertT2>,
+        &reticula::cartesian_product<VertT1, VertT2>,
         "undirected_net_1"_a, "undirected_net_2"_a,
         py::call_guard<py::gil_scoped_release>());
   }
@@ -37,12 +37,12 @@ template <typename T>
 struct declare_degree_sequence_algorithms {
   void operator()(py::module& m) {
     m.def("is_graphic",
-        &dag::is_graphic<std::vector<T>>,
+        &reticula::is_graphic<std::vector<T>>,
         "degree_seq"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("is_digraphic",
-        &dag::is_digraphic<std::vector<std::pair<T, T>>>,
+        &reticula::is_digraphic<std::vector<std::pair<T, T>>>,
         "in_out_degree_seq"_a,
         py::call_guard<py::gil_scoped_release>());
   }
