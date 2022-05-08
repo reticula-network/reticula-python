@@ -1,5 +1,5 @@
-DAG: Temporal network and hypergraphs
-=====================================
+Reticula: Temporal network and hypergraphs
+==========================================
 
 .. toctree::
    :maxdepth: 2
@@ -18,8 +18,8 @@ DAG: Temporal network and hypergraphs
    bibliography
 
 
-DAG is a general purpose C++ library and Python package for fast and efficient
-analysis of temporal networks and static and temporal hypergraphs. Currently,
-the library supports multiple methods of generating and randomising networks,
-using various algorithms to calculate network properties, and running
+Reticula is a general purpose C++ library and Python package for fast and
+efficient analysis of temporal networks and static and temporal hypergraphs.
+Currently, the library supports multiple methods of generating and randomising
+networks, using various algorithms to calculate network properties, and running
 compartmental model simulations on networks.

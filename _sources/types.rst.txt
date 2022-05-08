@@ -1,7 +1,7 @@
 Networks and network types
 ==========================
 
-DAG support static and temporal networks involving two (dyadic) or more
+Reticula support static and temporal networks involving two (dyadic) or more
 (hypergraph) vertices in each event. The events can have an inherent
 directionality and possibly a time delay.
 
