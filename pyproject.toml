@@ -1,10 +1,10 @@
 [project]
 name = "reticula"
-version = "0.0.1"
+version = "0.0.2"
 description="Analyse temporal network and hypergraphs efficiently."
 authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
 requires-python = ">=3.8"
-license = {file = "LICENSE"}
+license = {text = "MIT"}
 readme = "README.md"
 keywords = [
     "Complex Networks", "Networks", "network",
@@ -14,7 +14,7 @@ keywords = [
 ]
 
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",

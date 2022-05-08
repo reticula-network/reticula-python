@@ -5,10 +5,10 @@ set -ex
 mkdir -p dist
 
 
-for version in 3.8 3.9 3.10; do
+for version in python3.8 python3.9 python3.10 pypy3.8 pypy3.9; do
   singularity exec --cleanenv --bind .:/reticula-python --pwd /reticula-python \
     docker://quay.io/pypa/manylinux2014_x86_64 \
-    python${version} -m pip wheel . -w dist --verbose
+    ${version} -m pip wheel . -w dist --verbose
 done
 
 rm -f wheelhouse/*
