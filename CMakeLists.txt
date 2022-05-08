@@ -194,6 +194,13 @@ target_link_libraries(${PROJECT_NAME}_microcanonical_reference_models PRIVATE
 target_link_libraries(reticula_ext PRIVATE
   ${PROJECT_NAME}_microcanonical_reference_models)
 
+add_library(${PROJECT_NAME}_type_lists src/type_lists.cpp)
+set_target_properties(${PROJECT_NAME}_type_lists
+  PROPERTIES CXX_VISIBILITY_PRESET hidden)
+target_link_libraries(${PROJECT_NAME}_type_lists PRIVATE
+  reticula fmt Metal pybind11::pybind11)
+target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_type_lists)
+
 install(TARGETS reticula_ext DESTINATION .)
 
 set(lib_path "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")

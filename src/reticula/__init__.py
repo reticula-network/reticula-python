@@ -37,16 +37,15 @@ _static_edge_prefixes = [
         "directed_edge", "undirected_edge",
         "directed_hyperedge", "undirected_hyperedge"]
 
-_integer_vert_types = set()
-_non_integer_vert_types = set()
-_vert_types = _non_integer_vert_types | _integer_vert_types
+_integer_vertex_types = set(_reticula_ext.types.integer_vertex_types)
+_all_vertex_types = set(_reticula_ext.types.vertex_types)
 
 for _e in _static_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, _generic_attribute(_e, [_vert_types]))
+            _e, _generic_attribute(_e, [_all_vertex_types]))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, _generic_attribute(_n, [_vert_types]))
+            _n, _generic_attribute(_n, [_all_vertex_types]))
 
 _temporal_edge_prefixes = [
         "undirected_temporal_edge",
@@ -56,21 +55,21 @@ _temporal_edge_prefixes = [
         "directed_temporal_hyperedge",
         "directed_delayed_temporal_hyperedge"]
 
-_time_types = set()
+_time_types = set(_reticula_ext.types.time_types)
 
 for _e in _temporal_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, _generic_attribute(_e, [_vert_types, _time_types]))
+            _e, _generic_attribute(_e, [_all_vertex_types, _time_types]))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, _generic_attribute(_n, [_vert_types, _time_types]))
+            _n, _generic_attribute(_n, [_all_vertex_types, _time_types]))
 
 
 _vertex_generic_attrs = [
         "component", "component_size", "component_size_estimate"]
 for _a in _vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_vert_types]))
+            _a, _generic_attribute(_a, [_all_vertex_types]))
 
 
 _integer_vertex_generic_attrs = [
@@ -79,7 +78,7 @@ _integer_vertex_generic_attrs = [
 
 for _a in _integer_vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_integer_vert_types]))
+            _a, _generic_attribute(_a, [_integer_vertex_types]))
 
 interval_set = _generic_attribute("interval_set", [_time_types])
 
@@ -95,12 +94,12 @@ _random_network_generic_attrs = [
         "random_directed_fully_mixed_temporal_network"]
 for _a in _random_network_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_integer_vert_types]))
+            _a, _generic_attribute(_a, [_integer_vertex_types]))
 
-_simple_edge_types = set()
+_simple_edge_types = set()  # TODO
 read_edgelist = _generic_attribute("read_edgelist", [_simple_edge_types])
 
-_all_edge_types = set()
+_all_edge_types = set(_reticula_ext.types.edge_types)
 is_network_edge = _generic_attribute("is_network_edge", [_all_edge_types])
 is_static_edge = _generic_attribute("is_static_edge", [_all_edge_types])
 is_temporal_edge = _generic_attribute("is_temporal_edge", [_all_edge_types])
@@ -142,34 +141,57 @@ from .reticula_ext import (
 from .reticula_ext import (
         int64, double, string)
 
-_simple_vert_types = set()
-pair = _generic_attribute("pair", [_simple_vert_types, _simple_vert_types])
+_simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
+pair = _generic_attribute("pair", [_simple_vertex_types, _simple_vertex_types])
 
-def to_nx(network, create_using=None):
-    edge_type = network.edge_type()
-    if not is_dyadic[edge_type]():
-        raise ValueError("only dyadic networks can be tranlated into NetworkX "
-                "graphs")
-    if is_temporal_edge[edge_type]():
-        raise ValueError("only static networks can be tranlated into NetworkX "
-                "graphs")
+try:
+    import networkx as _nx
+except:
+    def to_networkx(network, create_using=None):
+        raise NotImplementedError("Could not import module NetworkX.")
+    def _from_networkx(network, vert_type):
+        raise NotImplementedError("Could not import module NetworkX.")
+else:
+    def to_networkx(network, create_using=None):
+        edge_type = network.edge_type()
+        if not is_dyadic[edge_type]():
+            raise ValueError("only dyadic networks can be translated into "
+                    "NetworkX graphs")
+        if is_temporal_edge[edge_type]():
+            raise ValueError("only static networks can be translated into "
+                    "NetworkX graphs")
 
-    import networkx as nx
-    if create_using is None:
-        if is_undirected[edge_type]():
-            create_using = nx.Graph()
-        else:
-            create_using = nx.DiGraph()
+        if create_using is None:
+            if is_undirected[edge_type]():
+                create_using = _nx.Graph()
+            else:
+                create_using = _nx.DiGraph()
 
-    g = nx.empty_graph(0, create_using)
+        g = _nx.empty_graph(0, create_using)
 
-    g.add_nodes_from(network.vertices())
-    for e in network.edges():
-        if is_undirected[edge_type]():
-            verts = e.incident_verts()
-            # support self-edges which have one incident vertices
-            u, v = verts*2 if len(verts) == 1 else verts
-            g.add_edge(u, v)
-        else:
-            g.add_edge(e.tail(), e.head())
-    return g
+        g.add_nodes_from(network.vertices())
+        for e in network.edges():
+            if is_undirected[edge_type]():
+                verts = e.incident_verts()
+                # support self-edges which have one incident vertices
+                u, v = verts*2 if len(verts) == 1 else verts
+                g.add_edge(u, v)
+            else:
+                g.add_edge(e.tail(), e.head())
+        return g
+
+    def _from_networkx(g, vert_type):
+        net_type = undirected_network[vert_type]
+        if _nx.is_directed(g):
+            net_type = directed_network[vert_type]
+        edge_type = net_type.edge_type()
+        verts = list(g.nodes())
+        edges = [edge_type(i, j) for i,j in g.edges()]
+        return net_type(edges=edges, verts=verts)
+
+from functools import partial as _partial
+for _vert_t in _all_vertex_types:
+    setattr(_sys.modules[__name__], f"_from_networkx_{_vert_t.__name__}",
+            _partial(_from_networkx, vert_type=_vert_t))
+from_networkx = _generic_attribute("_from_networkx_", [_all_vertex_types],
+        module=_sys.modules[__name__])

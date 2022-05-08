@@ -34,6 +34,8 @@ void declare_typed_mrrm_algorithms(py::module& m);
 
 void declare_typed_io_functions(py::module& m);
 
+void declare_type_lists(py::module& m);
+
 PYBIND11_MODULE(reticula_ext, m) {
     declare_typed_scalar(m);
 
@@ -69,4 +71,7 @@ PYBIND11_MODULE(reticula_ext, m) {
     declare_typed_mrrm_algorithms(mrrm_m);
 
     declare_typed_io_functions(m);
+
+    py::module_ types_m = m.def_submodule("types");
+    declare_type_lists(types_m);
 }
