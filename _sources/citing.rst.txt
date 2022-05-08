@@ -1,2 +1,2 @@
-Citing DAG
-==========
+Citing Reticula
+===============
