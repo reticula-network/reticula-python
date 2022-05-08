@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'DAG'
+project = 'Reticula'
 copyright = '2022'
 author = 'Arash Badie-Modiri'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------
