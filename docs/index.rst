@@ -23,3 +23,6 @@ efficient analysis of temporal networks and static and temporal hypergraphs.
 Currently, the library supports multiple methods of generating and randomising
 networks, using various algorithms to calculate network properties, and running
 compartmental model simulations on networks.
+
+The names is the plural form of reticulum, a Latin word meaning network or a
+network-like (reticulated) structure.
