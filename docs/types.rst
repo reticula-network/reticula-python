@@ -107,10 +107,10 @@ Edges and vertices are accessible through member functions of the same name.
 
 You can also get the network edges sorted by :cpp:`operator<`
 (:py:`operator.__lt__` in Python) or :cpp:func:`effect_lt`
-(:py:func:`effect_lt`) through functions `edges_cause` and `edges_effect`
-member functions. In a temporal network the result of the former will be sorted
-by cause time and the latter by effect time of the events. In static networks
-they return the same output.
+(:py:func:`effect_lt`) through functions :py:`edges_cause` and
+:py:`edges_effect` member functions. In a temporal network the result of the
+former will be sorted by cause time and the latter by effect time of the events.
+In static networks they return the same output.
 
 Incident edges
 ^^^^^^^^^^^^^^
