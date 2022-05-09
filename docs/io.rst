@@ -44,7 +44,7 @@ Interpolation with NetworkX
 
   Creates a dyadic static network from a NetworkX graph. The directedness of the
   network is decided based on whether graph :py:`g` is directed, i.e., whether
-  :py`networkx.is_directed(g)` returns :py:`True`.
+  :py:`networkx.is_directed(g)` returns :py:`True`.
 
   Raises a :py:`NotImplementedError` if networkx is not installed or cannot be
   imported at the time Reticula is imported.
