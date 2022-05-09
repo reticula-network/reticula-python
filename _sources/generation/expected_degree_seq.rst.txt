@@ -1,6 +1,9 @@
 Random expected degree-sequence network
 =======================================
 
+Undirected expected degree-sequence network
+-------------------------------------------
+
 C++:
 
 .. cpp:function:: template <\
@@ -30,8 +33,8 @@ independent of each other. The implementation is based on Ref.
 The parameter :cpp:`weight_sequence` is expected to be a list of numericals,
 e.g., :cpp:`std::vector<double>` in C++ and :py:`List[float]` in python.
 
-Random expected directed degree-sequence network
-================================================
+Directed expected degree-sequence network
+-----------------------------------------
 
 C++:
 

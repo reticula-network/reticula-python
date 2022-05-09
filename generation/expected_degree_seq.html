@@ -35,6 +35,8 @@
             
   <section id="random-expected-degree-sequence-network">
 <h1>Random expected degree-sequence network<a class="headerlink" href="#random-expected-degree-sequence-network" title="Permalink to this headline">¶</a></h1>
+<section id="undirected-expected-degree-sequence-network">
+<h2>Undirected expected degree-sequence network<a class="headerlink" href="#undirected-expected-degree-sequence-network" title="Permalink to this headline">¶</a></h2>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQ12weight_rangeI5RangeEE37random_expected_degree_sequence_graph18undirected_networkI5VertTERK5RangeR3Gen">
@@ -59,8 +61,8 @@ independent of each other. The implementation is based on Ref.
 <p>The parameter <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">weight_sequence</span></span></code> is expected to be a list of numericals,
 e.g., <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="o"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">double</span></span><span class="o"><span class="pre">&gt;</span></span></code> in C++ and <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">List</span></span><span class="p"><span class="pre">[</span></span><span class="nb"><span class="pre">float</span></span><span class="p"><span class="pre">]</span></span></code> in python.</p>
 </section>
-<section id="random-expected-directed-degree-sequence-network">
-<h1>Random expected directed degree-sequence network<a class="headerlink" href="#random-expected-directed-degree-sequence-network" title="Permalink to this headline">¶</a></h1>
+<section id="directed-expected-degree-sequence-network">
+<h2>Directed expected degree-sequence network<a class="headerlink" href="#directed-expected-degree-sequence-network" title="Permalink to this headline">¶</a></h2>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQ17weight_pair_rangeI9PairRangeEE46random_directed_expected_degree_sequence_graph18undirected_networkI5VertTERK9PairRangeR3Gen">
@@ -80,6 +82,7 @@ generates a directed graph with the given weight-sequence which for large graphs
 produce the given weight-sequence as its in- and out-degree sequence. The
 implementation is likewise based of the Chung–Lu algorithm
 <span id="id3">[<a class="reference internal" href="../bibliography.html#id5" title="Fan Chung and Linyuan Lu. Connected components in random graphs with given expected degree sequences. Annals of combinatorics, 6(2):125–145, 2002. doi:10.1007/PL00012580.">4</a>, <a class="reference internal" href="../bibliography.html#id6" title="Joel C Miller and Aric Hagberg. Efficient generation of networks with given expected degrees. In International Workshop on Algorithms and Models for the Web-Graph, 115–126. Springer, 2011. doi:10.1007/978-3-642-21286-4_10.">5</a>]</span>, extended to directed graphs.</p>
+</section>
 </section>
 
 
@@ -115,9 +118,7 @@ implementation is likewise based of the Chung–Lu algorithm
 <li class="toctree-l2"><a class="reference internal" href="barabasi.html">Random Barabási–Albert network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regular.html">Random k-regular network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="degree_seq.html">Random degree-sequence network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="degree_seq.html#random-directed-degree-sequence-network">Random directed degree-sequence network</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Random expected degree-sequence network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-expected-directed-degree-sequence-network">Random expected directed degree-sequence network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fully_mixed.html">Fully-mixed temporal network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="activation.html">Link activation temporal network</a></li>
 </ul>
