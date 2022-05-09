@@ -47,7 +47,7 @@ print(ret.connected_components(g))
 #       ...]
 lcc = max(ret.connected_components(g), key=len)
 print(lcc) # => <component[int64] of 93 nodes: {99, 96, 95, 94, ...}>
-g2 = ret.vertiex_induced_subgraph(g, lcc)
+g2 = ret.vertex_induced_subgraph(g, lcc)
 print(g2) # => <undirected_network[int64] with 93 verts and 109 edges>
 ```
 A more complete example of static network percolation analysis, running on
@@ -58,9 +58,8 @@ Create a random fully-mixed temporal network and calculate simple
 (unconstrained) reachability from node 0 at time 0 to all nodes and times.
 ```python
 import reticula as ret
-import ret.temporal_adjacency
 state = ret.mersenne_twister(42)
-g = ret.random_fully_mixed_temporal_network[int64](
+g = ret.random_fully_mixed_temporal_network[ret.int64](
         size=100, rate=0.01, max_t=1024, random_state=state)
 adj = ret.temporal_adjacency.simple[
         ret.undirected_temporal_edge[ret.int64, ret.double]]()
@@ -80,7 +79,6 @@ print(list(cluster.interval_sets()[15]))
 Let's now try limited waiting-time (with dt = 5.0) reachability:
 ```python
 import reticula as ret
-import ret.temporal_adjacency
 state = ret.mersenne_twister(42)
 g = ret.random_fully_mixed_temporal_network[int64](
       size=100, rate=0.01, max_t=1024, random_state=state)

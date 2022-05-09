@@ -1,36 +1,10 @@
 import sys as _sys
-import itertools as _itertools
 
 from . import reticula_ext as _reticula_ext
 
-__all__ = ["temporal_adjacency", "microcanonical_reference_models"]
-
-class _generic_attribute:
-    def __init__(self, attr_prefix, choices, module=_reticula_ext):
-        self.choices = choices
-        self.attr_prefix = attr_prefix
-        self.module = module
-    def __getitem__(self, keys):
-        if len(self.choices) == 1:
-            keys = (keys,)
-        if len(keys) != len(self.choices):
-            raise AttributeError(f"Wrong number of type templates: expected "
-                    f"{len(self.choices)} template types but received "
-                    f"{len(keys)}")
-        attr_name = str(self.attr_prefix)
-        for i, k, cs in zip(_itertools.count(), keys, self.choices):
-            if not cs or k in cs:
-                attr_name += "_" + k.__name__
-            else:
-                raise AttributeError(f"Template type {i} ({k}) is not a valid "
-                        "choise. Valid options are: {cs}")
-        return self.module.__getattribute__(attr_name)
-    def __call__(self, *args, **kwargs):
-        raise TypeError(f"No type information was paased to a generic function "
-                f"or type. This usually means that you forgot to add square "
-                f"brackets and type information before parentheses, e.g. "
-                f"`{__name__}.{self.attr_prefix}[types...]` "
-                f"Valid options are: {self.choices}")
+from .generic_attribute import generic_attribute as _generic_attribute
+from . import temporal_adjacency
+from . import microcanonical_reference_models
 
 
 _static_edge_prefixes = [
@@ -42,10 +16,21 @@ _all_vertex_types = set(_reticula_ext.types.vertex_types)
 
 for _e in _static_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, _generic_attribute(_e, [_all_vertex_types]))
+            _e, _generic_attribute(
+                attr_prefix=_e,
+                arg_names = ("vertex_type",),
+                options = set((t,) for t in  _all_vertex_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, _generic_attribute(_n, [_all_vertex_types]))
+            _n, _generic_attribute(
+                attr_prefix=_n,
+                arg_names = ("vertex_type",),
+                options = set((t,) for t in _all_vertex_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
+
 
 _temporal_edge_prefixes = [
         "undirected_temporal_edge",
@@ -59,17 +44,34 @@ _time_types = set(_reticula_ext.types.time_types)
 
 for _e in _temporal_edge_prefixes:
     setattr(_sys.modules[__name__],
-            _e, _generic_attribute(_e, [_all_vertex_types, _time_types]))
+            _e, _generic_attribute(
+                attr_prefix=_e,
+                arg_names=("vertex_type", "time_type"),
+                options=set((v, t)
+                    for v in _all_vertex_types for t in _time_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
-            _n, _generic_attribute(_n, [_all_vertex_types, _time_types]))
+            _n, _generic_attribute(
+                attr_prefix=_n,
+                arg_names=("vertex_type", "time_type"),
+                options=set((v, t)
+                    for v in _all_vertex_types for t in  _time_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
 
 
 _vertex_generic_attrs = [
         "component", "component_size", "component_size_estimate"]
 for _a in _vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_all_vertex_types]))
+            _a, _generic_attribute(
+                attr_prefix=_a,
+                arg_names=("vertex_type",),
+                options = set((t,) for t in _all_vertex_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
 
 
 _integer_vertex_generic_attrs = [
@@ -78,9 +80,19 @@ _integer_vertex_generic_attrs = [
 
 for _a in _integer_vertex_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_integer_vertex_types]))
+            _a, _generic_attribute(
+                attr_prefix=_a,
+                arg_names=("integer_vertex_type",),
+                options=set((t,) for t in _integer_vertex_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
 
-interval_set = _generic_attribute("interval_set", [_time_types])
+interval_set = _generic_attribute(
+        attr_prefix="interval_set",
+        arg_names=("time_type",),
+        options=set((t,) for t in _time_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
 
 _random_network_generic_attrs = [
         "random_gnp_graph",
@@ -94,18 +106,58 @@ _random_network_generic_attrs = [
         "random_directed_fully_mixed_temporal_network"]
 for _a in _random_network_generic_attrs:
     setattr(_sys.modules[__name__],
-            _a, _generic_attribute(_a, [_integer_vertex_types]))
+            _a, _generic_attribute(
+                attr_prefix=_a,
+                arg_names=("integer_vertex_type",),
+                options=set((t,) for t in _integer_vertex_types),
+                function_module=_reticula_ext,
+                api_module_name=__name__))
 
 _simple_edge_types = set()  # TODO
-read_edgelist = _generic_attribute("read_edgelist", [_simple_edge_types])
+read_edgelist = _generic_attribute(
+        attr_prefix="read_edgelist",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _simple_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
 
 _all_edge_types = set(_reticula_ext.types.edge_types)
-is_network_edge = _generic_attribute("is_network_edge", [_all_edge_types])
-is_static_edge = _generic_attribute("is_static_edge", [_all_edge_types])
-is_temporal_edge = _generic_attribute("is_temporal_edge", [_all_edge_types])
-is_instantaneous = _generic_attribute("is_instantaneous", [_all_edge_types])
-is_undirected = _generic_attribute("is_undirected", [_all_edge_types])
-is_dyadic = _generic_attribute("is_dyadic", [_all_edge_types])
+is_network_edge = _generic_attribute(
+        attr_prefix="is_network_edge",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+is_static_edge = _generic_attribute(
+        attr_prefix="is_static_edge",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+is_temporal_edge = _generic_attribute(
+        attr_prefix="is_temporal_edge",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+is_instantaneous = _generic_attribute(
+        attr_prefix="is_instantaneous",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+is_undirected = _generic_attribute(
+        attr_prefix="is_undirected",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+is_dyadic = _generic_attribute(
+        attr_prefix="is_dyadic",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
 
 # import overloaded funcitons
 from .reticula_ext import (
@@ -142,7 +194,13 @@ from .reticula_ext import (
         int64, double, string)
 
 _simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
-pair = _generic_attribute("pair", [_simple_vertex_types, _simple_vertex_types])
+pair = _generic_attribute(
+        attr_prefix="pair",
+        arg_names=("vertex_type", "vertex_type"),
+        options=set((i, j)
+            for i in _simple_vertex_types for j in _simple_vertex_types),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
 
 try:
     import networkx as _nx
@@ -193,5 +251,9 @@ from functools import partial as _partial
 for _vert_t in _all_vertex_types:
     setattr(_sys.modules[__name__], f"_from_networkx_{_vert_t.__name__}",
             _partial(_from_networkx, vert_type=_vert_t))
-from_networkx = _generic_attribute("_from_networkx_", [_all_vertex_types],
-        module=_sys.modules[__name__])
+from_networkx = _generic_attribute(
+        attr_prefix="_from_networkx_",
+        arg_names=("vertex_type",),
+        options=set((t,) for t in _all_vertex_types),
+        function_module=_sys.modules[__name__],
+        api_module_name=__name__)
