@@ -28,8 +28,8 @@ C++ Library
 -----------
 
 You can include the C++ library in your code using CMake `FetchContent`_ module.
-To do this, you need to specify how to fetch Reticula in your `CMakeLists.txt`
-file:
+To do this, you need to specify how to fetch Reticula in your
+:file:`CMakeLists.txt` file:
 
 .. code-block:: cmake
 
@@ -46,7 +46,7 @@ file:
 You can use a git tag or branch name or the hash of a specific commit. We
 recommand that you use the most recent release branch v#.# for a new project.
 
-You can then link to the `reticula` target:
+You can then link to the :code:`reticula` target:
 
 .. code-block:: cmake
 
@@ -80,16 +80,17 @@ approximatly infinite RAM ( > 30GB) and time.
 If you actively developing the Python binding (perhaps to send a pull request?
 Thank you very much!) you might want to avoid re-building everything from
 scratch every single time. In this scenario, I recommand disabling build
-isolation and cleaning steps of `pip wheel` by using this command instead:
+isolation and cleaning steps of :command:`pip wheel` by using this command
+instead:
 
 .. code-block:: console
 
    $ python -m pip wheel . -w dist/ --verbose --no-build-isolation --no-clean
 
 This needs you to manually have the required python packages installed. You can
-find a list of these packages and acceptable version in the `pyproject.toml`
-file under the `build-system` table.
+find a list of these packages and acceptable version in the
+:file:`pyproject.toml` file under the :code:`[build-system]` table.
 
 You might also need to re-install the created wheel without bumping the version
-every time. Consider adding the flag `--force-reinstall` to the `pip install`
-command.
+every time. Consider adding the flag :option:`--force-reinstall` to the
+:command:`pip install` command.

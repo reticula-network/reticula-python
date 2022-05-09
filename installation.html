@@ -55,8 +55,8 @@ can also build and install the binding from scrach. Chack out the
 <section id="c-library">
 <h2>C++ Library<a class="headerlink" href="#c-library" title="Permalink to this headline">¶</a></h2>
 <p>You can include the C++ library in your code using CMake <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html">FetchContent</a> module.
-To do this, you need to specify how to fetch Reticula in your <cite>CMakeLists.txt</cite>
-file:</p>
+To do this, you need to specify how to fetch Reticula in your
+<code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
 
 <span class="nb">FetchContent_Declare</span><span class="p">(</span>
@@ -69,7 +69,7 @@ file:</p>
 </div>
 <p>You can use a git tag or branch name or the hash of a specific commit. We
 recommand that you use the most recent release branch v#.# for a new project.</p>
-<p>You can then link to the <cite>reticula</cite> target:</p>
+<p>You can then link to the <code class="code docutils literal notranslate"><span class="pre">reticula</span></code> target:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">my_program</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_program</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">reticula</span><span class="p">)</span>
 </pre></div>
@@ -95,16 +95,17 @@ approximatly infinite RAM ( &gt; 30GB) and time.</p>
 <p>If you actively developing the Python binding (perhaps to send a pull request?
 Thank you very much!) you might want to avoid re-building everything from
 scratch every single time. In this scenario, I recommand disabling build
-isolation and cleaning steps of <cite>pip wheel</cite> by using this command instead:</p>
+isolation and cleaning steps of <strong class="command">pip wheel</strong> by using this command
+instead:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip wheel . -w dist/ --verbose --no-build-isolation --no-clean
 </pre></div>
 </div>
 <p>This needs you to manually have the required python packages installed. You can
-find a list of these packages and acceptable version in the <cite>pyproject.toml</cite>
-file under the <cite>build-system</cite> table.</p>
+find a list of these packages and acceptable version in the
+<code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file under the <code class="code docutils literal notranslate"><span class="pre">[build-system]</span></code> table.</p>
 <p>You might also need to re-install the created wheel without bumping the version
-every time. Consider adding the flag <cite>–force-reinstall</cite> to the <cite>pip install</cite>
-command.</p>
+every time. Consider adding the flag <code class="xref std std-option docutils literal notranslate"><span class="pre">--force-reinstall</span></code> to the
+<strong class="command">pip install</strong> command.</p>
 </section>
 </section>
 </section>

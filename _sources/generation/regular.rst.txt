@@ -19,8 +19,8 @@ Generates a random :math:`k`-regular network, a random sample out of the space
 of all graphs where all nodes have exactly degree equal to :cpp:`degree`.
 
 The generation of a random :math:`k`-regular graph becomes more and more
-difficult as the density increases. In C++, you can use the `try_` variant of
-this function to limit runtime to a limited set of tries:
+difficult as the density increases. In C++, you can use the :code:`try_`
+variant of this function to limit runtime to a limited set of tries:
 
 .. cpp:function:: template <\
       integer_vertex VertT, \
