@@ -1,6 +1,9 @@
 Random degree-sequence network
 ==============================
 
+Undirected degree-sequence network
+----------------------------------
+
 C++:
 
 .. cpp:function:: template <\
@@ -50,8 +53,9 @@ this function to limit runtime to a limited set of tries:
 If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.
 
-Random directed degree-sequence network
-=======================================
+
+Directed degree-sequence network
+--------------------------------
 
 
 C++:
