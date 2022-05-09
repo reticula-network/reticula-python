@@ -61,7 +61,9 @@ marks a continuous time undirected temporal network with integer vertices.</p>
 <p>If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to repeatedly-used types in your code. This way you
 can avoid repeating yourself without compromising on type safety:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">network_type</span> <span class="o">=</span> <span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+
+<span class="n">network_type</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">]</span>
 <span class="n">edge_type</span> <span class="o">=</span> <span class="n">network_type</span><span class="o">.</span><span class="n">edge_type</span><span class="p">()</span>
 
 <span class="n">e1</span> <span class="o">=</span> <span class="n">edge_type</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -82,9 +84,11 @@ temporal edges and <code class="code highlight python docutils literal notransla
 <p>Networks can be initialised empty, by a list of edges, or by a list of edges and
 vertices. In addition to explicitly stating a list of edge objects, you can use
 tuples that implicitly convert to the correct edge type:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">]()</span> <span class="c1"># an empty network</span>
-<span class="n">g2</span> <span class="o">=</span> <span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">](</span><span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-<span class="n">g3</span> <span class="o">=</span> <span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">](</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+
+<span class="n">g1</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">]()</span> <span class="c1"># an empty network</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">g3</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span>
          <span class="n">edges</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">verts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -101,10 +105,11 @@ that a vertex of with that name exists, even if there are not edges connected
 to it.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Python implicit conversion is currently sensetive to mixing different
-numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
-2-tuple of integers, it cannot perform an implicit conversion. It is however
-okay to use a list instead of a tuple and vice versa.</p>
+<p>The Python binding implicit conversion from tuples to edge types is currently
+sensetive to mixing different numeric types, e.g., if it is expecting a
+2-tuple of double and you pass a 2-tuple of integers, it cannot perform an
+implicit conversion. It is however okay to use a list instead of a tuple and
+vice versa.</p>
 </div>
 </section>
 <section id="edges-and-vertices">
@@ -309,7 +314,7 @@ always an implementation of the IEEE-754 binary64 format.</p>
 <section id="higher-order-networks">
 <h3>Higher-order networks<a class="headerlink" href="#higher-order-networks" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the vertex types listed above, the Python binding supports
-one level of higher-order networks, where vertices of the network can be any of
+one level of higher-order network, where vertices of the network can be any of
 the defined edge types as long as that edge type uses one of the above “simple”
 vertex types.</p>
 </section>

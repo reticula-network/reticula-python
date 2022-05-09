@@ -37,7 +37,9 @@ can avoid repeating yourself without compromising on type safety:
 
 .. code-block:: python
 
-      network_type = undirected_network[int64]
+      import reticula as ret
+
+      network_type = ret.undirected_network[ret.int64]
       edge_type = network_type.edge_type()
 
       e1 = edge_type(1, 2)
@@ -62,9 +64,11 @@ tuples that implicitly convert to the correct edge type:
 
 .. code-block:: python
 
-      g1 = undirected_network[int64]() # an empty network
-      g2 = undirected_network[int64](edges=[(1, 2), (2, 3)])
-      g3 = undirected_network[int64](
+      import reticula as ret
+
+      g1 = ret.undirected_network[ret.int64]() # an empty network
+      g2 = ret.undirected_network[ret.int64](edges=[(1, 2), (2, 3)])
+      g3 = ret.undirected_network[ret.int64](
                edges=[(1, 2), (2, 3)], verts=[1, 2, 3, 4, 5, 6])
 
 
@@ -84,10 +88,11 @@ that a vertex of with that name exists, even if there are not edges connected
 to it.
 
 .. note::
-   The Python implicit conversion is currently sensetive to mixing different
-   numeric types, e.g., if it is expecting a 2-tuple of double and you pass a
-   2-tuple of integers, it cannot perform an implicit conversion. It is however
-   okay to use a list instead of a tuple and vice versa.
+   The Python binding implicit conversion from tuples to edge types is currently
+   sensetive to mixing different numeric types, e.g., if it is expecting a
+   2-tuple of double and you pass a 2-tuple of integers, it cannot perform an
+   implicit conversion. It is however okay to use a list instead of a tuple and
+   vice versa.
 
 
 Edges and vertices
@@ -245,7 +250,7 @@ Higher-order networks
 ^^^^^^^^^^^^^^^^^^^^^
 
 In addition to the vertex types listed above, the Python binding supports
-one level of higher-order networks, where vertices of the network can be any of
+one level of higher-order network, where vertices of the network can be any of
 the defined edge types as long as that edge type uses one of the above "simple"
 vertex types.
 
