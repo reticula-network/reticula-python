@@ -1,4 +1,4 @@
-Network Randomisation
+Network randomisation
 =====================
 
 .. toctree::

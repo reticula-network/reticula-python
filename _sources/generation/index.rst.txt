@@ -1,4 +1,4 @@
-Generating Networks
+Generating networks
 ===================
 
 .. toctree::
