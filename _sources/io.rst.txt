@@ -1,7 +1,7 @@
-Input/Output and Interpolation
+Input/Output and interpolation
 ==============================
 
-Edgelist Input/Output
+Edgelist input/output
 ---------------------
 
 Reading an edgelist file

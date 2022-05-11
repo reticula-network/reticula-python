@@ -21,7 +21,7 @@ containing no multi-edges or loops, based on the Erdős--Gallai algorithm
 
 
 Directed degree-pair sequence
-------------------------
+-----------------------------
 
 C++:
 

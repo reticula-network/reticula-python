@@ -35,6 +35,181 @@
             
   <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<section id="for-python-developers">
+<h2>For Python developers<a class="headerlink" href="#for-python-developers" title="Permalink to this headline">¶</a></h2>
+<p>The very first step is to find a suitable development environment. Reticula is
+currently compatible with Linux systems based on GNU C Library 2.17 or higher,
+which at the moment means practically any distribution released in the past 6
+years except for Alpine Linux. If you have no preferences on the subject, we
+recommend a long-term support (LTS) version of Ubuntu, such as 22.04.</p>
+<section id="setting-up-the-environment">
+<h3>Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">¶</a></h3>
+<p>In this section, we will explore the most basic form of installation of
+Reticula. Unfortunately, the current state of Python development environment is
+<a class="reference external" href="xkcd">not as intuitive as it can be</a>, so if you are working on a computer
+that is administered by someone else, such a University workstation or laptop,
+ask your system administrators what is the best way to install a package for
+your specific setup.</p>
+<p>First, open the terminal and check if you have the proper Python version
+installed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python --version
+<span class="go">Python 3.8.10</span>
+</pre></div>
+</div>
+<p>Acceptable values are, at the moment, 3.8, 3.9 or 3.10, though there is
+experimental support for PyPy 3.8 and 3.9 as well. If your Python version is
+not in this range, you can install proper Python version using the tools
+provided by your operating system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Ubuntu, by default all Python binaries are versioned, meaning that you
+should be replacing all instances of <code class="code docutils literal notranslate"><span class="pre">python</span></code> in the command line with
+<code class="code docutils literal notranslate"><span class="pre">python3</span></code>.</p>
+</div>
+<p>Next, let’s make sure you have the most recent version of pip, the standard
+Python package-management system:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install --upgrade pip
+</pre></div>
+</div>
+<p>Finally, to install the Reticula package</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install reticula
+</pre></div>
+</div>
+<p>If this command succeeds, you should be ready to go! Let’s check if everything
+is ready by running a one-liner script that only tries to import Reticula:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -c <span class="s2">&quot;import reticula&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;success\!&quot;</span>
+<span class="go">success!</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-started-with-reticula">
+<h3>Getting started with Reticula<a class="headerlink" href="#getting-started-with-reticula" title="Permalink to this headline">¶</a></h3>
+<p>First, let’s open a Python console, also called a REPL:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python
+<span class="go">Python 3.8.10 (default, Jun  4 2021, 15:09:15)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>You can now enter Python commands one by one and have the results shown to you
+immediately. This is useful for testing and learning. Let’s import Reticula and
+try to create a network:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">regular_ring_lattice</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
+<span class="go">&lt;undirected_network[int64] with 100 verts and 200 edges&gt;</span>
+</pre></div>
+</div>
+<p>Let’s try to dissect these commands. First, we imported Reticula but instructed
+python to use the alias <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span></code> to refer to it. This can help you avoid having
+to type <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">reticula</span></span></code> over and over again.</p>
+<p>Second, we called the function <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">regular_ring_lattice</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>. This
+syntax might look a bit weird or unnatural to people coming from a dynamic
+typing background. Remember that Reticula in Python is a thin shell over C++, so
+some functions need more information about what type of network or edges you
+want to construct, especially where this is not deducible from the things you
+passed in as arguments. This is refelcted in the type of the output network
+<code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>, which is a <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>, i.e., an undirected
+dyadic static network with 64-bit signed integers as vertices.</p>
+<p>Here, we instructed Reticula to construct a 4-regular ring lattice with 100
+vertices, where each vertex is a 64-bit signed integer. You can compare this,
+for example, to the <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">dtype</span></span></code> parameter that many NumPy functions expect:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s get back to Reticula. We can inspect the network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>. Let’s have a
+look at the edges and vertices of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="go">[undirected_edge[int64](0, 1), undirected_edge[int64](0, 2),</span>
+<span class="go">undirected_edge[int64](0, 98), ..., undirected_edge[int64](98, 99)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, ... , 99]</span>
+</pre></div>
+</div>
+<p>So, the edges of network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> are also carrying the same type information as
+the network itself. Let’s get one of the edges and inspect that:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">undirected_edge[int64](0, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">incident_verts</span><span class="p">()</span>
+<span class="go">[0, 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">vertex_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">ret</span><span class="o">.</span><span class="n">int64</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="generating-random-networks">
+<h3>Generating random networks<a class="headerlink" href="#generating-random-networks" title="Permalink to this headline">¶</a></h3>
+<p>Let’s try using more interesting network models. Random network models, such as
+Erdős–Rényi model, depend on random number generators to work. Moreover,
+Reticula cannot safely manipulate Python objects, such as the Python standard
+library pseudo-random number generator <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">random</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">Random</span></span></code>, while retaining the
+ability to do parallel work in different threads. Reticula, therefore, provides
+bindings for a pseudo-random number generator that can safely be used
+internally.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The variable state now holds a pseudo-random number generator created with seed
+value 42. Any Reticula algorithm, when passed this state, should produce the
+same outcome as long as the same seed is used.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="go">&lt;undirected_network[int64] with 1000 verts and 25091 edges&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># on some other computer:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="go">&lt;undirected_network[int64] with 1000 verts and 25091 edges&gt;</span>
+</pre></div>
+</div>
+<p>Usually, you need to make a single pseudo-random number generator for your
+python script, or one per thread for multi-threaded scripts since the order of
+execution is not clear. The seed(s) for the random number generators can be one
+of the inputs to your script, making it much easier for you and other to
+reproduce your results.</p>
+</section>
+<section id="using-the-algorithms">
+<h3>Using the algorithms<a class="headerlink" href="#using-the-algorithms" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now use some of the algorithms. Let’s generate a thinner network and study
+connectivity in this static network:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comps</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<p>So this random network consists of 8 connected components. Let’s see how the
+component sizes are distributed, then get the largest component:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comps</span><span class="p">]</span>
+<span class="go">[1, 1, 1, 1, 1, 1, 1, 993]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lcc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">comps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lcc</span>
+<span class="go">&lt;component[int64] of 993 nodes: {999, 998, 997, 996, 995, 994, 993, 992,</span>
+<span class="go">991, 990, ...})&gt;</span>
+</pre></div>
+</div>
+<p>So a component, which is just a set of vertices, also carries the same type
+information as all other types. We can inspect the membership in a component and
+turn it into a plain old Python list of numbers:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="ow">in</span> <span class="n">lcc</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">59</span> <span class="ow">in</span> <span class="n">lcc</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lcc</span><span class="p">]</span>
+<span class="go">[59, 98, 260, 669, 713, 874, 937]</span>
+</pre></div>
+</div>
+<p>Let’s now get the subgraph of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> induced by the largest connected
+components:</p>
+<div class="highlight-ptcon notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; g2 = ret.vertex_induced_subgraph(g, lcc)
+&gt;&gt;&gt; g2
+&lt;undirected_network[int64] with 993 verts and 2498 edges&gt;
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -56,9 +231,12 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#for-python-developers">For Python developers</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Networks and network types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and interpolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/index.html">Generating Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shuffling/index.html">Network Randomisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/index.html">Algorithms</a></li>
