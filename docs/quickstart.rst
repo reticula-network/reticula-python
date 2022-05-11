@@ -16,10 +16,10 @@ Setting up the environment
 
 In this section, we will explore the most basic form of installation of
 Reticula. Unfortunately, the current state of Python development environment is
-`not as intuitive as it can be <xkcd>`_, so if you are working on a computer
-that is administered by someone else, such a University workstation or laptop,
-ask your system administrators what is the best way to install a package for
-your specific setup.
+`not as intuitive as it can be <https://xkcd.com/1987/>`_, so if you are working
+on a computer that is administered by someone else, such a University
+workstation or laptop, ask your system administrators what is the best way to
+install a package for your specific setup.
 
 First, open the terminal and check if you have the proper Python version
 installed:
@@ -35,9 +35,9 @@ not in this range, you can install proper Python version using the tools
 provided by your operating system.
 
 .. note::
-   In Ubuntu, by default all Python binaries are versioned, meaning that you
-   should be replacing all instances of :code:`python` in the command line with
-   :code:`python3`.
+   In Ubuntu and other Debian based Linux distributions, by default all Python
+   binaries are versioned, meaning that you should be replacing all instances
+   of :code:`python` in the command line with :code:`python3`.
 
 Next, let's make sure you have the most recent version of pip, the standard
 Python package-management system:
@@ -59,8 +59,6 @@ is ready by running a one-liner script that only tries to import Reticula:
 
    $ python -c "import reticula" && echo "success\!"
    success!
-
-.. _xkcd: https://xkcd.com/1987/
 
 Getting started with Reticula
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,6 +184,8 @@ component sizes are distributed, then get the largest component:
 
 .. code-block:: pycon
 
+   >>> ret.is_connected(g)
+   False
    >>> [len(c) for c in comps]
    [1, 1, 1, 1, 1, 1, 1, 993]
    >>> lcc = max(comps, key=len)
@@ -214,3 +214,20 @@ components:
    >>> g2 = ret.vertex_induced_subgraph(g, lcc)
    >>> g2
    <undirected_network[int64] with 993 verts and 2498 edges>
+   >>> ret.is_connected(g2)
+   True
+
+We can also check out some other properties of the network, such as its density
+or average degree:
+
+.. code-block:: ptcon
+
+   >>> # Average degree:
+   >>> sum(g.degree(v) for v in g.vertices())/len(g.vertices())
+   4.996
+   >>> ret.density(g)
+   0.005001001001001001
+   >>> ret.is_reachable(g, 1, 3)
+   True
+   >>> ret.is_reachable(g, 1, 59)
+   False
