@@ -24,8 +24,8 @@ can also build and install the binding from scrach. Chack out the
 :ref:`Development` section for more information.
 
 
-C++ Library
------------
+The C++ library
+---------------
 
 You can include the C++ library in your code using CMake `FetchContent`_ module.
 To do this, you need to specify how to fetch Reticula in your
@@ -59,8 +59,8 @@ You can then link to the :code:`reticula` target:
 Development
 -----------
 
-Building Python binding from scratch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Building the Python binding from scratch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
