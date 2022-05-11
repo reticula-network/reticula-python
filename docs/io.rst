@@ -4,26 +4,40 @@ Input/Output and Interpolation
 Edgelist Input/Output
 ---------------------
 
-..
-  TODO: Talk about supported edge types
-
 Reading an edgelist file
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+C++:
+
 .. cpp:function:: template <network_edge EdgeT> \
-  network<EdgeT> read_edgelist(std::filesystem::path path, \
-    char delimiter = ' ', char quote = '"')
+  network<EdgeT> read_edgelist(std::filesystem::path path)
 
-.. py:function:: read_edgelist(path: str, \
-  delimiter: str = " ", quote: str = "\"")
+Python:
+
+.. py:function:: read_edgelist(path: str)
 
 
-Static and temporal networks can be read from edge-list tab, space or comma
-separated files.
-
+Dyadic static and temporal networks can be read from space separated files where
+each row represents an edge. Note that vertices with no neighbours cannot be
+represented in this format.
 
 Writing an edgelist file
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+C++:
+
+.. cpp:function:: template <network_edge EdgeT> \
+  void write_edgelist(const network<EdgeT>& g, std::filesystem::path path)
+
+Python:
+
+.. py:function:: write_edgelist(network, path: str)
+
+Write a dyadic static and temporal networks in form of space separated files
+where each row represents an edge. Note that vertices with no neighbours cannot
+be represented in this format.
 
 Interpolation with NetworkX
 ---------------------------

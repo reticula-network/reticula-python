@@ -16,9 +16,15 @@ template <reticula::network_edge EdgeT>
 struct declare_io_functions {
   void operator()(py::module& m) {
     m.def(fmt::format("read_edgelist_{}", python_type_str<EdgeT>()).c_str(),
-        [](const std::string& path, char delimiter, char quote) {
-          return reticula::read_edgelist<EdgeT>(path, delimiter, quote);
-        }, "path"_a, "delimiter"_a = ' ', "quote"_a = '"',
+        [](const std::string& path) {
+          return reticula::read_edgelist<EdgeT>(path);
+        }, "path"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def("write_edgelist",
+        [](reticula::network<EdgeT>& g, const std::string& path) {
+          return reticula::write_edgelist<EdgeT>(g, path);
+        }, "network"_a, "path"_a,
         py::call_guard<py::gil_scoped_release>());
   }
 };

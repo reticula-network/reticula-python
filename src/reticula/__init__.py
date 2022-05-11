@@ -120,6 +120,7 @@ read_edgelist = _generic_attribute(
         options=set((t,) for t in _simple_edge_types),
         function_module=_reticula_ext,
         api_module_name=__name__)
+from .reticula_ext import write_edgelist
 
 _all_edge_types = set(_reticula_ext.types.edge_types)
 is_network_edge = _generic_attribute(
