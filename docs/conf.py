@@ -62,7 +62,7 @@ import re
 typed_py_re = re.compile(
     r'''^ ([\w.]*\.)?            # class name(s)
           (\w+)  \s*             # thing name
-          (?: \[.*\])?  \s*      # optional: type paramters
+          (?: \[[^\]]+\])?  \s*  # optional: type paramters
           (?: \(\s*(.*)\s*\)     # optional: arguments
            (?:\s* -> \s* (.*))?  #           return annotation
           )? $                   # and nothing more
