@@ -115,6 +115,15 @@ struct declare_undirected_network_algorithms {
         &reticula::is_reachable<EdgeT>,
         "undirected_network"_a, "source"_a, "destination"_a,
         py::call_guard<py::gil_scoped_release>());
+
+    m.def("shortest_path_lengths_from",
+        &reticula::shortest_path_lengths_from<EdgeT>,
+        "directed_network"_a, "source"_a,
+        py::call_guard<py::gil_scoped_release>());
+    m.def("shortest_path_lengths_to",
+        &reticula::shortest_path_lengths_to<EdgeT>,
+        "directed_network"_a, "destination"_a,
+        py::call_guard<py::gil_scoped_release>());
   }
 };
 

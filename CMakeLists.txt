@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(reticula_python LANGUAGES CXX VERSION 0.0.2)
+project(reticula_python LANGUAGES CXX VERSION 0.0.3)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG c87a607)
+  GIT_TAG ab06ac5)
 
 FetchContent_Declare(
   fmt
