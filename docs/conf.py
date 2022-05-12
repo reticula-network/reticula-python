@@ -77,6 +77,27 @@ html_theme_options = {
   "source_directory": "docs/",
 }
 
+import os.path
+def read_icon(path: str):
+  with open(os.path.join(os.path.dirname(__file__), path), 'r') as f:
+    return f.read()
+
+html_theme_options = {
+  "footer_icons": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/reticula-network",
+      "html": read_icon("github.svg"),
+      "class": "",
+    }, {
+      "name": "PyPi",
+      "url": "https://pypi.org/project/reticula/",
+      "html": read_icon("pypi.svg"),
+      "class": "",
+    },
+  ],
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
