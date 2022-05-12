@@ -60,12 +60,11 @@ rst_prolog = """
 # REs for Python signatures with types
 import re
 typed_py_re = re.compile(
-    r'''^ ([\w.]*\.)?            # class name(s)
-          (\w+)  \s*             # thing name
-          (?: \[[^\]]+\])?  \s*  # optional: type paramters
-          (?: \(\s*(.*)\s*\)     # optional: arguments
-           (?:\s* -> \s* (.*))?  #           return annotation
-          )? $                   # and nothing more
+    r'''^ ([\w.]*\.)?                 # class name(s)
+          (\w+(?: \[[^\]]+\])?)  \s*  # thing name
+          (?: \(\s*(.*)\s*\)          # optional: arguments
+           (?:\s* -> \s* (.*))?       #           return annotation
+          )? $                        # and nothing more
           ''', re.VERBOSE)
 
 import sphinx.domains.python
