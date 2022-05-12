@@ -19,7 +19,7 @@ C++:
 
 Python:
 
-.. py:function:: random_degree_sequence_graph[vert_type](
+.. py:function:: random_degree_sequence_graph[vert_type](\
       degree_sequence: List[int], random_state) \
    -> undirected_network[vert_type]
 
@@ -73,7 +73,7 @@ C++:
 
 Python:
 
-.. py:function:: random_directed_degree_sequence_graph[vert_type](
+.. py:function:: random_directed_degree_sequence_graph[vert_type](\
       in_out_degree_sequence: List[Tuple[int, int]], random_state) \
    -> directed_network[vert_type]
 

@@ -18,7 +18,7 @@ C++:
 
 Python:
 
-.. py:function:: random_expected_degree_sequence_graph[vert_type](
+.. py:function:: random_expected_degree_sequence_graph[vert_type](\
       weight_sequence: List[float], random_state) \
    -> undirected_network[vert_type]
 
@@ -50,7 +50,7 @@ C++:
 
 Python:
 
-.. py:function:: random_directed_expected_degree_sequence_graph[vert_type](
+.. py:function:: random_directed_expected_degree_sequence_graph[vert_type](\
       in_out_weight_sequence: List[float, float], random_state) \
    -> undirected_network[vert_type]
 
