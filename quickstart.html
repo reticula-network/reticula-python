@@ -1,0 +1,510 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Networks and network types" href="types.html" /><link rel="prev" title="Installation" href="installation.html" />
+
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Quick Start - Reticula</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Reticula</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Reticula</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Networks and network types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="generation/path.html">Path graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/cycle.html">Cycle graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/regular_ring_lattice.html">Regular ring lattice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/square_grid_graph.html">Square grid graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/complete_graph.html">Complete graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/complete_graph.html#complete-directed-graphs">Complete directed graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/gnp.html">Random Erdős–Rényi network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/barabasi.html">Random Barabási–Albert network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/regular.html">Random k-regular network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/degree_seq.html">Random degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/expected_degree_seq.html">Random expected degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/fully_mixed.html">Fully-mixed temporal network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation/activation.html">Link activation temporal network</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="shuffling/index.html">Network randomisation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/static_network_reachability.html">Static network reachability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/temporal_network_reachability.html">Temporal network reachability</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dynamics/index.html">Dynamics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citing.html">Citing Reticula</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h1>
+<section id="for-python-developers">
+<h2>For Python developers<a class="headerlink" href="#for-python-developers" title="Permalink to this headline">#</a></h2>
+<p>The very first step is to find a suitable development environment. Reticula is
+currently compatible with Linux systems based on GNU C Library 2.17 or higher,
+which at the moment means practically any distribution released in the past 6
+years except for Alpine Linux. If you have no preferences on the subject, we
+recommend a long-term support (LTS) version of Ubuntu, such as 22.04.</p>
+<section id="setting-up-the-environment">
+<h3>Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">#</a></h3>
+<p>In this section, we will explore the most basic form of installation of
+Reticula. Unfortunately, the current state of Python development environment is
+<a class="reference external" href="https://xkcd.com/1987/">not as intuitive as it can be</a>, so if you are working
+on a computer that is administered by someone else, such a University
+workstation or laptop, ask your system administrators what is the best way to
+install a package for your specific setup.</p>
+<p>First, open the terminal and check if you have the proper Python version
+installed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python --version
+<span class="go">Python 3.8.10</span>
+</pre></div>
+</div>
+<p>Acceptable values are, at the moment, 3.8, 3.9 or 3.10, though there is
+experimental support for PyPy 3.8 and 3.9 as well. If your Python version is
+not in this range, you can install proper Python version using the tools
+provided by your operating system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Ubuntu and other Debian based Linux distributions, by default all Python
+binaries are versioned, meaning that you should be replacing all instances
+of <code class="code docutils literal notranslate"><span class="pre">python</span></code> in the command line with <code class="code docutils literal notranslate"><span class="pre">python3</span></code>.</p>
+</div>
+<p>Next, let’s make sure you have the most recent version of pip, the standard
+Python package-management system:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install --upgrade pip
+</pre></div>
+</div>
+<p>Finally, to install the Reticula package</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install reticula
+</pre></div>
+</div>
+<p>If this command succeeds, you should be ready to go! Let’s check if everything
+is ready by running a one-liner script that only tries to import Reticula:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -c <span class="s2">"import reticula"</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"success\!"</span>
+<span class="go">success!</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-started-with-reticula">
+<h3>Getting started with Reticula<a class="headerlink" href="#getting-started-with-reticula" title="Permalink to this headline">#</a></h3>
+<p>First, let’s open a Python console, also called a REPL:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python
+<span class="go">Python 3.8.10 (default, Jun  4 2021, 15:09:15)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>You can now enter Python commands one by one and have the results shown to you
+immediately. This is useful for testing and learning. Let’s import Reticula and
+try to create a network:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">regular_ring_lattice</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
+<span class="go">&lt;undirected_network[int64] with 100 verts and 200 edges&gt;</span>
+</pre></div>
+</div>
+<p>Let’s try to dissect these commands. First, we imported Reticula but instructed
+python to use the alias <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span></code> to refer to it. This can help you avoid having
+to type <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">reticula</span></span></code> over and over again.</p>
+<p>Second, we called the function <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">regular_ring_lattice</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>. This
+syntax might look a bit weird or unnatural to people coming from a dynamic
+typing background. Remember that Reticula in Python is a thin shell over C++, so
+some functions need more information about what type of network or edges you
+want to construct, especially where this is not deducible from the things you
+passed in as arguments. This is refelcted in the type of the output network
+<code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>, which is a <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>, i.e., an undirected
+dyadic static network with 64-bit signed integers as vertices.</p>
+<p>Here, we instructed Reticula to construct a 4-regular ring lattice with 100
+vertices, where each vertex is a 64-bit signed integer. You can compare this,
+for example, to the <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">dtype</span></span></code> parameter that many NumPy functions expect:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s get back to Reticula. We can inspect the network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>. Let’s have a
+look at the edges and vertices of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="go">[undirected_edge[int64](0, 1), undirected_edge[int64](0, 2),</span>
+<span class="go">undirected_edge[int64](0, 98), ..., undirected_edge[int64](98, 99)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, ... , 99]</span>
+</pre></div>
+</div>
+<p>So, the edges of network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> are also carrying the same type information as
+the network itself. Let’s get one of the edges and inspect that:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">undirected_edge[int64](0, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">incident_verts</span><span class="p">()</span>
+<span class="go">[0, 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">vertex_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">ret</span><span class="o">.</span><span class="n">int64</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="generating-random-networks">
+<h3>Generating random networks<a class="headerlink" href="#generating-random-networks" title="Permalink to this headline">#</a></h3>
+<p>Let’s try using more interesting network models. Random network models, such as
+Erdős–Rényi model, depend on random number generators to work. Moreover,
+Reticula cannot safely manipulate Python objects, such as the Python standard
+library pseudo-random number generator <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">random</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">Random</span></span></code>, while retaining the
+ability to do parallel work in different threads. Reticula, therefore, provides
+bindings for a pseudo-random number generator that can safely be used
+internally.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The variable state now holds a pseudo-random number generator created with seed
+value 42. Any Reticula algorithm, when passed this state, should produce the
+same outcome as long as the same seed is used.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="go">&lt;undirected_network[int64] with 1000 verts and 25091 edges&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># on some other computer:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="go">&lt;undirected_network[int64] with 1000 verts and 25091 edges&gt;</span>
+</pre></div>
+</div>
+<p>Usually, you need to make a single pseudo-random number generator for your
+python script, or one per thread for multi-threaded scripts since the order of
+execution is not clear. The seed(s) for the random number generators can be one
+of the inputs to your script, making it much easier for you and other to
+reproduce your results.</p>
+</section>
+<section id="using-the-algorithms">
+<h3>Using the algorithms<a class="headerlink" href="#using-the-algorithms" title="Permalink to this headline">#</a></h3>
+<p>Let’s now use some of the algorithms. Let’s generate a thinner network and study
+connectivity in this static network:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comps</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comps</span><span class="p">)</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<p>So this random network consists of 8 connected components. Let’s see how the
+component sizes are distributed, then get the largest component:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comps</span><span class="p">]</span>
+<span class="go">[1, 1, 1, 1, 1, 1, 1, 993]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lcc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">comps</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lcc</span>
+<span class="go">&lt;component[int64] of 993 nodes: {999, 998, 997, 996, 995, 994, 993, 992,</span>
+<span class="go">991, 990, ...})&gt;</span>
+</pre></div>
+</div>
+<p>So a component, which is just a set of vertices, also carries the same type
+information as all other types. We can inspect the membership in a component and
+turn it into a plain old Python list of numbers:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="ow">in</span> <span class="n">lcc</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">59</span> <span class="ow">in</span> <span class="n">lcc</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lcc</span><span class="p">]</span>
+<span class="go">[59, 98, 260, 669, 713, 874, 937]</span>
+</pre></div>
+</div>
+<p>Let’s now get the subgraph of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> induced by the largest connected
+components:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">vertex_induced_subgraph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">lcc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span>
+<span class="go">&lt;undirected_network[int64] with 993 verts and 2498 edges&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>We can also check out some other properties of the network, such as its density
+or average degree:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Average degree:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">())</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">vertices</span><span class="p">())</span>
+<span class="go">4.996</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">0.005001001001001001</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">is_reachable</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">is_reachable</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="types.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Networks and network types</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="installation.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Installation</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/reticula-network" aria-label="GitHub"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+              <a class="muted-link " href="https://pypi.org/project/reticula/" aria-label="PyPi"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M23.922 13.58v3.912L20.55 18.72l-.078.055.052.037 3.45-1.256.026-.036v-3.997l-.053-.036-.025.092z M23.621 5.618l-3.04 1.107v3.912l3.339-1.215V5.509zM23.92 13.457V9.544l-3.336 1.215v3.913zM20.47 14.71V10.8L17.17 12v3.913zM17.034 19.996v-3.912l-3.313 1.206v3.912zM17.17 16.057v3.868l3.314-1.206V14.85l-3.314 1.206zm2.093 1.882c-.367.134-.663-.074-.663-.463s.296-.814.663-.947c.365-.133.662.075.662.464s-.297.814-.662.946z M13.225 9.315l.365-.132-3.285-1.197-3.323 1.21.102.037 3.184 1.16zM20.507 10.664V6.751L17.17 7.965v3.913zM17.058 11.918V8.005l-3.302 1.202v3.912zM13.643 9.246l-3.336 1.215v3.913l3.336-1.215zM6.907 13.165l3.322 1.209v-3.913L6.907 9.252z M10.34 7.873l3.281 1.193V5.198l-3.28-1.193zM20.507 2.715L17.19 3.922v3.913l3.317-1.207zM16.95 3.903L13.724 2.73l-3.269 1.19 3.225 1.174zM15.365 4.606l-1.624.592v3.868l3.317-1.207V3.991l-1.693.615zm-.391 2.778c-.367.134-.662-.074-.662-.464s.295-.813.662-.946c.366-.133.663.074.663.464s-.297.813-.663.946z M10.229 18.41v-3.914l-3.322-1.209V17.2zM13.678 17.182v-3.913l-3.371 1.227v3.913z M13.756 17.154l3.3-1.2V12.04l-3.3 1.2zM13.678 21.217l-3.371 1.227v-3.912h-.078v3.912l-3.322-1.209v-3.913l-.053-.058-.025-.06-3.336-1.21v-3.948l.034.013 3.287 1.196.015-.078-3.261-1.187 3.26-1.187v-.109L3.876 9.62l-.307-.112 3.26-1.188v.877l.079-.055V6.769l3.257 1.185.058-.061L7.084 6.75l-.102-.037 3.24-1.179v-.083L6.854 6.677v.018l-.025.018v1.523L3.44 9.47v.02l-.025.017v4.007l-3.39 1.233v.019L0 14.784v3.995l.025.037 3.4 1.237.008-.006.007.01 3.4 1.238.008-.006.006.01 3.4 1.237.014-.009.012.01 3.45-1.256.026-.037-.078-.027zM3.493 9.563l3.257 1.185-3.257 1.187V9.562zM3.4 19.96L.078 18.752v-3.913l2.361.86.96.349v3.913zm.015-3.99L.335 14.85l-.182-.066 3.262-1.187v2.374zm3.399 5.231l-3.321-1.209v-3.912l3.321 1.209v3.912zM23.791 5.434l-3.21-1.17v2.338zM20.387 2.643l-3.24-1.18-3.27 1.19 3.247 1.182z"></path></svg>
+</a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Quick Start</a><ul>
+<li><a class="reference internal" href="#for-python-developers">For Python developers</a><ul>
+<li><a class="reference internal" href="#setting-up-the-environment">Setting up the environment</a></li>
+<li><a class="reference internal" href="#getting-started-with-reticula">Getting started with Reticula</a></li>
+<li><a class="reference internal" href="#generating-random-networks">Generating random networks</a></li>
+<li><a class="reference internal" href="#using-the-algorithms">Using the algorithms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,570 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Temporal network reachability" href="temporal_network_reachability.html" /><link rel="prev" title="Graph operations" href="graph_operations.html" />
+
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Static network reachability - Reticula</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Reticula</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Reticula</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../generation/path.html">Path graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/cycle.html">Cycle graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/regular_ring_lattice.html">Regular ring lattice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/square_grid_graph.html">Square grid graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/complete_graph.html">Complete graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/complete_graph.html#complete-directed-graphs">Complete directed graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/gnp.html">Random Erdős–Rényi network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/barabasi.html">Random Barabási–Albert network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/regular.html">Random k-regular network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/degree_seq.html">Random degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/expected_degree_seq.html">Random expected degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/fully_mixed.html">Fully-mixed temporal network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/activation.html">Link activation temporal network</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shuffling/index.html">Network randomisation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graphicallity.html">Graphicallity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Static network reachability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="temporal_network_reachability.html">Temporal network reachability</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dynamics/index.html">Dynamics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing Reticula</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="static-network-reachability">
+<span id="id1"></span><h1>Static network reachability<a class="headerlink" href="#static-network-reachability" title="Permalink to this headline">#</a></h1>
+<p>The algorithms described in this page deal with the topic of reachability in
+different network types. <strong>Reachability</strong> is the ability to get from one vertex
+to another, but only through edges of the network. If the network is directed,
+the <em>path</em> between two vertices should always be following the directions of the
+edges.</p>
+<p>The functions presented here accept both static dyadic and hypernetworks.</p>
+<section id="component-types">
+<h2>Component types<a class="headerlink" href="#component-types" title="Permalink to this headline">#</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE9component">
+<span id="_CPPv3I_14network_vertexE9component"></span><span id="_CPPv2I_14network_vertexE9component"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component</span></span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE9component" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="component-vert_type">
+<span id="component[vert_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component[vert_type]</span></span><a class="headerlink" href="#component-vert_type" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>A <em>component</em> is a set of network vertices. Components are iterable both in C++,
+through satisfying the <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">forward_range</span></span></code> and
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">sized_range</span></span></code> concepts, and in Python by implementing
+<code class="code highlight python docutils literal notranslate"><span class="fm"><span class="pre">__iter__</span></span></code>.</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE14component_size">
+<span id="_CPPv3I_14network_vertexE14component_size"></span><span id="_CPPv2I_14network_vertexE14component_size"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_size</span></span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE14component_size" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="component_size-vert_type">
+<span id="component_size[vert_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component_size[vert_type]</span></span><a class="headerlink" href="#component_size-vert_type" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE18component_estimate">
+<span id="_CPPv3I_14network_vertexE18component_estimate"></span><span id="_CPPv2I_14network_vertexE18component_estimate"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_estimate</span></span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE18component_estimate" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="component_size_estimate-vert_type">
+<span id="component_size_estimate[vert_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component_size_estimate[vert_type]</span></span><a class="headerlink" href="#component_size_estimate-vert_type" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+</section>
+<section id="weak-connectivity">
+<h2>Weak-connectivity<a class="headerlink" href="#weak-connectivity" title="Permalink to this headline">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE26weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE">
+<span id="_CPPv3I_20static_directed_edgeE26weakly_connected_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span id="_CPPv2I_20static_directed_edgeE26weakly_connected_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE26weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="weakly_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weakly_connected_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE26weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="weakly_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE26weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="weakly_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vert</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_hint</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE26weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="weakly_connected_component">
+<span class="sig-name descname"><span class="pre">weakly_connected_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vert_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#weakly_connected_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Finds the weakly-connected component for vertex <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">vert</span></span></code>. The parameter
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">size_hint</span></span></code> can help reduce memory re-allocations if you already have a
+rough estimate (or even better: a good upper-bound) on the weakly-connected
+component size you expect to get. If not, you can rely on the default behaviour.</p>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE27weakly_connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb">
+<span id="_CPPv3I_20static_directed_edgeE27weakly_connected_componentsRK7networkI5EdgeTEb"></span><span id="_CPPv2I_20static_directed_edgeE27weakly_connected_componentsRK7networkI5EdgeTEb"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE27weakly_connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="weakly_connected_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weakly_connected_components</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE27weakly_connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="weakly_connected_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">singletons</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE27weakly_connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="weakly_connected_components">
+<span class="sig-name descname"><span class="pre">weakly_connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#weakly_connected_components" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns all weakly-connected components of the parameter network. Implementation
+is based on consecutive unions on a disjoint-set data structure of vertices
+<span id="id2">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">9</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">10</a>]</span>.</p>
+<p>If you are not interested in weakly-connected components with only a single
+vertex, set the <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">singletons</span></span></code> to <code class="code highlight cpp docutils literal notranslate"><span class="nb"><span class="pre">false</span></span></code>.</p>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE19is_weakly_connectedbRK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE19is_weakly_connectedRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE19is_weakly_connectedRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_weakly_connected</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE19is_weakly_connectedbRK7networkI5EdgeTE" title="is_weakly_connected::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE19is_weakly_connectedbRK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="is_weakly_connected">
+<span class="sig-name descname"><span class="pre">is_weakly_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_weakly_connected" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns true if the network is weakly-connected: if all pairs of vertices
+can be connected through the network edges, if we forget about the directions of
+those edges, i.e., there exists an undirected path between every pair of
+vertices.</p>
+</section>
+<section id="in-and-out-components">
+<h2>In- and out-components<a class="headerlink" href="#in-and-out-components" title="Permalink to this headline">#</a></h2>
+<section id="from-a-single-source">
+<h3>From a single source<a class="headerlink" href="#from-a-single-source" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE12in_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE">
+<span id="_CPPv3I_20static_directed_edgeE12in_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span id="_CPPv2I_20static_directed_edgeE12in_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE12in_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="in_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE12in_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="in_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE12in_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="in_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">root</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_hint</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE12in_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE13out_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE">
+<span id="_CPPv3I_20static_directed_edgeE13out_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span id="_CPPv2I_20static_directed_edgeE13out_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13out_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="out_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13out_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="out_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13out_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="out_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">root</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_hint</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE13out_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="in_component">
+<span class="sig-name descname"><span class="pre">in_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vert_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#in_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="out_component">
+<span class="sig-name descname"><span class="pre">out_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vert_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#out_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Calculate the in- or out-component of a vertex in a static directed network.</p>
+</section>
+<section id="from-all-vertices">
+<h3>From all vertices<a class="headerlink" href="#from-all-vertices" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE13in_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE13in_componentsRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE13in_componentsRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13in_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13in_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_components</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE13in_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE13in_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE14out_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE14out_componentsRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE14out_componentsRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE14out_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE14out_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_components</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE14out_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE14out_componentsNSt6vectorINSt4pairIN5EdgeT10VertexTypeE9componentIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="in_components">
+<span class="sig-name descname"><span class="pre">in_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#in_components" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="out_components">
+<span class="sig-name descname"><span class="pre">out_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#out_components" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Calculates the in- or out-components of all vertices in a static directed
+network.</p>
+</section>
+<section id="in-and-out-component-sizes">
+<h3>In- and out-component sizes<a class="headerlink" href="#in-and-out-component-sizes" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE18in_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE18in_component_sizesRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE18in_component_sizesRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE18in_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertexE14component_size" title="component_size"><span class="n"><span class="pre">component_size</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE18in_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_component_sizes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE18in_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="in_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE18in_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE19out_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE19out_component_sizesRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE19out_component_sizesRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE19out_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertexE14component_size" title="component_size"><span class="n"><span class="pre">component_size</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE19out_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_component_sizes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE19out_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="out_component_sizes::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE19out_component_sizesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE14component_sizeIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="in_component_sizes">
+<span class="sig-name descname"><span class="pre">in_component_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component_size</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#in_component_sizes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="out_component_sizes">
+<span class="sig-name descname"><span class="pre">out_component_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component_size</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#out_component_sizes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Calculates the in- or out-component <em>sizes</em> of all vertices in a static
+directed network. Compared to calculating all in- or out-components, this uses
+less memory in some cases.</p>
+</section>
+<section id="in-and-out-component-size-estimates">
+<h3>In- and out-component size estimates<a class="headerlink" href="#in-and-out-component-size-estimates" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE27in_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE">
+<span id="_CPPv3I_20static_directed_edgeE27in_component_size_estimatesRK7networkI5EdgeTENSt6size_tE"></span><span id="_CPPv2I_20static_directed_edgeE27in_component_size_estimatesRK7networkI5EdgeTENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE27in_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="in_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">component_size_estimate</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE27in_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="in_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_component_size_estimates</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE27in_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="in_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">seed</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE27in_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE28out_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE">
+<span id="_CPPv3I_20static_directed_edgeE28out_component_size_estimatesRK7networkI5EdgeTENSt6size_tE"></span><span id="_CPPv2I_20static_directed_edgeE28out_component_size_estimatesRK7networkI5EdgeTENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE28out_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="out_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">component_size_estimate</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE28out_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="out_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_component_size_estimates</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE28out_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="out_component_size_estimates::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">seed</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE28out_component_size_estimatesNSt6vectorINSt4pairIN5EdgeT10VertexTypeE23component_size_estimateIN5EdgeT10VertexTypeEEEEEERK7networkI5EdgeTENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="in_component_size_estimates">
+<span class="sig-name descname"><span class="pre">in_component_size_estimates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component_size_estimate</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#in_component_size_estimates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="out_component_size_estimates">
+<span class="sig-name descname"><span class="pre">out_component_size_estimates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">pair</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">component_size_estimate</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#out_component_size_estimates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p><em>Estimates</em> the in- or out-component sizes of all vertices in a static directed
+network. Compared to calculating all in- or out-components and in- and
+out-component sizes, this uses much less memory and is much faster to run in
+many cases.</p>
+</section>
+</section>
+<section id="undirected-static-networks">
+<h2>Undirected static networks<a class="headerlink" href="#undirected-static-networks" title="Permalink to this headline">#</a></h2>
+<section id="connected-component-of-a-specific-vertex">
+<h3>Connected component of a specific vertex<a class="headerlink" href="#connected-component-of-a-specific-vertex" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_22static_undirected_edgeE19connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE">
+<span id="_CPPv3I_22static_undirected_edgeE19connected_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span id="_CPPv2I_22static_undirected_edgeE19connected_componentRK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_undirected_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE19connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">connected_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE19connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE19connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vert</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_hint</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_22static_undirected_edgeE19connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTERKN5EdgeT10VertexTypeENSt6size_tE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="connected_component">
+<span class="sig-name descname"><span class="pre">connected_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">undirected_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vert_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#connected_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns the connected component that vertex <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">vert</span></span></code> belongs to. A connected
+component is a maximal subset of vertices of the network where all vertices can
+reach all others.</p>
+</section>
+<section id="all-connected-components">
+<h3>All connected components<a class="headerlink" href="#all-connected-components" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_22static_undirected_edgeE20connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb">
+<span id="_CPPv3I_22static_undirected_edgeE20connected_componentsRK7networkI5EdgeTEb"></span><span id="_CPPv2I_22static_undirected_edgeE20connected_componentsRK7networkI5EdgeTEb"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_undirected_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE20connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="connected_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">connected_components</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE20connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="connected_components::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">singletons</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_22static_undirected_edgeE20connected_componentsNSt6vectorI9componentIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTEb" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="connected_components">
+<span class="sig-name descname"><span class="pre">connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">undirected_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">components</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#connected_components" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns all connected components of the static undirected network.</p>
+</section>
+<section id="id3">
+<h3>All connected components<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_22static_undirected_edgeE12is_connectedbRK7networkI5EdgeTE">
+<span id="_CPPv3I_22static_undirected_edgeE12is_connectedRK7networkI5EdgeTE"></span><span id="_CPPv2I_22static_undirected_edgeE12is_connectedRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_undirected_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_connected</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE12is_connectedbRK7networkI5EdgeTE" title="is_connected::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4I_22static_undirected_edgeE12is_connectedbRK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">undirected_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_connected" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns <code class="code highlight cpp docutils literal notranslate"><span class="nb"><span class="pre">true</span></span></code> if all vertices of the network are reachable from all other.</p>
+</section>
+</section>
+<section id="source-destination-reachability">
+<h2>Source-destination reachability<a class="headerlink" href="#source-destination-reachability" title="Permalink to this headline">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_11static_edgeE12is_reachablebRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE">
+<span id="_CPPv3I_11static_edgeE12is_reachableRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE"></span><span id="_CPPv2I_11static_edgeE12is_reachableRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_reachable</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_11static_edgeE12is_reachablebRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE" title="is_reachable::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE12is_reachablebRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE" title="is_reachable::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">source</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE12is_reachablebRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE" title="is_reachable::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">destination</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_11static_edgeE12is_reachablebRK7networkI5EdgeTERKN5EdgeT10VertexTypeERKN5EdgeT10VertexTypeE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="is_reachable">
+<span class="sig-name descname"><span class="pre">is_reachable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_reachable" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns <code class="code highlight cpp docutils literal notranslate"><span class="nb"><span class="pre">true</span></span></code> if the vertex <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">destination</span></span></code> is reachable from the
+vertex <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">source</span></span></code> by following edges in the legal direction. This function
+accepts all static network types.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="temporal_network_reachability.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Temporal network reachability</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="graph_operations.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Graph operations</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/reticula-network" aria-label="GitHub"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+              <a class="muted-link " href="https://pypi.org/project/reticula/" aria-label="PyPi"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M23.922 13.58v3.912L20.55 18.72l-.078.055.052.037 3.45-1.256.026-.036v-3.997l-.053-.036-.025.092z M23.621 5.618l-3.04 1.107v3.912l3.339-1.215V5.509zM23.92 13.457V9.544l-3.336 1.215v3.913zM20.47 14.71V10.8L17.17 12v3.913zM17.034 19.996v-3.912l-3.313 1.206v3.912zM17.17 16.057v3.868l3.314-1.206V14.85l-3.314 1.206zm2.093 1.882c-.367.134-.663-.074-.663-.463s.296-.814.663-.947c.365-.133.662.075.662.464s-.297.814-.662.946z M13.225 9.315l.365-.132-3.285-1.197-3.323 1.21.102.037 3.184 1.16zM20.507 10.664V6.751L17.17 7.965v3.913zM17.058 11.918V8.005l-3.302 1.202v3.912zM13.643 9.246l-3.336 1.215v3.913l3.336-1.215zM6.907 13.165l3.322 1.209v-3.913L6.907 9.252z M10.34 7.873l3.281 1.193V5.198l-3.28-1.193zM20.507 2.715L17.19 3.922v3.913l3.317-1.207zM16.95 3.903L13.724 2.73l-3.269 1.19 3.225 1.174zM15.365 4.606l-1.624.592v3.868l3.317-1.207V3.991l-1.693.615zm-.391 2.778c-.367.134-.662-.074-.662-.464s.295-.813.662-.946c.366-.133.663.074.663.464s-.297.813-.663.946z M10.229 18.41v-3.914l-3.322-1.209V17.2zM13.678 17.182v-3.913l-3.371 1.227v3.913z M13.756 17.154l3.3-1.2V12.04l-3.3 1.2zM13.678 21.217l-3.371 1.227v-3.912h-.078v3.912l-3.322-1.209v-3.913l-.053-.058-.025-.06-3.336-1.21v-3.948l.034.013 3.287 1.196.015-.078-3.261-1.187 3.26-1.187v-.109L3.876 9.62l-.307-.112 3.26-1.188v.877l.079-.055V6.769l3.257 1.185.058-.061L7.084 6.75l-.102-.037 3.24-1.179v-.083L6.854 6.677v.018l-.025.018v1.523L3.44 9.47v.02l-.025.017v4.007l-3.39 1.233v.019L0 14.784v3.995l.025.037 3.4 1.237.008-.006.007.01 3.4 1.238.008-.006.006.01 3.4 1.237.014-.009.012.01 3.45-1.256.026-.037-.078-.027zM3.493 9.563l3.257 1.185-3.257 1.187V9.562zM3.4 19.96L.078 18.752v-3.913l2.361.86.96.349v3.913zm.015-3.99L.335 14.85l-.182-.066 3.262-1.187v2.374zm3.399 5.231l-3.321-1.209v-3.912l3.321 1.209v3.912zM23.791 5.434l-3.21-1.17v2.338zM20.387 2.643l-3.24-1.18-3.27 1.19 3.247 1.182z"></path></svg>
+</a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Static network reachability</a><ul>
+<li><a class="reference internal" href="#component-types">Component types</a></li>
+<li><a class="reference internal" href="#weak-connectivity">Weak-connectivity</a></li>
+<li><a class="reference internal" href="#in-and-out-components">In- and out-components</a><ul>
+<li><a class="reference internal" href="#from-a-single-source">From a single source</a></li>
+<li><a class="reference internal" href="#from-all-vertices">From all vertices</a></li>
+<li><a class="reference internal" href="#in-and-out-component-sizes">In- and out-component sizes</a></li>
+<li><a class="reference internal" href="#in-and-out-component-size-estimates">In- and out-component size estimates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#undirected-static-networks">Undirected static networks</a><ul>
+<li><a class="reference internal" href="#connected-component-of-a-specific-vertex">Connected component of a specific vertex</a></li>
+<li><a class="reference internal" href="#all-connected-components">All connected components</a></li>
+<li><a class="reference internal" href="#id3">All connected components</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#source-destination-reachability">Source-destination reachability</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>
