@@ -209,7 +209,7 @@ turn it into a plain old Python list of numbers:
 Let's now get the subgraph of :py:`g` induced by the largest connected
 components:
 
-.. code-block:: ptcon
+.. code-block:: pycon
 
    >>> g2 = ret.vertex_induced_subgraph(g, lcc)
    >>> g2
@@ -220,7 +220,7 @@ components:
 We can also check out some other properties of the network, such as its density
 or average degree:
 
-.. code-block:: ptcon
+.. code-block:: pycon
 
    >>> # Average degree:
    >>> sum(g.degree(v) for v in g.vertices())/len(g.vertices())

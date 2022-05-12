@@ -56,8 +56,20 @@ rst_prolog = """
     :class: highlight
 """
 
-bibtex_bibfiles = ['references.bib']
-bibtex_default_style = 'unsrt'
+
+# REs for Python signatures with types
+import re
+typed_py_re = re.compile(
+    r'''^ ([\w.]*\.)?            # class name(s)
+          (\w+)  \s*             # thing name
+          (?: \[.*\])?  \s*      # optional: type paramters
+          (?: \(\s*(.*)\s*\)     # optional: arguments
+           (?:\s* -> \s* (.*))?  #           return annotation
+          )? $                   # and nothing more
+          ''', re.VERBOSE)
+
+import sphinx.domains.python
+sphinx.domains.python.py_sig_re = typed_py_re
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -95,6 +107,8 @@ html_theme_options = {
   ],
 }
 
+bibtex_bibfiles = ['references.bib']
+bibtex_default_style = 'unsrt'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
