@@ -71,18 +71,15 @@ pygments_style = "sphinx"
 pygments_dark_style = "monokai"
 html_title = "Reticula"
 
-html_theme_options = {
-  "source_repository": "https://github.com/reticula-network/reticula-python",
-  "source_branch": "main",
-  "source_directory": "docs/",
-}
-
 import os.path
 def read_icon(path: str):
   with open(os.path.join(os.path.dirname(__file__), path), 'r') as f:
     return f.read()
 
 html_theme_options = {
+  "source_repository": "https://github.com/reticula-network/reticula-python",
+  "source_branch": "main",
+  "source_directory": "docs/",
   "footer_icons": [
     {
       "name": "GitHub",
