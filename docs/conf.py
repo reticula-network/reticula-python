@@ -31,7 +31,7 @@ release = '0.0.3'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-        'sphinxcontrib.bibtex'
+  'sphinxcontrib.bibtex'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,6 +70,13 @@ html_theme = 'furo'
 pygments_style = "sphinx"
 pygments_dark_style = "monokai"
 html_title = "Reticula"
+
+html_theme_options = {
+  "source_repository": "https://github.com/reticula-network/reticula-python",
+  "source_branch": "main",
+  "source_directory": "docs/",
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
