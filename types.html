@@ -462,12 +462,6 @@ fundamental types are defined</p>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="kt"><span class="pre">int64_t</span></span></code> 64-bit signed integers.</p>
 </dd></dl>
 <dl class="py class">
-<dt class="sig sig-object py" id="double">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">double</span></span><a class="headerlink" href="#double" title="Permalink to this definition">#</a></dt>
-<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="kt"><span class="pre">double</span></span></code> double precision floating-point type, almost
-always an implementation of the IEEE-754 binary64 format.</p>
-</dd></dl>
-<dl class="py class">
 <dt class="sig sig-object py" id="string">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">string</span></span><a class="headerlink" href="#string" title="Permalink to this definition">#</a></dt>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span></code>.</p>
@@ -483,8 +477,19 @@ always an implementation of the IEEE-754 binary64 format.</p>
 <p>In addition to the vertex types listed above, the Python binding supports
 one level of higher-order network, where vertices of the network can be any of
 the defined edge types as long as that edge type uses one of the above “simple”
-vertex types.</p>
+vertex types. The C++ library supports any level of higher-order networks.</p>
 </section>
+</section>
+<section id="time-types">
+<h2>Time Types<a class="headerlink" href="#time-types" title="Permalink to this headline">#</a></h2>
+<p>In C++ it is possible to use any arithmetic type for timestamps. In the Python
+binding, you can use one of the following pre-defined types:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="double">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">double</span></span><a class="headerlink" href="#double" title="Permalink to this definition">#</a></dt>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal notranslate"><span class="kt"><span class="pre">double</span></span></code> double precision floating-point type, almost
+always an implementation of the IEEE-754 binary64 format.</p>
+</dd></dl>
 </section>
 <section id="concepts">
 <h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">#</a></h2>
@@ -517,6 +522,46 @@ function members: <code class="code highlight cpp docutils literal notranslate">
 <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">is_out_incident</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">)</span></span></code>.</p>
 <p>The type must also provide specialisations for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">effect_lt()</span></code> and
 <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">adjacent()</span></code>.</p>
+</dd></dl>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E13temporal_edge">
+<span id="_CPPv3I0E13temporal_edge"></span><span id="_CPPv2I0E13temporal_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temporal_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E13temporal_edge" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that carries time information, by defining
+member types <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">TimeType</span></span></code> which should be an arithmatic type and
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">StaticProjectionType</span></span></code> which should be a <a class="reference internal" href="#_CPPv4I0E11static_edge" title="static_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_edge</span></code></a> and
+member functions <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">cause_time</span></span><span class="p"><span class="pre">()</span></span></code>, <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">effect_time</span></span><span class="p"><span class="pre">()</span></span></code> and
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">static_projection</span></span><span class="p"><span class="pre">()</span></span></code>.</p>
+</dd></dl>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E11static_edge">
+<span id="_CPPv3I0E11static_edge"></span><span id="_CPPv2I0E11static_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">static_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E11static_edge" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that does not carry time information by not
+defining member function <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">effect_time</span></span><span class="p"><span class="pre">()</span></span></code>.</p>
+</dd></dl>
+</section>
+<section id="degree-weight-ranges">
+<h3>Degree/weight ranges<a class="headerlink" href="#degree-weight-ranges" title="Permalink to this headline">#</a></h3>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E12degree_range">
+<span id="_CPPv3I0E12degree_range"></span><span id="_CPPv2I0E12degree_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12degree_range" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">range</span></span></code>) with integer values.</p>
+</dd></dl>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E17degree_pair_range">
+<span id="_CPPv3I0E17degree_pair_range"></span><span id="_CPPv2I0E17degree_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17degree_pair_range" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">range</span></span></code>) with pairs of integers as
+values, representing in- and out-degree of each vertex.</p>
+</dd></dl>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E12weight_range">
+<span id="_CPPv3I0E12weight_range"></span><span id="_CPPv2I0E12weight_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12weight_range" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">range</span></span></code>) with arithmetic values.</p>
+</dd></dl>
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E17weight_pair_range">
+<span id="_CPPv3I0E17weight_pair_range"></span><span id="_CPPv2I0E17weight_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17weight_pair_range" title="Permalink to this definition">#</a><br/></dt>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">range</span></span></code>) with pairs of arithmetic
+values, Corresponding to in- and out-degree weigts for each vertex.</p>
 </dd></dl>
 </section>
 </section>
@@ -610,9 +655,11 @@ function members: <code class="code highlight cpp docutils literal notranslate">
 <li><a class="reference internal" href="#higher-order-networks">Higher-order networks</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#time-types">Time Types</a></li>
 <li><a class="reference internal" href="#concepts">Concepts</a><ul>
 <li><a class="reference internal" href="#vertices">Vertices</a></li>
 <li><a class="reference internal" href="#edges">Edges</a></li>
+<li><a class="reference internal" href="#degree-weight-ranges">Degree/weight ranges</a></li>
 </ul>
 </li>
 </ul>
