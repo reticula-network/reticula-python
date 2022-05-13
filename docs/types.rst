@@ -233,11 +233,6 @@ fundamental types are defined
 
   Corresponding to :cpp:`std::int64_t` 64-bit signed integers.
 
-.. py:class:: double
-
-  Corresponding to :cpp:`double` double precision floating-point type, almost
-  always an implementation of the IEEE-754 binary64 format.
-
 .. py:class:: string
 
   Corresponding to :cpp:`std::string`.
@@ -252,7 +247,18 @@ Higher-order networks
 In addition to the vertex types listed above, the Python binding supports
 one level of higher-order network, where vertices of the network can be any of
 the defined edge types as long as that edge type uses one of the above "simple"
-vertex types.
+vertex types. The C++ library supports any level of higher-order networks.
+
+Time Types
+----------
+In C++ it is possible to use any arithmetic type for timestamps. In the Python
+binding, you can use one of the following pre-defined types:
+
+
+.. py:class:: double
+
+  Corresponding to :cpp:`double` double precision floating-point type, almost
+  always an implementation of the IEEE-754 binary64 format.
 
 Concepts
 --------
@@ -286,5 +292,37 @@ Edges
   The type must also provide specialisations for :cpp:func:`effect_lt` and
   :cpp:func:`adjacent`.
 
-..
-   network_edge, static edge and temporal edge concepts
+.. cpp:concept:: template <typename T> temporal_edge
+
+  A :cpp:concept:`network_edge` that carries time information, by defining
+  member types :cpp:`TimeType` which should be an arithmatic type and
+  :cpp:`StaticProjectionType` which should be a :cpp:concept:`static_edge` and
+  member functions :cpp:`cause_time()`, :cpp:`effect_time()` and
+  :cpp:`static_projection()`.
+
+.. cpp:concept:: template <typename T> static_edge
+
+  A :cpp:concept:`network_edge` that does not carry time information by not
+  defining member function :cpp:`effect_time()`.
+
+
+Degree/weight ranges
+^^^^^^^^^^^^^^^^^^^^
+
+.. cpp:concept:: template <typename T> degree_range
+
+  A range (i.e., satisfies :cpp:`std::ranges::range`) with integer values.
+
+.. cpp:concept:: template <typename T> degree_pair_range
+
+  A range (i.e., satisfies :cpp:`std::ranges::range`) with pairs of integers as
+  values, representing in- and out-degree of each vertex.
+
+.. cpp:concept:: template <typename T> weight_range
+
+  A range (i.e., satisfies :cpp:`std::ranges::range`) with arithmetic values.
+
+.. cpp:concept:: template <typename T> weight_pair_range
+
+  A range (i.e., satisfies :cpp:`std::ranges::range`) with pairs of arithmetic
+  values, Corresponding to in- and out-degree weigts for each vertex.
