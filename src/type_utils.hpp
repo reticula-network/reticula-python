@@ -32,7 +32,7 @@ namespace types {
   /*   int16_t, int32_t, int64_t, */
   /*   float, double, long double>; */
 
-  using time_types = metal::list<double>;
+  using time_types = metal::list<double, int64_t>;
 
   /* using integer_vert_types = metal::list< */
   /*   uint16_t, uint32_t, uint64_t, */
