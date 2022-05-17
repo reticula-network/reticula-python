@@ -26,7 +26,7 @@ $ cd reticula-python
 $ pip install .
 ```
 
-Note that compiling source requires an unbelievable amount of RAM.
+Note that compiling source requires an unbelievable amount (> 40GB) of RAM.
 
 ## Basic examples
 
