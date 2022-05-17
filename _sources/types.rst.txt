@@ -252,7 +252,8 @@ vertex types. The C++ library supports any level of higher-order networks.
 Time Types
 ----------
 In C++ it is possible to use any arithmetic type for timestamps. In the Python
-binding, you can use one of the following pre-defined types:
+binding, in addition to the previously mentioned :py:class:`int64` integer type
+you can use one of the following pre-defined types:
 
 
 .. py:class:: double

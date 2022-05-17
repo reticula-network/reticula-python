@@ -65,7 +65,7 @@ Building the Python binding from scratch
 In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
 of GCC ( >= 10.2) is installed and accessible and that you have access to
-approximatly infinite RAM ( > 30GB) and time.
+approximatly infinite RAM (> 40GB) and time.
 
 .. code-block:: console
 
