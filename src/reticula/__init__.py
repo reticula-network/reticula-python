@@ -173,6 +173,7 @@ from .reticula_ext import (
         out_component_sizes, out_component_size_estimates,
         in_component, in_components,
         in_component_sizes, in_component_size_estimates,
+        is_weakly_connected,
         weakly_connected_component, weakly_connected_components,
         is_reachable, shortest_path_lengths_from, shortest_path_lengths_to)
 
