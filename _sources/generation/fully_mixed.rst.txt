@@ -8,12 +8,12 @@ C++:
       std::uniform_random_bit_generator Gen> \
    undirected_temporal_network<VertT, double> \
    random_fully_mixed_temporal_network(\
-      VertT size, double rate, Gen& generator)
+      VertT size, double rate, double max_t, Gen& generator)
 
 Python:
 
 .. py:function:: random_fully_mixed_temporal_network[vert_type](\
-      size: int, rate: float, random_state) \
+      size: int, rate: float, max_t: float, random_state) \
    -> undirected_temporal_network[vert_type, double]
 
 Generates a random temporal network of size :cpp:`size` where each link
