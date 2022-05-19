@@ -150,6 +150,10 @@ struct declare_directed_network_algorithms {
         &reticula::is_weakly_connected<EdgeT>,
         "directed_network"_a,
         py::call_guard<py::gil_scoped_release>());
+    m.def("largest_weakly_connected_component",
+        &reticula::largest_weakly_connected_component<EdgeT>,
+        "directed_network"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("weakly_connected_components",
         &reticula::weakly_connected_components<EdgeT>,
         "directed_network"_a, "singletons"_a = true,

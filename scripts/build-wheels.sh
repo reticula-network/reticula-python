@@ -6,6 +6,7 @@ mkdir -p dist
 
 
 for version in python3.8 python3.9 python3.10 pypy3.8 pypy3.9; do
+  rm -rf _skbuild
   singularity exec --cleanenv --bind .:/reticula-python --pwd /reticula-python \
     docker://quay.io/pypa/manylinux2014_x86_64 \
     ${version} -m pip wheel . -w dist --verbose

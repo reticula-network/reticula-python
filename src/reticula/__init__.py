@@ -160,7 +160,7 @@ is_dyadic = _generic_attribute(
         function_module=_reticula_ext,
         api_module_name=__name__)
 
-# import overloaded funcitons
+# import overloaded functions
 from .reticula_ext import (
         cartesian_product, is_graphic, is_digraphic)
 
@@ -173,11 +173,12 @@ from .reticula_ext import (
         out_component_sizes, out_component_size_estimates,
         in_component, in_components,
         in_component_sizes, in_component_size_estimates,
-        is_weakly_connected,
+        is_weakly_connected, largest_weakly_connected_component,
         weakly_connected_component, weakly_connected_components,
         is_reachable, shortest_path_lengths_from, shortest_path_lengths_to)
 
 from .reticula_ext import (
+        largest_connected_component,
         is_connected, connected_component, connected_components)
 
 from .reticula_ext import (

@@ -106,6 +106,10 @@ struct declare_undirected_network_algorithms {
         &reticula::is_connected<EdgeT>,
         "undirected_network"_a,
         py::call_guard<py::gil_scoped_release>());
+    m.def("largest_connected_component",
+        &reticula::largest_connected_component<EdgeT>,
+        "undirected_network"_a,
+        py::call_guard<py::gil_scoped_release>());
     m.def("connected_components",
         &reticula::connected_components<EdgeT>,
         "undirected_network"_a, "singletons"_a = true,

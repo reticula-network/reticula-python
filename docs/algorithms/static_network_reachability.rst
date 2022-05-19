@@ -81,6 +81,23 @@ vertex, set the :cpp:`singletons` to :cpp:`false`.
 C++:
 
 .. cpp:function:: template <static_directed_edge EdgeT> \
+  component<typename EdgeT::VertexType> \
+  largest_weakly_connected_component(\
+    const network<EdgeT>& dir)
+
+Python:
+
+.. py:function:: largest_weakly_connected_component(directed_network) \
+  -> component[vert_type]
+
+Returns the largest weakly-connected component by number of vertices. If the
+network is empty, an empty component is returned. If multiple components of
+maximum size exist, one of them is arbitrarily returned.
+
+
+C++:
+
+.. cpp:function:: template <static_directed_edge EdgeT> \
   bool is_weakly_connected(const network<EdgeT>& dir)
 
 Python:
@@ -260,8 +277,22 @@ Python:
 
 Returns all connected components of the static undirected network.
 
-All connected components
-^^^^^^^^^^^^^^^^^^^^^^^^
+
+C++:
+
+.. cpp:function:: template <static_undirected_edge EdgeT> \
+  component<typename EdgeT::VertexType> \
+  largest_connected_component(const network<EdgeT>& net)
+
+Python:
+
+.. py:function:: largest_connected_component(undirected_network) \
+  -> component[vert_type]
+
+Returns the largest connected component by number of vertices. If the network is
+empty, an empty component is returned. If multiple components of maximum size
+exist, one of them is arbitrarily returned.
+
 
 C++:
 
