@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG 960723d)
+  GIT_TAG 2e99989)
 
 FetchContent_Declare(
   fmt
@@ -50,6 +50,7 @@ endfunction()
 
 reticula_library(scaler_types src/scalar_types.cpp)
 reticula_library(random_state src/random_state.cpp)
+reticula_library(distributions src/distributions.cpp)
 reticula_library(interval_sets src/interval_sets.cpp)
 reticula_library(temporal_edges src/temporal_edges.cpp)
 reticula_library(temporal_hyperedges src/temporal_hyperedges.cpp)

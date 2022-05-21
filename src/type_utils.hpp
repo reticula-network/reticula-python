@@ -26,6 +26,13 @@ namespace types {
     }
   };
 
+  template<class seq>
+  using unique = metal::accumulate<
+    metal::bind<
+      metal::lambda<metal::if_>,
+      metal::lambda<metal::contains>, metal::_1,
+      metal::lambda<metal::append>>, metal::list<>, seq>;
+
 #ifdef NDEBUG
   /* using time_types = metal::list< */
   /*   uint16_t, uint32_t, uint64_t, */

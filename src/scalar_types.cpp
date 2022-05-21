@@ -15,15 +15,8 @@ struct declare_scalar_types {
   }
 };
 
-template<class seq>
-using unique = metal::accumulate<
-  metal::bind<
-    metal::lambda<metal::if_>,
-    metal::lambda<metal::contains>, metal::_1,
-    metal::lambda<metal::append>>, metal::list<>, seq>;
-
 void declare_typed_scalar(py::module& m) {
-  using scalar_types = unique<metal::join<
+  using scalar_types = types::unique<metal::join<
     types::time_types, types::simple_vert_types>>;
 
   // declare network

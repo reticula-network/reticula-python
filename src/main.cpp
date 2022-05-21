@@ -5,6 +5,7 @@ namespace py = pybind11;
 void declare_typed_scalar(py::module& m);
 
 void declare_random_states(py::module& m);
+void declare_typed_distributions(py::module& m);
 void declare_typed_interval_sets(py::module& m);
 
 void declare_typed_static_edges(py::module& m);
@@ -40,6 +41,7 @@ PYBIND11_MODULE(reticula_ext, m) {
     declare_typed_scalar(m);
 
     declare_random_states(m);
+    declare_typed_distributions(m);
     declare_typed_interval_sets(m);
 
     declare_typed_temporal_edges(m);
