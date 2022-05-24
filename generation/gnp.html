@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Generating networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cycle.html">Cycle graphs</a></li>
@@ -239,7 +240,7 @@
 <dd></dd></dl>
 <p>Generates a random <span class="math notranslate nohighlight">\(G(n = size, p)\)</span> graph of size <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">size</span></span></code>, where every
 edge exists independently with probability <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">p</span></span></code>
-<span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Vladimir Batagelj and Ulrik Brandes. Efficient generation of large random networks. Physical Review E, 71(3):036113, 2005. doi:10.1103/PhysRevE.71.036113.">1</a>]</span>.</p>
+<span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Vladimir Batagelj and Ulrik Brandes. Efficient generation of large random networks. Physical Review E, 71(3):036113, 2005. doi:10.1103/PhysRevE.71.036113.">2</a>]</span>.</p>
 <p>If the parameter <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">p</span></span></code> is not in the <span class="math notranslate nohighlight">\([0, 1]\)</span> range, the function fails
 by raising a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">ValueError</span></span></code> exception in Python or a
 <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">invalid_argument</span></span></code> exception in C++.</p>

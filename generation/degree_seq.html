@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Generating networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cycle.html">Cycle graphs</a></li>
@@ -246,7 +247,7 @@ same number of nodes as the length of the <code class="code highlight cpp docuti
 to create a graph that produces that sequence, the function fails by raising a
 <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">ValueError</span></span></code> exception in Python or a <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">invalid_argument</span></span></code> exception
 in C++.</p>
-<p>The implementation is based on Ref. <span id="id1">[<a class="reference internal" href="../bibliography.html#id4" title="Mohsen Bayati, Jeong Han Kim, and Amin Saberi. A sequential algorithm for generating random graphs. Algorithmica, 58(4):860–910, 2010. doi:10.1007/s00453-009-9340-1.">3</a>]</span>.</p>
+<p>The implementation is based on Ref. <span id="id1">[<a class="reference internal" href="../bibliography.html#id4" title="Mohsen Bayati, Jeong Han Kim, and Amin Saberi. A sequential algorithm for generating random graphs. Algorithmica, 58(4):860–910, 2010. doi:10.1007/s00453-009-9340-1.">4</a>]</span>.</p>
 <p>The generation of a random degree-sequence graph becomes more and more
 difficult as the density increases. In C++, you can use the <cite>try_</cite> variant of
 this function to limit runtime to a limited set of tries:</p>
@@ -276,7 +277,7 @@ pair-like objects, for example a vector of pairs
 (<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="o"><span class="pre">&lt;</span></span><span class="n"><span class="pre">VertT</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">VertT</span></span><span class="o"><span class="pre">&gt;&gt;</span></span></code>) or a list of <code class="code highlight python docutils literal notranslate"><span class="nb"><span class="pre">int</span></span></code> 2-tuple in
 Python.</p>
 <p>The implementation is based on an extension of Ref.
-<span id="id2">[<a class="reference internal" href="../bibliography.html#id4" title="Mohsen Bayati, Jeong Han Kim, and Amin Saberi. A sequential algorithm for generating random graphs. Algorithmica, 58(4):860–910, 2010. doi:10.1007/s00453-009-9340-1.">3</a>]</span>.</p>
+<span id="id2">[<a class="reference internal" href="../bibliography.html#id4" title="Mohsen Bayati, Jeong Han Kim, and Amin Saberi. A sequential algorithm for generating random graphs. Algorithmica, 58(4):860–910, 2010. doi:10.1007/s00453-009-9340-1.">4</a>]</span>.</p>
 <p>This function also provides a <cite>try_</cite> variant:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaa17degree_pair_rangeI9PairRangeE14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEE32try_random_degree_sequence_graphNSt8optionalI16directed_networkI5VertTEEERK9PairRangeR3GenNSt6size_tE">

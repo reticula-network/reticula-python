@@ -157,6 +157,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomness.html">Randomness</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="generation/path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generation/cycle.html">Cycle graphs</a></li>
@@ -226,7 +227,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
 </section>
 <section id="B" class="genindex-section">
   <h2>B</h2>
@@ -278,6 +279,10 @@
 </li>
           <li><a href="algorithms/static_network_reachability.html#is_weakly_connected">is_weakly_connected()</a>
 </li>
+          <li><a href="algorithms/static_network_reachability.html#largest_connected_component">largest_connected_component()</a>
+</li>
+          <li><a href="algorithms/static_network_reachability.html#largest_weakly_connected_component">largest_weakly_connected_component()</a>
+</li>
           <li><a href="algorithms/temporal_network_reachability.html#out_cluster">out_cluster()</a>
 </li>
           <li><a href="algorithms/temporal_network_reachability.html#out_cluster_size_estimates">out_cluster_size_estimates()</a>
@@ -309,6 +314,8 @@
           <li><a href="generation/fully_mixed.html#random_fully_mixed_temporal_network-vert_type">random_fully_mixed_temporal_network[vert_type]()</a>
 </li>
           <li><a href="generation/gnp.html#random_gnp_graph-vert_type">random_gnp_graph[vert_type]()</a>
+</li>
+          <li><a href="generation/activation.html#id0">random_link_activation_temporal_network()</a>, <a href="generation/activation.html#random_link_activation_temporal_network">[1]</a>
 </li>
           <li><a href="io.html#read_edgelist">read_edgelist()</a>
 </li>
@@ -410,6 +417,8 @@
 </li>
         <li><a href="types.html#_CPPv4I0E12degree_range">degree_range (C++ concept)</a>
 </li>
+        <li><a href="randomness.html#delta_distribution-numeric_type">delta_distribution[numeric_type] (built-in class)</a>
+</li>
         <li><a href="types.html#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetworkI5VertT5TimeTE">directed_delayed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
         <li><a href="types.html#directed_delayed_temporal_hypernetwork-vertex_type-time_type">directed_delayed_temporal_hypernetwork[vertex_type, time_type] (built-in class)</a>
@@ -448,8 +457,6 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="algorithms/graph_operations.html#_CPPv4I_12network_edge_NSt6ranges11input_rangeEEIQNSt7same_asINSt6ranges13range_value_tI5RangeEE5EdgeTEEE21edge_induced_subgraph7networkI5EdgeTERK7networkI5EdgeTERK5Range">edge_induced_subgraph (C++ function)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     edge_induced_subgraph()
 
@@ -457,6 +464,10 @@
           <li><a href="algorithms/graph_operations.html#edge_induced_subgraph">built-in function</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="randomness.html#exponential_distribution-floating_point_type">exponential_distribution[floating_point_type] (built-in class)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -480,6 +491,8 @@
   <h2>G</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="randomness.html#geometric_distribution-integral_type">geometric_distribution[integral_type] (built-in class)</a>
+</li>
         <li><a href="algorithms/graph_operations.html#_CPPv4I_12network_edgeE11graph_union7networkI5EdgeTERK7networkI5EdgeTERK7networkI5EdgeTE">graph_union (C++ function)</a>
 </li>
     </ul></td>
@@ -491,6 +504,16 @@
           <li><a href="algorithms/graph_operations.html#graph_union">built-in function</a>
 </li>
         </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="randomness.html#hawkes_univariate_exponential-floating_point_type">hawkes_univariate_exponential[floating_point_type] (built-in class)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -626,6 +649,44 @@
   </tr></table>
 </section>
 
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="algorithms/static_network_reachability.html#_CPPv4I_22static_undirected_edgeE27largest_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE">largest_connected_component (C++ function)</a>
+</li>
+        <li>
+    largest_connected_component()
+
+        <ul>
+          <li><a href="algorithms/static_network_reachability.html#largest_connected_component">built-in function</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="algorithms/static_network_reachability.html#_CPPv4I_20static_directed_edgeE34largest_weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE">largest_weakly_connected_component (C++ function)</a>
+</li>
+        <li>
+    largest_weakly_connected_component()
+
+        <ul>
+          <li><a href="algorithms/static_network_reachability.html#largest_weakly_connected_component">built-in function</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="randomness.html#mersenne_twister">mersenne_twister (built-in class)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
 <section id="N" class="genindex-section">
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
@@ -741,6 +802,8 @@
           <li><a href="generation/cycle.html#path_graph-vert_type">built-in function</a>, <a href="generation/path.html#path_graph-vert_type">[1]</a>, <a href="generation/regular_ring_lattice.html#path_graph-vert_type">[2]</a>
 </li>
         </ul></li>
+        <li><a href="randomness.html#power_law_with_specified_mean-floating_point_type">power_law_with_specified_mean[floating_point_type] (built-in class)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -787,8 +850,6 @@
         </ul></li>
         <li><a href="generation/expected_degree_seq.html#_CPPv4I_14integer_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQ12weight_rangeI5RangeEE37random_expected_degree_sequence_graph18undirected_networkI5VertTERK5RangeR3Gen">random_expected_degree_sequence_graph (C++ function)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     random_expected_degree_sequence_graph[vert_type]()
 
@@ -796,6 +857,8 @@
           <li><a href="generation/expected_degree_seq.html#random_expected_degree_sequence_graph-vert_type">built-in function</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="generation/fully_mixed.html#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE35random_fully_mixed_temporal_network27undirected_temporal_networkI5VertTdE5VertTddR3Gen">random_fully_mixed_temporal_network (C++ function)</a>
 </li>
         <li>
@@ -814,6 +877,13 @@
           <li><a href="generation/gnp.html#random_gnp_graph-vert_type">built-in function</a>
 </li>
         </ul></li>
+        <li>
+    random_link_activation_temporal_network()
+
+        <ul>
+          <li><a href="generation/activation.html#id0">built-in function</a>, <a href="generation/activation.html#random_link_activation_temporal_network">[1]</a>
+</li>
+        </ul></li>
         <li><a href="generation/regular.html#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE20random_regular_graph18undirected_networkI5VertTE5VertT5VertTR3Gen">random_regular_graph (C++ function)</a>
 </li>
         <li><a href="io.html#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">read_edgelist (C++ function)</a>
@@ -826,6 +896,8 @@
 </li>
         </ul></li>
         <li><a href="generation/regular_ring_lattice.html#_CPPv4I_14integer_vertexE20regular_ring_lattice18undirected_networkI5VertTE5VertT5VertT">regular_ring_lattice (C++ function)</a>
+</li>
+        <li><a href="randomness.html#residual_power_law_with_specified_mean-floating_point_type">residual_power_law_with_specified_mean[floating_point_type] (built-in class)</a>
 </li>
     </ul></td>
   </tr></table>

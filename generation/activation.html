@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Generating networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cycle.html">Cycle graphs</a></li>
@@ -219,7 +220,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -227,6 +228,49 @@
         <article role="main">
           <section id="link-activation-temporal-network">
 <h1>Link activation temporal network<a class="headerlink" href="#link-activation-temporal-network" title="Permalink to this headline">#</a></h1>
+<section id="with-residual-time-distribution">
+<h2>With residual time distribution<a class="headerlink" href="#with-residual-time-distribution" title="Permalink to this headline">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="pre">template</span> <span class="pre">&lt;</span></span></dt>
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="pre">temporal_edge</span> <span class="pre">EdgeT,</span> <span class="pre">typename</span> <span class="pre">ActivationF,</span> <span class="pre">typename</span> <span class="pre">ResActivationF,</span> <span class="pre">std::uniform_random_bit_generator</span> <span class="pre">Gen&gt;</span> <span class="pre">network&lt;EdgeT&gt;</span> <span class="pre">random_link_activation_temporal_network(const</span> <span class="pre">network&lt;typename</span> <span class="pre">EdgeT::StaticProjectionType&gt;&amp;</span> <span class="pre">base_net,</span> <span class="pre">typename</span> <span class="pre">EdgeT::TimeType</span> <span class="pre">max_t,</span> <span class="pre">ActivationF&amp;&amp;</span> <span class="pre">inter_event_time_edge_activation,</span> <span class="pre">ResActivationF&amp;&amp;</span> <span class="pre">residual_time_edge_activation,</span> <span class="pre">Gen&amp;</span> <span class="pre">generator,</span> <span class="pre">std::size_t</span> <span class="pre">size_hint</span> <span class="pre">=</span> <span class="pre">0)</span></span></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="random_link_activation_temporal_network">
+<span class="sig-name descname"><span class="pre">random_link_activation_temporal_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iet_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#random_link_activation_temporal_network" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Generates a random link-activation temporal network by activating the edges in
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">base_net</span></span></code> first according to the residual time distribution (for the first
+activation time) then based on the inter-event time distribution, for time
+values from 0 to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">max_t</span></span></code> (exclusive).</p>
+<p>The output type depends on the type of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">base_net</span></span></code>. If a (un)directed network
+or a (un)directed hypernetwork is provided, the output will be a (un)directed
+temporal network or a (un)directed temporal hypernetwork.</p>
+</section>
+<section id="with-burn-in">
+<h2>With burn-in<a class="headerlink" href="#with-burn-in" title="Permalink to this headline">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="pre">template</span> <span class="pre">&lt;</span></span></dt>
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="pre">temporal_edge</span> <span class="pre">EdgeT,</span> <span class="pre">typename</span> <span class="pre">ActivationF,</span> <span class="pre">std::uniform_random_bit_generator</span> <span class="pre">Gen&gt;</span> <span class="pre">network&lt;EdgeT&gt;</span> <span class="pre">random_link_activation_temporal_network(const</span> <span class="pre">network&lt;typename</span> <span class="pre">EdgeT::StaticProjectionType&gt;&amp;</span> <span class="pre">base_net,</span> <span class="pre">typename</span> <span class="pre">EdgeT::TimeType</span> <span class="pre">max_t,</span> <span class="pre">ActivationF&amp;&amp;</span> <span class="pre">inter_event_time_edge_activation,</span> <span class="pre">Gen&amp;</span> <span class="pre">generator,</span> <span class="pre">std::size_t</span> <span class="pre">size_hint</span> <span class="pre">=</span> <span class="pre">0)</span></span></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">random_link_activation_temporal_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iet_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_hint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Generates a random link-activation temporal network without a residual time
+distribution, by burning-in the inter-event time distribution for <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">max_t</span></span></code>
+time before recording events. The output event have times values from 0 to
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">max_t</span></span></code> (exclusive).</p>
+<p>This approach might not work on all distributions. It is up to the user to think
+about whether this suits their use case.</p>
+</section>
 </section>
 
         </article>
@@ -278,8 +322,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Link activation temporal network</a><ul>
+<li><a class="reference internal" href="#with-residual-time-distribution">With residual time distribution</a></li>
+<li><a class="reference internal" href="#with-burn-in">With burn-in</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

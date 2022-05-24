@@ -9,6 +9,7 @@ Reticula: Temporal network and hypergraphs
    quickstart
    types
    io
+   randomness
    generation/index
    shuffling/index
    algorithms/index

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Randomness" href="randomness.html" /><link rel="prev" title="Networks and network types" href="types.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Generating networks" href="generation/index.html" /><link rel="prev" title="Input/Output and interpolation" href="io.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Input/Output and interpolation - Reticula</title>
+        <title>Randomness - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -158,8 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Networks and network types</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Input/Output and interpolation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="randomness.html">Randomness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Randomness</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="generation/path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generation/cycle.html">Cycle graphs</a></li>
@@ -226,64 +226,104 @@
           </label>
         </div>
         <article role="main">
-          <section id="input-output-and-interpolation">
-<h1>Input/Output and interpolation<a class="headerlink" href="#input-output-and-interpolation" title="Permalink to this headline">#</a></h1>
-<section id="edgelist-input-output">
-<h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Permalink to this headline">#</a></h2>
-<section id="reading-an-edgelist-file">
-<h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Permalink to this headline">#</a></h3>
-<p>C++:</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br/></dt>
-<dd></dd></dl>
-<p>Python:</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="read_edgelist">
-<span class="sig-name descname"><span class="pre">read_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#read_edgelist" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-<p>Dyadic static and temporal networks can be read from space separated files where
-each row represents an edge. Note that vertices with no neighbours cannot be
-represented in this format.</p>
-</section>
-<section id="writing-an-edgelist-file">
-<h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Permalink to this headline">#</a></h3>
-<p>C++:</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br/></dt>
-<dd></dd></dl>
-<p>Python:</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="write_edgelist">
-<span class="sig-name descname"><span class="pre">write_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_edgelist" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-<p>Write a dyadic static and temporal networks in form of space separated files
-where each row represents an edge. Note that vertices with no neighbours cannot
-be represented in this format.</p>
-</section>
-</section>
-<section id="interpolation-with-networkx">
-<h2>Interpolation with NetworkX<a class="headerlink" href="#interpolation-with-networkx" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="to_networkx">
-<span class="sig-name descname"><span class="pre">to_networkx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#to_networkx" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a NetworkX graph from a dyadic static network. If <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">created_using</span></span></code>
-is not provided, the type of the output is selected based in directionality of
-the input <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">network</span></span></code>. For directed networks, the output would would be of
-type <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">DiGraph</span></span></code>, and for undirected networks it would produce an
-instance of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">Graph</span></span></code>.</p>
-<p>Raises a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">NotImplementedError</span></span></code> if NetworkX is not installed or cannot be
-imported at the time Reticula is imported.</p>
+          <section id="randomness">
+<h1>Randomness<a class="headerlink" href="#randomness" title="Permalink to this headline">#</a></h1>
+<p>Simulating physical systems with computers often involve generating random
+numbers or randomly sampling from a set. This poses a challenge to programmers,
+in that computers, as mostly deterministic creatures, are quite bad at this sort
+of task.</p>
+<p>Another aspect of this problem is reproducibility. Researchers need their
+results to be reproducible, meaning that if someone else runs the same
+code on another computer, they should be able to get the same results as
+everyone else. True random number generators are not really the tool for this
+purpose.</p>
+<p>Pseudorandom number generators, on the other hand, can produce results “random
+enough” for the purpose of scientific simulation. On C++ side, you can simply
+use any pseudorandom number generator as long as it conforms to the concept
+<code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span></code>, for example, Mersenne Twister
+implementation from the standard library <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">mt19937_64</span></span></code> or <cite>PCG random
+number generator &lt;https://github.com/imneme/pcg-cpp/&gt;</cite>.</p>
+<p>On Python side, everything is slightly more involved. You cannot simply use the
+random number generators implemented by Python or NumPy, as Reticula cannot
+manipulate Python objects in any way that matters. Similar situation is also in
+place for distributions. We have provided bindings to some pseudorandom number
+generators and distributions for use with this library, some bindings over C++
+standard library implementation (e.g., <code class="xref py py-class docutils literal notranslate"><span class="pre">geomtric_distribution</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">exponential_distirbution</span></code>) and some based on our own implementation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Reticula currently relies on C++ standard library distributions and
+pseudorandom number generators, execept for a few distributions that are
+implemented by Reticula. This has negative implecations for reproducability
+across platforms. At some point in the future, these will have to change into
+ones with reproducability guarantees tied to Reticula version and not the
+platform or the standard library implementation. Until this change happens,
+we will try our best keep the Python build environment consistant, but there
+are no guarantees.</p>
+</div>
+<p>For now, the only real thing you can do with these classes are to create them
+and pass them on to Reticula functions, as Reticula is not a general purpose
+numerical computation library.</p>
+<section id="pseudorandom-number-generators">
+<h2>Pseudorandom number generators<a class="headerlink" href="#pseudorandom-number-generators" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mersenne_twister">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mersenne_twister</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">seed:</span> <span class="pre">int</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mersenne_twister" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates an instance of 64-bit Mersenne twister <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Takuji Nishimura. Tables of 64-bit mersenne twisters. ACM Transactions on Modeling and Computer Simulation (TOMACS), 10(4):348–357, 2000. doi:10.1145/369534.369540.">1</a>]</span>.
+Bindings over C++ standard library implementation.</p>
+<p>We recommand using one pseudorandom number generator per thread in
+multi-threaded environment.</p>
+<p>If no <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">seed</span></span></code> is provided, the generator is seeded using a
+non-deterministic source, e.g., a hardware device, if one is available.</p>
 </dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="from_networkx-vertex_type">
-<span id="from_networkx[vertex_type]"></span><span class="sig-name descname"><span class="pre">from_networkx[vertex_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#from_networkx-vertex_type" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a dyadic static network from a NetworkX graph. The directedness of the
-network is decided based on whether graph <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> is directed, i.e., whether
-<code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">is_directed</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">)</span></span></code> returns <code class="code highlight python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code>.</p>
-<p>Raises a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">NotImplementedError</span></span></code> if networkx is not installed or cannot be
-imported at the time Reticula is imported.</p>
+</section>
+<section id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="geometric_distribution-integral_type">
+<span id="geometric_distribution[integral_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geometric_distribution[integral_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometric_distribution-integral_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A discrete distribution of the number of required Bernoulli trials with
+probability <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">p</span></span></code> to get one success. This distribution has a mean of
+<span class="math notranslate nohighlight">\(\frac{1}{p}\)</span>. It’s the discrete analogue to
+<a class="reference internal" href="#exponential_distribution-floating_point_type" title="exponential_distribution[floating_point_type]"><code class="xref py py-class docutils literal notranslate"><span class="pre">exponential_distribution[floating_point_type]</span></code></a></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="exponential_distribution-floating_point_type">
+<span id="exponential_distribution[floating_point_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exponential_distribution[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda:</span> <span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exponential_distribution-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A continuous distribution indicating the time between two consecutive events
+if that event happens at a constant rate, i.e., a Poisson point process. The
+parameter <code class="code highlight python docutils literal notranslate"><span class="k"><span class="pre">lambda</span></span></code> indicates the rate and the distribution has a mean of
+<span class="math notranslate nohighlight">\(\frac{1}{\lambda}\)</span>.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="power_law_with_specified_mean-floating_point_type">
+<span id="power_law_with_specified_mean[floating_point_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power_law_with_specified_mean-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A power-law distribution with minimum-value cutoff, selected in a way to
+produce values with mean <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">mean</span></span></code>. The parameter <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">exponent</span></span></code>, indicating
+the power-law exponent has to be larger than 2.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="residual_power_law_with_specified_mean-floating_point_type">
+<span id="residual_power_law_with_specified_mean[floating_point_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">residual_power_law_with_specified_mean[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#residual_power_law_with_specified_mean-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Residual distribution of the distribution
+<a class="reference internal" href="#power_law_with_specified_mean-floating_point_type" title="power_law_with_specified_mean[floating_point_type]"><code class="xref py py-class docutils literal notranslate"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></code></a>.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="hawkes_univariate_exponential-floating_point_type">
+<span id="hawkes_univariate_exponential[floating_point_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hawkes_univariate_exponential[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hawkes_univariate_exponential-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A univariate exponential formulation of Hawkes self-exciting process. The
+parameter <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">mu</span></span></code> indicates background (or exogenous) intensity of events,
+indicating the random probability of events happening without being caused
+through self-excitement, parameter <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">alpha</span></span></code> indicates the infectivity
+factor, often interpreted as the expected number of induced self-exciting
+events per each event, <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">theta</span></span></code> indicates the rate parameter of the delay
+and <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">phi</span></span></code> specifies the history of the distribution until this point in
+time.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="delta_distribution-numeric_type">
+<span id="delta_distribution[numeric_type]"></span><em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delta_distribution[numeric_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delta_distribution-numeric_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Always returns the value of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">mean</span></span></code>.</p>
 </dd></dl>
 </section>
 </section>
@@ -293,23 +333,23 @@ imported at the time Reticula is imported.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="randomness.html">
+          <a class="next-page" href="generation/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Randomness</div>
+                <div class="title">Generating networks</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="types.html">
+          <a class="prev-page" href="io.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Networks and network types</div>
+                <div class="title">Input/Output and interpolation</div>
                 
               </div>
             </a>
@@ -349,13 +389,9 @@ imported at the time Reticula is imported.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Input/Output and interpolation</a><ul>
-<li><a class="reference internal" href="#edgelist-input-output">Edgelist input/output</a><ul>
-<li><a class="reference internal" href="#reading-an-edgelist-file">Reading an edgelist file</a></li>
-<li><a class="reference internal" href="#writing-an-edgelist-file">Writing an edgelist file</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#interpolation-with-networkx">Interpolation with NetworkX</a></li>
+<li><a class="reference internal" href="#">Randomness</a><ul>
+<li><a class="reference internal" href="#pseudorandom-number-generators">Pseudorandom number generators</a></li>
+<li><a class="reference internal" href="#distributions">Distributions</a></li>
 </ul>
 </li>
 </ul>
@@ -372,5 +408,6 @@ imported at the time Reticula is imported.</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

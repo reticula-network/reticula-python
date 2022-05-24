@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../generation/path.html">Path graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generation/cycle.html">Cycle graphs</a></li>
@@ -292,9 +293,22 @@ component size you expect to get. If not, you can rely on the default behaviour.
 <dd></dd></dl>
 <p>Returns all weakly-connected components of the parameter network. Implementation
 is based on consecutive unions on a disjoint-set data structure of vertices
-<span id="id2">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">9</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">10</a>]</span>.</p>
+<span id="id2">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">10</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">11</a>]</span>.</p>
 <p>If you are not interested in weakly-connected components with only a single
 vertex, set the <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">singletons</span></span></code> to <code class="code highlight cpp docutils literal notranslate"><span class="nb"><span class="pre">false</span></span></code>.</p>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE34largest_weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE">
+<span id="_CPPv3I_20static_directed_edgeE34largest_weakly_connected_componentRK7networkI5EdgeTE"></span><span id="_CPPv2I_20static_directed_edgeE34largest_weakly_connected_componentRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_directed_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE34largest_weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="largest_weakly_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">largest_weakly_connected_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_20static_directed_edgeE34largest_weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="largest_weakly_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_20static_directed_edgeE34largest_weakly_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="largest_weakly_connected_component">
+<span class="sig-name descname"><span class="pre">largest_weakly_connected_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#largest_weakly_connected_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns the largest weakly-connected component by number of vertices. If the
+network is empty, an empty component is returned. If multiple components of
+maximum size exist, one of them is arbitrarily returned.</p>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_20static_directed_edgeE19is_weakly_connectedbRK7networkI5EdgeTE">
@@ -438,9 +452,19 @@ reach all others.</p>
 <span class="sig-name descname"><span class="pre">connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">undirected_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">components</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#connected_components" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 <p>Returns all connected components of the static undirected network.</p>
-</section>
-<section id="id3">
-<h3>All connected components<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_22static_undirected_edgeE27largest_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE">
+<span id="_CPPv3I_22static_undirected_edgeE27largest_connected_componentRK7networkI5EdgeTE"></span><span id="_CPPv2I_22static_undirected_edgeE27largest_connected_componentRK7networkI5EdgeTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">static_undirected_edge</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><a class="reference internal" href="#_CPPv4I_14network_vertexE9component" title="component"><span class="n"><span class="pre">component</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE27largest_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="largest_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">largest_connected_component</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_22static_undirected_edgeE27largest_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="largest_connected_component::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_22static_undirected_edgeE27largest_connected_component9componentIN5EdgeT10VertexTypeEERK7networkI5EdgeTE" title="Permalink to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="largest_connected_component">
+<span class="sig-name descname"><span class="pre">largest_connected_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">undirected_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">component</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#largest_connected_component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+<p>Returns the largest connected component by number of vertices. If the network is
+empty, an empty component is returned. If multiple components of maximum size
+exist, one of them is arbitrarily returned.</p>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_22static_undirected_edgeE12is_connectedbRK7networkI5EdgeTE">
@@ -546,7 +570,6 @@ accepts all static network types.</p>
 <li><a class="reference internal" href="#undirected-static-networks">Undirected static networks</a><ul>
 <li><a class="reference internal" href="#connected-component-of-a-specific-vertex">Connected component of a specific vertex</a></li>
 <li><a class="reference internal" href="#all-connected-components">All connected components</a></li>
-<li><a class="reference internal" href="#id3">All connected components</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#source-destination-reachability">Source-destination reachability</a></li>
