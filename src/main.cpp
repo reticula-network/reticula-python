@@ -23,6 +23,7 @@ void declare_typed_implicit_event_graph_components(py::module& m);
 
 void declare_typed_generators(py::module& m);
 void declare_typed_random_networks(py::module& m);
+void declare_typed_activation_networks(py::module& m);
 
 void declare_typed_components(py::module& m);
 void declare_typed_component_containers(py::module& m);
@@ -61,6 +62,7 @@ PYBIND11_MODULE(reticula_ext, m) {
 
     declare_typed_generators(m);
     declare_typed_random_networks(m);
+    declare_typed_activation_networks(m);
 
     declare_typed_components(m);
     declare_typed_component_containers(m);

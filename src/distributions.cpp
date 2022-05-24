@@ -77,7 +77,7 @@ struct declare_floating_point_distributions {
         python_type_str<
           reticula::hawkes_univariate_exponential<ResultType>>().c_str())
       .def(py::init<ResultType, ResultType, ResultType, ResultType>(),
-          "mu"_a, "alpha"_a, "theta"_a, "phi"_a)
+          "mu"_a, "alpha"_a, "theta"_a, "phi"_a = ResultType{})
       .def("mu",
           &reticula::hawkes_univariate_exponential<ResultType>::mu)
       .def("alpha",

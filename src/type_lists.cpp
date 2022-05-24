@@ -50,4 +50,24 @@ void declare_type_lists(py::module& m) {
     metal::transform<
       metal::lambda<add_to_type_list>,
       types::all_edge_types>>{}(m, "edge_types");
+
+
+  using scalar_types = types::unique<metal::join<
+    types::time_types, types::simple_vert_types>>;
+
+  using integral_types = metal::copy_if<scalar_types,
+        metal::trait<std::is_integral>>;
+  m.add_object("integral_types", py::list());
+  types::run_each<
+    metal::transform<
+      metal::lambda<add_to_type_list>,
+      integral_types>>{}(m, "integral_types");
+
+  using floating_types = metal::copy_if<scalar_types,
+        metal::trait<std::is_floating_point>>;
+  m.add_object("floating_point_types", py::list());
+  types::run_each<
+    metal::transform<
+      metal::lambda<add_to_type_list>,
+      floating_types>>{}(m, "floating_point_types");
 }

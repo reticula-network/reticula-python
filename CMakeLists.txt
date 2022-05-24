@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG 2e99989)
+  GIT_TAG 8e33c3a)
 
 FetchContent_Declare(
   fmt
@@ -63,6 +63,7 @@ reticula_library(implicit_event_graph_components
   src/implicit_event_graph_components.cpp)
 reticula_library(generators src/generators.cpp)
 reticula_library(random_networks src/random_networks.cpp)
+reticula_library(random_activation_networks src/random_activation_networks.cpp)
 reticula_library(temporal_clusters src/temporal_clusters.cpp)
 reticula_library(temporal_cluster_containers
   src/temporal_cluster_containers.cpp)
