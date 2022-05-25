@@ -13,7 +13,6 @@ Reticula: Temporal network and hypergraphs
    generation/index
    shuffling/index
    algorithms/index
-   dynamics/index
    examples/index
    citing
    bibliography
@@ -25,5 +24,5 @@ Currently, the library supports multiple methods of generating and randomising
 networks, using various algorithms to calculate network properties, and running
 compartmental model simulations on networks.
 
-The names is the plural form of reticulum, a Latin word meaning network or a
-network-like (reticulated) structure.
+The names Reticula is the plural form of reticulum, a Latin word meaning network
+or a network-like (reticulated) structure.
