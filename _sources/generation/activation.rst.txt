@@ -6,7 +6,7 @@ With residual time distribution
 
 C++:
 
-.. cpp:function:: template <
+.. cpp:function:: template < \
     temporal_edge EdgeT, \
     typename ActivationF, \
     typename ResActivationF, \
@@ -37,7 +37,7 @@ With burn-in
 
 C++:
 
-.. cpp:function:: template <
+.. cpp:function:: template < \
     temporal_edge EdgeT, \
     typename ActivationF, \
     std::uniform_random_bit_generator Gen> \
