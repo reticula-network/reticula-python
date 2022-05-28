@@ -52,6 +52,7 @@ Python:
 
 .. py:function:: microcanonical_reference_models.timeline_shuffling(\
       temporal_network, random_state)
+      :noindex:
 
 .. py:function:: microcanonical_reference_models.timeline_shuffling(\
       temporal_network, random_state, t_start, t_end)

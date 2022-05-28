@@ -31,8 +31,8 @@ Connected link shuffling
 C++:
 
 .. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen>
-      requires is_dyadic_v<EdgeT>
+      std::uniform_random_bit_generator Gen> \
+      requires is_dyadic_v<EdgeT> \
       network<EdgeT> \
       microcanonical_reference_models::connected_link_shuffling(\
         const network<EdgeT>& temp, Gen& generator)
@@ -62,8 +62,8 @@ Topology-constrained link shuffling
 C++:
 
 .. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen>
-      requires is_dyadic_v<EdgeT>
+      std::uniform_random_bit_generator Gen> \
+      requires is_dyadic_v<EdgeT> \
       network<EdgeT> \
       microcanonical_reference_models::topology_constrained_link_shuffling(\
         const network<EdgeT>& temp, Gen& generator)
