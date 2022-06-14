@@ -15,7 +15,7 @@ C++:
       std::convertible_to<std::ranges::range_value_t<Range>, VertT> \
    undirected_network<VertT> \
    random_degree_sequence_graph(\
-      const Range& degree_sequence, Gen& generator)
+      Range& degree_sequence, Gen& generator)
 
 Python:
 
@@ -48,7 +48,7 @@ this function to limit runtime to a limited set of tries:
       std::convertible_to<std::ranges::range_value_t<Range>, VertT> \
    std::optional<undirected_network<VertT>> \
    try_random_degree_sequence_graph(\
-      const Range& degree_sequence, Gen& generator, std::size_t max_tries)
+      Range& degree_sequence, Gen& generator, std::size_t max_tries)
 
 If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.
@@ -69,7 +69,7 @@ C++:
       is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
    directed_network<VertT> \
    random_directed_degree_sequence_graph(\
-      const PairRange& in_out_degree_sequence, Gen& generator)
+      PairRange& in_out_degree_sequence, Gen& generator)
 
 Python:
 
@@ -98,7 +98,7 @@ This function also provides a `try_` variant:
       is_pairlike_of<std::ranges::range_value_t<PairRange>, VertT, VertT> \
    std::optional<directed_network<VertT>> \
    try_random_degree_sequence_graph(\
-      const PairRange& in_out_degree_sequence, Gen& generator, \
+      PairRange& in_out_degree_sequence, Gen& generator, \
       std::size_t max_tries)
 
 If the input :cpp:`in-out-degree_sequence` is not di-graphical, i.e., it is not

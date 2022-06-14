@@ -329,7 +329,7 @@ also requires temporal information.
 
    .. cpp:function:: template <std::ranges::input_range Range> \
         requires std::convertible_to<std::ranges::range_value_t<Range>, EdgeT> \
-        void insert(const Range& events)
+        void insert(Range& events)
 
    .. cpp:function:: void insert(const EdgeT& e)
 

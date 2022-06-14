@@ -14,7 +14,7 @@ C++:
       weight_range<Range> \
    undirected_network<VertT> \
    random_expected_degree_sequence_graph(\
-      const Range& weight_sequence, Gen& generator)
+      Range&& weight_sequence, Gen& generator)
 
 Python:
 
@@ -46,7 +46,7 @@ C++:
       weight_pair_range<PairRange> \
    undirected_network<VertT> \
    random_directed_expected_degree_sequence_graph(\
-      const PairRange& in_out_weight_sequence, Gen& generator)
+      PairRange&& in_out_weight_sequence, Gen& generator)
 
 Python:
 

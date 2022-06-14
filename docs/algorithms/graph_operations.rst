@@ -51,7 +51,7 @@ C++:
 
 Python:
 
-.. py:function:: with_edges(net, edges)
+.. py:function:: with_edges(network, edges)
 
 Returns a copy of :cpp:`net` with edges from :cpp:`edges` along with all their
 incident vertices added in.
@@ -66,10 +66,82 @@ C++:
 
 Python:
 
-.. py:function:: without_edges(net, edges)
+.. py:function:: without_edges(network, edges)
 
 Returns a copy of :cpp:`net` with edges from :cpp:`edges` removed. The returned
 graph has all the vertices of the original graph.
+
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    std::invocable<const EdgeT&> ProbFun, \
+    std::uniform_random_bit_generator Gen>\
+  requires std::convertible_to<\
+    std::invoke_result_t<ProbFun, const EdgeT&>, double> \
+  network<EdgeT> \
+  occupy_edges(\
+      const network<EdgeT>& g, \
+      ProbFun&& occupation_prob, \
+      Gen& gen)
+
+Python:
+
+.. py:function:: occupy_edges(network, \
+  prob_func: Callable[[network.edge_type()], float], \
+  random_state)
+
+Return a copy of the network with the same set of vertices, but with each edge
+kept with probability determined by calling the function :py:`prob_func`, or
+:cpp:`occupation_prob` in C++.
+
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    mapping<EdgeT, double> ProbMapT, \
+    std::uniform_random_bit_generator Gen> \
+  network<EdgeT> \
+  occupy_edges(\
+      const network<EdgeT>& g, \
+      const ProbMapT& prob_map, \
+      Gen& gen, \
+      double default_prob = 0.0)
+
+Python:
+
+.. py:function:: occupy_edges(network, \
+  prob_map: dict[network.edge_type(), float], \
+  random_state, \
+  default_prob : float = 0.0)
+  :noindex:
+
+Return a copy of the network with the same set of vertices, but with each edge
+kept with probability determined by looking up the edge in the dictionary
+:py:`prob_map`. If the edge is not in the map, the value :py:`default_prob` is
+determines the probability of the edge being present in the output network.
+
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    std::uniform_random_bit_generator Gen>\
+  network<EdgeT> \
+  uniformly_occupy_edges(\
+      const network<EdgeT>& g, \
+      double occupation_prob, \
+      Gen& gen)
+
+Python:
+
+.. py:function:: uniformly_occupy_edges(network, \
+  occupation_prob: float, random_state)
+
+Return a copy of the network with the same set of vertices, but with each edge
+kept with probability determined by the parameter :py:`occupation_prob`.
 
 
 Adding and removing vertices
@@ -86,7 +158,7 @@ C++:
 
 Python:
 
-.. py:function:: with_vertices(net, verts)
+.. py:function:: with_vertices(network, verts)
 
 Returns a copy of :cpp:`net` with vertices from :cpp:`verts` added in.
 
@@ -102,10 +174,81 @@ C++:
 
 Python:
 
-.. py:function:: without_vertices(net, verts)
+.. py:function:: without_vertices(network, verts)
 
 Returns a copy of :cpp:`net` with vertices from :cpp:`verts`, along with all
 their incident edges removed.
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    std::invocable<const typename EdgeT::VertexType&> ProbFun, \
+    std::uniform_random_bit_generator Gen>\
+  requires std::convertible_to<\
+    std::invoke_result_t<ProbFun, const typename EdgeT::VertexType&>, double> \
+  network<EdgeT> \
+  occupy_vertices(\
+      const network<EdgeT>& g, \
+      ProbFun&& occupation_prob, \
+      Gen& gen)
+
+Python:
+
+.. py:function:: occupy_vertices(network, \
+  prob_func: Callable[[network.vertex_type()], float], random_state)
+
+Return a copy of the network with each vertex (and all its incident edges)
+kept with probability determined by calling the function :py:`prob_func`, or
+:cpp:`occupation_prob` in C++, with that vertex.
+
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    mapping<typename EdgeT::VertexType, double> ProbMapT, \
+    std::uniform_random_bit_generator Gen> \
+  network<EdgeT> \
+  occupy_vertices(\
+      const network<EdgeT>& g, \
+      const ProbMapT& prob_map, \
+      Gen& gen, \
+      double default_prob = 0.0)
+
+Python:
+
+.. py:function:: occupy_vertices(network, \
+  prob_map: dict[network.vertex_type(), float], \
+  random_state, \
+  default_prob : float = 0.0)
+  :noindex:
+
+Return a copy of the network with each vertex kept with probability determined
+by looking up the vertex in the dictionary :py:`prob_map`. If the vertex is not
+in the map, the value :py:`default_prob` is determines the probability of the
+vertex being present in the output network.
+
+
+C++:
+
+.. cpp:function:: template <\
+    network_edge EdgeT, \
+    std::uniform_random_bit_generator Gen>\
+  network<EdgeT> \
+  uniformly_occupy_vertices(\
+      const network<EdgeT>& g, \
+      double occupation_prob, \
+      Gen& gen)
+
+Python:
+
+.. py:function:: uniformly_occupy_vertices(network, \
+  occupation_prob: float, random_state)
+
+Return a copy of the network with each vertex kept with probability determined
+by the parameter :py:`occupation_prob`.
+
 
 Graph Union
 -----------
