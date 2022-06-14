@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Networks and network types" href="types.html" /><link rel="prev" title="Installation" href="installation.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Quick Start - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -212,7 +212,17 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/quickstart.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -227,16 +237,16 @@
         </div>
         <article role="main">
           <section id="quick-start">
-<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h1>
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading">#</a></h1>
 <section id="for-python-developers">
-<h2>For Python developers<a class="headerlink" href="#for-python-developers" title="Permalink to this headline">#</a></h2>
+<h2>For Python developers<a class="headerlink" href="#for-python-developers" title="Permalink to this heading">#</a></h2>
 <p>The very first step is to find a suitable development environment. Reticula is
 currently compatible with Linux systems based on GNU C Library 2.17 or higher,
 which at the moment means practically any distribution released in the past 6
 years except for Alpine Linux. If you have no preferences on the subject, we
 recommend a long-term support (LTS) version of Ubuntu, such as 22.04.</p>
 <section id="setting-up-the-environment">
-<h3>Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">#</a></h3>
+<h3>Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this heading">#</a></h3>
 <p>In this section, we will explore the most basic form of installation of
 Reticula. Unfortunately, the current state of Python development environment is
 <a class="reference external" href="https://xkcd.com/1987/">not as intuitive as it can be</a>, so if you are working
@@ -270,13 +280,13 @@ Python package-management system:</p>
 </div>
 <p>If this command succeeds, you should be ready to go! Let’s check if everything
 is ready by running a one-liner script that only tries to import Reticula:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -c <span class="s2">"import reticula"</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"success\!"</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -c <span class="s2">&quot;import reticula&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;success\!&quot;</span>
 <span class="go">success!</span>
 </pre></div>
 </div>
 </section>
 <section id="getting-started-with-reticula">
-<h3>Getting started with Reticula<a class="headerlink" href="#getting-started-with-reticula" title="Permalink to this headline">#</a></h3>
+<h3>Getting started with Reticula<a class="headerlink" href="#getting-started-with-reticula" title="Permalink to this heading">#</a></h3>
 <p>First, let’s open a Python console, also called a REPL:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python
 <span class="go">Python 3.8.10 (default, Jun  4 2021, 15:09:15)</span>
@@ -293,25 +303,25 @@ try to create a network:</p>
 </pre></div>
 </div>
 <p>Let’s try to dissect these commands. First, we imported Reticula but instructed
-python to use the alias <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span></code> to refer to it. This can help you avoid having
-to type <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">reticula</span></span></code> over and over again.</p>
-<p>Second, we called the function <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">regular_ring_lattice</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>. This
+python to use the alias <code class="code highlight python docutils literal highlight-python"><span class="n">ret</span></code> to refer to it. This can help you avoid having
+to type <code class="code highlight python docutils literal highlight-python"><span class="n">reticula</span></code> over and over again.</p>
+<p>Second, we called the function <code class="code highlight python docutils literal highlight-python"><span class="n">regular_ring_lattice</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">]</span></code>. This
 syntax might look a bit weird or unnatural to people coming from a dynamic
 typing background. Remember that Reticula in Python is a thin shell over C++, so
 some functions need more information about what type of network or edges you
 want to construct, especially where this is not deducible from the things you
 passed in as arguments. This is refelcted in the type of the output network
-<code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>, which is a <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">int64</span></span><span class="p"><span class="pre">]</span></span></code>, i.e., an undirected
+<code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code>, which is a <code class="code highlight python docutils literal highlight-python"><span class="n">ret</span><span class="o">.</span><span class="n">undirected_network</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">]</span></code>, i.e., an undirected
 dyadic static network with 64-bit signed integers as vertices.</p>
 <p>Here, we instructed Reticula to construct a 4-regular ring lattice with 100
 vertices, where each vertex is a 64-bit signed integer. You can compare this,
-for example, to the <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">dtype</span></span></code> parameter that many NumPy functions expect:</p>
+for example, to the <code class="code highlight python docutils literal highlight-python"><span class="n">dtype</span></code> parameter that many NumPy functions expect:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Let’s get back to Reticula. We can inspect the network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>. Let’s have a
-look at the edges and vertices of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code>:</p>
+<p>Let’s get back to Reticula. We can inspect the network <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code>. Let’s have a
+look at the edges and vertices of <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code>:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
 <span class="go">[undirected_edge[int64](0, 1), undirected_edge[int64](0, 2),</span>
 <span class="go">undirected_edge[int64](0, 98), ..., undirected_edge[int64](98, 99)]</span>
@@ -319,7 +329,7 @@ look at the edges and vertices of <code class="code highlight python docutils li
 <span class="go">[0, 1, 2, 3, 4, 5, 6, 7, ... , 99]</span>
 </pre></div>
 </div>
-<p>So, the edges of network <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> are also carrying the same type information as
+<p>So, the edges of network <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code> are also carrying the same type information as
 the network itself. Let’s get one of the edges and inspect that:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
@@ -332,11 +342,11 @@ the network itself. Let’s get one of the edges and inspect that:</p>
 </div>
 </section>
 <section id="generating-random-networks">
-<h3>Generating random networks<a class="headerlink" href="#generating-random-networks" title="Permalink to this headline">#</a></h3>
+<h3>Generating random networks<a class="headerlink" href="#generating-random-networks" title="Permalink to this heading">#</a></h3>
 <p>Let’s try using more interesting network models. Random network models, such as
 Erdős–Rényi model, depend on random number generators to work. Moreover,
 Reticula cannot safely manipulate Python objects, such as the Python standard
-library pseudo-random number generator <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">random</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">Random</span></span></code>, while retaining the
+library pseudo-random number generator <code class="code highlight python docutils literal highlight-python"><span class="n">random</span><span class="o">.</span><span class="n">Random</span></code>, while retaining the
 ability to do parallel work in different threads. Reticula, therefore, provides
 bindings for a pseudo-random number generator that can safely be used
 internally.</p>
@@ -363,7 +373,7 @@ of the inputs to your script, making it much easier for you and other to
 reproduce your results.</p>
 </section>
 <section id="using-the-algorithms">
-<h3>Using the algorithms<a class="headerlink" href="#using-the-algorithms" title="Permalink to this headline">#</a></h3>
+<h3>Using the algorithms<a class="headerlink" href="#using-the-algorithms" title="Permalink to this heading">#</a></h3>
 <p>Let’s now use some of the algorithms. Let’s generate a thinner network and study
 connectivity in this static network:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -396,7 +406,7 @@ turn it into a plain old Python list of numbers:</p>
 <span class="go">[59, 98, 260, 669, 713, 874, 937]</span>
 </pre></div>
 </div>
-<p>Let’s now get the subgraph of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> induced by the largest connected
+<p>Let’s now get the subgraph of <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code> induced by the largest connected
 components:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">vertex_induced_subgraph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">lcc</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span>
@@ -505,6 +515,7 @@ or average degree:</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>

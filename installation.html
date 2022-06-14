@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quick Start" href="quickstart.html" /><link rel="prev" title="Reticula: Temporal network and hypergraphs" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Installation - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -212,7 +212,17 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/installation.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -227,26 +237,26 @@
         </div>
         <article role="main">
           <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
 <section id="python-binding">
-<h2>Python binding<a class="headerlink" href="#python-binding" title="Permalink to this headline">#</a></h2>
+<h2>Python binding<a class="headerlink" href="#python-binding" title="Permalink to this heading">#</a></h2>
 <p>Pre-compiled binding “Wheel”s are available for 64-bit Linux systems with glibc
 version 2.17 or above. You can install the most recent stable release from the
 PyPi index using pip:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install --upgrade pip
-<span class="gp">$ </span>pip install --upgrade reticula
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install --upgrade pip
+<span class="gp">$ </span>python -m pip install --upgrade reticula
 </pre></div>
 </div>
 <p>The first command makes sure your pip installation is up-to-date, the second
 command installs the most recent version of Reticula from the repository.</p>
-<p>The binding currently supports Python versions 3.8, 3.9 and 3.10, with an
-experimental support for PyPy versions 3.8 and 3.9.</p>
+<p>The binding currently supports Python versions 3.8, 3.9 and 3.10, with an aim to
+provide experimental support for PyPy versions 3.8 and 3.9.</p>
 <p>If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the
 <span class="xref std std-ref">Development</span> section for more information.</p>
 </section>
 <section id="the-c-library">
-<h2>The C++ library<a class="headerlink" href="#the-c-library" title="Permalink to this headline">#</a></h2>
+<h2>The C++ library<a class="headerlink" href="#the-c-library" title="Permalink to this heading">#</a></h2>
 <p>You can include the C++ library in your code using CMake <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html">FetchContent</a> module.
 To do this, you need to specify how to fetch Reticula in your
 <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
@@ -269,9 +279,9 @@ recommand that you use the most recent release branch v#.# for a new project.</p
 </div>
 </section>
 <section id="development">
-<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">#</a></h2>
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h2>
 <section id="building-the-python-binding-from-scratch">
-<h3>Building the Python binding from scratch<a class="headerlink" href="#building-the-python-binding-from-scratch" title="Permalink to this headline">#</a></h3>
+<h3>Building the Python binding from scratch<a class="headerlink" href="#building-the-python-binding-from-scratch" title="Permalink to this heading">#</a></h3>
 <p>In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
 of GCC ( &gt;= 10.2) is installed and accessible and that you have access to
@@ -299,6 +309,32 @@ find a list of these packages and acceptable version in the
 <p>You might also need to re-install the created wheel without bumping the version
 every time. Consider adding the flag <code class="xref std std-option docutils literal notranslate"><span class="pre">--force-reinstall</span></code> to the
 <strong class="command">pip install</strong> command.</p>
+</section>
+<section id="building-c-library-tests">
+<h3>Building C++ library tests<a class="headerlink" href="#building-c-library-tests" title="Permalink to this heading">#</a></h3>
+<p>To build the tests for the C++ library, make sure you have CMake version 3.14 or
+newer installed on your system. All you need to do then, is to clone the
+library, make a build directory and build the tests:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/reticula-network/reticula.git
+<span class="gp">$ </span><span class="nb">cd</span> reticula
+<span class="gp">$ </span>mkdir build
+<span class="gp">$ </span><span class="nb">cd</span> build
+<span class="gp">$ </span>cmake ..
+<span class="gp">$ </span>cmake --build . --target reticula_tests -j <span class="m">10</span>
+</pre></div>
+</div>
+<p>This creates an executable titled <code class="code docutils literal notranslate"><span class="pre">reticula_tests</span></code>, which you can execute
+to run the runtime tests, including address, memory leak and undefined behaviour
+sanitizer by default.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./reticula_tests
+</pre></div>
+</div>
+<p>After you made some modifications to the code, to re-compile the tests just
+re-run the build command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake --build . --target reticula_tests -j <span class="m">10</span>
+<span class="gp">$ </span>./reticula_tests
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -369,6 +405,7 @@ every time. Consider adding the flag <code class="xref std std-option docutils l
 <li><a class="reference internal" href="#the-c-library">The C++ library</a></li>
 <li><a class="reference internal" href="#development">Development</a><ul>
 <li><a class="reference internal" href="#building-the-python-binding-from-scratch">Building the Python binding from scratch</a></li>
+<li><a class="reference internal" href="#building-c-library-tests">Building C++ library tests</a></li>
 </ul>
 </li>
 </ul>
@@ -385,6 +422,7 @@ every time. Consider adding the flag <code class="xref std std-option docutils l
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>

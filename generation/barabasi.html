@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Random k-regular network" href="regular.html" /><link rel="prev" title="Random Erdős–Rényi network" href="gnp.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Random Barabási–Albert network - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -212,7 +212,17 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/generation/barabasi.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -227,23 +237,25 @@
         </div>
         <article role="main">
           <section id="random-barabasi-albert-network">
-<h1>Random Barabási–Albert network<a class="headerlink" href="#random-barabasi-albert-network" title="Permalink to this headline">#</a></h1>
+<h1>Random Barabási–Albert network<a class="headerlink" href="#random-barabasi-albert-network" title="Permalink to this heading">#</a></h1>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen">
-<span id="_CPPv3I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph5VertT5VertTR3Gen"></span><span id="_CPPv2I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph5VertT5VertTR3Gen"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">random_barabasi_albert_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::Gen"><span class="n"><span class="pre">Gen</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">generator</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="Permalink to this definition">#</a><br/></dt>
+<span id="_CPPv3I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph5VertT5VertTR3Gen"></span><span id="_CPPv2I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph5VertT5VertTR3Gen"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">random_barabasi_albert_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">m</span></span>, <a class="reference internal" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="random_barabasi_albert_graph::Gen"><span class="n"><span class="pre">Gen</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">generator</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertex_NSt28uniform_random_bit_generatorEE28random_barabasi_albert_graph18undirected_networkI5VertTE5VertT5VertTR3Gen" title="Permalink to this definition">#</a><br /></dt>
 <dd></dd></dl>
+
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="random_barabasi_albert_graph-vert_type">
-<span id="random_barabasi_albert_graph[vert_type]"></span><span class="sig-name descname"><span class="pre">random_barabasi_albert_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">undirected_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_barabasi_albert_graph-vert_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">random_barabasi_albert_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">undirected_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_barabasi_albert_graph-vert_type" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Generates a random Barabási–Albert network
-<span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Albert-László Barabási and Réka Albert. Emergence of scaling in random networks. science, 286(5439):509–512, 1999. doi:10.1126/science.286.5439.509.">3</a>]</span> of size <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">n</span></span></code>, vertices are added
-one-by-one and each vertex is connected to <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">m</span></span></code> random existing vertices.</p>
-<p>The parameter <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">m</span></span></code> needs to be smaller than <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">n</span></span></code> and larger than or
-equal to 1, otherwise the function fails by raising a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">ValueError</span></span></code> exception
-in Python or a <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">::</span></span><span class="n"><span class="pre">invalid_argument</span></span></code> exception in C++.</p>
+<span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Albert-László Barabási and Réka Albert. Emergence of scaling in random networks. science, 286(5439):509–512, 1999. doi:10.1126/science.286.5439.509.">3</a>]</span> of size <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">n</span><span class="w"></span></code>, vertices are added
+one-by-one and each vertex is connected to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="w"></span></code> random existing vertices.</p>
+<p>The parameter <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="w"></span></code> needs to be smaller than <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">n</span><span class="w"></span></code> and larger than or
+equal to 1, otherwise the function fails by raising a <code class="code highlight python docutils literal highlight-python"><span class="ne">ValueError</span></code> exception
+in Python or a <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="w"></span></code> exception in C++.</p>
 </section>
 
         </article>
@@ -304,6 +316,7 @@ in Python or a <code class="code highlight cpp docutils literal notranslate"><sp
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>

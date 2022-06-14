@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Random Erdős–Rényi network" href="gnp.html" /><link rel="prev" title="Square grid graphs" href="square_grid_graph.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Complete graphs - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -212,7 +212,17 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/generation/complete_graph.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -220,40 +230,44 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="complete-graphs">
-<h1>Complete graphs<a class="headerlink" href="#complete-graphs" title="Permalink to this headline">#</a></h1>
+<h1>Complete graphs<a class="headerlink" href="#complete-graphs" title="Permalink to this heading">#</a></h1>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT">
-<span id="_CPPv3I_14integer_vertexE14complete_graph5VertT"></span><span id="_CPPv2I_14integer_vertexE14complete_graph5VertT"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="complete_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">complete_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="complete_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="Permalink to this definition">#</a><br/></dt>
+<span id="_CPPv3I_14integer_vertexE14complete_graph5VertT"></span><span id="_CPPv2I_14integer_vertexE14complete_graph5VertT"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="complete_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">complete_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="complete_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertexE14complete_graph18undirected_networkI5VertTE5VertT" title="Permalink to this definition">#</a><br /></dt>
 <dd></dd></dl>
+
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="complete_graph-vert_type">
-<span id="complete_graph[vert_type]"></span><span class="sig-name descname"><span class="pre">complete_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">undirected_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#complete_graph-vert_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">complete_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">undirected_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#complete_graph-vert_type" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-<p>Generates a network of size <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">size</span></span></code> vertices where all possible edges are
+
+<p>Generates a network of size <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">size</span><span class="w"></span></code> vertices where all possible edges are
 present.</p>
 </section>
 <section id="complete-directed-graphs">
-<h1>Complete directed graphs<a class="headerlink" href="#complete-directed-graphs" title="Permalink to this headline">#</a></h1>
+<h1>Complete directed graphs<a class="headerlink" href="#complete-directed-graphs" title="Permalink to this heading">#</a></h1>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT">
-<span id="_CPPv3I_14integer_vertexE23complete_directed_graph5VertT"></span><span id="_CPPv2I_14integer_vertexE23complete_directed_graph5VertT"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">directed_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="complete_directed_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">complete_directed_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="complete_directed_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="Permalink to this definition">#</a><br/></dt>
+<span id="_CPPv3I_14integer_vertexE23complete_directed_graph5VertT"></span><span id="_CPPv2I_14integer_vertexE23complete_directed_graph5VertT"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14integer_vertex" title="integer_vertex"><span class="n"><span class="pre">integer_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">directed_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="complete_directed_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">complete_directed_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="complete_directed_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_14integer_vertexE23complete_directed_graph16directed_networkI5VertTE5VertT" title="Permalink to this definition">#</a><br /></dt>
 <dd></dd></dl>
+
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="complete_directed_graph-vert_type">
-<span id="complete_directed_graph[vert_type]"></span><span class="sig-name descname"><span class="pre">complete_directed_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">directed_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#complete_directed_graph-vert_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">complete_directed_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">directed_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#complete_directed_graph-vert_type" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-<p>Generates a directed network of size <code class="code highlight cpp docutils literal notranslate"><span class="n"><span class="pre">size</span></span></code> vertices where all possible
+
+<p>Generates a directed network of size <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">size</span><span class="w"></span></code> vertices where all possible
 edges are present.</p>
 </section>
 
@@ -306,25 +320,8 @@ edges are present.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Complete graphs</a></li>
-<li><a class="reference internal" href="#complete-directed-graphs">Complete directed graphs</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -332,6 +329,7 @@ edges are present.</p>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>

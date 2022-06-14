@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Randomness" href="randomness.html" /><link rel="prev" title="Networks and network types" href="types.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Input/Output and interpolation - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -212,7 +212,17 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/io.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -227,64 +237,70 @@
         </div>
         <article role="main">
           <section id="input-output-and-interpolation">
-<h1>Input/Output and interpolation<a class="headerlink" href="#input-output-and-interpolation" title="Permalink to this headline">#</a></h1>
+<h1>Input/Output and interpolation<a class="headerlink" href="#input-output-and-interpolation" title="Permalink to this heading">#</a></h1>
 <section id="edgelist-input-output">
-<h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Permalink to this headline">#</a></h2>
+<h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Permalink to this heading">#</a></h2>
 <section id="reading-an-edgelist-file">
-<h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Permalink to this headline">#</a></h3>
+<h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Permalink to this heading">#</a></h3>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br/></dt>
+<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
 <dd></dd></dl>
+
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="read_edgelist">
 <span class="sig-name descname"><span class="pre">read_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#read_edgelist" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Dyadic static and temporal networks can be read from space separated files where
 each row represents an edge. Note that vertices with no neighbours cannot be
 represented in this format.</p>
 </section>
 <section id="writing-an-edgelist-file">
-<h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Permalink to this headline">#</a></h3>
+<h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Permalink to this heading">#</a></h3>
 <p>C++:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br/><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br/></dt>
+<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
 <dd></dd></dl>
+
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="write_edgelist">
 <span class="sig-name descname"><span class="pre">write_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_edgelist" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Write a dyadic static and temporal networks in form of space separated files
 where each row represents an edge. Note that vertices with no neighbours cannot
 be represented in this format.</p>
 </section>
 </section>
 <section id="interpolation-with-networkx">
-<h2>Interpolation with NetworkX<a class="headerlink" href="#interpolation-with-networkx" title="Permalink to this headline">#</a></h2>
+<h2>Interpolation with NetworkX<a class="headerlink" href="#interpolation-with-networkx" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="to_networkx">
 <span class="sig-name descname"><span class="pre">to_networkx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#to_networkx" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a NetworkX graph from a dyadic static network. If <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">created_using</span></span></code>
+<dd><p>Creates a NetworkX graph from a dyadic static network. If <code class="code highlight python docutils literal highlight-python"><span class="n">created_using</span></code>
 is not provided, the type of the output is selected based in directionality of
-the input <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">network</span></span></code>. For directed networks, the output would would be of
-type <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">DiGraph</span></span></code>, and for undirected networks it would produce an
-instance of <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">Graph</span></span></code>.</p>
-<p>Raises a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">NotImplementedError</span></span></code> if NetworkX is not installed or cannot be
+the input <code class="code highlight python docutils literal highlight-python"><span class="n">network</span></code>. For directed networks, the output would would be of
+type <code class="code highlight python docutils literal highlight-python"><span class="n">networkx</span><span class="o">.</span><span class="n">DiGraph</span></code>, and for undirected networks it would produce an
+instance of <code class="code highlight python docutils literal highlight-python"><span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span></code>.</p>
+<p>Raises a <code class="code highlight python docutils literal highlight-python"><span class="ne">NotImplementedError</span></code> if NetworkX is not installed or cannot be
 imported at the time Reticula is imported.</p>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="from_networkx-vertex_type">
-<span id="from_networkx[vertex_type]"></span><span class="sig-name descname"><span class="pre">from_networkx[vertex_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#from_networkx-vertex_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">from_networkx[vertex_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#from_networkx-vertex_type" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a dyadic static network from a NetworkX graph. The directedness of the
-network is decided based on whether graph <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">g</span></span></code> is directed, i.e., whether
-<code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">networkx</span></span><span class="o"><span class="pre">.</span></span><span class="n"><span class="pre">is_directed</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">)</span></span></code> returns <code class="code highlight python docutils literal notranslate"><span class="kc"><span class="pre">True</span></span></code>.</p>
-<p>Raises a <code class="code highlight python docutils literal notranslate"><span class="ne"><span class="pre">NotImplementedError</span></span></code> if networkx is not installed or cannot be
+network is decided based on whether graph <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code> is directed, i.e., whether
+<code class="code highlight python docutils literal highlight-python"><span class="n">networkx</span><span class="o">.</span><span class="n">is_directed</span><span class="p">(</span><span class="n">g</span><span class="p">)</span></code> returns <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p>
+<p>Raises a <code class="code highlight python docutils literal highlight-python"><span class="ne">NotImplementedError</span></code> if networkx is not installed or cannot be
 imported at the time Reticula is imported.</p>
 </dd></dl>
+
 </section>
 </section>
 
@@ -370,6 +386,7 @@ imported at the time Reticula is imported.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
