@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG 8e33c3a)
+  GIT_TAG 4a5be4c)
 
 FetchContent_Declare(
   fmt
@@ -71,7 +71,8 @@ reticula_library(algorithms
   src/algorithms.cpp
   src/algorithms/directed.cpp
   src/algorithms/undirected.cpp
-  src/algorithms/temporal.cpp)
+  src/algorithms/temporal.cpp
+  src/algorithms/common.cpp)
 reticula_library(microcanonical_reference_models
   src/microcanonical_reference_models.cpp)
 reticula_library(type_lists src/type_lists.cpp)

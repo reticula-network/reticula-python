@@ -52,6 +52,7 @@ struct declare_degree_sequence_algorithms {
 void declare_typed_directed_algorithms(py::module& m);
 void declare_typed_undirected_algorithms(py::module& m);
 void declare_typed_temporal_algorithms(py::module& m);
+void declare_typed_common_algorithms(py::module& m);
 
 void declare_typed_algorithms(py::module& m) {
   types::run_each<
@@ -80,4 +81,5 @@ void declare_typed_algorithms(py::module& m) {
   declare_typed_directed_algorithms(m);
   declare_typed_undirected_algorithms(m);
   declare_typed_temporal_algorithms(m);
+  declare_typed_common_algorithms(m);
 }

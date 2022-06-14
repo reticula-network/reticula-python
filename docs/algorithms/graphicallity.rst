@@ -8,7 +8,7 @@ C++:
 
 .. cpp:function:: template <std::ranges::forward_range Range> \
     requires degree_range<Range> \
-    bool is_graphic(const Range& degree_sequence)
+    bool is_graphic(Range&& degree_sequence)
 
 
 Python:
@@ -27,7 +27,7 @@ C++:
 
 .. cpp:function:: template <std::ranges::input_range PairRange> \
     requires degree_pair_range<PairRange> \
-    bool is_digraphic(const PairRange& in_out_degree_sequence)
+    bool is_digraphic(PairRange&& in_out_degree_sequence)
 
 
 Python:

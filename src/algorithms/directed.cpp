@@ -17,7 +17,8 @@ namespace pybind11 {
             : public type_caster_base<
               std::vector<reticula::component<VertT>>> {};
         template <reticula::network_vertex VertT>
-        class type_caster<std::vector<std::pair<VertT, reticula::component<VertT>>>>
+        class type_caster<
+          std::vector<std::pair<VertT, reticula::component<VertT>>>>
             : public type_caster_base<
               std::vector<
                   std::pair<VertT, reticula::component<VertT>>>> {};
@@ -34,70 +35,24 @@ namespace pybind11 {
                 std::pair<VertT, reticula::component_size<VertT>>>> {};
 
         template <reticula::network_vertex VertT>
-        class type_caster<std::vector<reticula::component_size_estimate<VertT>>>
+        class type_caster<
+          std::vector<reticula::component_size_estimate<VertT>>>
             : public type_caster_base<
               std::vector<reticula::component_size_estimate<VertT>>> {};
         template <reticula::network_vertex VertT>
         class type_caster<
-            std::vector<std::pair<VertT, reticula::component_size_estimate<VertT>>>>
+            std::vector<
+              std::pair<VertT, reticula::component_size_estimate<VertT>>>>
             : public type_caster_base<
               std::vector<
-                  std::pair<VertT, reticula::component_size_estimate<VertT>>>> {};
+                  std::pair<VertT,
+                    reticula::component_size_estimate<VertT>>>> {};
     }
 }
 
 template <reticula::static_directed_edge EdgeT>
 struct declare_directed_network_algorithms {
   void operator()(py::module& m) {
-    m.def("vertex_induced_subgraph",
-        &reticula::vertex_induced_subgraph<
-          EdgeT, std::vector<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def("vertex_induced_subgraph",
-        &reticula::vertex_induced_subgraph<
-          EdgeT, reticula::component<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a,
-        py::call_guard<py::gil_scoped_release>());
-
-    m.def("edge_induced_subgraph",
-        &reticula::edge_induced_subgraph<
-          EdgeT, std::vector<EdgeT>>,
-        "network"_a, "edges"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def("edge_induced_subgraph",
-        &reticula::edge_induced_subgraph<
-          EdgeT, reticula::component<EdgeT>>,
-        "network"_a, "edges"_a,
-        py::call_guard<py::gil_scoped_release>());
-
-    m.def("graph_union",
-        &reticula::graph_union<EdgeT>,
-        "g1"_a, "g2"_a,
-        py::call_guard<py::gil_scoped_release>());
-
-    m.def("with_edges",
-        &reticula::with_edges<
-          EdgeT, std::vector<EdgeT>>,
-        "network"_a, "edges"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def("with_edges",
-        &reticula::edge_induced_subgraph<
-          EdgeT, reticula::component<EdgeT>>,
-        "network"_a, "edges"_a,
-        py::call_guard<py::gil_scoped_release>());
-
-    m.def("with_vertices",
-        &reticula::with_vertices<
-          EdgeT, std::vector<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def("with_vertices",
-        &reticula::vertex_induced_subgraph<
-          EdgeT, reticula::component<typename EdgeT::VertexType>>,
-        "network"_a, "verts"_a,
-        py::call_guard<py::gil_scoped_release>());
-
     m.def("is_acyclic",
         &reticula::is_acyclic<EdgeT>,
         "directed_network"_a,

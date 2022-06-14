@@ -196,7 +196,11 @@ from .reticula_ext import (
 
 from .reticula_ext import (
         vertex_induced_subgraph, edge_induced_subgraph, graph_union,
-        with_edges, with_vertices, density)
+        with_edges, with_vertices,
+        without_edges, without_vertices,
+        occupy_edges, occupy_vertices,
+        uniformly_occupy_edges, uniformly_occupy_vertices,
+        density)
 
 from .reticula_ext import (
         is_acyclic, topological_order, out_component, out_components,

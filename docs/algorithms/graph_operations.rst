@@ -10,7 +10,7 @@ C++:
        std::ranges::input_range Range> \
     requires std::same_as<std::ranges::range_value_t<Range>, EdgeT> \
     network<EdgeT> \
-    edge_induced_subgraph(const network<EdgeT>& net, const Range& edges)
+    edge_induced_subgraph(const network<EdgeT>& net, Range&& edges)
 
 Python:
 
@@ -28,7 +28,7 @@ C++:
        std::ranges::input_range Range> \
     requires std::same_as<std::ranges::range_value_t<Range>, EdgeT::VetexType> \
     network<EdgeT> \
-    vertex_induced_subgraph(const network<EdgeT>& net, const Range& verts)
+    vertex_induced_subgraph(const network<EdgeT>& net, Range&& verts)
 
 Python:
 
@@ -38,16 +38,16 @@ Returns a copy of a subset of the network :cpp:`net` consisting only of vertices
 :cpp:`verts` and any edges with all incident vertices in :cpp:`verts`.
 
 
-Adding edges
-------------
+Adding and removings edges
+--------------------------
 
-C++
+C++:
 
 .. cpp:function:: template <network_edge EdgeT, \
        std::ranges::input_range EdgeRange> \
     requires std::same_as<std::ranges::range_value_t<EdgeRange>, EdgeT> \
     network<EdgeT> \
-    with_edges(const network<EdgeT>& net, const EdgeRange& edges)
+    with_edges(const network<EdgeT>& net, EdgeRange&& edges)
 
 Python:
 
@@ -56,23 +56,56 @@ Python:
 Returns a copy of :cpp:`net` with edges from :cpp:`edges` along with all their
 incident vertices added in.
 
-Adding vertices
----------------
+C++:
 
-C++
+.. cpp:function:: template <network_edge EdgeT, \
+       std::ranges::input_range EdgeRange> \
+    requires std::same_as<std::ranges::range_value_t<EdgeRange>, EdgeT> \
+    network<EdgeT> \
+    without_edges(const network<EdgeT>& net, EdgeRange&& edges)
+
+Python:
+
+.. py:function:: without_edges(net, edges)
+
+Returns a copy of :cpp:`net` with edges from :cpp:`edges` removed. The returned
+graph has all the vertices of the original graph.
+
+
+Adding and removing vertices
+----------------------------
+
+C++:
 
 .. cpp:function:: template <network_edge EdgeT, \
        std::ranges::input_range VertRange> \
     requires std::same_as<std::ranges::range_value_t<VertRange>,\
       EdgeT::VetexType> \
     network<EdgeT> \
-    with_vertices(const network<EdgeT>& net, const VertRange& verts)
+    with_vertices(const network<EdgeT>& net, VertRange&& verts)
 
 Python:
 
 .. py:function:: with_vertices(net, verts)
 
 Returns a copy of :cpp:`net` with vertices from :cpp:`verts` added in.
+
+
+C++:
+
+.. cpp:function:: template <network_edge EdgeT, \
+       std::ranges::input_range VertRange> \
+    requires std::same_as<std::ranges::range_value_t<VertRange>,\
+      EdgeT::VetexType> \
+    network<EdgeT> \
+    without_vertices(const network<EdgeT>& net, VertRange&& verts)
+
+Python:
+
+.. py:function:: without_vertices(net, verts)
+
+Returns a copy of :cpp:`net` with vertices from :cpp:`verts`, along with all
+their incident edges removed.
 
 Graph Union
 -----------
