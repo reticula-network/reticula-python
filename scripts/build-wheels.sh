@@ -3,19 +3,15 @@
 set -ex
 
 mkdir -p dist
-
+rm -f wheelhouse/*
 
 for version in python3.8 python3.9 python3.10 pypy3.8 pypy3.9; do
+  rm -f dist/*
   rm -rf _skbuild
   singularity exec --cleanenv --bind .:/reticula-python --pwd /reticula-python \
     docker://quay.io/pypa/manylinux2014_x86_64 \
     ${version} -m pip wheel . -w dist --verbose
-done
-
-rm -f wheelhouse/*
-
-for wheel in dist/*.whl; do
   singularity exec --cleanenv --bind .:/reticula-python --pwd /reticula-python \
     docker://quay.io/pypa/manylinux2014_x86_64 \
-    auditwheel repair --strip $wheel
+    auditwheel repair --strip dist/*.whl
 done
