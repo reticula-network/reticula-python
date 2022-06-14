@@ -10,14 +10,14 @@ PyPi index using pip:
 
 .. code-block:: console
 
-   $ pip install --upgrade pip
-   $ pip install --upgrade reticula
+   $ python -m pip install --upgrade pip
+   $ python -m pip install --upgrade reticula
 
 The first command makes sure your pip installation is up-to-date, the second
 command installs the most recent version of Reticula from the repository.
 
-The binding currently supports Python versions 3.8, 3.9 and 3.10, with an
-experimental support for PyPy versions 3.8 and 3.9.
+The binding currently supports Python versions 3.8, 3.9 and 3.10, with an aim to
+provide experimental support for PyPy versions 3.8 and 3.9.
 
 If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the
@@ -94,3 +94,35 @@ find a list of these packages and acceptable version in the
 You might also need to re-install the created wheel without bumping the version
 every time. Consider adding the flag :option:`--force-reinstall` to the
 :command:`pip install` command.
+
+Building C++ library tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To build the tests for the C++ library, make sure you have CMake version 3.14 or
+newer installed on your system. All you need to do then, is to clone the
+library, make a build directory and build the tests:
+
+.. code-block:: console
+
+   $ git clone https://github.com/reticula-network/reticula.git
+   $ cd reticula
+   $ mkdir build
+   $ cd build
+   $ cmake ..
+   $ cmake --build . --target reticula_tests -j 10
+
+This creates an executable titled :code:`reticula_tests`, which you can execute
+to run the runtime tests, including address, memory leak and undefined behaviour
+sanitizer by default.
+
+.. code-block:: console
+
+   $ ./reticula_tests
+
+After you made some modifications to the code, to re-compile the tests just
+re-run the build command.
+
+.. code-block:: console
+
+   $ cmake --build . --target reticula_tests -j 10
+   $ ./reticula_tests
