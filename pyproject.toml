@@ -1,6 +1,6 @@
 [project]
 name = "reticula"
-version = "0.2.0"
+version = "0.2.1"
 description="Analyse temporal network and hypergraphs efficiently."
 authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
 requires-python = ">=3.8"
