@@ -34,48 +34,35 @@ endif()
 
 FetchContent_MakeAvailable(reticula fmt metal)
 
-
-pybind11_add_module(reticula_ext src/main.cpp)
-set_target_properties(reticula_ext
-  PROPERTIES CXX_VISIBILITY_PRESET hidden)
-
-function(reticula_library name)
-  add_library(${PROJECT_NAME}_${name} ${ARGN})
-  set_target_properties(${PROJECT_NAME}_${name}
-    PROPERTIES CXX_VISIBILITY_PRESET hidden)
-  target_link_libraries(${PROJECT_NAME}_${name} PRIVATE
-    reticula fmt Metal pybind11::pybind11)
-  target_link_libraries(reticula_ext PRIVATE ${PROJECT_NAME}_${name})
-endfunction()
-
-reticula_library(scaler_types src/scalar_types.cpp)
-reticula_library(random_state src/random_state.cpp)
-reticula_library(distributions src/distributions.cpp)
-reticula_library(interval_sets src/interval_sets.cpp)
-reticula_library(temporal_edges src/temporal_edges.cpp)
-reticula_library(temporal_hyperedges src/temporal_hyperedges.cpp)
-reticula_library(static_edges src/static_edges.cpp)
-reticula_library(static_hyperedges src/static_hyperedges.cpp)
-reticula_library(networks src/networks.cpp)
-reticula_library(temporal_adjacency src/temporal_adjacency.cpp)
-reticula_library(implicit_event_graphs src/implicit_event_graphs.cpp)
-reticula_library(implicit_event_graph_components
-  src/implicit_event_graph_components.cpp)
-reticula_library(generators src/generators.cpp)
-reticula_library(random_networks src/random_networks.cpp)
-reticula_library(random_activation_networks src/random_activation_networks.cpp)
-reticula_library(temporal_clusters src/temporal_clusters.cpp)
-reticula_library(components src/components.cpp)
-reticula_library(io src/io.cpp)
-reticula_library(algorithms
+pybind11_add_module(reticula_ext src/main.cpp
+  src/scalar_types.cpp
+  src/random_state.cpp
+  src/distributions.cpp
+  src/interval_sets.cpp
+  src/temporal_edges.cpp
+  src/temporal_hyperedges.cpp
+  src/static_edges.cpp
+  src/static_hyperedges.cpp
+  src/networks.cpp
+  src/temporal_adjacency.cpp
+  src/implicit_event_graphs.cpp
+  src/implicit_event_graph_components.cpp
+  src/generators.cpp
+  src/random_networks.cpp
+  src/random_activation_networks.cpp
+  src/temporal_clusters.cpp
+  src/components.cpp
+  src/io.cpp
   src/algorithms.cpp
   src/algorithms/directed.cpp
   src/algorithms/undirected.cpp
   src/algorithms/temporal.cpp
-  src/algorithms/common.cpp)
-reticula_library(microcanonical_reference_models
-  src/microcanonical_reference_models.cpp)
-reticula_library(type_lists src/type_lists.cpp)
+  src/algorithms/common.cpp
+  src/microcanonical_reference_models.cpp
+  src/type_lists.cpp)
+target_link_libraries(reticula_ext PRIVATE reticula fmt Metal)
+set_target_properties(reticula_ext
+  PROPERTIES CXX_VISIBILITY_PRESET hidden)
 
 install(TARGETS reticula_ext DESTINATION .)
 
