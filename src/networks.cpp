@@ -70,6 +70,8 @@ struct declare_network_class {
       .def("out_edges",
           py::overload_cast<>(
             &Net::out_edges, py::const_))
+      .def(py::self == py::self)
+      .def(py::self != py::self)
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
       })
