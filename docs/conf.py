@@ -31,7 +31,8 @@ release = '0.2.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-  'sphinxcontrib.bibtex'
+  'sphinxcontrib.bibtex',
+  'sphinx_copybutton'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

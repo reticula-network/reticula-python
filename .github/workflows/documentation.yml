@@ -19,7 +19,7 @@ jobs:
         architecture: 'x64'
 
     - name: Prerequisits
-      run: pip install sphinx sphinxcontrib-bibtex furo
+      run: pip install sphinx sphinxcontrib-bibtex furo sphinx-copybutton
 
 
     - name: Build ⚙️
