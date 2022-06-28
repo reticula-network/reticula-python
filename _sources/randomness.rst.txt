@@ -17,7 +17,7 @@ enough" for the purpose of scientific simulation. On C++ side, you can simply
 use any pseudorandom number generator as long as it conforms to the concept
 :cpp:`std::uniform_random_bit_generator`, for example, Mersenne Twister
 implementation from the standard library :cpp:`std::mt19937_64` or `PCG random
-number generator <https://github.com/imneme/pcg-cpp/>`.
+number generator <https://github.com/imneme/pcg-cpp/>_`.
 
 On Python side, everything is slightly more involved. You cannot simply use the
 random number generators implemented by Python or NumPy, as Reticula cannot
