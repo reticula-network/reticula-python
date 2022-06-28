@@ -115,16 +115,46 @@ In static networks they return the same output.
 Incident edges
 ^^^^^^^^^^^^^^
 
+Edges incident to a vertex can be accessed using the :py:`incident_edges`
+methods. For directed network types, methods :py:`out_edges` and :py:`in_edges`
+distinguish between inward and outward edges, while :py:`indicent_edges` does
+not.
+
+.. code-block:: python
+
+      g3.incident_edges(3) # => [undirected_edge[int64](2, 3)]
+      g3.out_edges(3) # => same as above, as the network is undirected
+      g3.in_edges(3) # => same as above, as the network is undirected
+
+
+
 Successors, predecessors and neighbours
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The set of neighbours of a vertex in the network can be achieved using the
+method :py:`neighbours`. Methods :py:`successors` and :py:`predecessors` provide
+directed network equivalents.
+
+
+.. code-block:: python
+
+      g3.neighbours(2) # => [3, 1]
+      g3.successors(2) # => same as above, as the network is undirected
+      g3.predecessors(2) # => same as above, as the network is undirected
 
 Vertex degree
 ^^^^^^^^^^^^^
 
-..
-  in hypergraphs and temporal networks
+The degree of each vertex can be calculated using the method :py:`degree`,
+:py:`in_degree` and :py:`out_degree`. For hypergraphs and hypergraph temporal
+networks, the degree refers to the number of unique edges, as opposed to the
+number of neighbours.
 
+.. code-block:: python
 
+      g3.degree(2) # => 2
+      g3.out_degree(2) # => same as above, as the network is undirected
+      g3.in_degree(2) # => same as above, as the network is undirected
 
 Network types
 -------------
