@@ -331,12 +331,38 @@ In static networks they return the same output.</p>
 </section>
 <section id="incident-edges">
 <h3>Incident edges<a class="headerlink" href="#incident-edges" title="Permalink to this heading">#</a></h3>
+<p>Edges incident to a vertex can be accessed using the <code class="code highlight python docutils literal highlight-python"><span class="n">incident_edges</span></code>
+methods. For directed network types, methods <code class="code highlight python docutils literal highlight-python"><span class="n">out_edges</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">in_edges</span></code>
+distinguish between inward and outward edges, while <code class="code highlight python docutils literal highlight-python"><span class="n">indicent_edges</span></code> does
+not.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">incident_edges</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; [undirected_edge[int64](2, 3)]</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">out_edges</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">in_edges</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+</pre></div>
+</div>
 </section>
 <section id="successors-predecessors-and-neighbours">
 <h3>Successors, predecessors and neighbours<a class="headerlink" href="#successors-predecessors-and-neighbours" title="Permalink to this heading">#</a></h3>
+<p>The set of neighbours of a vertex in the network can be achieved using the
+method <code class="code highlight python docutils literal highlight-python"><span class="n">neighbours</span></code>. Methods <code class="code highlight python docutils literal highlight-python"><span class="n">successors</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">predecessors</span></code> provide
+directed network equivalents.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">neighbours</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; [3, 1]</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+</pre></div>
+</div>
 </section>
 <section id="vertex-degree">
 <h3>Vertex degree<a class="headerlink" href="#vertex-degree" title="Permalink to this heading">#</a></h3>
+<p>The degree of each vertex can be calculated using the method <code class="code highlight python docutils literal highlight-python"><span class="n">degree</span></code>,
+<code class="code highlight python docutils literal highlight-python"><span class="n">in_degree</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">out_degree</span></code>. For hypergraphs and hypergraph temporal
+networks, the degree refers to the number of unique edges, as opposed to the
+number of neighbours.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="network-types">
