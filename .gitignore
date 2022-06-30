@@ -38,4 +38,11 @@ _skbuild/
 *.egg-info/
 *.whl
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+.hypothesis
+
 wheelhouse
