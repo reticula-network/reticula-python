@@ -6,12 +6,12 @@ Instant-event shuffling
 
 C++:
 
-.. cpp:function:: template <temporal_edge edget, \
-      std::uniform_random_bit_generator gen> \
-      requires is_dyadic_v<edget> \
-      network<edget> \
+.. cpp:function:: template <temporal_edge EdgeT, \
+      std::uniform_random_bit_generator Gen> \
+      requires is_dyadic_v<EdgeT> \
+      network<EdgeT> \
       microcanonical_reference_models::instant_event_shuffling(\
-         const network<edget>& temp, gen& generator);
+         const network<EdgeT>& temp, Gen& generator);
 
 
 Python:
