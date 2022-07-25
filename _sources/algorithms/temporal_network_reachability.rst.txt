@@ -14,8 +14,8 @@ vertex at a specific time, assuming that the spreading "effect" stays in each
 node for duration dictated by the `temporal adjacency`_ of that spreading
 process.
 
-The variants are similar to those of
-:ref:`static network reachability <static network reachability>`, with the
+The variants are similar to those of :ref:`static network reachability
+<algorithms/static_network_reachability:Static etwork reachability>`, with the
 possibility of starting from one vertex at one time, or calculating or
 estimating spreading clusters from all vertices at all starting times.
 
@@ -182,7 +182,8 @@ Python:
 Temporal adjacency
 ------------------
 
-For the case of :ref:`static network reachability <static network reachability>`
+For the case of :ref:`static network reachability
+<algorithms/static_network_reachability:Static network reachability>`
 we had a nice and concrete definition of adjacency. For example, in an
 undirected network if two edges share at least one incident vertex, an "effect"
 (e.g., a disease or a gossip) transmitted through one edge can also be

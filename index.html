@@ -244,10 +244,32 @@
 <p>Reticula is a general purpose C++ library and Python package for fast and
 efficient analysis of temporal networks and static and temporal hypergraphs.
 Currently, the library supports multiple methods of generating and randomising
-networks, using various algorithms to calculate network properties, and running
-compartmental model simulations on networks.</p>
+networks, using various algorithms to calculate network properties and running
+those algorithms safely in a multi-threaded environment.</p>
 <p>The names Reticula is the plural form of reticulum, a Latin word meaning network
 or a network-like (reticulated) structure.</p>
+<p>You can <a class="reference internal" href="installation.html#installation"><span class="std std-ref">install</span></a> the latest version of the
+Python package from the Python Package Index, using the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install --upgrade pip
+</pre></div>
+</div>
+<p>A brief example: Let us generate
+<a class="reference internal" href="generation/gnp.html#random-erdos-renyi-network"><span class="std std-ref">an Erdős–Rényi network</span></a> and
+find its <a class="reference internal" href="algorithms/static_network_reachability.html#all-connected-components"><span class="std std-ref">largest connected component</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+
+<span class="n">lcc</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">largest_connected_component</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lcc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Running this script will print an output like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python example.py
+<span class="go">&lt;component[int64] of 93 nodes: {99, 96, ...}&gt;</span>
+</pre></div>
+</div>
 </section>
 
         </article>
