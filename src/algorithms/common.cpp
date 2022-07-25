@@ -1,4 +1,6 @@
 #include <vector>
+#include <unordered_map>
+
 #include <random>
 
 #include <pybind11/pybind11.h>

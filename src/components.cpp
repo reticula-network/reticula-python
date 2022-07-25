@@ -1,7 +1,9 @@
 #include <vector>
+#include <unordered_set>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
+#include <pybind11/stl.h>
 
 #include <fmt/format.h>
 #include <reticula/components.hpp>
@@ -22,6 +24,9 @@ struct declare_component_types {
       .def(py::init<std::size_t>(),
           "size_hint"_a = 0)
       .def(py::init<std::vector<VertT>, std::size_t>(),
+          "vertices"_a, "size_hint"_a = 0)
+      .def(py::init<std::unordered_set<
+            VertT, reticula::hash<VertT>>, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0)
       .def("insert",
           static_cast<void (Component::*)(
@@ -49,6 +54,10 @@ struct declare_component_types {
       .def_static("vertex_type", []() {
         return types::handle_for<typename Component::VertexType>();
       });
+
+    py::implicitly_convertible<
+      std::unordered_set<VertT, reticula::hash<VertT>>,
+      reticula::component<VertT>>();
 
     using ComponentSize = reticula::component_size<VertT>;
     py::class_<ComponentSize>(m,
