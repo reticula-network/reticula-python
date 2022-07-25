@@ -21,8 +21,37 @@ Reticula: Temporal network and hypergraphs
 Reticula is a general purpose C++ library and Python package for fast and
 efficient analysis of temporal networks and static and temporal hypergraphs.
 Currently, the library supports multiple methods of generating and randomising
-networks, using various algorithms to calculate network properties, and running
-compartmental model simulations on networks.
+networks, using various algorithms to calculate network properties and running
+those algorithms safely in a multi-threaded environment.
 
 The names Reticula is the plural form of reticulum, a Latin word meaning network
 or a network-like (reticulated) structure.
+
+You can :ref:`install <installation:Installation>` the latest version of the
+Python package from the Python Package Index, using the command:
+
+.. code-block:: console
+
+   $ python -m pip install --upgrade pip
+
+A brief example: Let us generate
+:ref:`an Erdős--Rényi network <generation/gnp:Random Erdős--Rényi network>` and
+find its :ref:`largest connected component
+<algorithms/static_network_reachability:All connected components>`:
+
+.. code-block:: python
+
+   import reticula as ret
+
+   state = ret.mersenne_twister(42)
+   g = ret.random_gnp_graph[ret.int64](n=100, p=0.02, random_state=state)
+
+   lcc = ret.largest_connected_component(g)
+   print(lcc)
+
+Running this script will print an output like this:
+
+.. code-block:: console
+
+   $ python example.py
+   <component[int64] of 93 nodes: {99, 96, ...}>

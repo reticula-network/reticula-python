@@ -32,7 +32,8 @@ release = '0.2.2'
 # ones.
 extensions = [
   'sphinxcontrib.bibtex',
-  'sphinx_copybutton'
+  'sphinx_copybutton',
+  'sphinx.ext.autosectionlabel'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,6 +72,7 @@ typed_py_re = re.compile(
 import sphinx.domains.python
 sphinx.domains.python.py_sig_re = typed_py_re
 
+autosectionlabel_prefix_document = True
 
 # -- Options for HTML output -------------------------------------------------
 
