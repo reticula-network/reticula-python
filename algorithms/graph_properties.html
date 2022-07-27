@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Event shuffling" href="event.html" /><link rel="prev" title="Link activation temporal network" href="../generation/activation.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Static network reachability" href="static_network_reachability.html" /><link rel="prev" title="Graph operations" href="graph_operations.html" />
 
     <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>Randomising networks - Reticula</title>
+        <title>Graph properties - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -177,18 +177,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../generation/activation.html">Link activation temporal network</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Randomising networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="event.html">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="link.html">Link Shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="timeline.html">Timeline Shuffling</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shuffling/event.html">Event shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shuffling/link.html">Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/graphicallity.html">Graphicallity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/graph_operations.html">Graph operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/graph_properties.html">Graph properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/static_network_reachability.html">Static network reachability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/temporal_network_reachability.html">Temporal network reachability</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graphicallity.html">Graphicallity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Graph properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static_network_reachability.html">Static network reachability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="temporal_network_reachability.html">Temporal network reachability</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
@@ -216,7 +216,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/shuffling/index.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/algorithms/graph_properties.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -232,21 +232,39 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="randomising-networks">
-<h1>Randomising networks<a class="headerlink" href="#randomising-networks" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="event.html">Event shuffling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="link.html">Link Shuffling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeline.html">Timeline Shuffling</a></li>
-</ul>
-</div>
+          <section id="graph-properties">
+<h1>Graph properties<a class="headerlink" href="#graph-properties" title="Permalink to this heading">#</a></h1>
+<section id="density">
+<h2>Density<a class="headerlink" href="#density" title="Permalink to this heading">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE7densitydRK18undirected_networkI5VertTE">
+<span id="_CPPv3I_14network_vertexE7densityRK18undirected_networkI5VertTE"></span><span id="_CPPv2I_14network_vertexE7densityRK18undirected_networkI5VertTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">density</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">undirected_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE7densitydRK18undirected_networkI5VertTE" title="density::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE7densitydRK18undirected_networkI5VertTE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE7densitydRK16directed_networkI5VertTE">
+<span id="_CPPv3I_14network_vertexE7densityRK16directed_networkI5VertTE"></span><span id="_CPPv2I_14network_vertexE7densityRK16directed_networkI5VertTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">density</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">directed_network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE7densitydRK16directed_networkI5VertTE" title="density::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE7densitydRK16directed_networkI5VertTE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<p>Calculates density of a static, dyadic graph.</p>
+<p>Density of an undirected network is the number of edges divided by the number of
+possible unordered pairs of distinct vertices.</p>
+<p>Density of a directed graph is the number of edges divided by the number of
+possible ordered pairs of distinct vertices.</p>
+<p>Note that in the presense of self-links, density might be higher than 1.</p>
+</section>
 </section>
 
         </article>
@@ -254,23 +272,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="event.html">
+          <a class="next-page" href="static_network_reachability.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Event shuffling</div>
+                <div class="title">Static network reachability</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../generation/activation.html">
+          <a class="prev-page" href="graph_operations.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Link activation temporal network</div>
+                <div class="title">Graph operations</div>
                 
               </div>
             </a>
@@ -298,8 +316,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Graph properties</a><ul>
+<li><a class="reference internal" href="#density">Density</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

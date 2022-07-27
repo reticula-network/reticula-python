@@ -1,5 +1,3 @@
-.. _static network reachability:
-
 Static network reachability
 ===========================
 
@@ -318,8 +316,47 @@ C++:
 
 Python:
 
-.. py:function:: is_reachable(directed_network, source, destination) -> bool
+.. py:function:: is_reachable(network, source, destination) -> bool
 
 Returns :cpp:`true` if the vertex :cpp:`destination` is reachable from the
 vertex :cpp:`source` by following edges in the legal direction. This function
 accepts all static network types.
+
+Shortest path length
+--------------------
+
+C++:
+
+.. cpp:function:: template <static_edge EdgeT> \
+  std::unordered_map<\
+    typename EdgeT::VertexType, std::size_t, \
+    hash<typename EdgeT::VertexType>>\
+  shortest_path_lengths_from(\
+    const network<EdgeT>& net, \
+    const typename EdgeT::VertexType& vert)
+
+Python:
+
+.. py:function:: shortest_path_lengths_from(network, source)
+
+Returns a dictionary (an unordered map) mapping all vertices reachable from the
+source vertex to their shortest path length from the source vertex.
+
+
+
+C++:
+
+.. cpp:function:: template <static_edge EdgeT> \
+  std::unordered_map<\
+    typename EdgeT::VertexType, std::size_t, \
+    hash<typename EdgeT::VertexType>>\
+  shortest_path_lengths_to(\
+    const network<EdgeT>& net, \
+    const typename EdgeT::VertexType& vert)
+
+Python:
+
+.. py:function:: shortest_path_lengths_to(network, destination)
+
+Returns a dictionary (an unordered map) mapping all vertices that can reach the
+destination vertex to their shortest path length to the destination vertex.

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <meta name="generator" content="sphinx-5.1.0, furo 2022.06.21"/><title>Index - Reticula</title>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/><title>Index - Reticula</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -184,6 +184,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/static_network_reachability.html">Static network reachability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/temporal_network_reachability.html">Temporal network reachability</a></li>
 </ul>
@@ -248,6 +249,8 @@
           <li><a href="algorithms/static_network_reachability.html#connected_component">connected_component()</a>
 </li>
           <li><a href="algorithms/static_network_reachability.html#connected_components">connected_components()</a>
+</li>
+          <li><a href="algorithms/graph_properties.html#id0">density()</a>
 </li>
           <li><a href="algorithms/graph_operations.html#edge_induced_subgraph">edge_induced_subgraph()</a>
 </li>
@@ -338,6 +341,10 @@
           <li><a href="generation/activation.html#id0">random_link_activation_temporal_network()</a>, <a href="generation/activation.html#random_link_activation_temporal_network">[1]</a>
 </li>
           <li><a href="io.html#read_edgelist">read_edgelist()</a>
+</li>
+          <li><a href="algorithms/static_network_reachability.html#shortest_path_lengths_from">shortest_path_lengths_from()</a>
+</li>
+          <li><a href="algorithms/static_network_reachability.html#shortest_path_lengths_to">shortest_path_lengths_to()</a>
 </li>
           <li><a href="generation/square_grid_graph.html#square_grid_graph-vert_type">square_grid_graph[vert_type]()</a>
 </li>
@@ -447,18 +454,27 @@
 </li>
         <li><a href="randomness.html#delta_distribution-numeric_type">delta_distribution[numeric_type] (built-in class)</a>
 </li>
+        <li><a href="algorithms/graph_properties.html#_CPPv4I_14network_vertexE7densitydRK16directed_networkI5VertTE">density (C++ function)</a>, <a href="algorithms/graph_properties.html#_CPPv4I_14network_vertexE7densitydRK18undirected_networkI5VertTE">[1]</a>
+</li>
+        <li>
+    density()
+
+        <ul>
+          <li><a href="algorithms/graph_properties.html#id0">built-in function</a>
+</li>
+        </ul></li>
         <li><a href="types.html#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetworkI5VertT5TimeTE">directed_delayed_temporal_hypernetwork&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
         <li><a href="types.html#directed_delayed_temporal_hypernetwork-vertex_type-time_type">directed_delayed_temporal_hypernetwork[vertex_type, time_type] (built-in class)</a>
 </li>
         <li><a href="types.html#_CPPv4I_14network_vertex0E33directed_delayed_temporal_networkI5VertT5TimeTE">directed_delayed_temporal_network&lt;VertT, TimeT&gt; (C++ class)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types.html#directed_delayed_temporal_network-vertex_type-time_type">directed_delayed_temporal_network[vertex_type, time_type] (built-in class)</a>
 </li>
         <li><a href="types.html#_CPPv4I_14network_vertexE21directed_hypernetworkI5VertTE">directed_hypernetwork&lt;VertT&gt; (C++ class)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types.html#directed_hypernetwork-vertex_type">directed_hypernetwork[vertex_type] (built-in class)</a>
 </li>
         <li><a href="types.html#_CPPv4I_14network_vertexE16directed_networkI5VertTE">directed_network&lt;VertT&gt; (C++ class)</a>
@@ -1020,6 +1036,26 @@
   <h2>S</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="algorithms/static_network_reachability.html#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE">shortest_path_lengths_from (C++ function)</a>
+</li>
+        <li>
+    shortest_path_lengths_from()
+
+        <ul>
+          <li><a href="algorithms/static_network_reachability.html#shortest_path_lengths_from">built-in function</a>
+</li>
+        </ul></li>
+        <li><a href="algorithms/static_network_reachability.html#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE">shortest_path_lengths_to (C++ function)</a>
+</li>
+        <li>
+    shortest_path_lengths_to()
+
+        <ul>
+          <li><a href="algorithms/static_network_reachability.html#shortest_path_lengths_to">built-in function</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="generation/square_grid_graph.html#_CPPv4I_14integer_vertexE17square_grid_graph18undirected_networkI5VertTE5VertTNSt6size_tEb">square_grid_graph (C++ function)</a>
 </li>
         <li>
@@ -1029,8 +1065,6 @@
           <li><a href="generation/square_grid_graph.html#square_grid_graph-vert_type">built-in function</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types.html#_CPPv4I0E11static_edge">static_edge (C++ concept)</a>
 </li>
         <li><a href="types.html#string">string (built-in class)</a>

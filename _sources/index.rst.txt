@@ -40,6 +40,7 @@ find its :ref:`largest connected component
 <algorithms/static_network_reachability:All connected components>`:
 
 .. code-block:: python
+   :caption: example.py
 
    import reticula as ret
 

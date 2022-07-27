@@ -3,9 +3,9 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Temporal network reachability" href="temporal_network_reachability.html" /><link rel="prev" title="Graph operations" href="graph_operations.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Temporal network reachability" href="temporal_network_reachability.html" /><link rel="prev" title="Graph properties" href="graph_properties.html" />
 
-    <meta name="generator" content="sphinx-5.1.0, furo 2022.06.21"/>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Static network reachability - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -186,6 +186,7 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Static network reachability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="temporal_network_reachability.html">Temporal network reachability</a></li>
 </ul>
@@ -238,7 +239,7 @@
         </div>
         <article role="main">
           <section id="static-network-reachability">
-<span id="id1"></span><h1>Static network reachability<a class="headerlink" href="#static-network-reachability" title="Permalink to this heading">#</a></h1>
+<h1>Static network reachability<a class="headerlink" href="#static-network-reachability" title="Permalink to this heading">#</a></h1>
 <p>The algorithms described in this page deal with the topic of reachability in
 different network types. <strong>Reachability</strong> is the ability to get from one vertex
 to another, but only through edges of the network. If the network is directed,
@@ -314,7 +315,7 @@ component size you expect to get. If not, you can rely on the default behaviour.
 
 <p>Returns all weakly-connected components of the parameter network. Implementation
 is based on consecutive unions on a disjoint-set data structure of vertices
-<span id="id2">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">10</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">11</a>]</span>.</p>
+<span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Bernard A Galler and Michael J Fisher. An improved equivalence algorithm. Communications of the ACM, 7(5):301–303, 1964. doi:10.1145/364099.364331.">10</a>, <a class="reference internal" href="../bibliography.html#id11" title="Zvi Galil and Giuseppe F Italiano. Data structures and algorithms for disjoint set union problems. ACM Computing Surveys (CSUR), 23(3):319–344, 1991. doi:10.1145/116873.116878.">11</a>]</span>.</p>
 <p>If you are not interested in weakly-connected components with only a single
 vertex, set the <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">singletons</span><span class="w"></span></code> to <code class="code highlight cpp docutils literal highlight-cpp"><span class="nb">false</span><span class="w"></span></code>.</p>
 <p>C++:</p>
@@ -538,12 +539,43 @@ exist, one of them is arbitrarily returned.</p>
 <p>Python:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="is_reachable">
-<span class="sig-name descname"><span class="pre">is_reachable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directed_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_reachable" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">is_reachable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#is_reachable" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <p>Returns <code class="code highlight cpp docutils literal highlight-cpp"><span class="nb">true</span><span class="w"></span></code> if the vertex <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">destination</span><span class="w"></span></code> is reachable from the
 vertex <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">source</span><span class="w"></span></code> by following edges in the legal direction. This function
 accepts all static network types.</p>
+</section>
+<section id="shortest-path-length">
+<h2>Shortest path length<a class="headerlink" href="#shortest-path-length" title="Permalink to this heading">#</a></h2>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE">
+<span id="_CPPv3I_11static_edgeE26shortest_path_lengths_fromRK7networkI5EdgeTERKN5EdgeT10VertexTypeE"></span><span id="_CPPv2I_11static_edgeE26shortest_path_lengths_fromRK7networkI5EdgeTERKN5EdgeT10VertexTypeE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E11static_edge" title="static_edge"><span class="n"><span class="pre">static_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unordered_map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_from::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">hash</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_from::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortest_path_lengths_from</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_from::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_from::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vert</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_11static_edgeE26shortest_path_lengths_fromNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="shortest_path_lengths_from">
+<span class="sig-name descname"><span class="pre">shortest_path_lengths_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shortest_path_lengths_from" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<p>Returns a dictionary (an unordered map) mapping all vertices reachable from the
+source vertex to their shortest path length from the source vertex.</p>
+<p>C++:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE">
+<span id="_CPPv3I_11static_edgeE24shortest_path_lengths_toRK7networkI5EdgeTERKN5EdgeT10VertexTypeE"></span><span id="_CPPv2I_11static_edgeE24shortest_path_lengths_toRK7networkI5EdgeTERKN5EdgeT10VertexTypeE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E11static_edge" title="static_edge"><span class="n"><span class="pre">static_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unordered_map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_to::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">hash</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_to::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortest_path_lengths_to</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_to::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">net</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="shortest_path_lengths_to::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VertexType</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vert</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_11static_edgeE24shortest_path_lengths_toNSt13unordered_mapIN5EdgeT10VertexTypeENSt6size_tE4hashIN5EdgeT10VertexTypeEEEERK7networkI5EdgeTERKN5EdgeT10VertexTypeE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Python:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="shortest_path_lengths_to">
+<span class="sig-name descname"><span class="pre">shortest_path_lengths_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shortest_path_lengths_to" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<p>Returns a dictionary (an unordered map) mapping all vertices that can reach the
+destination vertex to their shortest path length to the destination vertex.</p>
 </section>
 </section>
 
@@ -561,14 +593,14 @@ accepts all static network types.</p>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="graph_operations.html">
+          <a class="prev-page" href="graph_properties.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Graph operations</div>
+                <div class="title">Graph properties</div>
                 
               </div>
             </a>
@@ -624,6 +656,7 @@ accepts all static network types.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#source-destination-reachability">Source-destination reachability</a></li>
+<li><a class="reference internal" href="#shortest-path-length">Shortest path length</a></li>
 </ul>
 </li>
 </ul>
