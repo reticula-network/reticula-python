@@ -47,7 +47,7 @@ Write a dyadic static and temporal networks in form of space separated files
 where each row represents an edge. Note that vertices with no neighbours cannot
 be represented in this format.
 
-Interpolation with NetworkX
+Interoperation with NetworkX
 ---------------------------
 
 .. py:function:: to_networkx(network, create_using = None)
