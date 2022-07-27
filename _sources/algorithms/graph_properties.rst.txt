@@ -4,17 +4,21 @@ Graph properties
 Density
 -------
 
-C++:
+.. tab-set::
+  .. tab-item:: Python
+      :sync: python
 
-.. cpp:function:: template <network_vertex VertT> \
-  double density(const undirected_network<VertT>& net);
+    .. py:function:: density(network) -> float
 
-.. cpp:function:: template <network_vertex VertT> \
-  double density(const directed_network<VertT>& net);
+  .. tab-item:: C++
+      :sync: cpp
 
-Python:
+    .. cpp:function:: template <network_vertex VertT> \
+      double density(const undirected_network<VertT>& net);
 
-.. py:function:: density(network) -> float
+    .. cpp:function:: template <network_vertex VertT> \
+      double density(const directed_network<VertT>& net);
+
 
 Calculates density of a static, dyadic graph.
 
