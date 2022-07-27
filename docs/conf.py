@@ -33,7 +33,8 @@ release = '0.3.0'
 extensions = [
   'sphinxcontrib.bibtex',
   'sphinx_copybutton',
-  'sphinx.ext.autosectionlabel'
+  'sphinx.ext.autosectionlabel',
+  'sphinx_design'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
