@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(reticula_python LANGUAGES CXX VERSION 0.2.2)
+project(reticula_python LANGUAGES CXX VERSION 0.3.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
@@ -19,7 +19,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   pybind11
   GIT_REPOSITORY https://github.com/pybind/pybind11.git
-  GIT_TAG v2.9.2)
+  GIT_TAG v2.10.0)
 
 FetchContent_Declare(
   metal
