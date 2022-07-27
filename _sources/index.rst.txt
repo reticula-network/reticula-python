@@ -34,6 +34,11 @@ Python package from the Python Package Index, using the command:
 
    $ python -m pip install --upgrade pip
 
+The Python package is available on most relatively modern Linux systems, i.e.,
+almost anything released since 2016, running on x64 CPUs. Support fo rWindows
+and MacOS operating systems and the ARM architecture will be introduces in a
+future version.
+
 A brief example: Let us generate
 :ref:`an Erdős--Rényi network <generation/gnp:Random Erdős--Rényi network>` and
 find its :ref:`largest connected component
