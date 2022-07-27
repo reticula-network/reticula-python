@@ -4,16 +4,19 @@ Graphicallity
 Undirected degree sequence
 --------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <std::ranges::forward_range Range> \
-    requires degree_range<Range> \
-    bool is_graphic(Range&& degree_sequence)
+  .. tab-item:: Python
+    :sync: python
 
+    .. py:function:: is_graphic(degree_seq: List[int]) -> bool
 
-Python:
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: is_graphic(degree_seq: List[int]) -> bool
+    .. cpp:function:: template <std::ranges::forward_range Range> \
+        requires degree_range<Range> \
+        bool is_graphic(Range&& degree_sequence)
 
 Checks if the sequence can be the degree sequence of a valid undirected graph,
 containing no multi-edges or loops, based on the Erdős--Gallai algorithm
@@ -23,17 +26,21 @@ containing no multi-edges or loops, based on the Erdős--Gallai algorithm
 Directed degree-pair sequence
 -----------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <std::ranges::input_range PairRange> \
-    requires degree_pair_range<PairRange> \
-    bool is_digraphic(PairRange&& in_out_degree_sequence)
+  .. tab-item:: Python
+    :sync: python
 
+    .. py:function:: is_digraphic(\
+        in_out_degree_sequence: List[Pair[int, int]]) -> bool
 
-Python:
+  .. tab-tem:: C++
+    :sync: cpp
 
-.. py:function:: is_digraphic(\
-    in_out_degree_sequence: List[Pair[int, int]]) -> bool
+    .. cpp:function:: template <std::ranges::input_range PairRange> \
+        requires degree_pair_range<PairRange> \
+        bool is_digraphic(PairRange&& in_out_degree_sequence)
+
 
 Checks if the sequence can be the degree-pair sequence of a valid directed
 graph, containing no multi-edges or loops, based on the algorithm by Kleitman
