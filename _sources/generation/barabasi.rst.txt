@@ -1,19 +1,23 @@
 Random Barabási--Albert network
 ===============================
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <\
-      integer_vertex VertT, \
-      std::uniform_random_bit_generator Gen> \
-   undirected_network<VertT> \
-   random_barabasi_albert_graph(VertT n, VertT m, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: random_barabasi_albert_graph[vert_type](\
+          n: int, p: float, random_state) \
+       -> undirected_network[vert_type]
 
-.. py:function:: random_barabasi_albert_graph[vert_type](\
-      n: int, p: float, random_state) \
-   -> undirected_network[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <\
+          integer_vertex VertT, \
+          std::uniform_random_bit_generator Gen> \
+       undirected_network<VertT> \
+       random_barabasi_albert_graph(VertT n, VertT m, Gen& generator)
 
 Generates a random Barabási--Albert network
 :cite:p:`barabasi1999emergence` of size :cpp:`n`, vertices are added

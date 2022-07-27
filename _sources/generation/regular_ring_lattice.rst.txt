@@ -1,17 +1,20 @@
 Regular ring lattice
 ====================
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <integer_vertex VertT> \
-   undirected_network<VertT> \
-   regular_ring_lattice(VertT size, VertT degree)
+  .. tab-item:: Python
+    :sync: python
 
+    .. py:function:: path_graph[vert_type](size: int, degree: int) \
+       -> undirected_network[vert_type]
 
-Python:
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: path_graph[vert_type](size: int, degree: int) \
-   -> undirected_network[vert_type]
+    .. cpp:function:: template <integer_vertex VertT> \
+       undirected_network<VertT> \
+       regular_ring_lattice(VertT size, VertT degree)
 
 Generates a regular ring lattice of size :cpp:`size` and degree :cpp:`degree`. A
 ring-like structure that if arranged in a circle, each vertex would be connected
