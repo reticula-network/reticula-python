@@ -116,16 +116,16 @@ struct declare_directed_network_algorithms {
 
     m.def("is_reachable",
         &reticula::is_reachable<EdgeT>,
-        "directed_network"_a, "source"_a, "destination"_a,
+        "network"_a, "source"_a, "destination"_a,
         py::call_guard<py::gil_scoped_release>());
 
     m.def("shortest_path_lengths_from",
         &reticula::shortest_path_lengths_from<EdgeT>,
-        "directed_network"_a, "source"_a,
+        "network"_a, "source"_a,
         py::call_guard<py::gil_scoped_release>());
     m.def("shortest_path_lengths_to",
         &reticula::shortest_path_lengths_to<EdgeT>,
-        "directed_network"_a, "destination"_a,
+        "network"_a, "destination"_a,
         py::call_guard<py::gil_scoped_release>());
   }
 };
@@ -136,7 +136,7 @@ struct declare_directed_density_algorithm {
     m.def("density",
         py::overload_cast<const reticula::network<EdgeT>&>(
             &reticula::density<typename EdgeT::VertexType>),
-        "directed_network"_a,
+        "network"_a,
         py::call_guard<py::gil_scoped_release>());
   }
 };
