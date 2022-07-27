@@ -31,15 +31,32 @@ through satisfying the :cpp:`std::ranges::forward_range` and
 :py:`__iter__`.
 
 
-.. cpp:class:: template <network_vertex VertT> component_size
 
-.. py:class:: component_size[vert_type]
+.. tab-set::
+
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: component_size[vert_type]
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component_size
 
 
+.. tab-set::
 
-.. cpp:class:: template <network_vertex VertT> component_estimate
+  .. tab-item:: Python
+    :sync: python
 
-.. py:class:: component_size_estimate[vert_type]
+    .. py:class:: component_size_estimate[vert_type]
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component_estimate
+
 
 Weak-connectivity
 -----------------

@@ -4,18 +4,23 @@ Link Shuffling
 Link shuffling
 --------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen> \
-      requires is_dyadic_v<EdgeT> \
-      network<EdgeT> microcanonical_reference_models::link_shuffling(\
-         const network<EdgeT>& temp, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: microcanonical_reference_models.link_shuffling(\
+          temporal_network, random_state)
 
-.. py:function:: microcanonical_reference_models.link_shuffling(\
-      temporal_network, random_state)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <temporal_edge EdgeT, \
+          std::uniform_random_bit_generator Gen> \
+          requires is_dyadic_v<EdgeT> \
+          network<EdgeT> microcanonical_reference_models::link_shuffling(\
+             const network<EdgeT>& temp, Gen& generator)
+
 
 Produces a random shuffling of the temporal network where all events between two
 vertices are attributed to two randomly selected vertices from the original
@@ -28,20 +33,23 @@ timelines are conserved.
 Connected link shuffling
 ------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen> \
-      requires is_dyadic_v<EdgeT> \
-      network<EdgeT> \
-      microcanonical_reference_models::connected_link_shuffling(\
-        const network<EdgeT>& temp, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: microcanonical_reference_models.connected_link_shuffling(\
+          temporal_network, random_state)
 
-.. py:function:: microcanonical_reference_models.connected_link_shuffling(\
-      temporal_network, random_state)
+  .. tab-item:: C++
+    :sync: cpp
 
+    .. cpp:function:: template <temporal_edge EdgeT, \
+          std::uniform_random_bit_generator Gen> \
+          requires is_dyadic_v<EdgeT> \
+          network<EdgeT> \
+          microcanonical_reference_models::connected_link_shuffling(\
+            const network<EdgeT>& temp, Gen& generator)
 
 Produces a random shuffling of the temporal network where all events between two
 vertices are attributed to two randomly selected vertices from the original
@@ -59,20 +67,25 @@ of the temporal network are conserved.
 Topology-constrained link shuffling
 -----------------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen> \
-      requires is_dyadic_v<EdgeT> \
-      network<EdgeT> \
-      microcanonical_reference_models::topology_constrained_link_shuffling(\
-        const network<EdgeT>& temp, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: \
+          microcanonical_reference_models.topology_constrained_link_shuffling(\
+            temporal_network, random_state)
 
-.. py:function:: \
-      microcanonical_reference_models.topology_constrained_link_shuffling(\
-        temporal_network, random_state)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <temporal_edge EdgeT, \
+          std::uniform_random_bit_generator Gen> \
+          requires is_dyadic_v<EdgeT> \
+          network<EdgeT> \
+          microcanonical_reference_models::topology_constrained_link_shuffling(\
+            const network<EdgeT>& temp, Gen& generator)
+
 
 Produces a random shuffling of the temporal network where the events are
 shuffled by assigning new, uniformly random timetamps and moving it to a
