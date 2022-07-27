@@ -8,14 +8,18 @@ Reading an edgelist file
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <network_edge EdgeT> \
-  network<EdgeT> read_edgelist(std::filesystem::path path)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: read_edgelist(path: str)
 
-.. py:function:: read_edgelist(path: str)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <network_edge EdgeT> \
+      network<EdgeT> read_edgelist(std::filesystem::path path)
 
 
 Dyadic static and temporal networks can be read from space separated files where
@@ -26,14 +30,18 @@ Writing an edgelist file
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <network_edge EdgeT> \
-  void write_edgelist(const network<EdgeT>& g, std::filesystem::path path)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: write_edgelist(network, path: str)
 
-.. py:function:: write_edgelist(network, path: str)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <network_edge EdgeT> \
+      void write_edgelist(const network<EdgeT>& g, std::filesystem::path path)
 
 Write a dyadic static and temporal networks in form of space separated files
 where each row represents an edge. Note that vertices with no neighbours cannot
