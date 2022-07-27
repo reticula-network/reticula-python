@@ -6,5 +6,6 @@ Algorithms
 
    graphicallity
    graph_operations
+   graph_properties
    static_network_reachability
    temporal_network_reachability

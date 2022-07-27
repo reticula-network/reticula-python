@@ -1,0 +1,25 @@
+Graph properties
+================
+
+Density
+-------
+
+C++:
+
+.. cpp:function:: template <network_vertex VertT> \
+  double density(const undirected_network<VertT>& net);
+
+.. cpp:function:: template <network_vertex VertT> \
+  double density(const directed_network<VertT>& net);
+
+.. py:function:: density(network) -> float
+
+Calculates density of a static, dyadic graph.
+
+Density of an undirected network is the number of edges divided by the number of
+possible unordered pairs of distinct vertices.
+
+Density of a directed graph is the number of edges divided by the number of
+possible ordered pairs of distinct vertices.
+
+Note that in the presense of self-links, density might be higher than 1.
