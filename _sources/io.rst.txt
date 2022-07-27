@@ -1,5 +1,5 @@
-Input/Output and interpolation
-==============================
+Input/Output and interoperation
+===============================
 
 Edgelist input/output
 ---------------------
