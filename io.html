@@ -245,36 +245,52 @@
 <h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Permalink to this heading">#</a></h2>
 <section id="reading-an-edgelist-file">
 <h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Permalink to this heading">#</a></h3>
-<p>C++:</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
-<dd></dd></dl>
-
-<p>Python:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="dfb25c40-0972-4f4f-bc5c-26614ea1967b" name="723f794d-5e6f-4533-b0a2-2a7cf552360e" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="dfb25c40-0972-4f4f-bc5c-26614ea1967b">
+Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="read_edgelist">
 <span class="sig-name descname"><span class="pre">read_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#read_edgelist" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+</div>
+<input id="dd158dfc-d10f-4d55-b7ed-cd08973df1e1" name="723f794d-5e6f-4533-b0a2-2a7cf552360e" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="dd158dfc-d10f-4d55-b7ed-cd08973df1e1">
+C++</label><div class="sd-tab-content docutils">
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">
+<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
 <p>Dyadic static and temporal networks can be read from space separated files where
 each row represents an edge. Note that vertices with no neighbours cannot be
 represented in this format.</p>
 </section>
 <section id="writing-an-edgelist-file">
 <h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Permalink to this heading">#</a></h3>
-<p>C++:</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
-<dd></dd></dl>
-
-<p>Python:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="9ab93776-eb20-420e-8226-8c82b0babf89" name="b1d8ec3e-9272-4327-8608-8d405465a4b4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="python" for="9ab93776-eb20-420e-8226-8c82b0babf89">
+Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="write_edgelist">
 <span class="sig-name descname"><span class="pre">write_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_edgelist" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+</div>
+<input id="b82f5308-32e8-4105-a341-dbbb18703c33" name="b1d8ec3e-9272-4327-8608-8d405465a4b4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="b82f5308-32e8-4105-a341-dbbb18703c33">
+C++</label><div class="sd-tab-content docutils">
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE">
+<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
 <p>Write a dyadic static and temporal networks in form of space separated files
 where each row represents an edge. Note that vertices with no neighbours cannot
 be represented in this format.</p>
