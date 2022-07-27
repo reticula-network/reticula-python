@@ -12,6 +12,8 @@ C++:
 .. cpp:function:: template <network_vertex VertT> \
   double density(const directed_network<VertT>& net);
 
+Python:
+
 .. py:function:: density(network) -> float
 
 Calculates density of a static, dyadic graph.
