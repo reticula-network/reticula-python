@@ -12,9 +12,18 @@ The functions presented here accept both static dyadic and hypernetworks.
 Component types
 ---------------
 
-.. cpp:class:: template <network_vertex VertT> component
+.. tab-set::
 
-.. py:class:: component[vert_type]
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: component[vert_type]
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component
+
 
 A *component* is a set of network vertices. Components are iterable both in C++,
 through satisfying the :cpp:`std::ranges::forward_range` and
@@ -35,19 +44,23 @@ through satisfying the :cpp:`std::ranges::forward_range` and
 Weak-connectivity
 -----------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  weakly_connected_component(\
-    const network<EdgeT>& dir, \
-    const typename EdgeT::VertexType& vert, \
-    std::size_t size_hint = 0)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: weakly_connected_component(directed_network, \
+      vert: vert_type, size_hint: int = 0) -> component[vert_type]
 
-.. py:function:: weakly_connected_component(directed_network, \
-  vert: vert_type, size_hint: int = 0) -> component[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      weakly_connected_component(\
+        const network<EdgeT>& dir, \
+        const typename EdgeT::VertexType& vert, \
+        std::size_t size_hint = 0)
 
 Finds the weakly-connected component for vertex :cpp:`vert`. The parameter
 :cpp:`size_hint` can help reduce memory re-allocations if you already have a
@@ -55,18 +68,22 @@ rough estimate (or even better: a good upper-bound) on the weakly-connected
 component size you expect to get. If not, you can rely on the default behaviour.
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<component<typename EdgeT::VertexType>> \
-  weakly_connected_components(\
-    const network<EdgeT>& dir, \
-    bool singletons = true)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: weakly_connected_components(directed_network, \
+      singletons: bool = True) -> Iterable[component[vert_type]]
 
-.. py:function:: weakly_connected_components(directed_network, \
-  singletons: bool = True) -> Iterable[component[vert_type]]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<component<typename EdgeT::VertexType>> \
+      weakly_connected_components(\
+        const network<EdgeT>& dir, \
+        bool singletons = true)
 
 Returns all weakly-connected components of the parameter network. Implementation
 is based on consecutive unions on a disjoint-set data structure of vertices
@@ -76,31 +93,40 @@ If you are not interested in weakly-connected components with only a single
 vertex, set the :cpp:`singletons` to :cpp:`false`.
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  largest_weakly_connected_component(\
-    const network<EdgeT>& dir)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: largest_weakly_connected_component(directed_network) \
+      -> component[vert_type]
 
-.. py:function:: largest_weakly_connected_component(directed_network) \
-  -> component[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      largest_weakly_connected_component(\
+        const network<EdgeT>& dir)
+
 
 Returns the largest weakly-connected component by number of vertices. If the
 network is empty, an empty component is returned. If multiple components of
 maximum size exist, one of them is arbitrarily returned.
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  bool is_weakly_connected(const network<EdgeT>& dir)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: is_weakly_connected(directed_network) -> bool
 
-.. py:function:: is_weakly_connected(directed_network) -> bool
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      bool is_weakly_connected(const network<EdgeT>& dir)
 
 Returns true if the network is weakly-connected: if all pairs of vertices
 can be connected through the network edges, if we forget about the directions of
@@ -114,57 +140,66 @@ In- and out-components
 From a single source
 ^^^^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  in_component(\
-      const network<EdgeT>& dir, \
-      const typename EdgeT::VertexType& root, \
-      std::size_t size_hint = 0)
+  .. tab-item:: Python
+    :sync: python
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  out_component(\
-      const network<EdgeT>& dir, \
-      const typename EdgeT::VertexType& root, \
-      std::size_t size_hint = 0)
+    .. py:function:: in_component(directed_network, vert: vert_type,\
+      size_hint: int = 0) -> component[vert_type]
 
-Python:
+    .. py:function:: out_component(directed_network, vert: vert_type,\
+      size_hint: int = 0) -> component[vert_type]
 
-.. py:function:: in_component(directed_network, vert: vert_type,\
-  size_hint: int = 0) -> component[vert_type]
 
-.. py:function:: out_component(directed_network, vert: vert_type,\
-  size_hint: int = 0) -> component[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
 
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      in_component(\
+          const network<EdgeT>& dir, \
+          const typename EdgeT::VertexType& root, \
+          std::size_t size_hint = 0)
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      out_component(\
+          const network<EdgeT>& dir, \
+          const typename EdgeT::VertexType& root, \
+          std::size_t size_hint = 0)
 
 Calculate the in- or out-component of a vertex in a static directed network.
 
 From all vertices
 ^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component<typename EdgeT::VertexType>>> \
-  in_components(const network<EdgeT>& dir)
+  .. tab-item:: Python
+    :sync: python
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component<typename EdgeT::VertexType>>> \
-  out_components(const network<EdgeT>& dir)
+    .. py:function:: in_components(directed_network) \
+      -> iterable[pair[vert_type, component[vert_type]]]
 
-Python:
+    .. py:function:: out_components(directed_network) \
+      -> iterable[pair[vert_type, component[vert_type]]]
 
-.. py:function:: in_components(directed_network) \
-  -> iterable[pair[vert_type, component[vert_type]]]
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: out_components(directed_network) \
-  -> iterable[pair[vert_type, component[vert_type]]]
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component<typename EdgeT::VertexType>>> \
+      in_components(const network<EdgeT>& dir)
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component<typename EdgeT::VertexType>>> \
+      out_components(const network<EdgeT>& dir)
+
 
 Calculates the in- or out-components of all vertices in a static directed
 network.
@@ -172,27 +207,32 @@ network.
 In- and out-component sizes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component_size<typename EdgeT::VertexType>>> \
-  in_component_sizes(const network<EdgeT>& dir)
+  .. tab-item:: Python
+    :sync: python
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component_size<typename EdgeT::VertexType>>> \
-  out_component_sizes(const network<EdgeT>& dir)
+    .. py:function:: in_component_sizes(directed_network) \
+      -> iterable[pair[vert_type, component_size[vert_type]]]
 
-Python:
+    .. py:function:: out_component_sizes(directed_network) \
+      -> iterable[pair[vert_type, component_size[vert_type]]]
 
-.. py:function:: in_component_sizes(directed_network) \
-  -> iterable[pair[vert_type, component_size[vert_type]]]
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: out_component_sizes(directed_network) \
-  -> iterable[pair[vert_type, component_size[vert_type]]]
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component_size<typename EdgeT::VertexType>>> \
+      in_component_sizes(const network<EdgeT>& dir)
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component_size<typename EdgeT::VertexType>>> \
+      out_component_sizes(const network<EdgeT>& dir)
+
 
 Calculates the in- or out-component *sizes* of all vertices in a static
 directed network. Compared to calculating all in- or out-components, this uses
@@ -201,29 +241,34 @@ less memory in some cases.
 In- and out-component size estimates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component_size_estimate<typename EdgeT::VertexType>>> \
-  in_component_size_estimates(\
-    const network<EdgeT>& dir, std::size_t seed = 0)
+  .. tab-item:: Python
+    :sync: python
 
-.. cpp:function:: template <static_directed_edge EdgeT> \
-  std::vector<std::pair<\
-    typename EdgeT::VertexType, \
-    component_size_estimate<typename EdgeT::VertexType>>> \
-  out_component_size_estimates(\
-    const network<EdgeT>& dir, std::size_t seed = 0)
+    .. py:function:: in_component_size_estimates(directed_network) \
+      -> iterable[pair[vert_type, component_size_estimate[vert_type]]]
 
-Python:
+    .. py:function:: out_component_size_estimates(directed_network) \
+      -> iterable[pair[vert_type, component_size_estimate[vert_type]]]
 
-.. py:function:: in_component_size_estimates(directed_network) \
-  -> iterable[pair[vert_type, component_size_estimate[vert_type]]]
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: out_component_size_estimates(directed_network) \
-  -> iterable[pair[vert_type, component_size_estimate[vert_type]]]
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component_size_estimate<typename EdgeT::VertexType>>> \
+      in_component_size_estimates(\
+        const network<EdgeT>& dir, std::size_t seed = 0)
+
+    .. cpp:function:: template <static_directed_edge EdgeT> \
+      std::vector<std::pair<\
+        typename EdgeT::VertexType, \
+        component_size_estimate<typename EdgeT::VertexType>>> \
+      out_component_size_estimates(\
+        const network<EdgeT>& dir, std::size_t seed = 0)
+
 
 *Estimates* the in- or out-component sizes of all vertices in a static directed
 network. Compared to calculating all in- or out-components and in- and
@@ -237,20 +282,24 @@ Undirected static networks
 Connected component of a specific vertex
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_undirected_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  connected_component(\
-      const network<EdgeT>& net, \
-      const typename EdgeT::VertexType& vert, \
-      std::size_t size_hint = 0)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: connected_component(\
+      undirected_network, vert: vert_type, size_hint : int = 0) -> \
+      component[vert_type]
 
-.. py:function:: connected_component(\
-  undirected_network, vert: vert_type, size_hint : int = 0) -> \
-  component[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_undirected_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      connected_component(\
+          const network<EdgeT>& net, \
+          const typename EdgeT::VertexType& vert, \
+          std::size_t size_hint = 0)
 
 Returns the connected component that vertex :cpp:`vert` belongs to. A connected
 component is a maximal subset of vertices of the network where all vertices can
@@ -260,63 +309,81 @@ reach all others.
 All connected components
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_undirected_edge EdgeT> \
-  std::vector<component<typename EdgeT::VertexType>> \
-  connected_components(\
-      const network<EdgeT>& net, \
-      bool singletons = true)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: connected_components(undirected_network, \
+      singletons: bool = True) -> Iterable[components[vert_type]]
 
-.. py:function:: connected_components(undirected_network, \
-  singletons: bool = True) -> Iterable[components[vert_type]]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_undirected_edge EdgeT> \
+      std::vector<component<typename EdgeT::VertexType>> \
+      connected_components(\
+          const network<EdgeT>& net, \
+          bool singletons = true)
 
 Returns all connected components of the static undirected network.
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_undirected_edge EdgeT> \
-  component<typename EdgeT::VertexType> \
-  largest_connected_component(const network<EdgeT>& net)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: largest_connected_component(undirected_network) \
+      -> component[vert_type]
 
-.. py:function:: largest_connected_component(undirected_network) \
-  -> component[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_undirected_edge EdgeT> \
+      component<typename EdgeT::VertexType> \
+      largest_connected_component(const network<EdgeT>& net)
 
 Returns the largest connected component by number of vertices. If the network is
 empty, an empty component is returned. If multiple components of maximum size
 exist, one of them is arbitrarily returned.
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_undirected_edge EdgeT> \
-  bool is_connected(const network<EdgeT>& net);
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: is_connected(undirected_network) -> bool
 
-.. py:function:: is_connected(undirected_network) -> bool
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_undirected_edge EdgeT> \
+      bool is_connected(const network<EdgeT>& net);
+
 
 Returns :cpp:`true` if all vertices of the network are reachable from all other.
 
 Source-destination reachability
 -------------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_edge EdgeT> \
-  bool is_reachable(\
-      const network<EdgeT>& net, \
-      const typename EdgeT::VertexType& source, \
-      const typename EdgeT::VertexType& destination)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: is_reachable(network, source, destination) -> bool
 
-.. py:function:: is_reachable(network, source, destination) -> bool
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_edge EdgeT> \
+      bool is_reachable(\
+          const network<EdgeT>& net, \
+          const typename EdgeT::VertexType& source, \
+          const typename EdgeT::VertexType& destination)
+
 
 Returns :cpp:`true` if the vertex :cpp:`destination` is reachable from the
 vertex :cpp:`source` by following edges in the legal direction. This function
@@ -325,38 +392,46 @@ accepts all static network types.
 Shortest path length
 --------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_edge EdgeT> \
-  std::unordered_map<\
-    typename EdgeT::VertexType, std::size_t, \
-    hash<typename EdgeT::VertexType>>\
-  shortest_path_lengths_from(\
-    const network<EdgeT>& net, \
-    const typename EdgeT::VertexType& vert)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: shortest_path_lengths_from(network, source)
 
-.. py:function:: shortest_path_lengths_from(network, source)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_edge EdgeT> \
+      std::unordered_map<\
+        typename EdgeT::VertexType, std::size_t, \
+        hash<typename EdgeT::VertexType>>\
+      shortest_path_lengths_from(\
+        const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
 Returns a dictionary (an unordered map) mapping all vertices reachable from the
 source vertex to their shortest path length from the source vertex.
 
 
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <static_edge EdgeT> \
-  std::unordered_map<\
-    typename EdgeT::VertexType, std::size_t, \
-    hash<typename EdgeT::VertexType>>\
-  shortest_path_lengths_to(\
-    const network<EdgeT>& net, \
-    const typename EdgeT::VertexType& vert)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: shortest_path_lengths_to(network, destination)
 
-.. py:function:: shortest_path_lengths_to(network, destination)
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <static_edge EdgeT> \
+      std::unordered_map<\
+        typename EdgeT::VertexType, std::size_t, \
+        hash<typename EdgeT::VertexType>>\
+      shortest_path_lengths_to(\
+        const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
 Returns a dictionary (an unordered map) mapping all vertices that can reach the
 destination vertex to their shortest path length to the destination vertex.
