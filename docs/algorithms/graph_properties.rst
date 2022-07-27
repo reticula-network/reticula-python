@@ -5,13 +5,14 @@ Density
 -------
 
 .. tab-set::
+
   .. tab-item:: Python
-      :sync: python
+    :sync: python
 
     .. py:function:: density(network) -> float
 
   .. tab-item:: C++
-      :sync: cpp
+    :sync: cpp
 
     .. cpp:function:: template <network_vertex VertT> \
       double density(const undirected_network<VertT>& net);
