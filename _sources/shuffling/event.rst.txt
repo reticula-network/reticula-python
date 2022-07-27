@@ -4,20 +4,24 @@ Event shuffling
 Instant-event shuffling
 -----------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <temporal_edge EdgeT, \
-      std::uniform_random_bit_generator Gen> \
-      requires is_dyadic_v<EdgeT> \
-      network<EdgeT> \
-      microcanonical_reference_models::instant_event_shuffling(\
-         const network<EdgeT>& temp, Gen& generator);
+  .. tab-item:: Python
+    :sync: python
 
+    .. py:function:: microcanonical_reference_models.instant_event_shuffling(\
+          temporal_network, random_state)
 
-Python:
+  .. tab-item:: C++
+    :sync: cpp
 
-.. py:function:: microcanonical_reference_models.instant_event_shuffling(\
-      temporal_network, random_state)
+    .. cpp:function:: template <temporal_edge EdgeT, \
+          std::uniform_random_bit_generator Gen> \
+          requires is_dyadic_v<EdgeT> \
+          network<EdgeT> \
+          microcanonical_reference_models::instant_event_shuffling(\
+          const network<EdgeT>& temp, Gen& generator);
+
 
 Produces a random shuffling of the temporal network where each event is
 attributed to two randomly selected vertices from the original network.
