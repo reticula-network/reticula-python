@@ -4,23 +4,27 @@ Random expected degree-sequence network
 Undirected expected degree-sequence network
 -------------------------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <\
-      integer_vertex VertT, \
-      std::ranges::forward_range Range, \
-      std::uniform_random_bit_generator Gen> \
-   requires \
-      weight_range<Range> \
-   undirected_network<VertT> \
-   random_expected_degree_sequence_graph(\
-      Range&& weight_sequence, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: random_expected_degree_sequence_graph[vert_type](\
+          weight_sequence: List[float], random_state) \
+       -> undirected_network[vert_type]
 
-.. py:function:: random_expected_degree_sequence_graph[vert_type](\
-      weight_sequence: List[float], random_state) \
-   -> undirected_network[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <\
+          integer_vertex VertT, \
+          std::ranges::forward_range Range, \
+          std::uniform_random_bit_generator Gen> \
+       requires \
+          weight_range<Range> \
+       undirected_network<VertT> \
+       random_expected_degree_sequence_graph(\
+          Range&& weight_sequence, Gen& generator)
 
 Generates a graph with the given weight-sequence, more specifically known as
 "Chung-Lu graphs" :cite:p:`chung2002connected`. As the network size increases,
@@ -36,23 +40,27 @@ e.g., :cpp:`std::vector<double>` in C++ and :py:`List[float]` in python.
 Directed expected degree-sequence network
 -----------------------------------------
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <\
-      integer_vertex VertT, \
-      std::ranges::forward_range PairRange, \
-      std::uniform_random_bit_generator Gen> \
-   requires \
-      weight_pair_range<PairRange> \
-   undirected_network<VertT> \
-   random_directed_expected_degree_sequence_graph(\
-      PairRange&& in_out_weight_sequence, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: random_directed_expected_degree_sequence_graph[vert_type](\
+          in_out_weight_sequence: List[float, float], random_state) \
+       -> undirected_network[vert_type]
 
-.. py:function:: random_directed_expected_degree_sequence_graph[vert_type](\
-      in_out_weight_sequence: List[float, float], random_state) \
-   -> undirected_network[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <\
+          integer_vertex VertT, \
+          std::ranges::forward_range PairRange, \
+          std::uniform_random_bit_generator Gen> \
+       requires \
+          weight_pair_range<PairRange> \
+       undirected_network<VertT> \
+       random_directed_expected_degree_sequence_graph(\
+          PairRange&& in_out_weight_sequence, Gen& generator)
 
 Similar to the `random expected degree-sequence network`_, this function
 generates a directed graph with the given weight-sequence which for large graphs

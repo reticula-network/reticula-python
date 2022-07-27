@@ -1,19 +1,23 @@
 Random k-regular network
 ========================
 
-C++:
+.. tab-set::
 
-.. cpp:function:: template <\
-      integer_vertex VertT, \
-      std::uniform_random_bit_generator Gen> \
-   undirected_network<VertT> \
-   random_regular_graph(VertT size, VertT degree, Gen& generator)
+  .. tab-item:: Python
+    :sync: python
 
-Python:
+    .. py:function:: random_barabasi_albert_graph[vert_type](\
+          size: int, degree: int, random_state) \
+       -> undirected_network[vert_type]
 
-.. py:function:: random_barabasi_albert_graph[vert_type](\
-      size: int, degree: int, random_state) \
-   -> undirected_network[vert_type]
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:function:: template <\
+          integer_vertex VertT, \
+          std::uniform_random_bit_generator Gen> \
+       undirected_network<VertT> \
+       random_regular_graph(VertT size, VertT degree, Gen& generator)
 
 Generates a random :math:`k`-regular network, a random sample out of the space
 of all graphs where all nodes have exactly degree equal to :cpp:`degree`.
