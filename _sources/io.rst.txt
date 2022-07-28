@@ -13,7 +13,7 @@ Reading an edgelist file
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: read_edgelist(path: str)
+    .. py:function:: read_edgelist[edge_type](path: str)
 
   .. tab-item:: C++
     :sync: cpp
