@@ -85,6 +85,7 @@ html_theme = 'furo'
 pygments_style = "sphinx"
 pygments_dark_style = "monokai"
 html_title = "Reticula"
+html_baseurl = "https://docs.reticula.network/"
 
 import os.path
 def read_icon(path: str):
