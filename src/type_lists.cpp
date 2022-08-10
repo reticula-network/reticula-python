@@ -51,6 +51,12 @@ void declare_type_lists(py::module& m) {
       metal::lambda<add_to_type_list>,
       types::all_edge_types>>{}(m, "edge_types");
 
+  m.add_object("temporal_edge_types", py::list());
+  types::run_each<
+    metal::transform<
+      metal::lambda<add_to_type_list>,
+      types::first_order_temporal_edges>>{}(m, "temporal_edge_types");
+
 
   using scalar_types = types::unique<metal::join<
     types::time_types, types::simple_vert_types>>;
