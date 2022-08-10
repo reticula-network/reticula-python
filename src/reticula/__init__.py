@@ -123,12 +123,21 @@ interval_set = _generic_attribute(
         function_module=_reticula_ext,
         api_module_name=__name__)
 
+implicit_event_graph = _generic_attribute(
+        attr_prefix="implicit_event_graph",
+        arg_names=("temporal_edge_type", "temporal_adjacency_type"),
+        options=set(),
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+
 _random_network_generic_attrs = [
         "random_gnp_graph",
         "random_barabasi_albert_graph",
         "random_regular_graph",
         "random_expected_degree_sequence_graph",
+        "random_expected_degree_sequence_hypergraph",
         "random_directed_expected_degree_sequence_graph",
+        "random_directed_expected_degree_sequence_hypergraph",
         "random_degree_sequence_graph",
         "random_directed_degree_sequence_graph",
         "random_fully_mixed_temporal_network",
@@ -216,7 +225,8 @@ from .reticula_ext import (
         is_connected, connected_component, connected_components)
 
 from .reticula_ext import (
-        time_window, cause_time_window, effect_time_window, event_graph,
+        time_window, cause_time_window, effect_time_window,
+        event_graph, make_implicit_event_graph,
         out_cluster, out_clusters,
         out_cluster_sizes, out_cluster_size_estimates,
         in_cluster, in_clusters,
