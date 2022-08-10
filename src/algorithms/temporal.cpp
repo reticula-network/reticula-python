@@ -69,6 +69,18 @@ struct declare_temporal_network_adjacency_algorithms {
         "temporal_network"_a, "adjacency"_a,
         py::call_guard<py::gil_scoped_release>());
 
+    m.def("make_implicit_event_graph",
+        [](const std::vector<EdgeT>& events, const AdjT& adj) {
+          return reticula::implicit_event_graph<EdgeT, AdjT>(events, adj);
+        }, "events"_a, "adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
+    m.def("make_implicit_event_graph",
+        [](const reticula::network<EdgeT>& temp, const AdjT& adj) {
+          return reticula::implicit_event_graph<EdgeT, AdjT>(
+              temp.edges_cause(), adj);
+        }, "temporal_network"_a, "adjacency"_a,
+        py::call_guard<py::gil_scoped_release>());
+
     m.def("is_reachable",
         &reticula::is_reachable<EdgeT, AdjT>,
         "temporal_network"_a, "temporal_adjacency"_a,
