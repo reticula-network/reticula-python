@@ -5,7 +5,7 @@ set -ex
 mkdir -p dist
 rm -f wheelhouse/*
 
-for version in python3.8 python3.9 python3.10 pypy3.8 pypy3.9; do
+for version in python3.8 python3.9 python3.10 python3.11 pypy3.8 pypy3.9; do
   rm -f dist/*
   rm -rf _skbuild
   singularity exec --cleanenv --bind .:/reticula-python --pwd /reticula-python \
