@@ -136,8 +136,7 @@ Directed expected degree-sequence hypergraph
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: random_directed_expected_degree_sequence_hypergraph[\
-            vert_type](\
+    .. py:function:: random_directed_expected_degree_sequence_hypergraph[vert_type](\
           vertex_in_out_weight_sequence: List[Tuple[float, float]], \
           edge_in_out_weight_sequence: List[Tuple[float, float]], \
           random_state) \
