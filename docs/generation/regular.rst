@@ -6,7 +6,7 @@ Random k-regular network
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: random_barabasi_albert_graph[vert_type](\
+    .. py:function:: random_regular_graph[vert_type](\
           size: int, degree: int, random_state) \
        -> undirected_network[vert_type]
 
