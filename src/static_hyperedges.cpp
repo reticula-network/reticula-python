@@ -19,7 +19,8 @@ struct declare_static_hyperedges {
   void operator()(py::module &m) {
     define_basic_edge_concept<reticula::undirected_hyperedge<VertT>>(m)
       .def(py::init<std::vector<VertT>>(),
-          "verts"_a);
+          "verts"_a,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::vector<VertT>,
@@ -29,15 +30,19 @@ struct declare_static_hyperedges {
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>>(),
-          "tails"_a, "heads"_a)
+          "tails"_a, "heads"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init([](std::tuple<std::vector<VertT>, std::vector<VertT>> t) {
             return reticula::directed_hyperedge<VertT>(
                 std::get<0>(t), std::get<1>(t));
-          }), "tuple"_a)
+          }), "tuple"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("heads",
-          &reticula::directed_hyperedge<VertT>::heads)
+          &reticula::directed_hyperedge<VertT>::heads,
+          py::call_guard<py::gil_scoped_release>())
       .def("tails",
-          &reticula::directed_hyperedge<VertT>::tails);
+          &reticula::directed_hyperedge<VertT>::tails,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::pair<std::vector<VertT>, std::vector<VertT>>,

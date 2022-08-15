@@ -10,6 +10,8 @@ using namespace pybind11::literals;
 
 void declare_random_states(py::module& m) {
   py::class_<std::mt19937_64>(m, python_type_str<std::mt19937_64>().c_str())
-    .def(py::init([](){ return std::mt19937_64{std::random_device{}()}; }))
-    .def(py::init<std::mt19937_64::result_type>(), "seed"_a);
+    .def(py::init([](){ return std::mt19937_64{std::random_device{}()}; }),
+          py::call_guard<py::gil_scoped_release>())
+    .def(py::init<std::mt19937_64::result_type>(), "seed"_a,
+          py::call_guard<py::gil_scoped_release>());
 }

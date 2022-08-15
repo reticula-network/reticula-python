@@ -22,32 +22,43 @@ struct declare_component_types {
     py::class_<Component>(m,
         python_type_str<Component>().c_str())
       .def(py::init<std::size_t>(),
-          "size_hint"_a = 0)
+          "size_hint"_a = 0,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::vector<VertT>, std::size_t>(),
-          "vertices"_a, "size_hint"_a = 0)
+          "vertices"_a, "size_hint"_a = 0,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::unordered_set<
             VertT, reticula::hash<VertT>>, std::size_t>(),
-          "vertices"_a, "size_hint"_a = 0)
+          "vertices"_a, "size_hint"_a = 0,
+          py::call_guard<py::gil_scoped_release>())
       .def("insert",
           static_cast<void (Component::*)(
             const VertT&)>(
             &Component::insert),
-          "vertex"_a)
+          "vertex"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("insert",
           static_cast<void (Component::*)(
             const std::vector<VertT>&)>(
             &Component::insert),
-          "vertex"_a)
+          "vertex"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("merge", &Component::merge,
-          "other"_a)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
+          "other"_a,
+          py::call_guard<py::gil_scoped_release>())
+      .def(py::self == py::self,
+          py::call_guard<py::gil_scoped_release>())
+      .def(py::self != py::self,
+          py::call_guard<py::gil_scoped_release>())
       .def("__iter__", [](const Component& c) {
             return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>())
-      .def("__len__", &Component::size)
+          }, py::keep_alive<0, 1>(),
+          py::call_guard<py::gil_scoped_release>())
+      .def("__len__", &Component::size,
+          py::call_guard<py::gil_scoped_release>())
       .def("__contains__", &Component::contains,
-          "vertex"_a)
+          "vertex"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const Component& c) {
           return fmt::format("{}", c);
       })
@@ -62,7 +73,8 @@ struct declare_component_types {
     using ComponentSize = reticula::component_size<VertT>;
     py::class_<ComponentSize>(m,
         python_type_str<ComponentSize>().c_str())
-      .def("size", &ComponentSize::size)
+      .def("size", &ComponentSize::size,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
       })
@@ -75,7 +87,8 @@ struct declare_component_types {
     py::class_<ComponentSizeEstimate>(m,
         python_type_str<ComponentSizeEstimate>().c_str())
       .def("size_estimate",
-          &ComponentSizeEstimate::size_estimate)
+          &ComponentSizeEstimate::size_estimate,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const ComponentSizeEstimate& c) {
           return fmt::format("{}", c);
       })

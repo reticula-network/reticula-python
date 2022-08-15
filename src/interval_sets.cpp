@@ -18,25 +18,33 @@ struct declare_interval_set_types {
     using IntSet = reticula::interval_set<TimeT>;
     py::class_<IntSet>(m,
         python_type_str<IntSet>().c_str())
-      .def(py::init<>())
+      .def(py::init<>(),
+          py::call_guard<py::gil_scoped_release>())
       .def("insert",
           &IntSet::insert,
-          "start"_a, "end"_a)
+          "start"_a, "end"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("merge",
           &IntSet::merge,
-          "other"_a)
+          "other"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("covers",
           &IntSet::covers,
-          "time"_a)
+          "time"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("cover",
-          &IntSet::cover)
+          &IntSet::cover,
+          py::call_guard<py::gil_scoped_release>())
       .def("__iter__", [](const IntSet& c) {
             return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>())
+          }, py::keep_alive<0, 1>(),
+          py::call_guard<py::gil_scoped_release>())
       .def("__contains__",
           &IntSet::covers,
-          "time"_a)
-      .def(py::self == py::self)
+          "time"_a,
+          py::call_guard<py::gil_scoped_release>())
+      .def(py::self == py::self,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const IntSet& c) {
           return fmt::format("{}", c);
       })

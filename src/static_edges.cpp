@@ -22,7 +22,9 @@ struct declare_static_edges {
       .def(py::init([](std::tuple<VertT, VertT> t) {
             return reticula::undirected_edge<VertT>(
                 std::get<0>(t), std::get<1>(t));
-            }), "tuple"_a);
+            }),
+          "tuple"_a,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::tuple<VertT, VertT>,
@@ -30,15 +32,20 @@ struct declare_static_edges {
 
     define_basic_edge_concept<reticula::directed_edge<VertT>>(m)
       .def(py::init<VertT, VertT>(),
-          "tail"_a, "head"_a)
+          "tail"_a, "head"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init([](std::tuple<VertT, VertT> t) {
             return reticula::directed_edge<VertT>(
                 std::get<0>(t), std::get<1>(t));
-            }), "tuple"_a)
+            }),
+          "tuple"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("head",
-          &reticula::directed_edge<VertT>::head)
+          &reticula::directed_edge<VertT>::head,
+          py::call_guard<py::gil_scoped_release>())
       .def("tail",
-          &reticula::directed_edge<VertT>::tail);
+          &reticula::directed_edge<VertT>::tail,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::tuple<VertT, VertT>,

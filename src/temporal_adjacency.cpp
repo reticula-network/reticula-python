@@ -16,9 +16,11 @@ struct declare_temporal_adjacency_class {
         python_type_str<Simple>().c_str())
       .def(py::init<>())
       .def("linger",
-          &Simple::linger)
+          &Simple::linger,
+          py::call_guard<py::gil_scoped_release>())
       .def("maximum_linger",
-          &Simple::maximum_linger)
+          &Simple::maximum_linger,
+          py::call_guard<py::gil_scoped_release>())
       .def_static("edge_type", []() {
         return types::handle_for<typename Simple::EdgeType>();
       })
@@ -30,13 +32,17 @@ struct declare_temporal_adjacency_class {
     py::class_<LWT>(m,
         python_type_str<LWT>().c_str())
       .def(py::init<typename EdgeT::TimeType>(),
-          "dt"_a)
+          "dt"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("linger",
-          &LWT::linger)
+          &LWT::linger,
+          py::call_guard<py::gil_scoped_release>())
       .def("maximum_linger",
-          &LWT::maximum_linger)
+          &LWT::maximum_linger,
+          py::call_guard<py::gil_scoped_release>())
       .def("dt",
-          &LWT::dt)
+          &LWT::dt,
+          py::call_guard<py::gil_scoped_release>())
       .def_static("edge_type", []() {
         return types::handle_for<typename LWT::EdgeType>();
       })
@@ -49,13 +55,17 @@ struct declare_temporal_adjacency_class {
       py::class_<Exp>(m,
           python_type_str<Exp>().c_str())
         .def(py::init<typename EdgeT::TimeType, std::size_t>(),
-            "rate"_a, "seed"_a)
+            "rate"_a, "seed"_a,
+            py::call_guard<py::gil_scoped_release>())
         .def("linger",
-            &Exp::linger)
+            &Exp::linger,
+            py::call_guard<py::gil_scoped_release>())
         .def("maximum_linger",
-            &Exp::maximum_linger)
+            &Exp::maximum_linger,
+            py::call_guard<py::gil_scoped_release>())
         .def("rate",
-            &Exp::rate)
+            &Exp::rate,
+            py::call_guard<py::gil_scoped_release>())
         .def_static("edge_type", []() {
           return types::handle_for<typename Exp::EdgeType>();
         })
@@ -69,13 +79,17 @@ struct declare_temporal_adjacency_class {
       py::class_<Geom>(m,
           python_type_str<Geom>().c_str())
         .def(py::init<double, std::size_t>(),
-            "p"_a, "seed"_a)
+            "p"_a, "seed"_a,
+            py::call_guard<py::gil_scoped_release>())
         .def("linger",
-            &Geom::linger)
+            &Geom::linger,
+            py::call_guard<py::gil_scoped_release>())
         .def("maximum_linger",
-            &Geom::maximum_linger)
+            &Geom::maximum_linger,
+            py::call_guard<py::gil_scoped_release>())
         .def("p",
-            &Geom::p)
+            &Geom::p,
+            py::call_guard<py::gil_scoped_release>())
         .def_static("edge_type", []() {
           return types::handle_for<typename Geom::EdgeType>();
         })

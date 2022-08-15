@@ -18,11 +18,14 @@ struct declare_temporal_edges {
   void operator()(py::module &m) {
     define_basic_edge_concept<reticula::undirected_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT>(),
-          "v1"_a, "v2"_a, "time"_a)
+          "v1"_a, "v2"_a, "time"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init([](std::tuple<VertT, VertT, TimeT> t) {
               return reticula::undirected_temporal_edge<VertT, TimeT>(
                   std::get<0>(t), std::get<1>(t), std::get<2>(t));
-            }), "tuple"_a);
+            }),
+          "tuple"_a,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::tuple<VertT, VertT, TimeT>,
@@ -30,15 +33,20 @@ struct declare_temporal_edges {
 
     define_basic_edge_concept<reticula::directed_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT>(),
-          "tail"_a, "head"_a, "time"_a)
+          "tail"_a, "head"_a, "time"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init([](std::tuple<VertT, VertT, TimeT> t) {
               return reticula::directed_temporal_edge<VertT, TimeT>(
                   std::get<0>(t), std::get<1>(t), std::get<2>(t));
-            }), "tuple"_a)
+            }),
+          "tuple"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("head",
-          &reticula::directed_temporal_edge<VertT, TimeT>::head)
+          &reticula::directed_temporal_edge<VertT, TimeT>::head,
+          py::call_guard<py::gil_scoped_release>())
       .def("tail",
-          &reticula::directed_temporal_edge<VertT, TimeT>::tail);
+          &reticula::directed_temporal_edge<VertT, TimeT>::tail,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::tuple<VertT, VertT, TimeT>,
@@ -47,16 +55,21 @@ struct declare_temporal_edges {
     define_basic_edge_concept<
         reticula::directed_delayed_temporal_edge<VertT, TimeT>>(m)
       .def(py::init<VertT, VertT, TimeT, TimeT>(),
-          "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a)
+          "tail"_a, "head"_a, "cause_time"_a, "effect_time"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init([](std::tuple<VertT, VertT, TimeT, TimeT> t) {
               return reticula::directed_delayed_temporal_edge<VertT, TimeT>(
                   std::get<0>(t), std::get<1>(t),
                   std::get<2>(t), std::get<3>(t));
-            }), "tuple"_a)
+            }),
+          "tuple"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("head",
-          &reticula::directed_delayed_temporal_edge<VertT, TimeT>::head)
+          &reticula::directed_delayed_temporal_edge<VertT, TimeT>::head,
+          py::call_guard<py::gil_scoped_release>())
       .def("tail",
-          &reticula::directed_delayed_temporal_edge<VertT, TimeT>::tail);
+          &reticula::directed_delayed_temporal_edge<VertT, TimeT>::tail,
+          py::call_guard<py::gil_scoped_release>());
 
     py::implicitly_convertible<
       std::tuple<VertT, VertT, TimeT, TimeT>,

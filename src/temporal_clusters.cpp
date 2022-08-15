@@ -20,40 +20,54 @@ struct declare_temporal_cluster_types {
     py::class_<Cluster>(m,
         python_type_str<Cluster>().c_str())
       .def(py::init<AdjT, std::size_t>(),
-          "temporal_adjacency"_a, "size_hint"_a = 0)
+          "temporal_adjacency"_a, "size_hint"_a = 0,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::vector<EdgeT>, AdjT, std::size_t>(),
           "events"_a,
           "temporal_adjacency"_a,
-          "size_hint"_a = 0)
+          "size_hint"_a = 0,
+          py::call_guard<py::gil_scoped_release>())
       .def("insert",
           static_cast<void (Cluster::*)(
             const EdgeT&)>(
             &Cluster::insert),
-          "event"_a)
+          "event"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("insert",
           static_cast<void (Cluster::*)(
             const std::vector<EdgeT>&)>(
             &Cluster::insert),
-          "events"_a)
+          "events"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("merge", &Cluster::merge,
-          "other"_a)
+          "other"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("covers",
           &Cluster::covers,
-          "vertex"_a, "time"_a)
+          "vertex"_a, "time"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("interval_sets",
-          &Cluster::interval_sets)
+          &Cluster::interval_sets,
+          py::call_guard<py::gil_scoped_release>())
       .def("lifetime",
-          &Cluster::lifetime)
+          &Cluster::lifetime,
+          py::call_guard<py::gil_scoped_release>())
       .def("volume",
-          &Cluster::volume)
+          &Cluster::volume,
+          py::call_guard<py::gil_scoped_release>())
       .def("mass",
-          &Cluster::mass)
-      .def(py::self == py::self)
-      .def(py::self != py::self)
-      .def("__len__", &Cluster::size)
+          &Cluster::mass,
+          py::call_guard<py::gil_scoped_release>())
+      .def(py::self == py::self,
+          py::call_guard<py::gil_scoped_release>())
+      .def(py::self != py::self,
+          py::call_guard<py::gil_scoped_release>())
+      .def("__len__", &Cluster::size,
+          py::call_guard<py::gil_scoped_release>())
       .def("__contains__",
           &Cluster::contains,
-          "event"_a)
+          "event"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const Cluster& c) {
           return fmt::format("{}", c);
       })
@@ -68,11 +82,14 @@ struct declare_temporal_cluster_types {
     py::class_<ClusterSize>(m,
         python_type_str<ClusterSize>().c_str())
       .def("lifetime",
-          &ClusterSize::lifetime)
+          &ClusterSize::lifetime,
+          py::call_guard<py::gil_scoped_release>())
       .def("volume",
-          &ClusterSize::volume)
+          &ClusterSize::volume,
+          py::call_guard<py::gil_scoped_release>())
       .def("mass",
-          &ClusterSize::mass)
+          &ClusterSize::mass,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const ClusterSize& c) {
           return fmt::format("{}", c);
       })
@@ -89,11 +106,14 @@ struct declare_temporal_cluster_types {
     py::class_<ClusterSizeEstimate>(m,
         python_type_str<ClusterSizeEstimate>().c_str())
       .def("lifetime",
-          &ClusterSizeEstimate::lifetime)
+          &ClusterSizeEstimate::lifetime,
+          py::call_guard<py::gil_scoped_release>())
       .def("volume_estimate",
-          &ClusterSizeEstimate::volume_estimate)
+          &ClusterSizeEstimate::volume_estimate,
+          py::call_guard<py::gil_scoped_release>())
       .def("mass_estimate",
-          &ClusterSizeEstimate::mass_estimate)
+          &ClusterSizeEstimate::mass_estimate,
+          py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const ClusterSizeEstimate& c) {
           return fmt::format("{}", c);
       })
