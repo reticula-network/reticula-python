@@ -98,6 +98,16 @@ Distributions
    and :py:`phi` specifies the history of the distribution until this point in
    time.
 
+.. py:class:: uniform_real_distribution[floating_point_type](a: float, b: float)
+
+   Returns floating point value selected uniformly at random from the range
+   :math:`[a, b)`.
+
+.. py:class:: uniform_int_distribution[integral_type](a: int, b: int)
+
+   Returns an integer value selected uniformly at random from the range
+   :math:`[a, b]`.
+
 .. py:class:: delta_distribution[numeric_type](mean: int | float)
 
    Always returns the value of :py:`mean`.
