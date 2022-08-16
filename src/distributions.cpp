@@ -37,7 +37,7 @@ struct declare_integral_distributions {
     py::class_<std::uniform_int_distribution<ResultType>>(m,
         python_type_str<std::uniform_int_distribution<ResultType>>().c_str())
       .def(py::init<ResultType, ResultType>(),
-          "a"_a = ResultType{}, "b"_a = std::numeric_limits<ResultType>::max(),
+          "a"_a, "b"_a,
           py::call_guard<py::gil_scoped_release>())
       .def("a", &std::uniform_int_distribution<ResultType>::a,
           py::call_guard<py::gil_scoped_release>())
@@ -67,7 +67,8 @@ struct declare_floating_point_distributions {
     py::class_<reticula::power_law_with_specified_mean<ResultType>>(m,
         python_type_str<
           reticula::power_law_with_specified_mean<ResultType>>().c_str())
-      .def(py::init<ResultType, ResultType>(), "exponent"_a, "mean"_a,
+      .def(py::init<ResultType, ResultType>(),
+          "exponent"_a, "mean"_a,
           py::call_guard<py::gil_scoped_release>())
       .def("exponent",
           &reticula::power_law_with_specified_mean<ResultType>::exponent,
@@ -84,7 +85,8 @@ struct declare_floating_point_distributions {
         python_type_str<
           reticula::residual_power_law_with_specified_mean<
             ResultType>>().c_str())
-      .def(py::init<ResultType, ResultType>(), "exponent"_a, "mean"_a,
+      .def(py::init<ResultType, ResultType>(),
+          "exponent"_a, "mean"_a,
           py::call_guard<py::gil_scoped_release>())
       .def("exponent",
           &reticula::residual_power_law_with_specified_mean<
@@ -136,7 +138,7 @@ struct declare_floating_point_distributions {
     py::class_<std::uniform_real_distribution<ResultType>>(m,
         python_type_str<std::uniform_real_distribution<ResultType>>().c_str())
       .def(py::init<ResultType, ResultType>(),
-          "a"_a = ResultType{}, "b"_a = static_cast<ResultType>(1.0),
+          "a"_a, "b"_a,
           py::call_guard<py::gil_scoped_release>())
       .def("a", &std::uniform_real_distribution<ResultType>::a,
           py::call_guard<py::gil_scoped_release>())
