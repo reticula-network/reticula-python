@@ -249,50 +249,46 @@ pair = _generic_attribute(
         function_module=_reticula_ext,
         api_module_name=__name__)
 
-try:
+def to_networkx(network, create_using=None):
     import networkx as _nx
-except:
-    def to_networkx(network, create_using=None):
-        raise NotImplementedError("Could not import module NetworkX.")
-    def _from_networkx(network, vert_type):
-        raise NotImplementedError("Could not import module NetworkX.")
-else:
-    def to_networkx(network, create_using=None):
-        edge_type = network.edge_type()
-        if not is_dyadic[edge_type]():
-            raise ValueError("only dyadic networks can be translated into "
-                    "NetworkX graphs")
-        if is_temporal_edge[edge_type]():
-            raise ValueError("only static networks can be translated into "
-                    "NetworkX graphs")
 
-        if create_using is None:
-            if is_undirected[edge_type]():
-                create_using = _nx.Graph()
-            else:
-                create_using = _nx.DiGraph()
+    edge_type = network.edge_type()
+    if not is_dyadic[edge_type]():
+        raise ValueError("only dyadic networks can be translated into "
+                "NetworkX graphs")
+    if is_temporal_edge[edge_type]():
+        raise ValueError("only static networks can be translated into "
+                "NetworkX graphs")
 
-        g = _nx.empty_graph(0, create_using)
+    if create_using is None:
+        if is_undirected[edge_type]():
+            create_using = _nx.Graph()
+        else:
+            create_using = _nx.DiGraph()
 
-        g.add_nodes_from(network.vertices())
-        for e in network.edges():
-            if is_undirected[edge_type]():
-                verts = e.incident_verts()
-                # support self-edges which have one incident vertices
-                u, v = verts*2 if len(verts) == 1 else verts
-                g.add_edge(u, v)
-            else:
-                g.add_edge(e.tail(), e.head())
-        return g
+    g = _nx.empty_graph(0, create_using)
 
-    def _from_networkx(g, vert_type):
-        net_type = undirected_network[vert_type]
-        if _nx.is_directed(g):
-            net_type = directed_network[vert_type]
-        edge_type = net_type.edge_type()
-        verts = list(g.nodes())
-        edges = [edge_type(i, j) for i,j in g.edges()]
-        return net_type(edges=edges, verts=verts)
+    g.add_nodes_from(network.vertices())
+    for e in network.edges():
+        if is_undirected[edge_type]():
+            verts = e.incident_verts()
+            # support self-edges which have one incident vertices
+            u, v = verts*2 if len(verts) == 1 else verts
+            g.add_edge(u, v)
+        else:
+            g.add_edge(e.tail(), e.head())
+    return g
+
+def _from_networkx(g, vert_type):
+    import networkx as _nx
+
+    net_type = undirected_network[vert_type]
+    if _nx.is_directed(g):
+        net_type = directed_network[vert_type]
+    edge_type = net_type.edge_type()
+    verts = list(g.nodes())
+    edges = [edge_type(i, j) for i,j in g.edges()]
+    return net_type(edges=edges, verts=verts)
 
 from functools import partial as _partial
 for _vert_t in _all_vertex_types:
