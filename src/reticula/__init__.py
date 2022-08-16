@@ -32,7 +32,9 @@ for _e in _static_edge_prefixes:
                 api_module_name=__name__))
 
 _integral_types = set(_reticula_ext.types.integral_types)
-for _dist in ["geometric_distribution"]:
+for _dist in [
+        "geometric_distribution",
+        "uniform_int_distribution"]:
     setattr(_sys.modules[__name__], _dist,
             _generic_attribute(
                 attr_prefix=_dist,
@@ -42,10 +44,12 @@ for _dist in ["geometric_distribution"]:
                 api_module_name=__name__))
 
 _floating_point_types = set(_reticula_ext.types.floating_point_types)
-for _dist in ["exponential_distribution",
+for _dist in [
+        "exponential_distribution",
         "power_law_with_specified_mean",
         "residual_power_law_with_specified_mean",
-        "hawkes_univariate_exponential"]:
+        "hawkes_univariate_exponential",
+        "uniform_real_distribution"]:
     setattr(_sys.modules[__name__], _dist,
             _generic_attribute(
                 attr_prefix=_dist,
