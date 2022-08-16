@@ -22,6 +22,9 @@ struct declare_temporal_cluster_types {
       .def(py::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0,
           py::call_guard<py::gil_scoped_release>())
+      .def(py::init<Cluster>(),
+          "temporal_cluester"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::vector<EdgeT>, AdjT, std::size_t>(),
           "events"_a,
           "temporal_adjacency"_a,

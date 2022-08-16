@@ -24,6 +24,9 @@ struct declare_component_types {
       .def(py::init<std::size_t>(),
           "size_hint"_a = 0,
           py::call_guard<py::gil_scoped_release>())
+      .def(py::init<Component>(),
+          "component"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::vector<VertT>, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0,
           py::call_guard<py::gil_scoped_release>())
