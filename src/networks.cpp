@@ -22,6 +22,9 @@ struct declare_network_class {
         python_type_str<Net>().c_str())
       .def(py::init<>(),
           py::call_guard<py::gil_scoped_release>())
+      .def(py::init<reticula::network<EdgeT>>(),
+          "network"_a,
+          py::call_guard<py::gil_scoped_release>())
       .def(py::init<std::vector<EdgeT>>(),
           "edges"_a,
           py::call_guard<py::gil_scoped_release>())
