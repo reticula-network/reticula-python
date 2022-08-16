@@ -1,5 +1,6 @@
 #include <random>
 #include <concepts>
+#include <limits>
 
 #include <pybind11/pybind11.h>
 #include <reticula/distributions.hpp>
@@ -30,6 +31,20 @@ struct declare_integral_distributions {
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](
             const reticula::delta_distribution<ResultType>& a) {
+        return fmt::format("{}", a);
+      });
+
+    py::class_<std::uniform_int_distribution<ResultType>>(m,
+        python_type_str<std::uniform_int_distribution<ResultType>>().c_str())
+      .def(py::init<ResultType, ResultType>(),
+          "a"_a = ResultType{}, "b"_a = std::numeric_limits<ResultType>::max(),
+          py::call_guard<py::gil_scoped_release>())
+      .def("a", &std::uniform_int_distribution<ResultType>::a,
+          py::call_guard<py::gil_scoped_release>())
+      .def("b", &std::uniform_int_distribution<ResultType>::b,
+          py::call_guard<py::gil_scoped_release>())
+      .def("__repr__", [](
+            const std::uniform_int_distribution<ResultType>& a) {
         return fmt::format("{}", a);
       });
   }
@@ -115,6 +130,20 @@ struct declare_floating_point_distributions {
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](
             const reticula::delta_distribution<ResultType>& a) {
+        return fmt::format("{}", a);
+      });
+
+    py::class_<std::uniform_real_distribution<ResultType>>(m,
+        python_type_str<std::uniform_real_distribution<ResultType>>().c_str())
+      .def(py::init<ResultType, ResultType>(),
+          "a"_a = ResultType{}, "b"_a = static_cast<ResultType>(1.0),
+          py::call_guard<py::gil_scoped_release>())
+      .def("a", &std::uniform_real_distribution<ResultType>::a,
+          py::call_guard<py::gil_scoped_release>())
+      .def("b", &std::uniform_real_distribution<ResultType>::b,
+          py::call_guard<py::gil_scoped_release>())
+      .def("__repr__", [](
+            const std::uniform_real_distribution<ResultType>& a) {
         return fmt::format("{}", a);
       });
   }

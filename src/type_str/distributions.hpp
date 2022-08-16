@@ -27,6 +27,22 @@ struct type_str<std::exponential_distribution<ResultType>> {
   }
 };
 
+template <std::integral ResultType>
+struct type_str<std::uniform_int_distribution<ResultType>> {
+  std::string operator()() {
+      return fmt::format("uniform_int_distribution[{}]",
+              type_str<ResultType>{}());
+  }
+};
+
+template <std::floating_point ResultType>
+struct type_str<std::uniform_real_distribution<ResultType>> {
+  std::string operator()() {
+      return fmt::format("uniform_real_distribution[{}]",
+              type_str<ResultType>{}());
+  }
+};
+
 template <std::floating_point ResultType>
 struct type_str<reticula::power_law_with_specified_mean<ResultType>> {
   std::string operator()() {
@@ -77,6 +93,23 @@ struct fmt::formatter<std::geometric_distribution<ResultType>> {
   }
 };
 
+template <std::integral ResultType>
+struct fmt::formatter<std::uniform_int_distribution<ResultType>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const std::uniform_int_distribution<ResultType>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(ctx.out(), "{}(a={}, b={})",
+        type_str<std::uniform_int_distribution<ResultType>>{}(), a.a(), a.b());
+  }
+};
+
 template <std::floating_point ResultType>
 struct fmt::formatter<std::exponential_distribution<ResultType>> {
   constexpr auto parse(format_parse_context& ctx) {
@@ -91,6 +124,23 @@ struct fmt::formatter<std::exponential_distribution<ResultType>> {
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(lambda={})",
         type_str<std::exponential_distribution<ResultType>>{}(), a.lambda());
+  }
+};
+
+template <std::floating_point ResultType>
+struct fmt::formatter<std::uniform_real_distribution<ResultType>> {
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin(), end = ctx.end();
+    if (it != end && *it != '}') throw format_error("invalid format");
+    return it;
+  }
+
+  template <typename FormatContext>
+  auto format(
+      const std::uniform_real_distribution<ResultType>& a,
+      FormatContext& ctx) -> decltype(ctx.out()) {
+    return fmt::format_to(ctx.out(), "{}(a={}, b={})",
+        type_str<std::uniform_real_distribution<ResultType>>{}(), a.a(), a.b());
   }
 };
 
