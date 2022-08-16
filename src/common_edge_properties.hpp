@@ -64,7 +64,7 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     .def("static_projection",
           &EdgeT::static_projection,
           py::call_guard<py::gil_scoped_release>())
-    .def("static_projection_type", []() {
+    .def_static("static_projection_type", []() {
         return types::handle_for<typename EdgeT::StaticProjectionType>();
       })
     .def_static("time_type", []() {
