@@ -13,7 +13,10 @@ template <typename EdgeT>
 py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
   py::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str());
 
-  cls.def("mutated_verts",
+  cls.def(py::init<EdgeT>(),
+        "edge"_a,
+        py::call_guard<py::gil_scoped_release>())
+    .def("mutated_verts",
         &EdgeT::mutated_verts,
         py::call_guard<py::gil_scoped_release>())
     .def("mutator_verts",
@@ -54,10 +57,16 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     using TimeT = typename EdgeT::TimeType;
     cls.def("cause_time",
           &EdgeT::cause_time,
-          py::call_guard<py::gil_scoped_release>());
-    cls.def("effect_time",
+          py::call_guard<py::gil_scoped_release>())
+    .def("effect_time",
           &EdgeT::effect_time,
           py::call_guard<py::gil_scoped_release>())
+    .def("static_projection",
+          &EdgeT::static_projection,
+          py::call_guard<py::gil_scoped_release>())
+    .def("static_projection_type", []() {
+        return types::handle_for<typename EdgeT::StaticProjectionType>();
+      })
     .def_static("time_type", []() {
       return types::handle_for<typename EdgeT::TimeType>();
     });
