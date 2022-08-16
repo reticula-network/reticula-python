@@ -49,7 +49,8 @@ template <std::integral TimeType>
 struct type_dists<TimeType> {
   using list = metal::list<
     std::geometric_distribution<TimeType>,
-    reticula::delta_distribution<TimeType>>;
+    reticula::delta_distribution<TimeType>,
+    std::uniform_int_distribution<TimeType>>;
 };
 
 template <std::floating_point TimeType>
@@ -59,7 +60,8 @@ struct type_dists<TimeType> {
     reticula::power_law_with_specified_mean<TimeType>,
     reticula::residual_power_law_with_specified_mean<TimeType>,
     reticula::hawkes_univariate_exponential<TimeType>,
-    reticula::delta_distribution<TimeType>>;
+    reticula::delta_distribution<TimeType>,
+    std::uniform_real_distribution<TimeType>>;
 };
 
 template <reticula::temporal_edge EdgeT>
