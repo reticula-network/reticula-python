@@ -58,8 +58,8 @@ Interoperation with NetworkX
   type :py:`networkx.DiGraph`, and for undirected networks it would produce an
   instance of :py:`networkx.Graph`.
 
-  Raises a :py:`NotImplementedError` if NetworkX is not installed or cannot be
-  imported at the time Reticula is imported.
+  Raises a :py:`ModuleNotFoundError` if NetworkX is not installed or cannot be
+  imported at the time the first time an interoperation function is called.
 
 
 .. py:function:: from_networkx[vertex_type](g)
@@ -68,5 +68,5 @@ Interoperation with NetworkX
   network is decided based on whether graph :py:`g` is directed, i.e., whether
   :py:`networkx.is_directed(g)` returns :py:`True`.
 
-  Raises a :py:`NotImplementedError` if networkx is not installed or cannot be
-  imported at the time Reticula is imported.
+  Raises a :py:`ModuleNotFoundError` if NetworkX is not installed or cannot be
+  imported at the time the first time an interoperation function is called.
