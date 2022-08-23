@@ -108,10 +108,11 @@ struct fmt::formatter<reticula::undirected_edge<VertT>> {
   template <typename FormatContext>
   auto format(const reticula::undirected_edge<VertT>& a, FormatContext& ctx)
   -> decltype(ctx.out()) {
+    auto vs = a.incident_verts();
     return fmt::format_to(
-        ctx.out(), "{}({})",
+        ctx.out(), "{}({}, {})",
         type_str<reticula::undirected_edge<VertT>>{}(),
-        fmt::join(a.incident_verts(), ", "));
+        vs.front(), vs.back());
   }
 };
 
@@ -149,7 +150,7 @@ struct fmt::formatter<reticula::undirected_hyperedge<VertT>> {
     return fmt::format_to(
         ctx.out(), "{}({})",
         type_str<reticula::undirected_hyperedge<VertT>>{}(),
-        fmt::join(a.incident_verts(), ", "));
+        a.incident_verts());
   }
 };
 
@@ -186,11 +187,11 @@ struct fmt::formatter<reticula::undirected_temporal_edge<VertT, TimeT>> {
   auto format(
       const reticula::undirected_temporal_edge<VertT, TimeT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
+    auto vs = a.incident_verts();
     return fmt::format_to(
-        ctx.out(), "{}({}, t={})",
+        ctx.out(), "{}({}, {}, time={})",
         type_str<reticula::undirected_temporal_edge<VertT, TimeT>>{}(),
-        fmt::join(a.incident_verts(), ", "),
-        a.effect_time());
+        vs.front(), vs.back(), a.effect_time());
   }
 };
 
@@ -208,7 +209,7 @@ struct fmt::formatter<reticula::directed_temporal_edge<VertT, TimeT>> {
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "{}({}, {}, t={})",
+        "{}({}, {}, time={})",
         type_str<reticula::directed_temporal_edge<VertT, TimeT>>{}(),
         a.tail(), a.head(), a.effect_time());
   }
@@ -228,7 +229,7 @@ struct fmt::formatter<reticula::directed_delayed_temporal_edge<VertT, TimeT>> {
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "{}({}, {}, t_start={}, t_end={})",
+        "{}({}, {}, cause_time={}, effect_time={})",
         type_str<reticula::directed_delayed_temporal_edge<VertT, TimeT>>{}(),
         a.tail(), a.head(), a.cause_time(), a.effect_time());
   }
@@ -247,10 +248,9 @@ struct fmt::formatter<reticula::undirected_temporal_hyperedge<VertT, TimeT>> {
       const reticula::undirected_temporal_hyperedge<VertT, TimeT>& a,
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
-        ctx.out(), "{}({}, t={})",
+        ctx.out(), "{}({}, time={})",
         type_str<reticula::undirected_temporal_hyperedge<VertT, TimeT>>{}(),
-        fmt::join(a.incident_verts(), ", "),
-        a.effect_time());
+        a.incident_verts(), a.effect_time());
   }
 };
 
@@ -268,7 +268,7 @@ struct fmt::formatter<reticula::directed_temporal_hyperedge<VertT, TimeT>> {
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "{}({}, {}, t={})",
+        "{}({}, {}, time={})",
         type_str<reticula::directed_temporal_hyperedge<VertT, TimeT>>{}(),
         a.tails(), a.heads(), a.effect_time());
   }
@@ -288,7 +288,7 @@ struct fmt::formatter<reticula::directed_delayed_temporal_hyperedge<VertT, TimeT
       FormatContext& ctx) -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
-        "{}({}, {}, t_start={}, t_end={})",
+        "{}({}, {}, cause_time={}, effect_time={})",
         type_str<reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>>{}(),
         a.tails(), a.heads(), a.cause_time(), a.effect_time());
   }
