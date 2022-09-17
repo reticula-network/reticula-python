@@ -11,37 +11,6 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-namespace pybind11 {
-    namespace detail {
-        template <
-            reticula::temporal_edge EdgeT,
-            reticula::temporal_adjacency::temporal_adjacency AdjT>
-        class type_caster<std::vector<
-            std::pair<EdgeT, reticula::temporal_cluster<EdgeT, AdjT>>>>
-            : public type_caster_base<std::vector<
-                std::pair<EdgeT,
-                    reticula::temporal_cluster<EdgeT, AdjT>>>> {};
-
-        template <
-            reticula::temporal_edge EdgeT,
-            reticula::temporal_adjacency::temporal_adjacency AdjT>
-        class type_caster<std::vector<
-            std::pair<EdgeT, reticula::temporal_cluster_size<EdgeT, AdjT>>>>
-            : public type_caster_base<std::vector<
-                std::pair<EdgeT,
-                    reticula::temporal_cluster_size<EdgeT, AdjT>>>> {};
-        template <
-            reticula::temporal_edge EdgeT,
-            reticula::temporal_adjacency::temporal_adjacency AdjT>
-        class type_caster<std::vector<
-            std::pair<EdgeT,
-              reticula::temporal_cluster_size_estimate<EdgeT, AdjT>>>>
-            : public type_caster_base<std::vector<
-                std::pair<EdgeT,
-                    reticula::temporal_cluster_size_estimate<EdgeT, AdjT>>>> {};
-    }
-}
-
 template <reticula::temporal_edge EdgeT>
 struct declare_temporal_network_algorithms {
   void operator()(py::module& m) {

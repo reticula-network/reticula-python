@@ -10,46 +10,6 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-namespace pybind11 {
-    namespace detail {
-        template <reticula::network_vertex VertT>
-        class type_caster<std::vector<reticula::component<VertT>>>
-            : public type_caster_base<
-              std::vector<reticula::component<VertT>>> {};
-        template <reticula::network_vertex VertT>
-        class type_caster<
-          std::vector<std::pair<VertT, reticula::component<VertT>>>>
-            : public type_caster_base<
-              std::vector<
-                  std::pair<VertT, reticula::component<VertT>>>> {};
-
-        template <reticula::network_vertex VertT>
-        class type_caster<std::vector<reticula::component_size<VertT>>>
-            : public type_caster_base<
-              std::vector<reticula::component_size<VertT>>> {};
-        template <reticula::network_vertex VertT>
-        class type_caster<
-            std::vector<std::pair<VertT, reticula::component_size<VertT>>>>
-            : public type_caster_base<
-            std::vector<
-                std::pair<VertT, reticula::component_size<VertT>>>> {};
-
-        template <reticula::network_vertex VertT>
-        class type_caster<
-          std::vector<reticula::component_size_estimate<VertT>>>
-            : public type_caster_base<
-              std::vector<reticula::component_size_estimate<VertT>>> {};
-        template <reticula::network_vertex VertT>
-        class type_caster<
-            std::vector<
-              std::pair<VertT, reticula::component_size_estimate<VertT>>>>
-            : public type_caster_base<
-              std::vector<
-                  std::pair<VertT,
-                    reticula::component_size_estimate<VertT>>>> {};
-    }
-}
-
 template <reticula::static_directed_edge EdgeT>
 struct declare_directed_network_algorithms {
   void operator()(py::module& m) {
