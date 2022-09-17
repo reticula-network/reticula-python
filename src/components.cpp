@@ -55,8 +55,7 @@ struct declare_component_types {
           py::call_guard<py::gil_scoped_release>())
       .def("__iter__", [](const Component& c) {
             return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>(),
-          py::call_guard<py::gil_scoped_release>())
+          }, py::keep_alive<0, 1>())
       .def("__len__", &Component::size,
           py::call_guard<py::gil_scoped_release>())
       .def("__contains__", &Component::contains,

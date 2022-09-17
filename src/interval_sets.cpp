@@ -37,8 +37,7 @@ struct declare_interval_set_types {
           py::call_guard<py::gil_scoped_release>())
       .def("__iter__", [](const IntSet& c) {
             return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>(),
-          py::call_guard<py::gil_scoped_release>())
+          }, py::keep_alive<0, 1>())
       .def("__contains__",
           &IntSet::covers,
           "time"_a,
