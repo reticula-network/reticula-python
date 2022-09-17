@@ -53,3 +53,8 @@ def test_union_edge_subgraph_equivalency(data, net):
     assume(net.edges())
     edges = data.draw(st.lists(st.sampled_from(net.edges())))
     assert ret.graph_union(net, ret.edge_induced_subgraph(net, edges)) == net
+
+@given(undirected_network())
+def test_union_components_equivalency(net):
+    assert {v for comp in ret.connected_components(net)
+            for v in comp} == set(net.vertices())
