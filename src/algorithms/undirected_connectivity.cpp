@@ -11,7 +11,7 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <reticula::static_undirected_edge EdgeT>
-struct declare_undirected_network_algorithms {
+struct declare_undirected_connectivity_algorithms {
   void operator()(py::module& m) {
     m.def("connected_component",
         &reticula::connected_component<EdgeT>,
@@ -46,30 +46,12 @@ struct declare_undirected_network_algorithms {
   }
 };
 
-template <reticula::static_undirected_edge EdgeT>
-struct declare_undirected_density_algorithm {
-  void operator()(py::module& m) {
-    m.def("density",
-        py::overload_cast<const reticula::network<EdgeT>&>(
-          &reticula::density<typename EdgeT::VertexType>),
-        "network"_a,
-        py::call_guard<py::gil_scoped_release>());
-  }
-};
-
-void declare_typed_undirected_algorithms(py::module& m) {
+void declare_typed_undirected_connectivity_algorithms(py::module& m) {
   types::run_each<
     metal::transform<
-      metal::lambda<declare_undirected_network_algorithms>,
+      metal::lambda<declare_undirected_connectivity_algorithms>,
       metal::join<
         types::first_order_undirected_edges,
         types::first_order_undirected_hyperedges,
-        types::second_order_undirected_edges>>>{}(m);
-
-  types::run_each<
-    metal::transform<
-      metal::lambda<declare_undirected_density_algorithm>,
-      metal::join<
-        types::first_order_undirected_edges,
         types::second_order_undirected_edges>>>{}(m);
 }

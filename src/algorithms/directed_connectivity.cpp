@@ -11,7 +11,7 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <reticula::static_directed_edge EdgeT>
-struct declare_directed_network_algorithms {
+struct declare_directed_connectivity_algorithms {
   void operator()(py::module& m) {
     m.def("is_acyclic",
         &reticula::is_acyclic<EdgeT>,
@@ -90,31 +90,12 @@ struct declare_directed_network_algorithms {
   }
 };
 
-template <reticula::static_directed_edge EdgeT>
-struct declare_directed_density_algorithm {
-  void operator()(py::module& m) {
-    m.def("density",
-        py::overload_cast<const reticula::network<EdgeT>&>(
-            &reticula::density<typename EdgeT::VertexType>),
-        "network"_a,
-        py::call_guard<py::gil_scoped_release>());
-  }
-};
-
-
-void declare_typed_directed_algorithms(py::module& m) {
+void declare_typed_directed_connectivity_algorithms(py::module& m) {
   types::run_each<
     metal::transform<
-      metal::lambda<declare_directed_network_algorithms>,
+      metal::lambda<declare_directed_connectivity_algorithms>,
       metal::join<
         types::first_order_directed_edges,
         types::first_order_directed_hyperedges,
-        types::second_order_directed_edges>>>{}(m);
-
-  types::run_each<
-    metal::transform<
-      metal::lambda<declare_directed_density_algorithm>,
-      metal::join<
-        types::first_order_directed_edges,
         types::second_order_directed_edges>>>{}(m);
 }

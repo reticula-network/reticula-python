@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG c1e44b5)
+  GIT_TAG eaf372e)
 
 FetchContent_Declare(
   fmt
@@ -54,10 +54,14 @@ pybind11_add_module(reticula_ext src/main.cpp
   src/components.cpp
   src/io.cpp
   src/algorithms.cpp
-  src/algorithms/directed.cpp
-  src/algorithms/undirected.cpp
-  src/algorithms/temporal.cpp
-  src/algorithms/common.cpp
+  src/algorithms/basic_operations.cpp
+  src/algorithms/basic_temporal.cpp
+  src/algorithms/density.cpp
+  src/algorithms/directed_connectivity.cpp
+  src/algorithms/occupation.cpp
+  src/algorithms/subgraph.cpp
+  src/algorithms/temporal_adjacency.cpp
+  src/algorithms/undirected_connectivity.cpp
   src/microcanonical_reference_models.cpp
   src/type_lists.cpp)
 target_link_libraries(reticula_ext PRIVATE reticula fmt Metal)

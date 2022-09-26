@@ -48,11 +48,14 @@ struct declare_degree_sequence_algorithms {
   }
 };
 
-
-void declare_typed_directed_algorithms(py::module& m);
-void declare_typed_undirected_algorithms(py::module& m);
-void declare_typed_temporal_algorithms(py::module& m);
-void declare_typed_common_algorithms(py::module& m);
+void declare_typed_basic_operation_algorithms(py::module& m);
+void declare_typed_basic_temporal_network_algorithms(py::module& m);
+void declare_typed_density_algorithms(py::module& m);
+void declare_typed_directed_connectivity_algorithms(py::module& m);
+void declare_typed_occupation_algorithms(py::module& m);
+void declare_typed_subgraph_algorithms(py::module& m);
+void declare_typed_temporal_adjacency_algorithms(py::module& m);
+void declare_typed_undirected_connectivity_algorithms(py::module& m);
 
 void declare_typed_algorithms(py::module& m) {
   types::run_each<
@@ -78,8 +81,12 @@ void declare_typed_algorithms(py::module& m) {
       metal::lambda<declare_degree_sequence_algorithms>,
         metal::list<uint64_t>>>{}(m);
 
-  declare_typed_directed_algorithms(m);
-  declare_typed_undirected_algorithms(m);
-  declare_typed_temporal_algorithms(m);
-  declare_typed_common_algorithms(m);
+  declare_typed_basic_operation_algorithms(m);
+  declare_typed_basic_temporal_network_algorithms(m);
+  declare_typed_density_algorithms(m);
+  declare_typed_directed_connectivity_algorithms(m);
+  declare_typed_occupation_algorithms(m);
+  declare_typed_subgraph_algorithms(m);
+  declare_typed_temporal_adjacency_algorithms(m);
+  declare_typed_undirected_connectivity_algorithms(m);
 }
