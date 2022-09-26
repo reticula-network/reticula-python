@@ -54,6 +54,7 @@ pybind11_add_module(reticula_ext src/main.cpp
   src/components.cpp
   src/io.cpp
   src/algorithms.cpp
+  src/algorithms/assortativity.cpp
   src/algorithms/basic_operations.cpp
   src/algorithms/basic_temporal.cpp
   src/algorithms/density.cpp
