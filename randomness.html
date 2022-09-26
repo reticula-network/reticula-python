@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Generating networks" href="generation/index.html" /><link rel="prev" title="Input/Output and interoperation" href="io.html" />
         <link rel="canonical" href="https://docs.reticula.network/randomness.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <meta name="generator" content="sphinx-5.2.1, furo 2022.09.15"/>
         <title>Randomness - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
@@ -426,8 +426,21 @@ time.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Randomness</a><ul>
-<li><a class="reference internal" href="#pseudorandom-number-generators">Pseudorandom number generators</a></li>
-<li><a class="reference internal" href="#distributions">Distributions</a></li>
+<li><a class="reference internal" href="#pseudorandom-number-generators">Pseudorandom number generators</a><ul>
+<li><a class="reference internal" href="#mersenne_twister"><code class="docutils literal notranslate"><span class="pre">mersenne_twister</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distributions">Distributions</a><ul>
+<li><a class="reference internal" href="#geometric_distribution-integral_type"><code class="docutils literal notranslate"><span class="pre">geometric_distribution[integral_type]</span></code></a></li>
+<li><a class="reference internal" href="#exponential_distribution-floating_point_type"><code class="docutils literal notranslate"><span class="pre">exponential_distribution[floating_point_type]</span></code></a></li>
+<li><a class="reference internal" href="#power_law_with_specified_mean-floating_point_type"><code class="docutils literal notranslate"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></code></a></li>
+<li><a class="reference internal" href="#residual_power_law_with_specified_mean-floating_point_type"><code class="docutils literal notranslate"><span class="pre">residual_power_law_with_specified_mean[floating_point_type]</span></code></a></li>
+<li><a class="reference internal" href="#hawkes_univariate_exponential-floating_point_type"><code class="docutils literal notranslate"><span class="pre">hawkes_univariate_exponential[floating_point_type]</span></code></a></li>
+<li><a class="reference internal" href="#uniform_real_distribution-floating_point_type"><code class="docutils literal notranslate"><span class="pre">uniform_real_distribution[floating_point_type]</span></code></a></li>
+<li><a class="reference internal" href="#uniform_int_distribution-integral_type"><code class="docutils literal notranslate"><span class="pre">uniform_int_distribution[integral_type]</span></code></a></li>
+<li><a class="reference internal" href="#delta_distribution-numeric_type"><code class="docutils literal notranslate"><span class="pre">delta_distribution[numeric_type]</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -444,6 +457,7 @@ time.</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
