@@ -142,7 +142,7 @@ Directed networks
               AttrFun2, const typename EdgeT::VertexType&>, double> \
         double attribute_assortativity(\
           const network<EdgeT>& net, \
-          AttrFun1&& mutator_attribute_fun,
+          AttrFun1&& mutator_attribute_fun, \
           AttrFun2&& mutated_attribute_fun)
 
 
@@ -163,7 +163,7 @@ representation of a directed link) is calculated from the function
     .. py:function:: attribute_assortativity(directed_network, \
         mutator_attribute_map: dict[network.edge_type(), float], \
         mutated_attribute_map: dict[network.edge_type(), float], \
-        mutator_default_value : float,
+        mutator_default_value : float, \
         mutated_default_value : float) -> float
       :noindex:
 
