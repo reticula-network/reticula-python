@@ -213,7 +213,7 @@ from .reticula_ext import (
         without_edges, without_vertices,
         occupy_edges, occupy_vertices,
         uniformly_occupy_edges, uniformly_occupy_vertices,
-        density)
+        density, degree_assortativity, attribute_assortativity)
 
 from .reticula_ext import (
         is_acyclic, topological_order, out_component, out_components,

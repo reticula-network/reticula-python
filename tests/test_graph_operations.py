@@ -1,4 +1,8 @@
+import math
+
 from hypothesis import strategies as st
+import pytest
+from scipy import stats  # used for pearsonr, switch to stdlib stats in 3.10
 
 import reticula as ret
 
@@ -58,3 +62,20 @@ def test_union_edge_subgraph_equivalency(data, net):
 def test_union_components_equivalency(net):
     assert {v for comp in ret.connected_components(net)
             for v in comp} == set(net.vertices())
+
+@given(undirected_network())
+def test_degree_assortativity(net):
+    assume(len(net.edges()) > 2)
+    d1 = []
+    d2 = []
+    for e in net.edges():
+        for i in e.mutator_verts():
+            for j in e.mutated_verts():
+                if i != j:
+                    d1.append(net.degree(i))
+                    d2.append(net.degree(j))
+
+    sp = stats.pearsonr(d1, d2)[0]
+    r = ret.degree_assortativity(net)
+
+    assert (math.isnan(sp) and math.isnan(r)) or sp == pytest.approx(r)
