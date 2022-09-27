@@ -7,6 +7,7 @@ Algorithms
    graphicallity
    graph_operations
    graph_properties
+   assortativity
    static_network_reachability
    temporal_network_reachability
    event_graphs
