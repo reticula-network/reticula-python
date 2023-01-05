@@ -246,6 +246,14 @@
         <article role="main">
           <section id="assortativity">
 <h1>Assortativity<a class="headerlink" href="#assortativity" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The methods in this section rely on calculating the Pearson correlation
+coefficient between pairs of value sequences. If the network is regular (i.e.
+all vertices have equal degree or label) or if the network has fewer than two
+pairs of interacting vertices, the result of calculating assortativity will
+be <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">NaN</span></code>.</p>
+</div>
 <section id="degree-assortativity">
 <h2>Degree assortativity<a class="headerlink" href="#degree-assortativity" title="Permalink to this heading">#</a></h2>
 <section id="undirected-networks">
@@ -478,7 +486,7 @@ the mutated vertex (head of the arrow) from <code class="code highlight cpp docu
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2022
+                Copyright &#169; 2023
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
