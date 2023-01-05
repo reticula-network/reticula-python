@@ -268,28 +268,26 @@ size when you randomly remove edges from a <a class="reference internal" href=".
 </div>
 <p>Here is a more sophisticated version of this example that uses the
 multi-threading capabilities of Reticula to utilise more CPU cores:</p>
-<div class="highlight-udiff notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="gd">--- /home/runner/work/reticula-python/reticula-python/docs/examples/isotropic.py</span>
-<span class="linenos"> 2</span><span class="gi">+++ /home/runner/work/reticula-python/reticula-python/docs/examples/isotropic-thread.py</span>
-<span class="linenos"> 3</span><span class="gu">@@ -1,6 +1,9 @@</span>
-<span class="linenos"> 4</span><span class="w"> </span>import numpy as np
-<span class="linenos"> 5</span><span class="w"> </span>import reticula as ret
-<span class="linenos"> 6</span><span class="w"> </span>import matplotlib.pyplot as plt
-<span class="linenos"> 7</span><span class="gi">+</span>
-<span class="linenos"> 8</span><span class="gi">+from concurrent.futures import ThreadPoolExecutor</span>
-<span class="linenos"> 9</span><span class="gi">+from functools import partial</span>
-<span class="linenos">10</span><span class="w"> </span>
-<span class="linenos">11</span><span class="w"> </span>def lcc_size(n, p):
-<span class="linenos">12</span><span class="w"> </span>    state = ret.mersenne_twister()
-<span class="linenos">13</span><span class="gu">@@ -10,7 +13,8 @@</span>
-<span class="linenos">14</span><span class="w"> </span>n = 1000000
-<span class="linenos">15</span><span class="w"> </span>ps = np.linspace(0, 2./n)
-<span class="linenos">16</span><span class="w"> </span>
-<span class="linenos">17</span><span class="gd">-lccs = [lcc_size(n, p) for p in ps]</span>
-<span class="linenos">18</span><span class="gi">+with ThreadPoolExecutor(max_workers=8) as e:</span>
-<span class="linenos">19</span><span class="gi">+    lccs = e.map(partial(lcc_size, n), ps)</span>
-<span class="linenos">20</span><span class="w"> </span>
-<span class="linenos">21</span><span class="w"> </span>plt.plot(ps, list(lccs))
-<span class="linenos">22</span><span class="w"> </span>plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">def</span> <span class="nf">lcc_size</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="linenos"> 9</span>    <span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">()</span>
+<span class="linenos">10</span>    <span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">largest_connected_component</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="linenos">14</span><span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos">17</span>    <span class="n">lccs</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">lcc_size</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">ps</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">lccs</span><span class="p">))</span>
+<span class="linenos">20</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

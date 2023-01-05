@@ -13,6 +13,5 @@ Here is a more sophisticated version of this example that uses the
 multi-threading capabilities of Reticula to utilise more CPU cores:
 
 .. literalinclude:: isotropic-thread.py
-   :diff: isotropic.py
    :language: python
    :linenos:
