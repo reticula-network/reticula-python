@@ -75,7 +75,10 @@ def test_degree_assortativity(net):
                     d1.append(net.degree(i))
                     d2.append(net.degree(j))
 
-    sp = stats.pearsonr(d1, d2)[0]
+    import warnings
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        sp = stats.pearsonr(d1, d2)[0] if len(d1) > 1 else float("nan")
     r = ret.degree_assortativity(net)
 
     assert (math.isnan(sp) and math.isnan(r)) or sp == pytest.approx(r)
