@@ -14,7 +14,7 @@ Random Barabási--Albert network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::uniform_random_bit_generator Gen> \
        undirected_network<VertT> \
        random_barabasi_albert_graph(VertT n, VertT m, Gen& generator)

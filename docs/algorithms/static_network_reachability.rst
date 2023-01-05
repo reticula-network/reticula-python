@@ -72,7 +72,7 @@ Weak-connectivity
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       weakly_connected_component(\
         const network<EdgeT>& dir, \
@@ -96,7 +96,7 @@ component size you expect to get. If not, you can rely on the default behaviour.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<component<typename EdgeT::VertexType>> \
       weakly_connected_components(\
         const network<EdgeT>& dir, \
@@ -121,7 +121,7 @@ vertex, set the :cpp:`singletons` to :cpp:`false`.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       largest_weakly_connected_component(\
         const network<EdgeT>& dir)
@@ -142,7 +142,7 @@ maximum size exist, one of them is arbitrarily returned.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       bool is_weakly_connected(const network<EdgeT>& dir)
 
 Returns true if the network is weakly-connected: if all pairs of vertices
@@ -172,14 +172,14 @@ From a single source
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       in_component(\
           const network<EdgeT>& dir, \
           const typename EdgeT::VertexType& root, \
           std::size_t size_hint = 0)
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       out_component(\
           const network<EdgeT>& dir, \
@@ -205,13 +205,13 @@ From all vertices
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component<typename EdgeT::VertexType>>> \
       in_components(const network<EdgeT>& dir)
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component<typename EdgeT::VertexType>>> \
@@ -238,13 +238,13 @@ In- and out-component sizes
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component_size<typename EdgeT::VertexType>>> \
       in_component_sizes(const network<EdgeT>& dir)
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component_size<typename EdgeT::VertexType>>> \
@@ -272,14 +272,14 @@ In- and out-component size estimates
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component_size_estimate<typename EdgeT::VertexType>>> \
       in_component_size_estimates(\
         const network<EdgeT>& dir, std::size_t seed = 0)
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
       std::vector<std::pair<\
         typename EdgeT::VertexType, \
         component_size_estimate<typename EdgeT::VertexType>>> \
@@ -311,7 +311,7 @@ Connected component of a specific vertex
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT> \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       connected_component(\
           const network<EdgeT>& net, \
@@ -337,7 +337,7 @@ All connected components
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT> \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT> \
       std::vector<component<typename EdgeT::VertexType>> \
       connected_components(\
           const network<EdgeT>& net, \
@@ -357,7 +357,7 @@ Returns all connected components of the static undirected network.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT> \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT> \
       component<typename EdgeT::VertexType> \
       largest_connected_component(const network<EdgeT>& net)
 
@@ -376,7 +376,7 @@ exist, one of them is arbitrarily returned.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT> \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT> \
       bool is_connected(const network<EdgeT>& net);
 
 

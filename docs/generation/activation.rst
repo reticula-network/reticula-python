@@ -16,7 +16,7 @@ With residual time distribution
     :sync: cpp
 
     .. cpp:function:: template < \
-       temporal_edge EdgeT, \
+       temporal_network_edge EdgeT, \
        typename ActivationF, \
        typename ResActivationF, \
        std::uniform_random_bit_generator Gen> \
@@ -54,7 +54,7 @@ With burn-in
     :sync: cpp
 
     .. cpp:function:: template < \
-        temporal_edge EdgeT, \
+        temporal_network_edge EdgeT, \
         typename ActivationF, \
         std::uniform_random_bit_generator Gen> \
         network<EdgeT> random_link_activation_temporal_network(\

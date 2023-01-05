@@ -10,7 +10,7 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::static_undirected_edge EdgeT>
+template <reticula::undirected_static_network_edge EdgeT>
 struct declare_undirected_connectivity_algorithms {
   void operator()(py::module& m) {
     m.def("connected_component",

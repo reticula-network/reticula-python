@@ -18,7 +18,7 @@ Undirected expected degree-sequence network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::input_range Range, \
           std::uniform_random_bit_generator Gen> \
        requires \
@@ -58,7 +58,7 @@ Directed expected degree-sequence network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::input_range PairRange, \
           std::uniform_random_bit_generator Gen> \
        requires \
@@ -100,7 +100,7 @@ Undirected expected degree-sequence hypergraph
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::input_range VertRange, \
           std::ranges::input_range EdgeRange, \
           std::uniform_random_bit_generator Gen> \
@@ -146,7 +146,7 @@ Directed expected degree-sequence hypergraph
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::input_range VertPairRange, \
           std::ranges::input_range EdgePairRange, \
           std::uniform_random_bit_generator Gen> \

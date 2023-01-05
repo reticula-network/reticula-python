@@ -10,7 +10,7 @@
 #include "edges.hpp"
 
 // temporal adjacency
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct type_str<reticula::temporal_adjacency::simple<EdgeT>> {
   std::string operator()() {
       return fmt::format("simple[{}]",
@@ -18,7 +18,7 @@ struct type_str<reticula::temporal_adjacency::simple<EdgeT>> {
   }
 };
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct type_str<reticula::temporal_adjacency::limited_waiting_time<EdgeT>> {
   std::string operator()() {
       return fmt::format("limited_waiting_time[{}]",
@@ -26,7 +26,7 @@ struct type_str<reticula::temporal_adjacency::limited_waiting_time<EdgeT>> {
   }
 };
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct type_str<reticula::temporal_adjacency::exponential<EdgeT>> {
   std::string operator()() {
       return fmt::format("exponential[{}]",
@@ -34,7 +34,7 @@ struct type_str<reticula::temporal_adjacency::exponential<EdgeT>> {
   }
 };
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct type_str<reticula::temporal_adjacency::geometric<EdgeT>> {
   std::string operator()() {
       return fmt::format("geometric[{}]",
@@ -43,7 +43,7 @@ struct type_str<reticula::temporal_adjacency::geometric<EdgeT>> {
 };
 
 // formatters
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct fmt::formatter<reticula::temporal_adjacency::simple<EdgeT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
@@ -63,7 +63,7 @@ struct fmt::formatter<reticula::temporal_adjacency::simple<EdgeT>> {
 };
 
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct fmt::formatter<reticula::temporal_adjacency::limited_waiting_time<EdgeT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
@@ -82,7 +82,7 @@ struct fmt::formatter<reticula::temporal_adjacency::limited_waiting_time<EdgeT>>
   }
 };
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct fmt::formatter<reticula::temporal_adjacency::exponential<EdgeT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();
@@ -102,7 +102,7 @@ struct fmt::formatter<reticula::temporal_adjacency::exponential<EdgeT>> {
 };
 
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct fmt::formatter<reticula::temporal_adjacency::geometric<EdgeT>> {
   constexpr auto parse(format_parse_context& ctx) {
     auto it = ctx.begin(), end = ctx.end();

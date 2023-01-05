@@ -13,7 +13,7 @@
 #include "edges.hpp"
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct type_str<reticula::implicit_event_graph<EdgeT, AdjT>> {
   std::string operator()() {
@@ -23,7 +23,7 @@ struct type_str<reticula::implicit_event_graph<EdgeT, AdjT>> {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct fmt::formatter<reticula::implicit_event_graph<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {

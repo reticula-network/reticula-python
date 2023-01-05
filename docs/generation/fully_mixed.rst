@@ -14,7 +14,7 @@ Fully-mixed temporal network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::uniform_random_bit_generator Gen> \
        undirected_temporal_network<VertT, double> \
        random_fully_mixed_temporal_network(\

@@ -8,7 +8,7 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::static_edge EdgeT>
+template <reticula::static_network_edge EdgeT>
 struct declare_density_algorithm {
   void operator()(py::module& m) {
     m.def("density",

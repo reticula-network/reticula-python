@@ -12,7 +12,7 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::random_number_distribution Dist,
   reticula::random_number_distribution ResDist,
   std::uniform_random_bit_generator Gen>
@@ -28,7 +28,7 @@ struct declare_activations_with_residual {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::random_number_distribution Dist,
   std::uniform_random_bit_generator Gen>
 struct declare_activations {
@@ -64,7 +64,7 @@ struct type_dists<TimeType> {
     std::uniform_real_distribution<TimeType>>;
 };
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct declare_typed_activations_for_edge {
   void operator()(py::module& m) {
     using time_type = typename EdgeT::TimeType;

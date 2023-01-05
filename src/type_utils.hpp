@@ -178,10 +178,10 @@ namespace types {
     second_order_static_edges>;
 
 
-  template <reticula::temporal_edge T>
+  template <reticula::temporal_network_edge T>
   using is_integral_time = std::is_integral<typename T::TimeType>;
 
-  template <reticula::temporal_edge T>
+  template <reticula::temporal_network_edge T>
   using is_floating_point_time = std::is_floating_point<typename T::TimeType>;
 
   // temporal adjacency types

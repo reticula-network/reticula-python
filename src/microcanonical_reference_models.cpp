@@ -7,7 +7,9 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::temporal_edge EdgeT, std::uniform_random_bit_generator Gen>
+template <
+  reticula::temporal_network_edge EdgeT,
+  std::uniform_random_bit_generator Gen>
 struct declare_mrrm_algorithms {
   void operator()(py::module& m) {
     m.def("instant_event_shuffling",

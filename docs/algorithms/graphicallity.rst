@@ -34,7 +34,7 @@ Directed degree-pair sequence
     .. py:function:: is_digraphic(\
         in_out_degree_sequence: List[Pair[int, int]]) -> bool
 
-  .. tab-tem:: C++
+  .. tab-item:: C++
     :sync: cpp
 
     .. cpp:function:: template <std::ranges::input_range PairRange> \

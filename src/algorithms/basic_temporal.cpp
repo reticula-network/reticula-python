@@ -11,7 +11,7 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct declare_basic_temporal_network_algorithms {
   void operator()(py::module& m) {
     m.def("time_window",

@@ -12,7 +12,7 @@ Path graphs
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <integer_vertex VertT> \
+    .. cpp:function:: template <integer_network_vertex VertT> \
        undirected_network<VertT> \
        path_graph(VertT size, bool periodic = false)
 

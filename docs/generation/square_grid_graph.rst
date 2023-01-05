@@ -13,7 +13,7 @@ Square grid graphs
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <integer_vertex VertT> \
+    .. cpp:function:: template <integer_network_vertex VertT> \
        undirected_network<VertT> \
        square_grid_graph(VertT side, std::size_t dims, bool periodic = false)
 

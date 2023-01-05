@@ -17,7 +17,7 @@ Undirected degree-sequence network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::forward_range Range, \
           std::uniform_random_bit_generator Gen> \
        requires \
@@ -43,7 +43,7 @@ difficult as the density increases. In C++, you can use the `try_` variant of
 this function to limit runtime to a limited set of tries:
 
 .. cpp:function:: template <\
-      integer_vertex VertT, \
+      integer_network_vertex VertT, \
       std::ranges::forward_range Range, \
       std::uniform_random_bit_generator Gen> \
    requires \
@@ -74,7 +74,7 @@ Directed degree-sequence network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::ranges::forward_range PairRange, \
           std::uniform_random_bit_generator Gen> \
        requires \
@@ -98,7 +98,7 @@ Similar to `undirected degree-sequence network`_, this function also provides a
 `try_` variant:
 
 .. cpp:function:: template <\
-      integer_vertex VertT, \
+      integer_network_vertex VertT, \
       std::ranges::forward_range PairRange, \
       std::uniform_random_bit_generator Gen> \
    requires \

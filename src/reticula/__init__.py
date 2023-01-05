@@ -213,6 +213,9 @@ from .reticula_ext import (
         without_edges, without_vertices,
         occupy_edges, occupy_vertices,
         uniformly_occupy_edges, uniformly_occupy_vertices,
+        in_degree, out_degree, incident_degree, degree,
+        in_degree_sequence, out_degree_sequence, incident_degree_sequence,
+        in_out_degree_pair_sequence, degree_sequence,
         density, degree_assortativity, attribute_assortativity)
 
 from .reticula_ext import (

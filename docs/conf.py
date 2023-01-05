@@ -74,6 +74,7 @@ import sphinx.domains.python
 sphinx.domains.python.py_sig_re = typed_py_re
 
 autosectionlabel_prefix_document = True
+autosectionlabel_maxdepth = 3
 
 # -- Options for HTML output -------------------------------------------------
 

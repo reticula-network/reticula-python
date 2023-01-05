@@ -13,7 +13,7 @@
 #include "temporal_adjacency.hpp"
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct type_str<reticula::temporal_cluster<EdgeT, AdjT>> {
   std::string operator()() {
@@ -24,7 +24,7 @@ struct type_str<reticula::temporal_cluster<EdgeT, AdjT>> {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct type_str<reticula::temporal_cluster_size<EdgeT, AdjT>> {
   std::string operator()() {
@@ -35,7 +35,7 @@ struct type_str<reticula::temporal_cluster_size<EdgeT, AdjT>> {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct type_str<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
   std::string operator()() {
@@ -48,13 +48,13 @@ struct type_str<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
 // Formatters
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct fmt::is_range<reticula::temporal_cluster<EdgeT, AdjT>, char> :
     std::false_type {};
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct fmt::formatter<reticula::temporal_cluster<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
@@ -78,7 +78,7 @@ struct fmt::formatter<reticula::temporal_cluster<EdgeT, AdjT>> {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct fmt::formatter<reticula::temporal_cluster_size<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {
@@ -103,7 +103,7 @@ struct fmt::formatter<reticula::temporal_cluster_size<EdgeT, AdjT>> {
 };
 
 template <
-  reticula::temporal_edge EdgeT,
+  reticula::temporal_network_edge EdgeT,
   reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct fmt::formatter<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
   constexpr auto parse(format_parse_context& ctx) {

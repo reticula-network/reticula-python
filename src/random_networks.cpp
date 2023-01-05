@@ -10,7 +10,9 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::integer_vertex VertT, std::uniform_random_bit_generator Gen>
+template <
+  reticula::integer_network_vertex VertT,
+  std::uniform_random_bit_generator Gen>
 struct declare_random_network_models {
   void operator()(py::module& m) {
     m.def(("random_gnp_graph_"+python_type_str<VertT>()).c_str(),

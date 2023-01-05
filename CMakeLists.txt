@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG 9bc0b18)
+  GIT_TAG 5efdca3)
 
 FetchContent_Declare(
   fmt
@@ -55,6 +55,7 @@ pybind11_add_module(reticula_ext src/main.cpp
   src/io.cpp
   src/algorithms.cpp
   src/algorithms/assortativity.cpp
+  src/algorithms/degree.cpp
   src/algorithms/basic_operations.cpp
   src/algorithms/basic_temporal.cpp
   src/algorithms/density.cpp

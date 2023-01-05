@@ -49,6 +49,7 @@ struct declare_degree_sequence_algorithms {
 };
 
 void declare_typed_assortativity_algorithms(py::module& m);
+void declare_typed_degree_algorithms(py::module& m);
 void declare_typed_basic_operation_algorithms(py::module& m);
 void declare_typed_basic_temporal_network_algorithms(py::module& m);
 void declare_typed_density_algorithms(py::module& m);
@@ -83,6 +84,7 @@ void declare_typed_algorithms(py::module& m) {
         metal::list<uint64_t>>>{}(m);
 
   declare_typed_assortativity_algorithms(m);
+  declare_typed_degree_algorithms(m);
   declare_typed_basic_operation_algorithms(m);
   declare_typed_basic_temporal_network_algorithms(m);
   declare_typed_density_algorithms(m);

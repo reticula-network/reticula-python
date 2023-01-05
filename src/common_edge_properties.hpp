@@ -53,7 +53,7 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
     });
 
   using VertT = typename EdgeT::VertexType;
-  if constexpr (reticula::temporal_edge<EdgeT>) {
+  if constexpr (reticula::temporal_network_edge<EdgeT>) {
     using TimeT = typename EdgeT::TimeType;
     cls.def("cause_time",
           &EdgeT::cause_time,
@@ -99,10 +99,10 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
           []{ return reticula::network_edge<EdgeT>; });
   m.def(fmt::format("is_static_edge_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return reticula::static_edge<EdgeT>; });
+          []{ return reticula::static_network_edge<EdgeT>; });
   m.def(fmt::format("is_temporal_edge_{}",
               python_type_str<EdgeT>()).c_str(),
-          []{ return reticula::temporal_edge<EdgeT>; });
+          []{ return reticula::temporal_network_edge<EdgeT>; });
   m.def(fmt::format("is_instantaneous_{}",
               python_type_str<EdgeT>()).c_str(),
           []{ return reticula::is_instantaneous_v<EdgeT>; });

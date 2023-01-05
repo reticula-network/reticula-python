@@ -14,7 +14,7 @@ Random k-regular network
     :sync: cpp
 
     .. cpp:function:: template <\
-          integer_vertex VertT, \
+          integer_network_vertex VertT, \
           std::uniform_random_bit_generator Gen> \
        undirected_network<VertT> \
        random_regular_graph(VertT size, VertT degree, Gen& generator)
@@ -27,7 +27,7 @@ difficult as the density increases. In C++, you can use the :code:`try_`
 variant of this function to limit runtime to a limited set of tries:
 
 .. cpp:function:: template <\
-      integer_vertex VertT, \
+      integer_network_vertex VertT, \
       std::uniform_random_bit_generator Gen> \
    std::optional<undirected_network<VertT>> \
    try_random_regular_graph(VertT size, VertT degree, Gen& generator, \

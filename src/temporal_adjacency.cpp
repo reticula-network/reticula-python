@@ -8,7 +8,7 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::temporal_edge EdgeT>
+template <reticula::temporal_network_edge EdgeT>
 struct declare_temporal_adjacency_class {
   void operator()(py::module &m) {
     using Simple = reticula::temporal_adjacency::simple<EdgeT>;

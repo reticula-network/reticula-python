@@ -10,7 +10,7 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
-template <reticula::static_directed_edge EdgeT>
+template <reticula::directed_static_network_edge EdgeT>
 struct declare_directed_connectivity_algorithms {
   void operator()(py::module& m) {
     m.def("is_acyclic",
