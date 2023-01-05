@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Cycle graphs" href="cycle.html" /><link rel="prev" title="Generating networks" href="index.html" />
-        <link rel="canonical" href="https://docs.reticula.network/generation/path.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Citing Reticula" href="../citing.html" /><link rel="prev" title="Examples" href="index.html" />
+        <link rel="canonical" href="https://docs.reticula.network/examples/isotropic.html" />
 
     <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
-        <title>Path graphs - Reticula</title>
+        <title>Isotropic bond-percolation in G(n, p) networks - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -137,7 +137,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -163,20 +163,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../types.html">Networks and network types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/Output and interoperation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../randomness.html">Randomness</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Generating networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Path graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cycle.html">Cycle graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regular_ring_lattice.html">Regular ring lattice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="square_grid_graph.html">Square grid graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="complete_graph.html">Complete graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="complete_graph.html#complete-directed-graphs">Complete directed graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnp.html">Random Erdős–Rényi network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="barabasi.html">Random Barabási–Albert network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regular.html">Random k-regular network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="degree_seq.html">Random degree-sequence network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="expected_degree_seq.html">Random expected degree-sequence network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fully_mixed.html">Fully-mixed temporal network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="activation.html">Link activation temporal network</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../generation/index.html">Generating networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../generation/path.html">Path graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/cycle.html">Cycle graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/regular_ring_lattice.html">Regular ring lattice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/square_grid_graph.html">Square grid graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/complete_graph.html">Complete graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/complete_graph.html#complete-directed-graphs">Complete directed graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/gnp.html">Random Erdős–Rényi network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/barabasi.html">Random Barabási–Albert network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/regular.html">Random k-regular network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/degree_seq.html">Random degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/expected_degree_seq.html">Random expected degree-sequence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/fully_mixed.html">Fully-mixed temporal network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generation/activation.html">Link activation temporal network</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -196,8 +196,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/event_graphs.html">Event graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples/isotropic.html">Isotropic bond-percolation in G(n, p) networks</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Isotropic bond-percolation in G(n, p) networks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing Reticula</a></li>
@@ -222,7 +222,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/generation/path.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/reticula-network/reticula-python/edit/main/docs/examples/isotropic.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -238,38 +238,60 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="path-graphs">
-<h1>Path graphs<a class="headerlink" href="#path-graphs" title="Permalink to this heading">#</a></h1>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
-Python</label><div class="sd-tab-content docutils">
-<dl class="py function">
-<dt class="sig sig-object py" id="path_graph-vert_type">
-<span class="sig-name descname"><span class="pre">path_graph[vert_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">undirected_network</span><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#path_graph-vert_type" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
+          <section id="isotropic-bond-percolation-in-g-n-p-networks">
+<h1>Isotropic bond-percolation in G(n, p) networks<a class="headerlink" href="#isotropic-bond-percolation-in-g-n-p-networks" title="Permalink to this heading">#</a></h1>
+<p>The goal of this example is to visualise what happens to the largest component
+size when you randomly remove edges from a <a class="reference internal" href="../generation/gnp.html#random-erdos-renyi-network"><span class="std std-ref">random G(n, p) network</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">def</span> <span class="nf">lcc_size</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="linenos"> 6</span>    <span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">()</span>
+<span class="linenos"> 7</span>    <span class="n">g</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">random_gnp_graph</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">int64</span><span class="p">](</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<span class="linenos"> 8</span>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">largest_connected_component</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="linenos">11</span><span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">lccs</span> <span class="o">=</span> <span class="p">[</span><span class="n">lcc_size</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">]</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">lccs</span><span class="p">))</span>
+<span class="linenos">16</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-1">
-C++</label><div class="sd-tab-content docutils">
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4I_22integer_network_vertexE10path_graph18undirected_networkI5VertTE5VertTb">
-<span id="_CPPv3I_22integer_network_vertexE10path_graph5VertTb"></span><span id="_CPPv2I_22integer_network_vertexE10path_graph5VertTb"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E22integer_network_vertex" title="integer_network_vertex"><span class="n"><span class="pre">integer_network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="../types.html#_CPPv4I_14network_vertexE18undirected_network" title="undirected_network"><span class="n"><span class="pre">undirected_network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_22integer_network_vertexE10path_graph18undirected_networkI5VertTE5VertTb" title="path_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">path_graph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_22integer_network_vertexE10path_graph18undirected_networkI5VertTE5VertTb" title="path_graph::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">periodic</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_22integer_network_vertexE10path_graph18undirected_networkI5VertTE5VertTb" title="Permalink to this definition">#</a><br /></dt>
-<dd></dd></dl>
-
+<p>Here is a more sophisticated version of this example that uses the
+multi-threading capabilities of Reticula to utilise more CPU cores:</p>
+<div class="highlight-udiff notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="gd">--- /home/runner/work/reticula-python/reticula-python/docs/examples/isotropic.py</span>
+<span class="linenos"> 2</span><span class="gi">+++ /home/runner/work/reticula-python/reticula-python/docs/examples/isotropic-thread.py</span>
+<span class="linenos"> 3</span><span class="gu">@@ -1,6 +1,9 @@</span>
+<span class="linenos"> 4</span><span class="w"> </span>import numpy as np
+<span class="linenos"> 5</span><span class="w"> </span>import reticula as ret
+<span class="linenos"> 6</span><span class="w"> </span>import matplotlib.pyplot as plt
+<span class="linenos"> 7</span><span class="gi">+</span>
+<span class="linenos"> 8</span><span class="gi">+from concurrent.futures import ThreadPoolExecutor</span>
+<span class="linenos"> 9</span><span class="gi">+from functools import partial</span>
+<span class="linenos">10</span><span class="w"> </span>
+<span class="linenos">11</span><span class="w"> </span>def lcc_size(n, p):
+<span class="linenos">12</span><span class="w"> </span>    state = ret.mersenne_twister()
+<span class="linenos">13</span><span class="gu">@@ -10,7 +13,8 @@</span>
+<span class="linenos">14</span><span class="w"> </span>n = 1000000
+<span class="linenos">15</span><span class="w"> </span>ps = np.linspace(0, 2./n)
+<span class="linenos">16</span><span class="w"> </span>
+<span class="linenos">17</span><span class="gd">-lccs = [lcc_size(n, p) for p in ps]</span>
+<span class="linenos">18</span><span class="gi">+with ThreadPoolExecutor(max_workers=8) as e:</span>
+<span class="linenos">19</span><span class="gi">+    lccs = e.map(partial(lcc_size, n), ps)</span>
+<span class="linenos">20</span><span class="w"> </span>
+<span class="linenos">21</span><span class="w"> </span>plt.plot(ps, list(lccs))
+<span class="linenos">22</span><span class="w"> </span>plt.show()
+</pre></div>
 </div>
-</div>
-<p>Generates a chain of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">size</span></code> vertices, each connected consecutively to each
-other. If the periodic parameter is set to <code class="code highlight cpp docutils literal highlight-cpp"><span class="nb">true</span></code>, then the first and the
-last vertices are also connected, making it into a cycle graph equivalent to
-what is generated through <a class="reference internal" href="cycle.html#_CPPv4I_22integer_network_vertexE11cycle_graph18undirected_networkI5VertTE5VertT" title="cycle_graph"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">cycle_graph()</span></code></a>.</p>
 </section>
 
         </article>
@@ -277,12 +299,12 @@ what is generated through <a class="reference internal" href="cycle.html#_CPPv4I
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="cycle.html">
+          <a class="next-page" href="../citing.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Cycle graphs</div>
+                <div class="title">Citing Reticula</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -293,7 +315,7 @@ what is generated through <a class="reference internal" href="cycle.html#_CPPv4I
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Generating networks</div>
+                <div class="title">Examples</div>
                 
               </div>
             </a>
@@ -321,27 +343,8 @@ what is generated through <a class="reference internal" href="cycle.html#_CPPv4I
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Path graphs</a><ul>
-<li><a class="reference internal" href="#path_graph-vert_type"><code class="docutils literal notranslate"><span class="pre">path_graph[vert_type]()</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
