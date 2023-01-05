@@ -1,6 +1,14 @@
 Assortativity
 =============
 
+.. note::
+   The methods in this section rely on calculating the Pearson correlation
+   coefficient between pairs of value sequences. If the network is regular (i.e.
+   all vertices have equal degree or label) or if the network has fewer than two
+   pairs of interacting vertices, the result of calculating assortativity will
+   be :cpp:`NaN`.
+
+
 Degree assortativity
 --------------------
 

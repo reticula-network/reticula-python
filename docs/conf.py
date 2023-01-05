@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Reticula'
-copyright = '2022'
+copyright = '2023'
 author = 'Arash Badie-Modiri'
 
 # The full version, including alpha/beta/rc tags
-release = '0.6.0'
+release = '0.7.0'
 
 
 # -- General configuration ---------------------------------------------------
