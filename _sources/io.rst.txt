@@ -48,7 +48,7 @@ where each row represents an edge. Note that vertices with no neighbours cannot
 be represented in this format.
 
 Interoperation with NetworkX
----------------------------
+----------------------------
 
 .. py:function:: to_networkx(network, create_using = None)
 

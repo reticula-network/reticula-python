@@ -145,16 +145,34 @@ directed network equivalents.
 Vertex degree
 ^^^^^^^^^^^^^
 
-The degree of each vertex can be calculated using the method :py:`degree`,
-:py:`in_degree` and :py:`out_degree`. For hypergraphs and hypergraph temporal
-networks, the degree refers to the number of unique edges, as opposed to the
-number of neighbours.
+There are multiple ways of defining the degrees for vertices depending on the
+type of network at hand. All network types have the following degree types
+defined:
+
+* **In-degree** referes to the number of edges where the vertex is a member of
+  their out-incident set of vertices, i.e., the cardinality of the set of edges
+  that are incoming to that vertex.
+* **Out-degree** referes to the number of edges where the vertex is a member of
+  their in-incident set of vertices, i.e., the cardinality of the set of edges
+  that are outgoing from that vertex.
+* **Incident-degree** referes to the number of edges where the vertex is a
+  member of their incident set of vertices, i.e., the set of edges that are
+  incoming to or outgoing from that vertex. This should be the sum of in- and
+  out-degree of that vertex.
+
+For undirected networks, **degree** of a vertex referes to the incident-degree
+of that vertex. For directed networks, the word degree on its own is
+vaguely-defined and should be avoided.
 
 .. code-block:: python
 
-      g3.degree(2) # => 2
-      g3.out_degree(2) # => same as above, as the network is undirected
-      g3.in_degree(2) # => same as above, as the network is undirected
+      ret.degree(g3, 2) # => 2
+      ret.incident_degree(g3, 2) # => same as above, as the network is undirected
+      ret.out_degree(g3, 2) # => same as above, as the network is undirected
+      ret.in_degree(g3, 2) # => same as above, as the network is undirected
+
+See :ref:`vertex degree algorithms <algorithms/vertex_degrees:Vertex degrees>`
+for more information on these and other relevant functions.
 
 Network types
 -------------
@@ -194,8 +212,8 @@ Directed static hyper-networks
 .. py:class:: directed_hypernetwork[vertex_type]
 
 
-Directed temporal networks
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Undirected temporal networks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. cpp:class:: template <network_vertex VertT, typename TimeT> \
    undirected_temporal_network<VertT, TimeT>
 
@@ -302,7 +320,7 @@ Vertices
   Any type that is totally ordered (satisfies :cpp:`std::totally_ordered<T>`)
   and hashable with the struct :cpp:struct:`hash` can be a network vertex.
 
-.. cpp:concept:: template <typename T> integer_vertex
+.. cpp:concept:: template <typename T> integer_network_vertex
 
   A :cpp:concept:`network_vertex` that is also an arithmetic integer type,
   i.e., trait :cpp:`std::numeric_limits<T>::is_integer` should have a true value
@@ -323,7 +341,17 @@ Edges
   The type must also provide specialisations for :cpp:func:`effect_lt` and
   :cpp:func:`adjacent`.
 
-.. cpp:concept:: template <typename T> temporal_edge
+.. cpp:concept:: template <typename T> directed_network_edge
+
+  A :cpp:concept:`network_edge` that might have distinct in- and out-incident
+  sets of vertices.
+
+.. cpp:concept:: template <typename T> undirected_network_edge
+
+  A :cpp:concept:`network_edge` that cannot have distinct in- and out-incident
+  sets of vertices, i.e., in- and out-incident vertices are always equal.
+
+.. cpp:concept:: template <typename T> temporal_network_edge
 
   A :cpp:concept:`network_edge` that carries time information, by defining
   member types :cpp:`TimeType` which should be an arithmatic type and
@@ -331,10 +359,30 @@ Edges
   member functions :cpp:`cause_time()`, :cpp:`effect_time()` and
   :cpp:`static_projection()`.
 
-.. cpp:concept:: template <typename T> static_edge
+.. cpp:concept:: template <typename T> directed_temporal_network_edge
+
+  A :cpp:concept:`temporal_network_edge` that is also a
+  :cpp:concept:`directed_network_edge`.
+
+.. cpp:concept:: template <typename T> undirected_temporal_network_edge
+
+  A :cpp:concept:`temporal_network_edge` that is also a
+  :cpp:concept:`undirected_network_edge`.
+
+.. cpp:concept:: template <typename T> static_network_edge
 
   A :cpp:concept:`network_edge` that does not carry time information by not
   defining member function :cpp:`effect_time()`.
+
+.. cpp:concept:: template <typename T> directed_static_network_edge
+
+  A :cpp:concept:`static_network_edge` that is also a
+  :cpp:concept:`directed_network_edge`.
+
+.. cpp:concept:: template <typename T> undirected_static_network_edge
+
+  A :cpp:concept:`static_network_edge` that is also a
+  :cpp:concept:`undirected_network_edge`.
 
 
 Degree/weight ranges

@@ -12,7 +12,7 @@ Regular ring lattice
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <integer_vertex VertT> \
+    .. cpp:function:: template <integer_network_vertex VertT> \
        undirected_network<VertT> \
        regular_ring_lattice(VertT size, VertT degree)
 

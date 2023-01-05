@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Graph properties" href="graph_properties.html" /><link rel="prev" title="Graphicallity" href="graphicallity.html" />
         <link rel="canonical" href="https://docs.reticula.network/algorithms/graph_operations.html" />
 
-    <meta name="generator" content="sphinx-5.2.2, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Graph operations - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">Reticula</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -186,6 +186,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vertex_degrees.html">Vertex degrees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Graph operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_properties.html">Graph properties</a></li>
@@ -266,8 +267,8 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of a subset of the network <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> consisting only of edges
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span><span class="w"></span></code> and all their incident vertices.</p>
+<p>Returns a copy of a subset of the network <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> consisting only of edges
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span></code> and all their incident vertices.</p>
 </section>
 <section id="vertex-induced-subgraphs">
 <h2>Vertex induced subgraphs<a class="headerlink" href="#vertex-induced-subgraphs" title="Permalink to this heading">#</a></h2>
@@ -291,8 +292,8 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of a subset of the network <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> consisting only of vertices
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span><span class="w"></span></code> and any edges with all incident vertices in <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span><span class="w"></span></code>.</p>
+<p>Returns a copy of a subset of the network <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> consisting only of vertices
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span></code> and any edges with all incident vertices in <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span></code>.</p>
 </section>
 <section id="adding-and-removings-edges">
 <h2>Adding and removings edges<a class="headerlink" href="#adding-and-removings-edges" title="Permalink to this heading">#</a></h2>
@@ -316,7 +317,7 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> with edges from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span><span class="w"></span></code> along with all their
+<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> with edges from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span></code> along with all their
 incident vertices added in.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
@@ -338,7 +339,7 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> with edges from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span><span class="w"></span></code> removed. The returned
+<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> with edges from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">edges</span></code> removed. The returned
 graph has all the vertices of the original graph.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
@@ -362,7 +363,7 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 <p>Return a copy of the network with the same set of vertices, but with each edge
 kept with probability determined by calling the function <code class="code highlight python docutils literal highlight-python"><span class="n">prob_func</span></code>, or
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">occupation_prob</span><span class="w"></span></code> in C++.</p>
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">occupation_prob</span></code> in C++.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-10">
@@ -432,7 +433,7 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> with vertices from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span><span class="w"></span></code> added in.</p>
+<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> with vertices from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span></code> added in.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-16" name="sd-tab-set-8" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-16">
@@ -453,7 +454,7 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span><span class="w"></span></code> with vertices from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span><span class="w"></span></code>, along with all
+<p>Returns a copy of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">net</span></code> with vertices from <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">verts</span></code>, along with all
 their incident edges removed.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-18" name="sd-tab-set-9" type="radio">
@@ -477,7 +478,7 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 <p>Return a copy of the network with each vertex (and all its incident edges)
 kept with probability determined by calling the function <code class="code highlight python docutils literal highlight-python"><span class="n">prob_func</span></code>, or
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">occupation_prob</span><span class="w"></span></code> in C++, with that vertex.</p>
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">occupation_prob</span></code> in C++, with that vertex.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-20" name="sd-tab-set-10" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-20">
@@ -547,7 +548,7 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Calculates the graph union of two networks <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span><span class="w"></span></code> and <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g2</span><span class="w"></span></code>: a new
+<p>Calculates the graph union of two networks <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span></code> and <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g2</span></code>: a new
 network containing the union of their sets of vertices and edges.</p>
 </section>
 <section id="cartesian-product">
@@ -572,8 +573,8 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Calculates graph cartesian product of two undirected networks <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span><span class="w"></span></code> and
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span><span class="w"></span></code>.</p>
+<p>Calculates graph cartesian product of two undirected networks <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span></code> and
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">g1</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>While in C++ there are no limits on the types of vertices

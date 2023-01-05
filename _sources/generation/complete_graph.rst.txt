@@ -12,7 +12,7 @@ Complete graphs
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <integer_vertex VertT> \
+    .. cpp:function:: template <integer_network_vertex VertT> \
        undirected_network<VertT> complete_graph(VertT size)
 
 
@@ -34,7 +34,7 @@ Complete directed graphs
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <integer_vertex VertT> \
+    .. cpp:function:: template <integer_network_vertex VertT> \
        directed_network<VertT> complete_directed_graph(VertT size)
 
 Generates a directed network of size :cpp:`size` vertices where all possible

@@ -21,7 +21,7 @@ provide experimental support for PyPy versions 3.8 and 3.9 and Python 3.11.
 
 If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the
-:ref:`Development` section for more information.
+:ref:`Development <installation:Development>` section for more information.
 
 
 The C++ library

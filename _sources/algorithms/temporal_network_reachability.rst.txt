@@ -58,7 +58,7 @@ From/to a single point
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       temporal_cluster<EdgeT, AdjT> \
       in_cluster(\
@@ -67,7 +67,7 @@ From/to a single point
           const typename EdgeT::VertexType& v, \
           typename EdgeT::TimeType t)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       temporal_cluster<EdgeT, AdjT> \
       in_cluster(\
@@ -76,7 +76,7 @@ From/to a single point
           const EdgeT& e)
 
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       temporal_cluster<EdgeT, AdjT> \
       out_cluster(\
@@ -85,7 +85,7 @@ From/to a single point
           const typename EdgeT::VertexType& v, \
           typename EdgeT::TimeType t)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       temporal_cluster<EdgeT, AdjT> \
       out_cluster(\
@@ -113,12 +113,12 @@ From/to all points
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT, temporal_cluster<EdgeT, AdjT>>> \
       in_clusters(const network<EdgeT>& temp, const AdjT& adj)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT, temporal_cluster<EdgeT, AdjT>>> \
       out_clusters(const network<EdgeT>& temp, const AdjT& adj)
@@ -144,12 +144,12 @@ Cluster sizes from/to all points
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT, temporal_cluster_size<EdgeT, AdjT>>> \
       in_cluster_sizes(const network<EdgeT>& temp, const AdjT& adj)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT, temporal_cluster_size<EdgeT, AdjT>>> \
       out_cluster_sizes(const network<EdgeT>& temp, const AdjT& adj)
@@ -178,7 +178,7 @@ Cluster size estimates from/to all points
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT,\
       temporal_cluster_size<EdgeT, AdjT>>> \
@@ -187,7 +187,7 @@ Cluster size estimates from/to all points
       typename EdgeT::TimeType time_resolution, \
       std::size_t seed)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
       temporal_adjacency::temporal_adjacency AdjT> \
       std::vector<std::pair<EdgeT,\
       temporal_cluster_size_estimate<EdgeT, AdjT>>> \
@@ -234,7 +234,7 @@ Simple adjacency
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:class:: template <temporal_edge EdgeT> temporal_adjacency::simple
+    .. cpp:class:: template <temporal_network_edge EdgeT> temporal_adjacency::simple
 
       .. cpp:function:: simple()
 
@@ -260,7 +260,7 @@ Limited waiting-time adjacency
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:class:: template <temporal_edge EdgeT> \
+    .. cpp:class:: template <temporal_network_edge EdgeT> \
       temporal_adjacency::limited_waiting_time
 
       .. cpp:function:: limited_waiting_time(typename EdgeType::TimeType dt)
@@ -280,7 +280,7 @@ Exponential adjacency
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:class:: template <temporal_edge EdgeT> \
+    .. cpp:class:: template <temporal_network_edge EdgeT> \
       temporal_adjacency::exponential
 
       .. cpp:function:: exponential(\
@@ -313,7 +313,7 @@ Geometric adjacency
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:class:: template <temporal_edge EdgeT> \
+    .. cpp:class:: template <temporal_network_edge EdgeT> \
       temporal_adjacency::geometric
 
       .. cpp:function:: geometric(\
@@ -354,7 +354,7 @@ store subsets of the temporal network. While storing a subset of a static
 network required only storing a set of vertices, a subset of a temporal network
 also requires temporal information.
 
-.. cpp:class:: template <temporal_edge EdgeT, \
+.. cpp:class:: template <temporal_network_edge EdgeT, \
    temporal_adjacency::temporal_adjacency AdjT> temporal_cluster
 
    .. cpp:type:: VertexType
@@ -401,7 +401,7 @@ also requires temporal information.
    .. cpp:function:: typename EdgeT::TimeType mass() const
 
 
-.. cpp:class:: template <temporal_edge EdgeT, \
+.. cpp:class:: template <temporal_network_edge EdgeT, \
          temporal_adjacency::temporal_adjacency AdjT> temporal_cluster_size
 
    .. cpp:type:: VertexType
@@ -422,7 +422,7 @@ also requires temporal information.
    .. cpp:function:: typename EdgeT::TimeType mass() const
 
 
-.. cpp:class:: template <temporal_edge EdgeT, \
+.. cpp:class:: template <temporal_network_edge EdgeT, \
          temporal_adjacency::temporal_adjacency AdjT>\
       temporal_cluster_size_estimate
 

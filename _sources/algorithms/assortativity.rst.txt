@@ -17,7 +17,7 @@ Undirected networks
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT> \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT> \
         double degree_assortativity(const network<EdgeT>& net)
 
 Calculates degree assortativity for undirected dyadic and hypergraph static
@@ -41,13 +41,13 @@ Directed networks
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
         double in_in_degree_assortativity(const network<EdgeT>& net)
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
         double in_out_degree_assortativity(const network<EdgeT>& net)
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
         double out_in_degree_assortativity(const network<EdgeT>& net)
-    .. cpp:function:: template <static_directed_edge EdgeT> \
+    .. cpp:function:: template <directed_static_network_edge EdgeT> \
         double out_out_degree_assortativity(const network<EdgeT>& net)
 
 Calculates in-/out-degree assortativity for directed dyadic and hypergraph
@@ -71,7 +71,7 @@ Undirected networks
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT, \
+    .. cpp:function:: template <undirected_static_network_edge EdgeT, \
           std::invocable<const typename EdgeT::VertexType&> AttrFun> \
         requires std::convertible_to<\
           std::invoke_result_t<\
@@ -130,8 +130,8 @@ Directed networks
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <static_undirected_edge EdgeT, \
-          std::invocable<const typename EdgeT::VertexType&> AttrFun1,
+    .. cpp:function:: template <undirected_static_network_edge EdgeT, \
+          std::invocable<const typename EdgeT::VertexType&> AttrFun1, \
           std::invocable<const typename EdgeT::VertexType&> AttrFun2> \
         requires
           std::convertible_to<\

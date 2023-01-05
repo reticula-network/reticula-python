@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Input/Output and interoperation" href="io.html" /><link rel="prev" title="Quick Start" href="quickstart.html" />
         <link rel="canonical" href="https://docs.reticula.network/types.html" />
 
-    <meta name="generator" content="sphinx-5.2.2, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Networks and network types - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">Reticula</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -186,6 +186,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_operations.html">Graph operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
@@ -260,7 +261,7 @@ networks.</p>
 <p>The network and edge types in python are based on statically typed C++ classes.
 This imposes restrictions on the type of vertices or timestamps a network can
 store. In C++, this is indicated by template instantiation, e.g., the class
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"></span></code> indicates an undirected static
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span></code> indicates an undirected static
 network with 64-bit signed integer vertices. The Python API, which by necessity
 has to carry the same information, simulates this in a form similar to the
 existing <a class="reference external" href="https://docs.python.org/3/library/typing.html">type annotation</a> syntax: <code class="code highlight python docutils literal highlight-python"><span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">]</span></code>.
@@ -303,10 +304,10 @@ tuples that implicitly convert to the correct edge type:</p>
 </div>
 <p>This mimics the C++ brace initialisation syntax:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g1</span><span class="p">;</span><span class="w"> </span><span class="c1">// an empty network</span>
-<span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g2</span><span class="p">({{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}});</span><span class="w"></span>
-<span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g3</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}},</span><span class="w"></span>
-<span class="w">   </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">});</span><span class="w"></span>
+<span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g2</span><span class="p">({{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}});</span>
+<span class="n">undirected_network</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g3</span><span class="p">(</span>
+<span class="w">   </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}},</span>
+<span class="w">   </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">});</span>
 </pre></div>
 </div>
 <p>The list of vertices is not required, but providing it can inform the network
@@ -328,7 +329,7 @@ vice versa.</p>
 <span class="n">g3</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="c1"># list six vertices</span>
 </pre></div>
 </div>
-<p>You can also get the network edges sorted by <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">operator</span><span class="o">&lt;</span><span class="w"></span></code>
+<p>You can also get the network edges sorted by <code class="code highlight cpp docutils literal highlight-cpp"><span class="k">operator</span><span class="o">&lt;</span></code>
 (<code class="code highlight python docutils literal highlight-python"><span class="n">operator</span><span class="o">.</span><span class="fm">__lt__</span></code> in Python) or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">effect_lt()</span></code>
 (<code class="xref py py-func docutils literal notranslate"><span class="pre">effect_lt()</span></code>) through functions <code class="code highlight python docutils literal highlight-python"><span class="n">edges_cause</span></code> and
 <code class="code highlight python docutils literal highlight-python"><span class="n">edges_effect</span></code> member functions. In a temporal network the result of the
@@ -360,15 +361,32 @@ directed network equivalents.</p>
 </section>
 <section id="vertex-degree">
 <h3>Vertex degree<a class="headerlink" href="#vertex-degree" title="Permalink to this heading">#</a></h3>
-<p>The degree of each vertex can be calculated using the method <code class="code highlight python docutils literal highlight-python"><span class="n">degree</span></code>,
-<code class="code highlight python docutils literal highlight-python"><span class="n">in_degree</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">out_degree</span></code>. For hypergraphs and hypergraph temporal
-networks, the degree refers to the number of unique edges, as opposed to the
-number of neighbours.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
-<span class="n">g3</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
-<span class="n">g3</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<p>There are multiple ways of defining the degrees for vertices depending on the
+type of network at hand. All network types have the following degree types
+defined:</p>
+<ul class="simple">
+<li><p><strong>In-degree</strong> referes to the number of edges where the vertex is a member of
+their out-incident set of vertices, i.e., the cardinality of the set of edges
+that are incoming to that vertex.</p></li>
+<li><p><strong>Out-degree</strong> referes to the number of edges where the vertex is a member of
+their in-incident set of vertices, i.e., the cardinality of the set of edges
+that are outgoing from that vertex.</p></li>
+<li><p><strong>Incident-degree</strong> referes to the number of edges where the vertex is a
+member of their incident set of vertices, i.e., the set of edges that are
+incoming to or outgoing from that vertex. This should be the sum of in- and
+out-degree of that vertex.</p></li>
+</ul>
+<p>For undirected networks, <strong>degree</strong> of a vertex referes to the incident-degree
+of that vertex. For directed networks, the word degree on its own is
+vaguely-defined and should be avoided.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
+<span class="n">ret</span><span class="o">.</span><span class="n">incident_degree</span><span class="p">(</span><span class="n">g3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<span class="n">ret</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">g3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
+<span class="n">ret</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="n">g3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; same as above, as the network is undirected</span>
 </pre></div>
 </div>
+<p>See <a class="reference internal" href="algorithms/vertex_degrees.html#vertex-degrees"><span class="std std-ref">vertex degree algorithms</span></a>
+for more information on these and other relevant functions.</p>
 </section>
 </section>
 <section id="network-types">
@@ -430,8 +448,8 @@ number of neighbours.</p>
 <dd></dd></dl>
 
 </section>
-<section id="directed-temporal-networks">
-<h3>Directed temporal networks<a class="headerlink" href="#directed-temporal-networks" title="Permalink to this heading">#</a></h3>
+<section id="undirected-temporal-networks">
+<h3>Undirected temporal networks<a class="headerlink" href="#undirected-temporal-networks" title="Permalink to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E27undirected_temporal_network">
 <span id="_CPPv3I_14network_vertex0E27undirected_temporal_network"></span><span id="_CPPv2I_14network_vertex0E27undirected_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="Permalink to this definition">#</a><br /></dt>
@@ -443,8 +461,8 @@ number of neighbours.</p>
 <dd></dd></dl>
 
 </section>
-<section id="id1">
-<h3>Directed temporal networks<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="directed-temporal-networks">
+<h3>Directed temporal networks<a class="headerlink" href="#directed-temporal-networks" title="Permalink to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E25directed_temporal_network">
 <span id="_CPPv3I_14network_vertex0E25directed_temporal_network"></span><span id="_CPPv2I_14network_vertex0E25directed_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="Permalink to this definition">#</a><br /></dt>
@@ -510,12 +528,12 @@ number of neighbours.</p>
 </section>
 </section>
 <section id="vertex-types">
-<span id="id2"></span><h2>Vertex types<a class="headerlink" href="#vertex-types" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>Vertex types<a class="headerlink" href="#vertex-types" title="Permalink to this heading">#</a></h2>
 <section id="simple-types">
 <h3>Simple types<a class="headerlink" href="#simple-types" title="Permalink to this heading">#</a></h3>
 <p>The only requirement for a valid vertex type in C++ is to satisfy
 <a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_vertex</span></code></a>. This means that the numeric types,
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="w"></span></code> and all standard library
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">tuple</span></code> and all standard library
 ordered containers are accepted. On the other hand the python implementation
 requires a predefined list of types at compile time, meaning that we have to
 make a choice as to what vertex types would be available. At the moment certain
@@ -523,19 +541,19 @@ fundamental types are defined</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="int64">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">int64</span></span><a class="headerlink" href="#int64" title="Permalink to this definition">#</a></dt>
-<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"></span></code> 64-bit signed integers.</p>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span></code> 64-bit signed integers.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="string">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">string</span></span><a class="headerlink" href="#string" title="Permalink to this definition">#</a></dt>
-<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"></span></code>.</p>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span></code>.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pair-type1-type2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pair[type1,</span> <span class="pre">type2]</span></span><a class="headerlink" href="#pair-type1-type2" title="Permalink to this definition">#</a></dt>
-<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Type1</span><span class="p">,</span><span class="w"> </span><span class="n">Type2</span><span class="o">&gt;</span><span class="w"></span></code>.</p>
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Type1</span><span class="p">,</span><span class="w"> </span><span class="n">Type2</span><span class="o">&gt;</span></code>.</p>
 </dd></dl>
 
 </section>
@@ -555,7 +573,7 @@ you can use one of the following pre-defined types:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="double">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">double</span></span><a class="headerlink" href="#double" title="Permalink to this definition">#</a></dt>
-<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">double</span><span class="w"></span></code> double precision floating-point type, almost
+<dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">double</span></code> double precision floating-point type, almost
 always an implementation of the IEEE-754 binary64 format.</p>
 </dd></dl>
 
@@ -567,15 +585,15 @@ always an implementation of the IEEE-754 binary64 format.</p>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E14network_vertex">
 <span id="_CPPv3I0E14network_vertex"></span><span id="_CPPv2I0E14network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E14network_vertex" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Any type that is totally ordered (satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"></span></code>)
+<dd><p>Any type that is totally ordered (satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code>)
 and hashable with the struct <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">hash</span></code> can be a network vertex.</p>
 </dd></dl>
 
 <dl class="cpp concept">
-<dt class="sig sig-object cpp" id="_CPPv4I0E14integer_vertex">
-<span id="_CPPv3I0E14integer_vertex"></span><span id="_CPPv2I0E14integer_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">integer_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E14integer_vertex" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4I0E22integer_network_vertex">
+<span id="_CPPv3I0E22integer_network_vertex"></span><span id="_CPPv2I0E22integer_network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">integer_network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E22integer_network_vertex" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_vertex</span></code></a> that is also an arithmetic integer type,
-i.e., trait <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">is_integer</span><span class="w"></span></code> should have a true value
+i.e., trait <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">is_integer</span></code> should have a true value
 for that type.</p>
 </dd></dl>
 
@@ -586,30 +604,72 @@ for that type.</p>
 <dt class="sig sig-object cpp" id="_CPPv4I0E12network_edge">
 <span id="_CPPv3I0E12network_edge"></span><span id="_CPPv2I0E12network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E12network_edge" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Any type can be a network edge if it is totally ordered (satisfies
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"></span></code>), hashable with both <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="w"></span></code> and
-<code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">hash</span></code>, defines a <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">VertexType</span><span class="w"></span></code> member type and certain
-function members: <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">mutated_verts</span><span class="p">()</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">mutator_verts</span><span class="p">()</span><span class="w"></span></code>,
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_in_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span></code> and
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_out_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span></code>.</p>
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code>), hashable with both <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">hash</span></code> and
+<code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">hash</span></code>, defines a <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">VertexType</span></code> member type and certain
+function members: <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">mutated_verts</span><span class="p">()</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">mutator_verts</span><span class="p">()</span></code>,
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_in_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span></code> and
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">is_out_incident</span><span class="p">(</span><span class="n">VertexType</span><span class="w"> </span><span class="n">v</span><span class="p">)</span></code>.</p>
 <p>The type must also provide specialisations for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">effect_lt()</span></code> and
 <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">adjacent()</span></code>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
-<dt class="sig sig-object cpp" id="_CPPv4I0E13temporal_edge">
-<span id="_CPPv3I0E13temporal_edge"></span><span id="_CPPv2I0E13temporal_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temporal_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E13temporal_edge" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that carries time information, by defining
-member types <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">TimeType</span><span class="w"></span></code> which should be an arithmatic type and
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">StaticProjectionType</span><span class="w"></span></code> which should be a <a class="reference internal" href="#_CPPv4I0E11static_edge" title="static_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_edge</span></code></a> and
-member functions <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">cause_time</span><span class="p">()</span><span class="w"></span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">effect_time</span><span class="p">()</span><span class="w"></span></code> and
-<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">static_projection</span><span class="p">()</span><span class="w"></span></code>.</p>
+<dt class="sig sig-object cpp" id="_CPPv4I0E21directed_network_edge">
+<span id="_CPPv3I0E21directed_network_edge"></span><span id="_CPPv2I0E21directed_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21directed_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that might have distinct in- and out-incident
+sets of vertices.</p>
 </dd></dl>
 
 <dl class="cpp concept">
-<dt class="sig sig-object cpp" id="_CPPv4I0E11static_edge">
-<span id="_CPPv3I0E11static_edge"></span><span id="_CPPv2I0E11static_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">static_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E11static_edge" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4I0E23undirected_network_edge">
+<span id="_CPPv3I0E23undirected_network_edge"></span><span id="_CPPv2I0E23undirected_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E23undirected_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that cannot have distinct in- and out-incident
+sets of vertices, i.e., in- and out-incident vertices are always equal.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E21temporal_network_edge">
+<span id="_CPPv3I0E21temporal_network_edge"></span><span id="_CPPv2I0E21temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that carries time information, by defining
+member types <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">TimeType</span></code> which should be an arithmatic type and
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">StaticProjectionType</span></code> which should be a <code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_edge</span></code> and
+member functions <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">cause_time</span><span class="p">()</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">effect_time</span><span class="p">()</span></code> and
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">static_projection</span><span class="p">()</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E30directed_temporal_network_edge">
+<span id="_CPPv3I0E30directed_temporal_network_edge"></span><span id="_CPPv2I0E30directed_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30directed_temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">temporal_network_edge</span></code></a> that is also a
+<a class="reference internal" href="#_CPPv4I0E21directed_network_edge" title="directed_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">directed_network_edge</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E32undirected_temporal_network_edge">
+<span id="_CPPv3I0E32undirected_temporal_network_edge"></span><span id="_CPPv2I0E32undirected_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E32undirected_temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">temporal_network_edge</span></code></a> that is also a
+<a class="reference internal" href="#_CPPv4I0E23undirected_network_edge" title="undirected_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">undirected_network_edge</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E19static_network_edge">
+<span id="_CPPv3I0E19static_network_edge"></span><span id="_CPPv2I0E19static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E19static_network_edge" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that does not carry time information by not
-defining member function <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">effect_time</span><span class="p">()</span><span class="w"></span></code>.</p>
+defining member function <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">effect_time</span><span class="p">()</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E28directed_static_network_edge">
+<span id="_CPPv3I0E28directed_static_network_edge"></span><span id="_CPPv2I0E28directed_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E28directed_static_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E19static_network_edge" title="static_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_network_edge</span></code></a> that is also a
+<a class="reference internal" href="#_CPPv4I0E21directed_network_edge" title="directed_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">directed_network_edge</span></code></a>.</p>
+</dd></dl>
+
+<dl class="cpp concept">
+<dt class="sig sig-object cpp" id="_CPPv4I0E30undirected_static_network_edge">
+<span id="_CPPv3I0E30undirected_static_network_edge"></span><span id="_CPPv2I0E30undirected_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30undirected_static_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#_CPPv4I0E19static_network_edge" title="static_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_network_edge</span></code></a> that is also a
+<a class="reference internal" href="#_CPPv4I0E23undirected_network_edge" title="undirected_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">undirected_network_edge</span></code></a>.</p>
 </dd></dl>
 
 </section>
@@ -618,26 +678,26 @@ defining member function <code class="code highlight cpp docutils literal highli
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E12degree_range">
 <span id="_CPPv3I0E12degree_range"></span><span id="_CPPv2I0E12degree_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12degree_range" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="w"></span></code>) with integer values.</p>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with integer values.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E17degree_pair_range">
 <span id="_CPPv3I0E17degree_pair_range"></span><span id="_CPPv2I0E17degree_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17degree_pair_range" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="w"></span></code>) with pairs of integers as
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with pairs of integers as
 values, representing in- and out-degree of each vertex.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E12weight_range">
 <span id="_CPPv3I0E12weight_range"></span><span id="_CPPv2I0E12weight_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12weight_range" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="w"></span></code>) with arithmetic values.</p>
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with arithmetic values.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E17weight_pair_range">
 <span id="_CPPv3I0E17weight_pair_range"></span><span id="_CPPv2I0E17weight_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17weight_pair_range" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="w"></span></code>) with pairs of arithmetic
+<dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with pairs of arithmetic
 values, Corresponding to in- and out-degree weigts for each vertex.</p>
 </dd></dl>
 
@@ -732,11 +792,11 @@ values, Corresponding to in- and out-degree weigts for each vertex.</p>
 <li><a class="reference internal" href="#directed_hypernetwork-vertex_type"><code class="docutils literal notranslate"><span class="pre">directed_hypernetwork[vertex_type]</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#directed-temporal-networks">Directed temporal networks</a><ul>
+<li><a class="reference internal" href="#undirected-temporal-networks">Undirected temporal networks</a><ul>
 <li><a class="reference internal" href="#undirected_temporal_network-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id1">Directed temporal networks</a><ul>
+<li><a class="reference internal" href="#directed-temporal-networks">Directed temporal networks</a><ul>
 <li><a class="reference internal" href="#directed_temporal_network-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">directed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
 </ul>
 </li>

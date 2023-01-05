@@ -4,6 +4,7 @@ Algorithms
 .. toctree::
    :maxdepth: 1
 
+   vertex_degrees
    graphicallity
    graph_operations
    graph_properties

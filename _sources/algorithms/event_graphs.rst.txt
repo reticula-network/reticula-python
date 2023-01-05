@@ -18,14 +18,14 @@ Reticula currently provides two ways of studying temporal networks using their
 event graph representation:
 
 #. You can :ref:`explicitly calculate the event graph representation of a
-   temporal network <Explicit event graph>`. This potentially requires a lot of
-   memory, but returns a normal directed network where each vertex happens to
-   be an event. You can then bring all the tools available in Reticula for
-   working with directed networks to bear.
-#. Alternatively, you can construct an :ref:`implicit event graph <Implicit
-   event graph>`. This does not require much more memory than the original
-   temporal network but limits you to direct use or to certain functions that
-   can accept an implicit event graph object.
+   temporal network <algorithms/event_graphs:Explicit event graph>`. This
+   potentially requires a lot of memory, but returns a normal directed network
+   where each vertex happens to be an event. You can then bring all the tools
+   available in Reticula for working with directed networks to bear.
+#. Alternatively, you can construct an :ref:`implicit event graph
+   <algorithms/event_graphs:Implicit event graph>`. This does not require much
+   more memory than the original temporal network but limits you to direct use
+   or to certain functions that can accept an implicit event graph object.
 
 Explicit event graph
 --------------------
@@ -41,7 +41,7 @@ Explicit event graph
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           temporal_adjacency::temporal_adjacency AdjT> \
         directed_network<EdgeT> \
         event_graph(const network<EdgeT>& temp, const AdjT& adj)
@@ -74,13 +74,14 @@ Implicit event graph
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           temporal_adjacency::temporal_adjacency AdjT> \
         implicit_event_graph<EdgeT, AdjT> \
         make_implicit_event_graph(const network<EdgeT>& temp, const AdjT& adj)
 
-This function, similar to the case of the :ref:`explicit event graph`, receives
-a temporal network and a :ref:`temporal adjacency object
+This function, similar to the case of the :ref:`explicit event graphs
+<algorithms/event_graphs:Explicit event graph>`, receives a temporal network
+and a :ref:`temporal adjacency object
 <algorithms/temporal_network_reachability:temporal adjacency>` and constructs
 a implicit event graph object. You can then pass this object to various
 function that are designed to receive one.
@@ -102,14 +103,14 @@ Implicit event graph functions
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             component<EdgeT> \
             in_component(\
               const implicit_event_graph<EdgeT, AdjT>& eg, \
               const EdgeT& root)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             component<EdgeT> \
             out_component(\
@@ -138,12 +139,12 @@ the event :cpp:`root`.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component<EdgeT>>> \
             in_components(const implicit_event_graph<EdgeT, AdjT>& eg)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component<EdgeT>>> \
             out_components(const implicit_event_graph<EdgeT, AdjT>& eg)
@@ -172,12 +173,12 @@ effect that was first transmitted by that event. The algorithm is described in
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component_size<EdgeT>>> \
             in_component_sizes(const implicit_event_graph<EdgeT, AdjT>& eg)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component_size<EdgeT>>> \
             out_component_sizes(const implicit_event_graph<EdgeT, AdjT>& eg)
@@ -206,13 +207,13 @@ by that event. The algorithm is described in :cite:p:`badie2020efficient`.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component_size_estimate<EdgeT>>> \
             in_component_size_estimates(\
               const implicit_event_graph<EdgeT, AdjT>& eg)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<std::pair<EdgeT, component_size_estimate<EdgeT>>> \
             out_component_size_estimates(\
@@ -236,7 +237,7 @@ transmitted by that event. The algorithm is described in
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             component<EdgeT> \
             weakly_connected_component(\
@@ -260,7 +261,7 @@ upper-bound on reachability in a network :cite:p:`kivela2018mapping`.
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
               temporal_adjacency::temporal_adjacency AdjT> \
             std::vector<component<EdgeT>> \
             weakly_connected_components(\

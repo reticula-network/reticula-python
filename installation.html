@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quick Start" href="quickstart.html" /><link rel="prev" title="Reticula: Temporal network and hypergraphs" href="index.html" />
         <link rel="canonical" href="https://docs.reticula.network/installation.html" />
 
-    <meta name="generator" content="sphinx-5.2.2, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Installation - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">Reticula</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -186,6 +186,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_operations.html">Graph operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
@@ -249,8 +250,8 @@
 <p>Pre-compiled binding “Wheel”s are available for 64-bit Linux systems with glibc
 version 2.17 or above. You can install the most recent stable release from the
 PyPi index using pip:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip install --upgrade pip
-<span class="gp">$ </span>python -m pip install --upgrade reticula
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>reticula
 </pre></div>
 </div>
 <p>The first command makes sure your pip installation is up-to-date, the second
@@ -259,7 +260,7 @@ command installs the most recent version of Reticula from the repository.</p>
 provide experimental support for PyPy versions 3.8 and 3.9 and Python 3.11.</p>
 <p>If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the
-<span class="xref std std-ref">Development</span> section for more information.</p>
+<a class="reference internal" href="#development"><span class="std std-ref">Development</span></a> section for more information.</p>
 </section>
 <section id="the-c-library">
 <h2>The C++ library<a class="headerlink" href="#the-c-library" title="Permalink to this heading">#</a></h2>
@@ -292,13 +293,13 @@ recommand that you use the most recent release branch v#.# for a new project.</p
 sure Python development headers are installed and accessible, a modern version
 of GCC ( &gt;= 10.2) is installed and accessible and that you have access to
 approximatly infinite RAM (&gt; 40GB) and time.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/reticula-network/reticula-python.git
-<span class="gp">$ </span><span class="nb">cd</span> reticula-python
-<span class="gp">$ </span>mkdir dist
-<span class="gp">$ </span>python -m pip install --upgrade pip
-<span class="gp">$ </span>python -m pip wheel . -w dist/
-<span class="gp">$ </span>python -m auditwheel dist/*.whl
-<span class="gp">$ </span>python -m pip install wheelhouse/*.whl
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/reticula-network/reticula-python.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>reticula-python
+<span class="gp">$ </span>mkdir<span class="w"> </span>dist
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>.<span class="w"> </span>-w<span class="w"> </span>dist/
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>auditwheel<span class="w"> </span>dist/*.whl
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>wheelhouse/*.whl
 </pre></div>
 </div>
 <p>If you actively developing the Python binding (perhaps to send a pull request?
@@ -306,7 +307,7 @@ Thank you very much!) you might want to avoid re-building everything from
 scratch every single time. In this scenario, I recommand disabling build
 isolation and cleaning steps of <strong class="command">pip wheel</strong> by using this command
 instead:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m pip wheel . -w dist/ --verbose --no-build-isolation --no-clean
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>.<span class="w"> </span>-w<span class="w"> </span>dist/<span class="w"> </span>--verbose<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-clean
 </pre></div>
 </div>
 <p>This needs you to manually have the required python packages installed. You can
@@ -321,12 +322,12 @@ every time. Consider adding the flag <code class="xref std std-option docutils l
 <p>To build the tests for the C++ library, make sure you have CMake version 3.14 or
 newer installed on your system. All you need to do then, is to clone the
 library, make a build directory and build the tests:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/reticula-network/reticula.git
-<span class="gp">$ </span><span class="nb">cd</span> reticula
-<span class="gp">$ </span>mkdir build
-<span class="gp">$ </span><span class="nb">cd</span> build
-<span class="gp">$ </span>cmake ..
-<span class="gp">$ </span>cmake --build . --target reticula_tests -j <span class="m">10</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/reticula-network/reticula.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>reticula
+<span class="gp">$ </span>mkdir<span class="w"> </span>build
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="gp">$ </span>cmake<span class="w"> </span>..
+<span class="gp">$ </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--target<span class="w"> </span>reticula_tests<span class="w"> </span>-j<span class="w"> </span><span class="m">10</span>
 </pre></div>
 </div>
 <p>This creates an executable titled <code class="code docutils literal notranslate"><span class="pre">reticula_tests</span></code>, which you can execute
@@ -337,7 +338,7 @@ sanitizer by default.</p>
 </div>
 <p>After you made some modifications to the code, to re-compile the tests just
 re-run the build command.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake --build . --target reticula_tests -j <span class="m">10</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--target<span class="w"> </span>reticula_tests<span class="w"> </span>-j<span class="w"> </span><span class="m">10</span>
 <span class="gp">$ </span>./reticula_tests
 </pre></div>
 </div>

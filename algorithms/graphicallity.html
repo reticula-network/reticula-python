@@ -3,13 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Graph operations" href="graph_operations.html" /><link rel="prev" title="Algorithms" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Graph operations" href="graph_operations.html" /><link rel="prev" title="Vertex degrees" href="vertex_degrees.html" />
         <link rel="canonical" href="https://docs.reticula.network/algorithms/graphicallity.html" />
 
-    <meta name="generator" content="sphinx-5.2.2, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Graphicallity - Reticula</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">Reticula</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -186,6 +186,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vertex_degrees.html">Vertex degrees</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_operations.html">Graph operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_properties.html">Graph properties</a></li>
@@ -282,6 +283,15 @@ Python</label><div class="sd-tab-content docutils">
 <dd></dd></dl>
 
 </div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="cpp" for="sd-tab-item-3">
+C++</label><div class="sd-tab-content docutils">
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_NSt6ranges11input_rangeEEIQ17degree_pair_rangeI9PairRangeEE12is_digraphicbRR9PairRange">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ranges</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_range</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PairRange</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">requires</span></span><span class="w"> </span><a class="reference internal" href="../types.html#_CPPv4I0E17degree_pair_range" title="degree_pair_range"><span class="n"><span class="pre">degree_pair_range</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_NSt6ranges11input_rangeEEIQ17degree_pair_rangeI9PairRangeEE12is_digraphicbRR9PairRange" title="is_digraphic::PairRange"><span class="n"><span class="pre">PairRange</span></span></a><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_digraphic</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I_NSt6ranges11input_rangeEEIQ17degree_pair_rangeI9PairRangeEE12is_digraphicbRR9PairRange" title="is_digraphic::PairRange"><span class="n"><span class="pre">PairRange</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">in_out_degree_sequence</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_NSt6ranges11input_rangeEEIQ17degree_pair_rangeI9PairRangeEE12is_digraphicbRR9PairRange" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</div>
 </div>
 <p>Checks if the sequence can be the degree-pair sequence of a valid directed
 graph, containing no multi-edges or loops, based on the algorithm by Kleitman
@@ -306,14 +316,14 @@ out-degree of one vertex.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="vertex_degrees.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Algorithms</div>
+                <div class="title">Vertex degrees</div>
                 
               </div>
             </a>

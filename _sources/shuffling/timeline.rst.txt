@@ -15,7 +15,7 @@ Timeline shuffling
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
@@ -49,14 +49,14 @@ Weight-constrained timeline shuffling
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
           microcanonical_reference_models::timeline_shuffling(\
              const network<EdgeT>& temp, Gen& generator)
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
@@ -97,7 +97,7 @@ Activity-constrained timeline shuffling
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
@@ -130,7 +130,7 @@ Inter-event shuffling
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT, \
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \

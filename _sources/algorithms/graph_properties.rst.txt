@@ -45,7 +45,7 @@ Temporal network observation window
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT> \
+    .. cpp:function:: template <temporal_network_edge EdgeT> \
       std::pair<typename EdgeT::TimeType, typename EdgeT::TimeType> \
       time_window(const network<EdgeT>& temporal_network)
 
@@ -69,7 +69,7 @@ If the temporal network has no events (edges), this function throws a
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT> \
+    .. cpp:function:: template <temporal_network_edge EdgeT> \
       std::pair<typename EdgeT::TimeType, typename EdgeT::TimeType> \
       cause_time_window(const network<EdgeT>& temporal_network)
 
@@ -91,7 +91,7 @@ temporal network events don't have delays, this is indistinguishable from
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT> \
+    .. cpp:function:: template <temporal_network_edge EdgeT> \
       std::pair<typename EdgeT::TimeType, typename EdgeT::TimeType> \
       effect_time_window(const network<EdgeT>& temporal_network)
 
@@ -138,7 +138,7 @@ Temporal network link timelines
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT> \
+    .. cpp:function:: template <temporal_network_edge EdgeT> \
       std::vector<EdgeT> \
       link_timeline(\
         const network<EdgeT>& temporal_network, \
@@ -159,7 +159,7 @@ Returns a list of events that correspond to (project to) the static link
   .. tab-item:: C++
     :sync: cpp
 
-    .. cpp:function:: template <temporal_edge EdgeT> \
+    .. cpp:function:: template <temporal_network_edge EdgeT> \
       std::vector< \
         std::pair<typename EdgeT::StaticProjectionType, std::vector<EdgeT>>> \
       link_timelines(const network<EdgeT>& temporal_network)
