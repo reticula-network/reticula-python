@@ -50,11 +50,13 @@ struct declare_degree_sequence_algorithms {
 
 void declare_typed_assortativity_algorithms(py::module& m);
 void declare_typed_degree_algorithms(py::module& m);
-void declare_typed_basic_operation_algorithms(py::module& m);
+void declare_typed_add_operation_algorithms(py::module& m);
+void declare_typed_remove_operation_algorithms(py::module& m);
 void declare_typed_basic_temporal_network_algorithms(py::module& m);
 void declare_typed_density_algorithms(py::module& m);
 void declare_typed_directed_connectivity_algorithms(py::module& m);
-void declare_typed_occupation_algorithms(py::module& m);
+void declare_typed_edge_occupation_algorithms(py::module& m);
+void declare_typed_vertex_occupation_algorithms(py::module& m);
 void declare_typed_subgraph_algorithms(py::module& m);
 void declare_typed_temporal_adjacency_algorithms(py::module& m);
 void declare_typed_undirected_connectivity_algorithms(py::module& m);
@@ -85,11 +87,13 @@ void declare_typed_algorithms(py::module& m) {
 
   declare_typed_assortativity_algorithms(m);
   declare_typed_degree_algorithms(m);
-  declare_typed_basic_operation_algorithms(m);
+  declare_typed_add_operation_algorithms(m);
+  declare_typed_remove_operation_algorithms(m);
   declare_typed_basic_temporal_network_algorithms(m);
   declare_typed_density_algorithms(m);
   declare_typed_directed_connectivity_algorithms(m);
-  declare_typed_occupation_algorithms(m);
+  declare_typed_edge_occupation_algorithms(m);
+  declare_typed_vertex_occupation_algorithms(m);
   declare_typed_subgraph_algorithms(m);
   declare_typed_temporal_adjacency_algorithms(m);
   declare_typed_undirected_connectivity_algorithms(m);

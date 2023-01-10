@@ -32,6 +32,8 @@ if(NOT pybind11_POPULATED)
     add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
 endif()
 
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON) # turns off pybind11 LTO flags
+
 FetchContent_MakeAvailable(reticula fmt metal)
 
 pybind11_add_module(reticula_ext src/main.cpp
@@ -56,11 +58,13 @@ pybind11_add_module(reticula_ext src/main.cpp
   src/algorithms.cpp
   src/algorithms/assortativity.cpp
   src/algorithms/degree.cpp
-  src/algorithms/basic_operations.cpp
+  src/algorithms/add_operations.cpp
+  src/algorithms/remove_operations.cpp
   src/algorithms/basic_temporal.cpp
   src/algorithms/density.cpp
   src/algorithms/directed_connectivity.cpp
-  src/algorithms/occupation.cpp
+  src/algorithms/edge_occupation.cpp
+  src/algorithms/vertex_occupation.cpp
   src/algorithms/subgraph.cpp
   src/algorithms/temporal_adjacency.cpp
   src/algorithms/undirected_connectivity.cpp
@@ -80,4 +84,8 @@ if ("${is_system}" STREQUAL "-1")
     set_target_properties(reticula_ext PROPERTIES
         INSTALL_RPATH_USE_LINK_PATH TRUE
         INSTALL_RPATH "${lib_path}")
+
+set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
+set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "${CMAKE_COMMAND} -E time")
+
 endif()
