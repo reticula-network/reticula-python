@@ -6,7 +6,7 @@
 
 The library offers pre-compiled Wheels for `manylinux2014` compatible systems.
 That is, Linux systems with GNU C Library (glibc) version 2.17 and newer. The
-library currently supports Python version 3.8, 3.9 and 3.10.
+library currently supports Python version 3.8 or newer.
 
 ```console
 $ pip install reticula
