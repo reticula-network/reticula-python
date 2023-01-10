@@ -87,7 +87,7 @@ struct fmt::formatter<std::geometric_distribution<ResultType>> {
   template <typename FormatContext>
   auto format(
       const std::geometric_distribution<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(p={})",
         type_str<std::geometric_distribution<ResultType>>{}(), a.p());
   }
@@ -104,7 +104,7 @@ struct fmt::formatter<std::uniform_int_distribution<ResultType>> {
   template <typename FormatContext>
   auto format(
       const std::uniform_int_distribution<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(a={}, b={})",
         type_str<std::uniform_int_distribution<ResultType>>{}(), a.a(), a.b());
   }
@@ -121,7 +121,7 @@ struct fmt::formatter<std::exponential_distribution<ResultType>> {
   template <typename FormatContext>
   auto format(
       const std::exponential_distribution<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(lambda={})",
         type_str<std::exponential_distribution<ResultType>>{}(), a.lambda());
   }
@@ -138,7 +138,7 @@ struct fmt::formatter<std::uniform_real_distribution<ResultType>> {
   template <typename FormatContext>
   auto format(
       const std::uniform_real_distribution<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(a={}, b={})",
         type_str<std::uniform_real_distribution<ResultType>>{}(), a.a(), a.b());
   }
@@ -155,7 +155,7 @@ struct fmt::formatter<reticula::power_law_with_specified_mean<ResultType>> {
   template <typename FormatContext>
   auto format(
       const reticula::power_law_with_specified_mean<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(exponent={}, mean={})",
         type_str<reticula::power_law_with_specified_mean<ResultType>>{}(),
         a.exponent(), a.mean());
@@ -174,7 +174,7 @@ struct fmt::formatter<
   template <typename FormatContext>
   auto format(
       const reticula::residual_power_law_with_specified_mean<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(exponent={}, mean={})",
         type_str<
           reticula::residual_power_law_with_specified_mean<ResultType>>{}(),
@@ -192,7 +192,7 @@ struct fmt::formatter<reticula::hawkes_univariate_exponential<ResultType>> {
 
   template <typename FormatContext>
   auto format(const reticula::hawkes_univariate_exponential<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(mu={}, alpha={}, theta={}, phi={})",
         type_str<reticula::hawkes_univariate_exponential<ResultType>>{}(),
         a.mu(), a.alpha(), a.theta(), a.phi());
@@ -209,7 +209,7 @@ struct fmt::formatter<reticula::delta_distribution<ResultType>> {
 
   template <typename FormatContext>
   auto format(const reticula::delta_distribution<ResultType>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(ctx.out(), "{}(mean={})",
         type_str<reticula::delta_distribution<ResultType>>{}(), a.mean());
   }

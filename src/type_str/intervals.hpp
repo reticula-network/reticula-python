@@ -34,7 +34,7 @@ struct fmt::formatter<reticula::interval_set<TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::interval_set<TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     if (a.begin() != a.end())
       return fmt::format_to(
           ctx.out(),

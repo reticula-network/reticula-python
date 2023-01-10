@@ -56,7 +56,7 @@ struct fmt::formatter<reticula::component<VertT>> {
   template <typename FormatContext>
   auto format(
       const reticula::component<VertT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     std::size_t size = a.size();
     return fmt::format_to(
         ctx.out(),
@@ -78,7 +78,7 @@ struct fmt::formatter<reticula::component_size<VertT>> {
   template <typename FormatContext>
   auto format(
       const reticula::component_size<VertT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} of {} nodes>",
@@ -97,7 +97,7 @@ struct fmt::formatter<reticula::component_size_estimate<VertT>> {
   template <typename FormatContext>
   auto format(
       const reticula::component_size_estimate<VertT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} of ~{:1.2e}±1.1\% nodes>",

@@ -54,7 +54,7 @@ struct fmt::formatter<reticula::temporal_adjacency::simple<EdgeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_adjacency::simple<EdgeT>& /* a */,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<temporal_adjacency.{}>",
@@ -74,7 +74,7 @@ struct fmt::formatter<reticula::temporal_adjacency::limited_waiting_time<EdgeT>>
   template <typename FormatContext>
   auto format(
       const reticula::temporal_adjacency::limited_waiting_time<EdgeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<temporal_adjacency.{} dt={}>",
@@ -93,7 +93,7 @@ struct fmt::formatter<reticula::temporal_adjacency::exponential<EdgeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_adjacency::exponential<EdgeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<temporal_adjacency.{} rate={}>",
@@ -113,7 +113,7 @@ struct fmt::formatter<reticula::temporal_adjacency::geometric<EdgeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_adjacency::geometric<EdgeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<temporal_adjacency.{} rate={}>",

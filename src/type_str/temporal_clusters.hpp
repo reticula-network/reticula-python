@@ -66,7 +66,7 @@ struct fmt::formatter<reticula::temporal_cluster<EdgeT, AdjT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_cluster<EdgeT, AdjT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} with volume {} and lifetime ({} {}]>",
@@ -90,7 +90,7 @@ struct fmt::formatter<reticula::temporal_cluster_size<EdgeT, AdjT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_cluster_size<EdgeT, AdjT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} with mass {} volume {} and lifetime ({} {}]>",
@@ -115,7 +115,7 @@ struct fmt::formatter<reticula::temporal_cluster_size_estimate<EdgeT, AdjT>> {
   template <typename FormatContext>
   auto format(
       const reticula::temporal_cluster_size_estimate<EdgeT, AdjT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} with mass {}±1.1\% volume {}±1.1\% and lifetime ({} {}]>",

@@ -35,7 +35,7 @@ struct fmt::formatter<reticula::implicit_event_graph<EdgeT, AdjT>> {
   template <typename FormatContext>
   auto format(
       const reticula::implicit_event_graph<EdgeT, AdjT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "<{} with {} verts, {} events and temporal adjacency {}>",

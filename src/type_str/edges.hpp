@@ -186,7 +186,7 @@ struct fmt::formatter<reticula::undirected_temporal_edge<VertT, TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::undirected_temporal_edge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     auto vs = a.incident_verts();
     return fmt::format_to(
         ctx.out(), "{}({}, {}, time={})",
@@ -206,7 +206,7 @@ struct fmt::formatter<reticula::directed_temporal_edge<VertT, TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::directed_temporal_edge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "{}({}, {}, time={})",
@@ -226,7 +226,7 @@ struct fmt::formatter<reticula::directed_delayed_temporal_edge<VertT, TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::directed_delayed_temporal_edge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "{}({}, {}, cause_time={}, effect_time={})",
@@ -246,7 +246,7 @@ struct fmt::formatter<reticula::undirected_temporal_hyperedge<VertT, TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::undirected_temporal_hyperedge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(), "{}({}, time={})",
         type_str<reticula::undirected_temporal_hyperedge<VertT, TimeT>>{}(),
@@ -265,7 +265,7 @@ struct fmt::formatter<reticula::directed_temporal_hyperedge<VertT, TimeT>> {
   template <typename FormatContext>
   auto format(
       const reticula::directed_temporal_hyperedge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "{}({}, {}, time={})",
@@ -285,7 +285,7 @@ struct fmt::formatter<reticula::directed_delayed_temporal_hyperedge<VertT, TimeT
   template <typename FormatContext>
   auto format(
       const reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>& a,
-      FormatContext& ctx) -> decltype(ctx.out()) {
+      FormatContext& ctx) const -> decltype(ctx.out()) {
     return fmt::format_to(
         ctx.out(),
         "{}({}, {}, cause_time={}, effect_time={})",
