@@ -10,17 +10,18 @@
 #include "type_str/implicit_event_graphs.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_class {
-  void operator()(py::module &m) {
+  void operator()(py::module &m, PyObject* metaclass) {
     using EdgeT = AdjT::EdgeType;
     using Net = reticula::implicit_event_graph<EdgeT, AdjT>;
-    py::class_<Net>(m,
-        python_type_str<Net>().c_str())
+    py::class_<Net>(
+        m, python_type_str<Net>().c_str(), py::metaclass(metaclass))
       .def(py::init<std::vector<EdgeT>, AdjT>(),
           "events"_a, "temporal_adjacency"_a,
           py::call_guard<py::gil_scoped_release>())
@@ -62,19 +63,21 @@ struct declare_implicit_event_graph_class {
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
-      })
-      .def_static("edge_type", []() {
+      }).def_static("edge_type", []() {
         return types::handle_for<typename Net::EdgeType>();
-      })
-      .def_static("vertex_type", []() {
+      }).def_static("vertex_type", []() {
         return types::handle_for<typename Net::VertexType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<Net>{}());
       });
   }
 };
 
 void declare_typed_implicit_event_graphs(py::module& m) {
+  auto metaclass = common_metaclass("implicit_event_graph_metaclass");
+
   types::run_each<
     metal::transform<
       metal::lambda<declare_implicit_event_graph_class>,
-      types::first_order_temporal_adjacency_types>>{}(m);
+      types::first_order_temporal_adjacency_types>>{}(m, (PyObject*)metaclass);
 }

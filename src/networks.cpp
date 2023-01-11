@@ -10,16 +10,18 @@
 #include "type_str/networks.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <reticula::network_edge EdgeT>
 struct declare_network_class {
-  void operator()(py::module &m) {
+  void operator()(py::module &m, PyObject* metaclass) {
     using Net = reticula::network<EdgeT>;
     py::class_<Net>(m,
-        python_type_str<Net>().c_str())
+        python_type_str<Net>().c_str(),
+        py::metaclass(metaclass))
       .def(py::init<>(),
           py::call_guard<py::gil_scoped_release>())
       .def(py::init<reticula::network<EdgeT>>(),
@@ -97,20 +99,21 @@ struct declare_network_class {
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
-      })
-      .def_static("edge_type", []() {
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<Net>{}());
+      }).def_static("edge_type", []() {
         return types::handle_for<typename Net::EdgeType>();
-      })
-      .def_static("vertex_type", []() {
+      }).def_static("vertex_type", []() {
         return types::handle_for<typename Net::VertexType>();
       });
   }
 };
 
 void declare_typed_networks(py::module& m) {
-  // declare network
+  auto metaclass = common_metaclass("network_metaclass");
+
   types::run_each<
     metal::transform<
       metal::lambda<declare_network_class>,
-      types::all_edge_types>>{}(m);
+      types::all_edge_types>>{}(m, (PyObject*)metaclass);
 }

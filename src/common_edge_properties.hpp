@@ -10,8 +10,10 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <typename EdgeT>
-py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
-  py::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str());
+py::class_<EdgeT> define_basic_edge_concept(
+    py::module &m, PyObject* metaclass) {
+  py::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str(),
+      py::metaclass(metaclass));
 
   cls.def(py::init<EdgeT>(),
         "edge"_a,
@@ -47,8 +49,9 @@ py::class_<EdgeT> define_basic_edge_concept(py::module &m) {
         py::call_guard<py::gil_scoped_release>())
     .def("__repr__", [](const EdgeT& a) {
       return fmt::format("{}", a);
-    })
-    .def_static("vertex_type", []() {
+    }).def_static("__class_repr__", []() {
+      return fmt::format("<class '{}'>", type_str<EdgeT>{}());
+    }).def_static("vertex_type", []() {
       return types::handle_for<typename EdgeT::VertexType>();
     });
 

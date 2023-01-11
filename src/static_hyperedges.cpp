@@ -10,14 +10,16 @@
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <typename VertT>
 struct declare_static_hyperedges {
-  void operator()(py::module &m) {
-    define_basic_edge_concept<reticula::undirected_hyperedge<VertT>>(m)
+  void operator()(py::module &m, PyObject* metaclass) {
+    define_basic_edge_concept<reticula::undirected_hyperedge<VertT>>(
+        m, metaclass)
       .def(py::init<std::vector<VertT>>(),
           "verts"_a,
           py::call_guard<py::gil_scoped_release>());
@@ -26,7 +28,8 @@ struct declare_static_hyperedges {
       std::vector<VertT>,
       reticula::undirected_hyperedge<VertT>>();
 
-    define_basic_edge_concept<reticula::directed_hyperedge<VertT>>(m)
+    define_basic_edge_concept<reticula::directed_hyperedge<VertT>>(
+        m, metaclass)
       .def(py::init<
           std::vector<VertT>,
           std::vector<VertT>>(),
@@ -52,8 +55,10 @@ struct declare_static_hyperedges {
 
 
 void declare_typed_static_hyperedges(py::module& m) {
+  auto metaclass = common_metaclass("static_hyperedge_metaclass");
+
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_hyperedges>,
-      types::all_vert_types>>{}(m);
+      types::all_vert_types>>{}(m, (PyObject*)metaclass);
 }

@@ -9,15 +9,16 @@
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <typename VertT, typename TimeT>
 struct declare_temporal_hyperedges {
-  void operator()(py::module &m) {
+  void operator()(py::module &m, PyObject* metaclass) {
     define_basic_edge_concept<
-        reticula::undirected_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::undirected_temporal_hyperedge<VertT, TimeT>>(m, metaclass)
       .def(py::init<std::vector<VertT>, TimeT>(),
           "verts"_a, "time"_a,
           py::call_guard<py::gil_scoped_release>())
@@ -33,7 +34,7 @@ struct declare_temporal_hyperedges {
       reticula::undirected_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
-        reticula::directed_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::directed_temporal_hyperedge<VertT, TimeT>>(m, metaclass)
       .def(py::init<std::vector<VertT>, std::vector<VertT>, TimeT>(),
           "tails"_a, "heads"_a, "time"_a,
           py::call_guard<py::gil_scoped_release>())
@@ -56,7 +57,8 @@ struct declare_temporal_hyperedges {
       reticula::directed_temporal_hyperedge<VertT, TimeT>>();
 
     define_basic_edge_concept<
-        reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>>(m)
+        reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>>(
+            m, metaclass)
       .def(py::init<std::vector<VertT>, std::vector<VertT>, TimeT, TimeT>(),
           "tails"_a, "heads"_a, "cause_time"_a, "effect_time"_a,
           py::call_guard<py::gil_scoped_release>())
@@ -82,10 +84,13 @@ struct declare_temporal_hyperedges {
 };
 
 void declare_typed_temporal_hyperedges(py::module& m) {
+  auto metaclass = common_metaclass("temporal_hyperedge_metaclass");
+
   types::run_each<
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
         metal::lambda<declare_temporal_hyperedges>>,
-      types::first_order_temporal_type_parameter_combinations>>{}(m);
+      types::first_order_temporal_type_parameter_combinations>>{}(
+          m, (PyObject*)metaclass);
 }

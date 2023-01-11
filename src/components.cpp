@@ -8,19 +8,22 @@
 #include <fmt/format.h>
 #include <reticula/components.hpp>
 
+#include "metaclass.hpp"
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <typename VertT>
 struct declare_component_types {
-  void operator()(py::module &m) {
+  void operator()(py::module &m, PyObject* metaclass) {
     using Component = reticula::component<VertT>;
     py::class_<Component>(m,
-        python_type_str<Component>().c_str())
+        python_type_str<Component>().c_str(),
+        py::metaclass(metaclass))
       .def(py::init<std::size_t>(),
           "size_hint"_a = 0,
           py::call_guard<py::gil_scoped_release>())
@@ -63,9 +66,10 @@ struct declare_component_types {
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const Component& c) {
           return fmt::format("{}", c);
-      })
-      .def_static("vertex_type", []() {
+      }).def_static("vertex_type", []() {
         return types::handle_for<typename Component::VertexType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<Component>{}());
       });
 
     py::implicitly_convertible<
@@ -74,20 +78,23 @@ struct declare_component_types {
 
     using ComponentSize = reticula::component_size<VertT>;
     py::class_<ComponentSize>(m,
-        python_type_str<ComponentSize>().c_str())
+        python_type_str<ComponentSize>().c_str(),
+        py::metaclass(metaclass))
       .def("size", &ComponentSize::size,
           py::call_guard<py::gil_scoped_release>())
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
-      })
-      .def_static("vertex_type", []() {
+      }).def_static("vertex_type", []() {
         return types::handle_for<typename ComponentSize::VertexType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<ComponentSize>{}());
       });
 
     using ComponentSizeEstimate =
       reticula::component_size_estimate<VertT>;
     py::class_<ComponentSizeEstimate>(m,
-        python_type_str<ComponentSizeEstimate>().c_str())
+        python_type_str<ComponentSizeEstimate>().c_str(),
+        py::metaclass(metaclass))
       .def("size_estimate",
           &ComponentSizeEstimate::size_estimate,
           py::call_guard<py::gil_scoped_release>())
@@ -96,13 +103,17 @@ struct declare_component_types {
       })
       .def_static("vertex_type", []() {
         return types::handle_for<typename ComponentSizeEstimate::VertexType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<ComponentSizeEstimate>{}());
       });
   }
 };
 
 void declare_typed_components(py::module& m) {
+  auto metaclass = common_metaclass("component_metaclass");
+
   types::run_each<
     metal::transform<
       metal::lambda<declare_component_types>,
-      types::all_vert_types>>{}(m);
+      types::all_vert_types>>{}(m, (PyObject*)metaclass);
 }

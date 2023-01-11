@@ -8,17 +8,18 @@
 #include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
+#include "metaclass.hpp"
 
 namespace py = pybind11;
 using namespace pybind11::literals;
 
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
-  void operator()(py::module &m) {
+  void operator()(py::module &m, PyObject* metaclass) {
     using EdgeT = AdjT::EdgeType;
     using Cluster = reticula::temporal_cluster<EdgeT, AdjT>;
-    py::class_<Cluster>(m,
-        python_type_str<Cluster>().c_str())
+    py::class_<Cluster>(
+        m, python_type_str<Cluster>().c_str(), py::metaclass(metaclass))
       .def(py::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0,
           py::call_guard<py::gil_scoped_release>())
@@ -79,11 +80,13 @@ struct declare_temporal_cluster_types {
       })
       .def_static("adjacency_type", []() {
         return types::handle_for<typename Cluster::AdjacencyType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<Cluster>{}());
       });
 
     using ClusterSize = reticula::temporal_cluster_size<EdgeT, AdjT>;
-    py::class_<ClusterSize>(m,
-        python_type_str<ClusterSize>().c_str())
+    py::class_<ClusterSize>(
+        m, python_type_str<ClusterSize>().c_str(), py::metaclass(metaclass))
       .def("lifetime",
           &ClusterSize::lifetime,
           py::call_guard<py::gil_scoped_release>())
@@ -101,13 +104,16 @@ struct declare_temporal_cluster_types {
       })
       .def_static("adjacency_type", []() {
         return types::handle_for<typename ClusterSize::AdjacencyType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<ClusterSize>{}());
       });
 
 
     using ClusterSizeEstimate =
       reticula::temporal_cluster_size_estimate<EdgeT, AdjT>;
-    py::class_<ClusterSizeEstimate>(m,
-        python_type_str<ClusterSizeEstimate>().c_str())
+    py::class_<ClusterSizeEstimate>(
+        m, python_type_str<ClusterSizeEstimate>().c_str(),
+        py::metaclass(metaclass))
       .def("lifetime",
           &ClusterSizeEstimate::lifetime,
           py::call_guard<py::gil_scoped_release>())
@@ -125,13 +131,17 @@ struct declare_temporal_cluster_types {
       })
       .def_static("adjacency_type", []() {
         return types::handle_for<typename ClusterSizeEstimate::AdjacencyType>();
+      }).def_static("__class_repr__", []() {
+        return fmt::format("<class '{}'>", type_str<ClusterSizeEstimate>{}());
       });
   }
 };
 
 void declare_typed_temporal_clusters(py::module& m) {
+  auto metaclass = common_metaclass("temporal_cluster_metaclass");
+
   types::run_each<
     metal::transform<
       metal::lambda<declare_temporal_cluster_types>,
-      types::first_order_temporal_adjacency_types>>{}(m);
+      types::first_order_temporal_adjacency_types>>{}(m, (PyObject*)metaclass);
 }
