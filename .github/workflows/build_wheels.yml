@@ -3,7 +3,7 @@ name: Build Wheels
 on: [push, pull_request]
 
 env:
-  CIBW_BUILD_VERBOSITY: 1
+  CIBW_BUILD_VERBOSITY: 2
   CIBW_ARCHS_LINUX: x86_64
   CIBW_ARCHS_WINDOWS: AMD64
   CIBW_ARCHS_MACOS: universal2
