@@ -5,7 +5,7 @@ on: [push, pull_request]
 env:
   CIBW_BUILD_VERBOSITY: 1
   CIBW_ARCHS_LINUX: x86_64
-  CIBW_ARCHS_WINDOWS: x86_64
+  CIBW_ARCHS_WINDOWS: AMD64
   CIBW_ARCHS_MACOS: universal2
 
 jobs:
@@ -13,6 +13,7 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-2022]
 
