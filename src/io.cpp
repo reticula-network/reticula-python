@@ -32,7 +32,7 @@ struct declare_io_functions {
 using simple_temporal_type_parameter_combinations =
   metal::cartesian<types::simple_vert_types, types::time_types>;
 
-void declare_typed_io_functions(py::module& m) {
+void declare_io(py::module& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_io_functions>,

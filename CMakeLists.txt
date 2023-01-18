@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG f8a5be4)
+  GIT_TAG 381bd9c)
 
 FetchContent_Declare(
   fmt
@@ -36,7 +36,10 @@ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON) # turns off pybind11 LTO flags
 
 FetchContent_MakeAvailable(reticula fmt metal)
 
-pybind11_add_module(reticula_ext src/main.cpp
+pybind11_add_module(_reticula_ext
+  src/main.cpp
+
+  src/types.cpp
   src/scalar_types.cpp
   src/random_state.cpp
   src/distributions.cpp
@@ -49,43 +52,49 @@ pybind11_add_module(reticula_ext src/main.cpp
   src/temporal_adjacency.cpp
   src/implicit_event_graphs.cpp
   src/implicit_event_graph_components.cpp
+  src/components.cpp
+  src/temporal_clusters.cpp
+  src/type_lists.cpp
+
   src/generators.cpp
+  src/microcanonical_reference_models.cpp
+  src/simple_generators.cpp
   src/random_networks.cpp
   src/random_activation_networks.cpp
-  src/temporal_clusters.cpp
-  src/components.cpp
+
   src/io.cpp
+
+  src/operations.cpp
+  src/operations/subgraph.cpp
+  src/operations/add_operations.cpp
+  src/operations/remove_operations.cpp
+  src/operations/edge_occupation.cpp
+  src/operations/vertex_occupation.cpp
+
   src/algorithms.cpp
   src/algorithms/assortativity.cpp
   src/algorithms/degree.cpp
-  src/algorithms/add_operations.cpp
-  src/algorithms/remove_operations.cpp
   src/algorithms/basic_temporal.cpp
   src/algorithms/density.cpp
   src/algorithms/directed_connectivity.cpp
-  src/algorithms/edge_occupation.cpp
-  src/algorithms/vertex_occupation.cpp
-  src/algorithms/subgraph.cpp
   src/algorithms/temporal_adjacency.cpp
-  src/algorithms/undirected_connectivity.cpp
-  src/microcanonical_reference_models.cpp
-  src/type_lists.cpp)
-target_link_libraries(reticula_ext PRIVATE reticula fmt Metal)
-set_target_properties(reticula_ext
+  src/algorithms/undirected_connectivity.cpp)
+target_link_libraries(_reticula_ext
+  PRIVATE reticula fmt Metal)
+set_target_properties(_reticula_ext
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 
-install(TARGETS reticula_ext DESTINATION .)
+install(TARGETS _reticula_ext DESTINATION .)
 
 set(lib_path "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${lib_path}" is_system)
 if ("${is_system}" STREQUAL "-1")
-    # The following is necessary for installation in a virtual
-    # environment `python -m pip venv env`
-    set_target_properties(reticula_ext PROPERTIES
-        INSTALL_RPATH_USE_LINK_PATH TRUE
-        INSTALL_RPATH "${lib_path}")
+  # The following is necessary for installation in a virtual
+  # environment `python -m pip venv env`
+  set_target_properties(_reticula_ext PROPERTIES
+      INSTALL_RPATH_USE_LINK_PATH TRUE
+      INSTALL_RPATH "${lib_path}")
+endif()
 
 set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
 set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "${CMAKE_COMMAND} -E time")
-
-endif()

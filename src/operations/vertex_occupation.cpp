@@ -7,7 +7,7 @@
 #include <pybind11/functional.h>
 #include <pybind11/stl.h>
 
-#include <reticula/algorithms.hpp>
+#include <reticula/operations.hpp>
 
 #include "../type_utils.hpp"
 

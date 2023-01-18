@@ -1,18 +1,17 @@
 import sys as _sys
 
-from . import reticula_ext as _reticula_ext
-
 from .generic_attribute import generic_attribute as _generic_attribute
 from . import temporal_adjacency
 from . import microcanonical_reference_models
 
 
+from . import _reticula_types
 _static_edge_prefixes = [
         "directed_edge", "undirected_edge",
         "directed_hyperedge", "undirected_hyperedge"]
 
-_integer_vertex_types = set(_reticula_ext.types.integer_vertex_types)
-_all_vertex_types = set(_reticula_ext.types.vertex_types)
+_integer_vertex_types = set(_reticula_types.types.integer_vertex_types)
+_all_vertex_types = set(_reticula_types.types.vertex_types)
 
 for _e in _static_edge_prefixes:
     setattr(_sys.modules[__name__],
@@ -20,7 +19,7 @@ for _e in _static_edge_prefixes:
                 attr_prefix=_e,
                 arg_names = ("vertex_type",),
                 options = {(t,) for t in  _all_vertex_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
@@ -28,10 +27,17 @@ for _e in _static_edge_prefixes:
                 attr_prefix=_n,
                 arg_names = ("vertex_type",),
                 options = {(t,) for t in _all_vertex_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
 
-_integral_types = set(_reticula_ext.types.integral_types)
+# import scalar type "tags"
+from ._reticula_types import (
+        int64, double, string)
+
+from ._reticula_types import (
+        mersenne_twister)
+
+_integral_types = set(_reticula_types.types.integral_types)
 for _dist in [
         "geometric_distribution",
         "uniform_int_distribution"]:
@@ -40,10 +46,10 @@ for _dist in [
                 attr_prefix=_dist,
                 arg_names=("integral_type",),
                 options={(t,) for t in _integral_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
 
-_floating_point_types = set(_reticula_ext.types.floating_point_types)
+_floating_point_types = set(_reticula_types.types.floating_point_types)
 for _dist in [
         "exponential_distribution",
         "power_law_with_specified_mean",
@@ -55,14 +61,14 @@ for _dist in [
                 attr_prefix=_dist,
                 arg_names=("floating_point_type",),
                 options={(t,) for t in _floating_point_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
 
 delta_distribution = _generic_attribute(
         attr_prefix="delta_distribution",
         arg_names=("numeric_type",),
         options={(t,) for t in _integral_types | _floating_point_types},
-        function_module=_reticula_ext,
+        function_module=_reticula_types,
         api_module_name=__name__)
 
 _temporal_edge_prefixes = [
@@ -73,7 +79,7 @@ _temporal_edge_prefixes = [
         "directed_temporal_hyperedge",
         "directed_delayed_temporal_hyperedge"]
 
-_time_types = set(_reticula_ext.types.time_types)
+_time_types = set(_reticula_types.types.time_types)
 
 for _e in _temporal_edge_prefixes:
     setattr(_sys.modules[__name__],
@@ -82,7 +88,7 @@ for _e in _temporal_edge_prefixes:
                 arg_names=("vertex_type", "time_type"),
                 options={(v, t)
                     for v in _all_vertex_types for t in _time_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
     _n = _e[:-4] + "network"
     setattr(_sys.modules[__name__],
@@ -91,7 +97,7 @@ for _e in _temporal_edge_prefixes:
                 arg_names=("vertex_type", "time_type"),
                 options={(v, t)
                     for v in _all_vertex_types for t in  _time_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
 
 
@@ -103,36 +109,74 @@ for _a in _vertex_generic_attrs:
                 attr_prefix=_a,
                 arg_names=("vertex_type",),
                 options = {(t,) for t in _all_vertex_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_types,
                 api_module_name=__name__))
 
-
-_integer_vertex_generic_attrs = [
-        "relabel_nodes", "square_grid_graph", "path_graph", "cycle_graph",
-        "regular_ring_lattice", "complete_graph", "complete_directed_graph"]
-
-for _a in _integer_vertex_generic_attrs:
-    setattr(_sys.modules[__name__],
-            _a, _generic_attribute(
-                attr_prefix=_a,
-                arg_names=("integer_vertex_type",),
-                options={(t,) for t in _integer_vertex_types},
-                function_module=_reticula_ext,
-                api_module_name=__name__))
 
 interval_set = _generic_attribute(
         attr_prefix="interval_set",
         arg_names=("time_type",),
         options={(t,) for t in _time_types},
-        function_module=_reticula_ext,
+        function_module=_reticula_types,
         api_module_name=__name__)
 
 implicit_event_graph = _generic_attribute(
         attr_prefix="implicit_event_graph",
         arg_names=("temporal_edge_type", "temporal_adjacency_type"),
         options=set(),
-        function_module=_reticula_ext,
+        function_module=_reticula_types,
         api_module_name=__name__)
+
+
+_all_edge_types = set(_reticula_types.types.edge_types)
+is_network_edge = _generic_attribute(
+        attr_prefix="is_network_edge",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+is_static_edge = _generic_attribute(
+        attr_prefix="is_static_edge",
+        arg_names=("edge_type",),
+        options=set((t,) for t in _all_edge_types),
+        function_module=_reticula_types,
+        api_module_name=__name__)
+is_temporal_edge = _generic_attribute(
+        attr_prefix="is_temporal_edge",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+is_instantaneous = _generic_attribute(
+        attr_prefix="is_instantaneous",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+is_undirected = _generic_attribute(
+        attr_prefix="is_undirected",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+is_dyadic = _generic_attribute(
+        attr_prefix="is_dyadic",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+
+
+_simple_vertex_types = set(_reticula_types.types.simple_vertex_types)
+pair = _generic_attribute(
+        attr_prefix="pair",
+        arg_names=("vertex_type", "vertex_type"),
+        options={(i, j)
+            for i in _simple_vertex_types for j in _simple_vertex_types},
+        function_module=_reticula_types,
+        api_module_name=__name__)
+
+
 
 _random_network_generic_attrs = [
         "random_gnp_graph",
@@ -146,79 +190,70 @@ _random_network_generic_attrs = [
         "random_directed_degree_sequence_graph",
         "random_fully_mixed_temporal_network",
         "random_directed_fully_mixed_temporal_network"]
+
+from . import _reticula_generators
 for _a in _random_network_generic_attrs:
     setattr(_sys.modules[__name__],
             _a, _generic_attribute(
                 attr_prefix=_a,
                 arg_names=("integer_vertex_type",),
                 options={(t,) for t in _integer_vertex_types},
-                function_module=_reticula_ext,
+                function_module=_reticula_generators,
                 api_module_name=__name__))
-from .reticula_ext import random_link_activation_temporal_network
 
+_integer_vertex_generic_generators = [
+        "square_grid_graph", "path_graph", "cycle_graph",
+        "regular_ring_lattice", "complete_graph", "complete_directed_graph"]
+
+for _a in _integer_vertex_generic_generators:
+    setattr(_sys.modules[__name__],
+            _a, _generic_attribute(
+                attr_prefix=_a,
+                arg_names=("integer_vertex_type",),
+                options={(t,) for t in _integer_vertex_types},
+                function_module=_reticula_generators,
+                api_module_name=__name__))
+
+from ._reticula_generators import random_link_activation_temporal_network
+
+
+from . import _reticula_io
 _simple_edge_types = set()  # TODO
 read_edgelist = _generic_attribute(
         attr_prefix="read_edgelist",
         arg_names=("edge_type",),
         options={(t,) for t in _simple_edge_types},
-        function_module=_reticula_ext,
+        function_module=_reticula_io,
         api_module_name=__name__)
-from .reticula_ext import write_edgelist
+from ._reticula_io import write_edgelist
 
-_all_edge_types = set(_reticula_ext.types.edge_types)
-is_network_edge = _generic_attribute(
-        attr_prefix="is_network_edge",
-        arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-is_static_edge = _generic_attribute(
-        attr_prefix="is_static_edge",
-        arg_names=("edge_type",),
-        options=set((t,) for t in _all_edge_types),
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-is_temporal_edge = _generic_attribute(
-        attr_prefix="is_temporal_edge",
-        arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-is_instantaneous = _generic_attribute(
-        attr_prefix="is_instantaneous",
-        arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-is_undirected = _generic_attribute(
-        attr_prefix="is_undirected",
-        arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-is_dyadic = _generic_attribute(
-        attr_prefix="is_dyadic",
-        arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
 
-# import overloaded functions
-from .reticula_ext import (
-        cartesian_product, is_graphic, is_digraphic)
-
-from .reticula_ext import (
+from ._reticula_operations import (
         vertex_induced_subgraph, edge_induced_subgraph, graph_union,
         with_edges, with_vertices,
         without_edges, without_vertices,
         occupy_edges, occupy_vertices,
         uniformly_occupy_edges, uniformly_occupy_vertices,
+        cartesian_product)
+
+from . import _reticula_operations
+relabel_nodes = _generic_attribute(
+        attr_prefix="relabel_nodes",
+        arg_names=("integer_vertex_type",),
+        options={(t,) for t in _integer_vertex_types},
+        function_module=_reticula_operations,
+        api_module_name=__name__)
+
+from ._reticula_algorithms import (
+        is_graphic, is_digraphic)
+
+from ._reticula_algorithms import (
         in_degree, out_degree, incident_degree, degree,
         in_degree_sequence, out_degree_sequence, incident_degree_sequence,
         in_out_degree_pair_sequence, degree_sequence,
         density, degree_assortativity, attribute_assortativity)
 
-from .reticula_ext import (
+from ._reticula_algorithms import (
         is_acyclic, topological_order, out_component, out_components,
         out_component_sizes, out_component_size_estimates,
         in_component, in_components,
@@ -227,11 +262,11 @@ from .reticula_ext import (
         weakly_connected_component, weakly_connected_components,
         is_reachable, shortest_path_lengths_from, shortest_path_lengths_to)
 
-from .reticula_ext import (
+from ._reticula_algorithms import (
         largest_connected_component,
         is_connected, connected_component, connected_components)
 
-from .reticula_ext import (
+from ._reticula_algorithms import (
         time_window, cause_time_window, effect_time_window,
         event_graph, make_implicit_event_graph,
         out_cluster, out_clusters,
@@ -240,21 +275,6 @@ from .reticula_ext import (
         in_cluster_sizes, in_cluster_size_estimates,
         static_projection, link_timeline, link_timelines)
 
-from .reticula_ext import (
-        mersenne_twister)
-
-# import scalar type "tags"
-from .reticula_ext import (
-        int64, double, string)
-
-_simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
-pair = _generic_attribute(
-        attr_prefix="pair",
-        arg_names=("vertex_type", "vertex_type"),
-        options={(i, j)
-            for i in _simple_vertex_types for j in _simple_vertex_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
 
 def to_networkx(network, create_using=None):
     import networkx as _nx

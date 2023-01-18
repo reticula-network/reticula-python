@@ -1,49 +1,18 @@
 #include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
-#include <pybind11/stl.h>
-
-#include <reticula/generators.hpp>
-
-#include "type_str/scalars.hpp"
-#include "type_str/edges.hpp"
-#include "type_utils.hpp"
 
 namespace py = pybind11;
-using namespace pybind11::literals;
 
-template <typename VertT>
-struct declare_generators {
-  void operator()(py::module& m) {
-    m.def(("square_grid_graph_"+python_type_str<VertT>()).c_str(),
-        &reticula::square_grid_graph<VertT>,
-        "side"_a, "dims"_a, "periodic"_a = false,
-        py::call_guard<py::gil_scoped_release>());
-    m.def(("path_graph_"+python_type_str<VertT>()).c_str(),
-        &reticula::path_graph<VertT>,
-        "size"_a, "periodic"_a = false,
-        py::call_guard<py::gil_scoped_release>());
-    m.def(("cycle_graph_"+python_type_str<VertT>()).c_str(),
-        &reticula::cycle_graph<VertT>,
-        "size"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def(("regular_ring_lattice_"+python_type_str<VertT>()).c_str(),
-        &reticula::regular_ring_lattice<VertT>,
-        "size"_a, "degree"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def(("complete_graph_"+python_type_str<VertT>()).c_str(),
-        &reticula::complete_graph<VertT>,
-        "size"_a,
-        py::call_guard<py::gil_scoped_release>());
-    m.def(("complete_directed_graph_"+python_type_str<VertT>()).c_str(),
-        &reticula::complete_directed_graph<VertT>,
-        "size"_a,
-        py::call_guard<py::gil_scoped_release>());
-  }
-};
+void declare_typed_generators(py::module& m);
+void declare_typed_random_networks(py::module& m);
+void declare_typed_activation_networks(py::module& m);
 
-void declare_typed_generators(py::module& m) {
-  types::run_each<
-    metal::transform<
-      metal::lambda<declare_generators>,
-      types::integer_vert_types>>{}(m);
+void declare_typed_mrrm_algorithms(py::module& m);
+
+void declare_generators(py::module& m) {
+    declare_typed_generators(m);
+    declare_typed_random_networks(m);
+    declare_typed_activation_networks(m);
+
+    py::module_ mrrm_m = m.def_submodule("microcanonical_reference_models");
+    declare_typed_mrrm_algorithms(mrrm_m);
 }

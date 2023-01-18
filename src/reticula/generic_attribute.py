@@ -1,8 +1,6 @@
 import itertools as _itertools
 import typing as _typing
 
-from . import reticula_ext as _reticula_ext
-
 class generic_attribute:
     def __init__(self, attr_prefix: str,
             arg_names: _typing.Tuple[str, ...],
