@@ -24,23 +24,26 @@ defined:
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: in_degree(network) -> int
+    .. py:function:: in_degree(network, vertex) -> int
 
-    .. py:function:: out_degree(network) -> int
+    .. py:function:: out_degree(network, vertex) -> int
 
-    .. py:function:: incident_degree(network) -> int
+    .. py:function:: incident_degree(network, vertex) -> int
 
   .. tab-item:: C++
     :sync: cpp
 
     .. cpp:function:: template <network_edge EdgeT> \
-        std::size_t in_degree(const network<EdgeT>& net)
+        std::size_t in_degree(const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
     .. cpp:function:: template <network_edge EdgeT> \
-        std::size_t out_degree(const network<EdgeT>& net)
+        std::size_t out_degree(const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
     .. cpp:function:: template <network_edge EdgeT> \
-        std::size_t incident_degree(const network<EdgeT>& net)
+        std::size_t incident_degree(const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
 
 For undirected networks, **degree** of a vertex referes to the incident-degree
@@ -53,13 +56,14 @@ vaguely-defined.
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: degree(undirected_network) -> int
+    .. py:function:: degree(undirected_network, vertex) -> int
 
   .. tab-item:: C++
     :sync: cpp
 
     .. cpp:function:: template <undirected_network_edge EdgeT> \
-        std::size_t degree(const network<EdgeT>& net)
+        std::size_t degree(const network<EdgeT>& net, \
+        const typename EdgeT::VertexType& vert)
 
 
 

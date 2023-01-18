@@ -59,7 +59,7 @@ Interoperation with NetworkX
   instance of :py:`networkx.Graph`.
 
   Raises a :py:`ModuleNotFoundError` if NetworkX is not installed or cannot be
-  imported at the time the first time an interoperation function is called.
+  imported at the time the function is called.
 
 
 .. py:function:: from_networkx[vertex_type](g)
@@ -69,4 +69,4 @@ Interoperation with NetworkX
   :py:`networkx.is_directed(g)` returns :py:`True`.
 
   Raises a :py:`ModuleNotFoundError` if NetworkX is not installed or cannot be
-  imported at the time the first time an interoperation function is called.
+  imported at the time the the function is called.
