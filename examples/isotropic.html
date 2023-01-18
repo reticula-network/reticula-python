@@ -185,7 +185,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../operations/index.html">Network operations</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operations/index.html">Network operations</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operations/add_remove.html">Add/Remove operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations/occupation.html">Occupation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations/cartesian_product.html">Cartesian product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations/graph_union.html">Graph union</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -249,7 +253,11 @@
           <section id="isotropic-bond-percolation-in-g-n-p-networks">
 <h1>Isotropic bond-percolation in G(n, p) networks<a class="headerlink" href="#isotropic-bond-percolation-in-g-n-p-networks" title="Permalink to this heading">#</a></h1>
 <p>The goal of this example is to visualise what happens to the largest component
-size when you randomly remove edges from a <a class="reference internal" href="../generation/gnp.html#random-erdos-renyi-network"><span class="std std-ref">random G(n, p) network</span></a>:</p>
+size when you randomly occupying edges in a static, undirected network.</p>
+<p>A <a class="reference internal" href="../generation/gnp.html#random-erdos-renyi-network"><span class="std std-ref">random G(n, p) network</span></a> can
+generates a random network with each edge occupied with probability <span class="math notranslate nohighlight">\(p\)</span>.
+So the exercise boils down to generating <span class="math notranslate nohighlight">\(G(n, p)\)</span> networks with various
+values of <span class="math notranslate nohighlight">\(p\)</span> and plotting the largest component sizes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
 <span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -268,8 +276,23 @@ size when you randomly remove edges from a <a class="reference internal" href=".
 <span class="linenos">16</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here is a more sophisticated version of this example that uses the
-multi-threading capabilities of Reticula to utilise more CPU cores:</p>
+<p>While this script definitly works, it is only utilising one CPU core. We can use
+more CPU cores (and run the code faster) using multi-processing. This, however,
+would be wasteful, as it entails running multiple independent python processes,
+each loading the standard library and Reticula in mostly separate places in the
+memory. The separate processes also have to communicate with each other by
+pickling and unpickling Python objects, which can be inefficient.</p>
+<p>More desirable would be to perform this in multi-threaded setting. This reduces
+the memory-use overhead significantly, and mitigates the inter-process
+communication issue mentioned above as threads can access shared memory. In
+general, this also increases the risk of race conditions. On Reticula, network
+and edge types are immutable, so the risk race conditions when sharing a network
+object across threads is minimised.</p>
+<p>In this case, there is no need to share anything other than the parameter
+<span class="math notranslate nohighlight">\(p\)</span> across threads. In the next example, we run the function
+<code class="code highlight python docutils literal highlight-python"><span class="n">lcc_size</span></code> on 8 threads. Note that each thread creates its own instance of
+pseudorandom number generator using the command
+<code class="code highlight python docutils literal highlight-python"><span class="n">state</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">mersenne_twister</span><span class="p">()</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">reticula</span> <span class="k">as</span> <span class="nn">ret</span>
 <span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -359,5 +382,6 @@ multi-threading capabilities of Reticula to utilise more CPU cores:</p>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>
