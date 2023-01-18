@@ -141,7 +141,7 @@ Directed networks
     .. cpp:function:: template <undirected_static_network_edge EdgeT, \
           std::invocable<const typename EdgeT::VertexType&> AttrFun1, \
           std::invocable<const typename EdgeT::VertexType&> AttrFun2> \
-        requires
+        requires \
           std::convertible_to<\
             std::invoke_result_t<\
               AttrFun1, const typename EdgeT::VertexType&>, double> && \
