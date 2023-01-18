@@ -12,6 +12,7 @@ Reticula: Temporal network and hypergraphs
    randomness
    generation/index
    shuffling/index
+   operations/index
    algorithms/index
    examples/index
    citing
