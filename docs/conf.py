@@ -128,3 +128,6 @@ ogp_site_url = html_baseurl
 
 # sitemap configs
 sitemap_url_scheme = "{link}"
+
+# copybutton configs
+copybutton_exclude = '.linenos, .gp, .go'
