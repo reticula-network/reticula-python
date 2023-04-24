@@ -1,6 +1,8 @@
 name: Build Wheels
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
 
 env:
   CIBW_BUILD_VERBOSITY: 2
@@ -15,13 +17,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, windows-2022]
+        os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022]
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.11.4
+        uses: pypa/cibuildwheel@v2.12.3
 
       - uses: actions/upload-artifact@v3
         with:
