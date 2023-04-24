@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(reticula_python LANGUAGES CXX VERSION 0.7.0)
+project(reticula_python LANGUAGES CXX VERSION 0.8.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
