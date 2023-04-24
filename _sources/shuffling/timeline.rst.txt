@@ -39,11 +39,11 @@ Weight-constrained timeline shuffling
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: microcanonical_reference_models.timeline_shuffling(\
+    .. py:function:: microcanonical_reference_models.weight_constrained_timeline_shuffling(\
           temporal_network, random_state)
           :noindex:
 
-    .. py:function:: microcanonical_reference_models.timeline_shuffling(\
+    .. py:function:: microcanonical_reference_models.weight_constrained_timeline_shuffling(\
           temporal_network, random_state, t_start, t_end)
 
   .. tab-item:: C++
@@ -53,14 +53,14 @@ Weight-constrained timeline shuffling
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
-          microcanonical_reference_models::timeline_shuffling(\
+          microcanonical_reference_models::weight_constrained_timeline_shuffling(\
              const network<EdgeT>& temp, Gen& generator)
 
     .. cpp:function:: template <temporal_network_edge EdgeT, \
           std::uniform_random_bit_generator Gen> \
           requires is_dyadic_v<EdgeT> \
           network<EdgeT> \
-          microcanonical_reference_models::timeline_shuffling(\
+          microcanonical_reference_models::weight_constrained_timeline_shuffling(\
              const network<EdgeT>& temp, Gen& generator, \
              typename EdgeT::TimeType t_start, typename EdgeT::TimeType t_end);
 

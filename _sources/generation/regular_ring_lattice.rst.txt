@@ -6,7 +6,7 @@ Regular ring lattice
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: path_graph[vert_type](size: int, degree: int) \
+    .. py:function:: regular_ring_lattice[vert_type](size: int, degree: int) \
        -> undirected_network[vert_type]
 
   .. tab-item:: C++
