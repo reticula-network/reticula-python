@@ -33,7 +33,7 @@ Python package from the Python Package Index, using the command:
 
 .. code-block:: console
 
-   $ python -m pip install --upgrade pip
+   $ python -m pip install --upgrade reticula
 
 The Python package is available on most relatively modern Linux systems, i.e.,
 almost anything released since 2016, running on x64 CPUs. Support for Windows
