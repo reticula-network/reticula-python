@@ -4,7 +4,7 @@ Network operations
 .. toctree::
    :maxdepth: 1
 
-   subgraph
+   subgraphs
    add_remove
    occupation
    cartesian_product
