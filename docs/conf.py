@@ -34,7 +34,9 @@ extensions = [
   'sphinxcontrib.bibtex',
   'sphinx_copybutton',
   'sphinx.ext.autosectionlabel',
-  'sphinx_design'
+  'sphinx_design',
+  'sphinxext.opengraph',
+  'sphinx_sitemap'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -87,6 +89,7 @@ pygments_style = "sphinx"
 pygments_dark_style = "monokai"
 html_title = "Reticula"
 html_baseurl = "https://docs.reticula.network/"
+html_extra_path = ['robots.txt']
 
 import os.path
 def read_icon(path: str):
@@ -119,3 +122,6 @@ bibtex_default_style = 'unsrt'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# opengraph settings
+ogp_site_url = html_baseurl
