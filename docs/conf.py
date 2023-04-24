@@ -125,3 +125,6 @@ html_static_path = ['_static']
 
 # opengraph settings
 ogp_site_url = html_baseurl
+
+# sitemap configs
+sitemap_locales = [None]
