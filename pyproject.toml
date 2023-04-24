@@ -39,11 +39,11 @@ test = ["pytest", "hypothesis", "pytest-xdist", "scipy"]
 
 [build-system]
 requires = [
-    "setuptools>=62",
+    "setuptools>=67",
     "wheel",
     "ninja",
-    "cmake>=3.22",
-    "scikit-build>=0.14",
+    "cmake>=3.26",
+    "scikit-build>=0.17",
 ]
 
 build-backend = "setuptools.build_meta"
