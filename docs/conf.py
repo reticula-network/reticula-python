@@ -127,4 +127,4 @@ html_static_path = ['_static']
 ogp_site_url = html_baseurl
 
 # sitemap configs
-sitemap_locales = [None]
+sitemap_url_scheme = "{link}"

@@ -6,7 +6,7 @@ Cycle graphs
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: path_graph[vert_type](size: int) \
+    .. py:function:: cycle_graph[vert_type](size: int) \
        -> undirected_network[vert_type]
 
   .. tab-item:: C++
