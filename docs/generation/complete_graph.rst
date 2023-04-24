@@ -1,6 +1,9 @@
 Complete graphs
 ===============
 
+Undirected complete graph
+-------------------------
+
 .. tab-set::
 
   .. tab-item:: Python
@@ -20,8 +23,8 @@ Generates a network of size :cpp:`size` vertices where all possible edges are
 present.
 
 
-Complete directed graphs
-========================
+Complete directed graph
+-----------------------
 
 .. tab-set::
 
