@@ -20,6 +20,12 @@ struct declare_random_network_models {
         "n"_a, "p"_a, "random_state"_a,
         py::call_guard<py::gil_scoped_release>());
 
+    m.def(("random_directed_gnp_graph_"+python_type_str<VertT>()).c_str(),
+        &reticula::random_directed_gnp_graph<VertT, Gen>,
+        "n"_a, "p"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+
     m.def(("random_barabasi_albert_graph_"+
           python_type_str<VertT>()).c_str(),
         &reticula::random_barabasi_albert_graph<VertT, Gen>,
@@ -31,6 +37,7 @@ struct declare_random_network_models {
         &reticula::random_regular_graph<VertT, Gen>,
         "size"_a, "degree"_a, "random_state"_a,
         py::call_guard<py::gil_scoped_release>());
+
 
     m.def(("random_expected_degree_sequence_graph_"+
           python_type_str<VertT>()).c_str(),
@@ -45,6 +52,7 @@ struct declare_random_network_models {
           VertT, std::vector<std::pair<double, double>>, Gen>,
         "in_out_weight_sequence"_a, "random_state"_a, "self_loops"_a = false,
         py::call_guard<py::gil_scoped_release>());
+
 
     m.def(("random_expected_degree_sequence_hypergraph_"+
           python_type_str<VertT>()).c_str(),
@@ -62,6 +70,21 @@ struct declare_random_network_models {
         "random_state"_a,
         py::call_guard<py::gil_scoped_release>());
 
+
+    m.def(("random_uniform_hypergraph_"+
+          python_type_str<VertT>()).c_str(),
+        &reticula::random_uniform_hypergraph<VertT, Gen>,
+        "size"_a, "edge_degree"_a, "edge_prob"_a, "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+    m.def(("random_directed_uniform_hypergraph_"+
+          python_type_str<VertT>()).c_str(),
+        &reticula::random_uniform_hypergraph<VertT, Gen>,
+        "size"_a, "edge_in_degree"_a, "edge_out_degree"_a, "edge_prob"_a
+        "random_state"_a,
+        py::call_guard<py::gil_scoped_release>());
+
+
     m.def(("random_degree_sequence_graph_"+
           python_type_str<VertT>()).c_str(),
         &reticula::random_degree_sequence_graph<
@@ -75,6 +98,7 @@ struct declare_random_network_models {
           VertT, std::vector<std::pair<VertT, VertT>>, Gen>,
         "in_out_degree_sequence"_a, "random_state"_a,
         py::call_guard<py::gil_scoped_release>());
+
 
     m.def(("random_fully_mixed_temporal_network_"+
           python_type_str<VertT>()).c_str(),

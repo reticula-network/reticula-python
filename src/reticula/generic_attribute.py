@@ -1,8 +1,9 @@
-import itertools as _itertools
 import typing as _typing
 
+
 class generic_attribute:
-    def __init__(self, attr_prefix: str,
+    def __init__(
+            self, attr_prefix: str,
             arg_names: _typing.Tuple[str, ...],
             options: _typing.Iterable[_typing.Tuple[type, ...]],
             function_module, api_module_name):
@@ -11,6 +12,7 @@ class generic_attribute:
         self.arg_names = arg_names
         self.function_module = function_module
         self.api_module_name = api_module_name
+
     def __getitem__(self, keys):
         if not isinstance(keys, tuple):
             keys = (keys,)
@@ -28,11 +30,12 @@ class generic_attribute:
                 "_".join([k.__name__ for k in keys])
         else:
             raise AttributeError(
-                    f"Provided template type is not a valid "
-                    f"option. Valid options are:\n" + "\n".join(
-                    ["\t["+", ".join([t.__name__ for t in type_list]) +"]"
-                        for type_list in self.options]))
+                    "Provided template type is not a valid "
+                    "option. Valid options are:\n" + "\n".join(
+                        ["\t[" + ", ".join([t.__name__ for t in type_list]) + "]"
+                         for type_list in self.options]))
         return self.function_module.__getattribute__(attr_name)
+
     def __call__(self, *args, **kwargs):
         raise TypeError(
            "No type information was paased to a generic function or type.\n"
@@ -41,5 +44,5 @@ class generic_attribute:
            f"    {self.api_module_name}.{self.attr_prefix}"
            f"[{', '.join(self.arg_names)}]"
            "\n\nValid options are:\n\n" + "\n".join(
-               ["    ["+", ".join([t.__name__ for t in type_list]) +"]"
+               ["    [" + ", ".join([t.__name__ for t in type_list]) + "]"
                    for type_list in self.options]))

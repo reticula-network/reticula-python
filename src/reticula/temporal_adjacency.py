@@ -1,8 +1,8 @@
 import sys as _sys
 
 from .generic_attribute import generic_attribute as _generic_attribute
-from ._reticula_types import temporal_adjacency as _reticula_ext_adj
-from ._reticula_types import types as _reticula_ext_types
+from ._reticula_ext import temporal_adjacency as _reticula_ext_adj
+from ._reticula_ext import types as _reticula_ext_types
 
 _temporal_edge_types = set(_reticula_ext_types.temporal_edge_types)
 
