@@ -15,6 +15,7 @@ Generating networks
    regular
    degree_seq
    expected_degree_seq
+   uniform_hypergraph
 
    fully_mixed
    activation
