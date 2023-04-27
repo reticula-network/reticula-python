@@ -17,12 +17,15 @@
 
 # -- Project information -----------------------------------------------------
 
+import toml
+project_data = toml.load("pyproject.toml")
+
 project = 'Reticula'
 copyright = '2023'
 author = 'Arash Badie-Modiri'
 
 # The full version, including alpha/beta/rc tags
-release = '0.8.1'
+release = project_data["project"]["version"]
 
 
 # -- General configuration ---------------------------------------------------
