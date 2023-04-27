@@ -110,7 +110,7 @@ struct declare_network_class {
 };
 
 void declare_typed_networks(py::module& m) {
-  auto metaclass = common_metaclass("network_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.network_metaclass");
 
   types::run_each<
     metal::transform<

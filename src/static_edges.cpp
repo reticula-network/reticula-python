@@ -58,7 +58,7 @@ struct declare_static_edges {
 
 
 void declare_typed_static_edges(py::module& m) {
-  auto metaclass = common_metaclass("static_edge_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.static_edge_metaclass");
 
   types::run_each<
     metal::transform<

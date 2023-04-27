@@ -23,7 +23,8 @@ inline PyTypeObject* common_metaclass(const char* name) {
   spec.flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE;
   spec.slots = slots;
   PyTypeObject* metaclass = (PyTypeObject*)PyType_FromSpec(&spec);
-  if (!metaclass) throw pybind11::error_already_set();
+  if (!metaclass)
+    throw pybind11::error_already_set();
   return metaclass;
 }
 

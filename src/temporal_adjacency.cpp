@@ -108,7 +108,7 @@ struct declare_temporal_adjacency_class {
 };
 
 void declare_typed_temporal_adjacency_class(py::module& m) {
-  auto metaclass = common_metaclass("temporal_adjacency_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.temporal_adjacency_metaclass");
 
   // declare network
   types::run_each<

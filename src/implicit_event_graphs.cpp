@@ -74,7 +74,7 @@ struct declare_implicit_event_graph_class {
 };
 
 void declare_typed_implicit_event_graphs(py::module& m) {
-  auto metaclass = common_metaclass("implicit_event_graph_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.implicit_event_graph_metaclass");
 
   types::run_each<
     metal::transform<

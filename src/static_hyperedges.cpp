@@ -55,7 +55,7 @@ struct declare_static_hyperedges {
 
 
 void declare_typed_static_hyperedges(py::module& m) {
-  auto metaclass = common_metaclass("static_hyperedge_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.static_hyperedge_metaclass");
 
   types::run_each<
     metal::transform<

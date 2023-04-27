@@ -56,7 +56,7 @@ struct declare_interval_set_types {
 };
 
 void declare_typed_interval_sets(py::module& m) {
-  auto metaclass = common_metaclass("interval_set_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.interval_set_metaclass");
 
   types::run_each<
     metal::transform<

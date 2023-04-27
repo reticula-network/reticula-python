@@ -84,7 +84,7 @@ struct declare_temporal_hyperedges {
 };
 
 void declare_typed_temporal_hyperedges(py::module& m) {
-  auto metaclass = common_metaclass("temporal_hyperedge_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.temporal_hyperedge_metaclass");
 
   types::run_each<
     metal::transform<

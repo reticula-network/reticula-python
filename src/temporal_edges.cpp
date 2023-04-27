@@ -81,7 +81,7 @@ struct declare_temporal_edges {
 };
 
 void declare_typed_temporal_edges(py::module& m) {
-  auto metaclass = common_metaclass("temporal_edge_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.temporal_edge_metaclass");
 
   types::run_each<
     metal::transform<

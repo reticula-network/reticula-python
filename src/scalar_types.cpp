@@ -22,7 +22,7 @@ struct declare_scalar_types {
 };
 
 void declare_typed_scalar(py::module& m) {
-  auto metaclass = common_metaclass("scalar_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.scalar_metaclass");
 
   using scalar_types = types::unique<metal::join<
     types::time_types, types::simple_vert_types>>;

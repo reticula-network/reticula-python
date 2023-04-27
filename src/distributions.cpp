@@ -189,7 +189,7 @@ struct declare_floating_point_distributions {
 };
 
 void declare_typed_distributions(py::module& m) {
-  auto metaclass = common_metaclass("distribution_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.distribution_metaclass");
 
   using scalar_types = types::unique<metal::join<
     types::time_types, types::simple_vert_types>>;

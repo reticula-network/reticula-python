@@ -11,7 +11,7 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 void declare_random_states(py::module& m) {
-  auto metaclass = common_metaclass("random_state_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.random_state_metaclass");
 
   py::class_<std::mt19937_64>(
       m, python_type_str<std::mt19937_64>().c_str(),

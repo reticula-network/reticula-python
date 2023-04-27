@@ -110,7 +110,7 @@ struct declare_component_types {
 };
 
 void declare_typed_components(py::module& m) {
-  auto metaclass = common_metaclass("component_metaclass");
+  auto metaclass = common_metaclass("_reticula_ext.component_metaclass");
 
   types::run_each<
     metal::transform<
