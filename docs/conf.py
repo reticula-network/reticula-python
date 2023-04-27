@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 import toml
-project_data = toml.load("pyproject.toml")
+project_data = toml.load("../pyproject.toml")
 
 project = 'Reticula'
 copyright = '2023'
