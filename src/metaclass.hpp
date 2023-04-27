@@ -6,22 +6,19 @@
 #include <string>
 #include <fmt/format.h>
 
-inline PyTypeObject* common_metaclass(std::string name) {
+inline PyTypeObject* common_metaclass(const char* name) {
   PyTypeObject* base_metaclass =
     pybind11::detail::get_internals().default_metaclass;
   PyType_Slot slots[] = {
     {Py_tp_base, base_metaclass},
     {Py_tp_repr,  // call __class_repr__ when repr(type) is invoked
-      (void*)+[](PyObject* self, PyObject* arg) -> PyObject* {
-        auto method = pybind11::reinterpret_steal<pybind11::object>(
-            PyObject_GetAttrString(self, "__class_repr__"));
-        if (!method.ptr()) return nullptr;
-        return PyObject_CallFunctionObjArgs(method.ptr(), arg, nullptr);
+      (void*)+[](PyObject* self) -> PyObject* {
+        return PyObject_CallMethod(self, "__class_repr__", nullptr);
       }},
     {0, nullptr},
   };
   PyType_Spec spec = {};
-  spec.name = fmt::format("_reticula_ext._{}", name).c_str();
+  spec.name = name;
   spec.basicsize = static_cast<int>(base_metaclass->tp_basicsize);
   spec.flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE;
   spec.slots = slots;
