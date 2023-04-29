@@ -1,8 +1,5 @@
 name: Build Wheels
-
-on:
-  push:
-    branches: [main]
+on: [workflow_dispatch]
 
 env:
   CIBW_BUILD_VERBOSITY: 2
