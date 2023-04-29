@@ -9,6 +9,8 @@ env:
   CIBW_BEFORE_BUILD_WINDOWS: "pip install delvewheel"
   CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair -w {dest_dir} {wheel}"
   CMAKE_BUILD_PARALLEL_LEVEL: 1
+  DISTUTILS_USE_SDK: 1
+  MSSdk: 1
 
 
 jobs:
