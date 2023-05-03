@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(reticula_python LANGUAGES CXX VERSION ${SKBUILD_PROJECT_VERSION})
+project(reticula_python LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
@@ -17,26 +17,41 @@ FetchContent_Declare(
   GIT_TAG 9.1.0)
 
 FetchContent_Declare(
-  pybind11
-  GIT_REPOSITORY https://github.com/pybind/pybind11.git
-  GIT_TAG v2.10.4)
-
-FetchContent_Declare(
   metal
   GIT_REPOSITORY https://github.com/brunocodutra/metal.git
   GIT_TAG v2.1.4)
 
-FetchContent_GetProperties(pybind11)
-if(NOT pybind11_POPULATED)
-    FetchContent_Populate(pybind11)
-    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
+# Perform a release build by default
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON) # turns off pybind11 LTO flags
+# Create CMake targets for all Python components needed by nanobind
+if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.26 AND Python_INTERPRETER_ID STREQUAL "Python")
+  find_package(Python 3.8 COMPONENTS Interpreter Development.Module Development.SABIModule REQUIRED)
+else()
+  find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
+endif()
+
+
+execute_process(
+  COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
+  OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE NB_DIR)
+
+list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
+
+find_package(nanobind CONFIG REQUIRED)
+
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON) # turns off nanobind LTO flags
 
 FetchContent_MakeAvailable(reticula fmt metal)
 
-pybind11_add_module(_reticula_ext
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+nanobind_add_module(_reticula_ext
+  NB_STATIC
+
   src/main.cpp
 
   src/types.cpp

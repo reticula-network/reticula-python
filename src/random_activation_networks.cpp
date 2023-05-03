@@ -1,5 +1,4 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include "bind_core.hpp"
 
 #include <reticula/distributions.hpp>
 #include <reticula/random_networks.hpp>
@@ -8,8 +7,8 @@
 #include "type_str/distributions.hpp"
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <
   reticula::temporal_network_edge EdgeT,
@@ -17,13 +16,13 @@ template <
   reticula::random_number_distribution ResDist,
   std::uniform_random_bit_generator Gen>
 struct declare_activations_with_residual {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     m.def("random_link_activation_temporal_network",
         &reticula::random_link_activation_temporal_network<
           EdgeT, Dist, ResDist, Gen>,
         "base_net"_a, "max_t"_a, "iet_dist"_a, "res_dist"_a,
         "random_state"_a, "size_hint"_a = 0,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
@@ -32,13 +31,13 @@ template <
   reticula::random_number_distribution Dist,
   std::uniform_random_bit_generator Gen>
 struct declare_activations {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     m.def("random_link_activation_temporal_network",
         &reticula::random_link_activation_temporal_network<
           EdgeT, Dist, Gen>,
         "base_net"_a, "max_t"_a, "iet_dist"_a,
         "random_state"_a, "size_hint"_a = 0,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
@@ -66,7 +65,7 @@ struct type_dists<TimeType> {
 
 template <reticula::temporal_network_edge EdgeT>
 struct declare_typed_activations_for_edge {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     using time_type = typename EdgeT::TimeType;
     using dists = typename type_dists<time_type>::list;
 
@@ -92,7 +91,7 @@ struct declare_typed_activations_for_edge {
   }
 };
 
-void declare_typed_activation_networks(py::module& m) {
+void declare_typed_activation_networks(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_typed_activations_for_edge>,

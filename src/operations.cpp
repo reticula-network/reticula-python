@@ -1,5 +1,4 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include "bind_core.hpp"
 
 #include <reticula/operations.hpp>
 
@@ -8,39 +7,39 @@
 
 #include "type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <typename OutVert, typename InVert>
 struct declare_relabel_nodes {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     m.def(fmt::format("relabel_nodes_{}", python_type_str<OutVert>()).c_str(),
         &reticula::relabel_nodes<OutVert, InVert>,
         "network"_a,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
 template <typename VertT1, typename VertT2>
 struct declare_cartesian_product {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     m.def("cartesian_product",
         &reticula::cartesian_product<VertT1, VertT2>,
         "undirected_net_1"_a, "undirected_net_2"_a,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
 
-void declare_typed_add_operation_algorithms(py::module& m);
-void declare_typed_remove_operation_algorithms(py::module& m);
+void declare_typed_add_operation_algorithms(nb::module_& m);
+void declare_typed_remove_operation_algorithms(nb::module_& m);
 
-void declare_typed_edge_occupation_algorithms(py::module& m);
-void declare_typed_vertex_occupation_algorithms(py::module& m);
+void declare_typed_edge_occupation_algorithms(nb::module_& m);
+void declare_typed_vertex_occupation_algorithms(nb::module_& m);
 
-void declare_typed_subgraph_algorithms(py::module& m);
+void declare_typed_subgraph_algorithms(nb::module_& m);
 
-void declare_operations(py::module& m) {
+void declare_operations(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::partial<

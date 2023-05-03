@@ -1,8 +1,7 @@
 #include <vector>
 
-#include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
-#include <pybind11/stl.h>
+#include "bind_core.hpp"
+#include <nanobind/operators.h>
 #include <fmt/format.h>
 
 #include <reticula/networks.hpp>
@@ -10,93 +9,90 @@
 #include "type_str/networks.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
-#include "metaclass.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <reticula::network_edge EdgeT>
 struct declare_network_class {
-  void operator()(py::module &m, PyObject* metaclass) {
+  void operator()(nb::module_ &m) {
     using Net = reticula::network<EdgeT>;
-    py::class_<Net>(m,
-        python_type_str<Net>().c_str(),
-        py::metaclass(metaclass))
-      .def(py::init<>(),
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<reticula::network<EdgeT>>(),
+    nb::class_<Net>(m, python_type_str<Net>().c_str())
+      .def(nb::init<>(),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<reticula::network<EdgeT>>(),
           "network"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<std::vector<EdgeT>>(),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<std::vector<EdgeT>>(),
           "edges"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<
             std::vector<EdgeT>,
             std::vector<typename EdgeT::VertexType>>(),
           "edges"_a, "verts"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("vertices",
           &Net::vertices,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("edges",
           &Net::edges,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("edges_cause",
           &Net::edges_cause,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("edges_effect",
           &Net::edges_effect,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("incident_edges",
           &Net::incident_edges,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("in_degree",
           &Net::in_degree,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("out_degree",
           &Net::out_degree,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("degree",
           &Net::degree,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("predecessors",
           &Net::predecessors,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("successors",
           &Net::successors,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("neighbours",
           &Net::neighbours,
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("in_edges",
-          py::overload_cast<const typename EdgeT::VertexType&>(
-            &Net::in_edges, py::const_),
+          nb::overload_cast<const typename EdgeT::VertexType&>(
+            &Net::in_edges, nb::const_),
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("out_edges",
-          py::overload_cast<const typename EdgeT::VertexType&>(
-            &Net::out_edges, py::const_),
+          nb::overload_cast<const typename EdgeT::VertexType&>(
+            &Net::out_edges, nb::const_),
           "vert"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("in_edges",
-          py::overload_cast<>(
-            &Net::in_edges, py::const_),
-          py::call_guard<py::gil_scoped_release>())
+          nb::overload_cast<>(
+            &Net::in_edges, nb::const_),
+          nb::call_guard<nb::gil_scoped_release>())
       .def("out_edges",
-          py::overload_cast<>(
-            &Net::out_edges, py::const_),
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self == py::self,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self != py::self,
-          py::call_guard<py::gil_scoped_release>())
+          nb::overload_cast<>(
+            &Net::out_edges, nb::const_),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self == nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self != nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
       }).def_static("__class_repr__", []() {
@@ -109,11 +105,9 @@ struct declare_network_class {
   }
 };
 
-void declare_typed_networks(py::module& m) {
-  auto metaclass = common_metaclass("_reticula_ext.network_metaclass");
-
+void declare_typed_networks(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_network_class>,
-      types::all_edge_types>>{}(m, (PyObject*)metaclass);
+      types::all_edge_types>>{}(m);
 }

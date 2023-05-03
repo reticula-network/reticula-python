@@ -1,69 +1,69 @@
 #include <vector>
 #include <unordered_set>
 
-#include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
-#include <pybind11/stl.h>
+#include "bind_core.hpp"
+#include <nanobind/operators.h>
+#include <nanobind/make_iterator.h>
 
 #include <fmt/format.h>
 #include <reticula/components.hpp>
 
-#include "metaclass.hpp"
 #include "type_str/components.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
-#include "metaclass.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <typename VertT>
 struct declare_component_types {
-  void operator()(py::module &m, PyObject* metaclass) {
+  void operator()(nb::module_& m) {
     using Component = reticula::component<VertT>;
-    py::class_<Component>(m,
-        python_type_str<Component>().c_str(),
-        py::metaclass(metaclass))
-      .def(py::init<std::size_t>(),
-          "size_hint"_a = 0,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<Component>(),
+    nb::class_<Component>(m,
+        python_type_str<Component>().c_str())
+      .def("__init__", [](Component* c, std::size_t size_hint){
+           new (c) Component(size_hint);
+       }, "size_hint"_a = 0,
+           nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<Component>(),
           "component"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<std::vector<VertT>, std::size_t>(),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<std::vector<VertT>, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<std::unordered_set<
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<std::unordered_set<
             VertT, reticula::hash<VertT>>, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("insert",
           static_cast<void (Component::*)(
             const VertT&)>(
             &Component::insert),
           "vertex"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("insert",
           static_cast<void (Component::*)(
             const std::vector<VertT>&)>(
             &Component::insert),
           "vertex"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("merge", &Component::merge,
           "other"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self == py::self,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self != py::self,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self == nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self != nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__iter__", [](const Component& c) {
-            return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>())
+            return nb::make_iterator(
+                    nb::type<Component>(), "iterator",
+                    c.begin(), c.end());
+          }, nb::keep_alive<0, 1>())
       .def("__len__", &Component::size,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__contains__", &Component::contains,
           "vertex"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const Component& c) {
           return fmt::format("{}", c);
       }).def_static("vertex_type", []() {
@@ -72,16 +72,15 @@ struct declare_component_types {
         return fmt::format("<class '{}'>", type_str<Component>{}());
       });
 
-    py::implicitly_convertible<
+    nb::implicitly_convertible<
       std::unordered_set<VertT, reticula::hash<VertT>>,
       reticula::component<VertT>>();
 
     using ComponentSize = reticula::component_size<VertT>;
-    py::class_<ComponentSize>(m,
-        python_type_str<ComponentSize>().c_str(),
-        py::metaclass(metaclass))
+    nb::class_<ComponentSize>(m,
+        python_type_str<ComponentSize>().c_str())
       .def("size", &ComponentSize::size,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
       }).def_static("vertex_type", []() {
@@ -92,12 +91,11 @@ struct declare_component_types {
 
     using ComponentSizeEstimate =
       reticula::component_size_estimate<VertT>;
-    py::class_<ComponentSizeEstimate>(m,
-        python_type_str<ComponentSizeEstimate>().c_str(),
-        py::metaclass(metaclass))
+    nb::class_<ComponentSizeEstimate>(m,
+        python_type_str<ComponentSizeEstimate>().c_str())
       .def("size_estimate",
           &ComponentSizeEstimate::size_estimate,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const ComponentSizeEstimate& c) {
           return fmt::format("{}", c);
       })
@@ -109,11 +107,9 @@ struct declare_component_types {
   }
 };
 
-void declare_typed_components(py::module& m) {
-  auto metaclass = common_metaclass("_reticula_ext.component_metaclass");
-
+void declare_typed_components(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_component_types>,
-      types::all_vert_types>>{}(m, (PyObject*)metaclass);
+      types::all_vert_types>>{}(m);
 }

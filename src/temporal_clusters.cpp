@@ -1,6 +1,5 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-#include <pybind11/operators.h>
+#include "bind_core.hpp"
+#include <nanobind/operators.h>
 
 #include <fmt/format.h>
 #include <reticula/temporal_clusters.hpp>
@@ -8,70 +7,69 @@
 #include "type_str/temporal_clusters.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
-#include "metaclass.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
-  void operator()(py::module &m, PyObject* metaclass) {
+  void operator()(nb::module_ &m) {
     using EdgeT = AdjT::EdgeType;
     using Cluster = reticula::temporal_cluster<EdgeT, AdjT>;
-    py::class_<Cluster>(
-        m, python_type_str<Cluster>().c_str(), py::metaclass(metaclass))
-      .def(py::init<AdjT, std::size_t>(),
+    nb::class_<Cluster>(
+        m, python_type_str<Cluster>().c_str())
+      .def(nb::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<Cluster>(),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<Cluster>(),
           "temporal_cluester"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::init<std::vector<EdgeT>, AdjT, std::size_t>(),
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::init<std::vector<EdgeT>, AdjT, std::size_t>(),
           "events"_a,
           "temporal_adjacency"_a,
           "size_hint"_a = 0,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("insert",
           static_cast<void (Cluster::*)(
             const EdgeT&)>(
             &Cluster::insert),
           "event"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("insert",
           static_cast<void (Cluster::*)(
             const std::vector<EdgeT>&)>(
             &Cluster::insert),
           "events"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("merge", &Cluster::merge,
           "other"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("covers",
           &Cluster::covers,
           "vertex"_a, "time"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("interval_sets",
           &Cluster::interval_sets,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("lifetime",
           &Cluster::lifetime,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("volume",
           &Cluster::volume,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("mass",
           &Cluster::mass,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self == py::self,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self != py::self,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self == nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self != nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__len__", &Cluster::size,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__contains__",
           &Cluster::contains,
           "event"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const Cluster& c) {
           return fmt::format("{}", c);
       })
@@ -85,17 +83,17 @@ struct declare_temporal_cluster_types {
       });
 
     using ClusterSize = reticula::temporal_cluster_size<EdgeT, AdjT>;
-    py::class_<ClusterSize>(
-        m, python_type_str<ClusterSize>().c_str(), py::metaclass(metaclass))
+    nb::class_<ClusterSize>(
+        m, python_type_str<ClusterSize>().c_str())
       .def("lifetime",
           &ClusterSize::lifetime,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("volume",
           &ClusterSize::volume,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("mass",
           &ClusterSize::mass,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const ClusterSize& c) {
           return fmt::format("{}", c);
       })
@@ -111,18 +109,17 @@ struct declare_temporal_cluster_types {
 
     using ClusterSizeEstimate =
       reticula::temporal_cluster_size_estimate<EdgeT, AdjT>;
-    py::class_<ClusterSizeEstimate>(
-        m, python_type_str<ClusterSizeEstimate>().c_str(),
-        py::metaclass(metaclass))
+    nb::class_<ClusterSizeEstimate>(
+        m, python_type_str<ClusterSizeEstimate>().c_str())
       .def("lifetime",
           &ClusterSizeEstimate::lifetime,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("volume_estimate",
           &ClusterSizeEstimate::volume_estimate,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("mass_estimate",
           &ClusterSizeEstimate::mass_estimate,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const ClusterSizeEstimate& c) {
           return fmt::format("{}", c);
       })
@@ -137,11 +134,9 @@ struct declare_temporal_cluster_types {
   }
 };
 
-void declare_typed_temporal_clusters(py::module& m) {
-  auto metaclass = common_metaclass("_reticula_ext.temporal_cluster_metaclass");
-
+void declare_typed_temporal_clusters(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_temporal_cluster_types>,
-      types::first_order_temporal_adjacency_types>>{}(m, (PyObject*)metaclass);
+      types::first_order_temporal_adjacency_types>>{}(m);
 }

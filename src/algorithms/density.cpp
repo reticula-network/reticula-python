@@ -1,25 +1,24 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include "../bind_core.hpp"
 
 #include <reticula/algorithms.hpp>
 
 #include "../type_utils.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <reticula::static_network_edge EdgeT>
 struct declare_density_algorithm {
-  void operator()(py::module& m) {
+  void operator()(nb::module_& m) {
     m.def("density",
-        py::overload_cast<const reticula::network<EdgeT>&>(
+        nb::overload_cast<const reticula::network<EdgeT>&>(
           &reticula::density<typename EdgeT::VertexType>),
         "network"_a,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
-void declare_typed_density_algorithms(py::module& m) {
+void declare_typed_density_algorithms(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_density_algorithm>,

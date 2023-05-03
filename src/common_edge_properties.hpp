@@ -1,52 +1,51 @@
 #include <reticula/type_traits.hpp>
 #include <reticula/network_concepts.hpp>
 
+#include "bind_core.hpp"
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <typename EdgeT>
-py::class_<EdgeT> define_basic_edge_concept(
-    py::module &m, PyObject* metaclass) {
-  py::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str(),
-      py::metaclass(metaclass));
+nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
+  nb::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str());
 
-  cls.def(py::init<EdgeT>(),
+  cls.def(nb::init<EdgeT>(),
         "edge"_a,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("mutated_verts",
         &EdgeT::mutated_verts,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("mutator_verts",
         &EdgeT::mutator_verts,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("incident_verts",
         &EdgeT::incident_verts,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("is_incident",
         &EdgeT::is_incident,
         "vert"_a,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("is_in_incident",
         &EdgeT::is_in_incident,
         "vert"_a,
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
     .def("is_out_incident",
         &EdgeT::is_out_incident,
         "vert"_a,
-        py::call_guard<py::gil_scoped_release>())
-    .def(py::self == py::self,
-        py::call_guard<py::gil_scoped_release>())
-    .def(py::self != py::self,
-        py::call_guard<py::gil_scoped_release>())
-    .def(py::self < py::self,
-        py::call_guard<py::gil_scoped_release>())
-    .def(py::hash(py::self),
-        py::call_guard<py::gil_scoped_release>())
+        nb::call_guard<nb::gil_scoped_release>())
+    .def(nb::self == nb::self,
+        nb::call_guard<nb::gil_scoped_release>())
+    .def(nb::self != nb::self,
+        nb::call_guard<nb::gil_scoped_release>())
+    .def(nb::self < nb::self,
+        nb::call_guard<nb::gil_scoped_release>())
+    .def(nb::hash(nb::self),
+        nb::call_guard<nb::gil_scoped_release>())
     .def("__repr__", [](const EdgeT& a) {
       return fmt::format("{}", a);
     }).def_static("__class_repr__", []() {
@@ -60,13 +59,13 @@ py::class_<EdgeT> define_basic_edge_concept(
     using TimeT = typename EdgeT::TimeType;
     cls.def("cause_time",
           &EdgeT::cause_time,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
     .def("effect_time",
           &EdgeT::effect_time,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
     .def("static_projection",
           &EdgeT::static_projection,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
     .def_static("static_projection_type", []() {
         return types::handle_for<typename EdgeT::StaticProjectionType>();
       })
@@ -75,26 +74,26 @@ py::class_<EdgeT> define_basic_edge_concept(
     });
 
     m.def("adjacent",
-      py::overload_cast<
+      nb::overload_cast<
           const EdgeT&, const EdgeT&>(&reticula::adjacent<VertT, TimeT>),
         "edge1"_a, "edge2"_a,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
     m.def("effect_lt",
-      py::overload_cast<
+      nb::overload_cast<
           const EdgeT&, const EdgeT&>(&reticula::effect_lt<VertT, TimeT>),
         "edge1"_a, "edge2"_a,
-        py::call_guard<py::gil_scoped_release>());
+        nb::call_guard<nb::gil_scoped_release>());
   } else {
     m.def("adjacent",
-      py::overload_cast<
+      nb::overload_cast<
           const EdgeT&, const EdgeT&>(&reticula::adjacent<VertT>),
           "edge1"_a, "edge2"_a,
-          py::call_guard<py::gil_scoped_release>());
+          nb::call_guard<nb::gil_scoped_release>());
     m.def("effect_lt",
-      py::overload_cast<const EdgeT&, const EdgeT&>(
+      nb::overload_cast<const EdgeT&, const EdgeT&>(
         &reticula::effect_lt<VertT>),
       "edge1"_a, "edge2"_a,
-      py::call_guard<py::gil_scoped_release>());
+      nb::call_guard<nb::gil_scoped_release>());
   }
 
   m.def(fmt::format("is_network_edge_{}",

@@ -1,6 +1,7 @@
-#include <pybind11/pybind11.h>
-#include <pybind11/operators.h>
-#include <pybind11/stl.h>
+#include "bind_core.hpp"
+#include <nanobind/operators.h>
+#include <nanobind/make_iterator.h>
+
 #include <fmt/format.h>
 
 #include <reticula/intervals.hpp>
@@ -8,43 +9,44 @@
 #include "type_str/intervals.hpp"
 #include "type_utils.hpp"
 #include "type_handles.hpp"
-#include "metaclass.hpp"
 
-namespace py = pybind11;
-using namespace pybind11::literals;
+namespace nb = nanobind;
+using namespace nanobind::literals;
 
 template <typename TimeT>
 struct declare_interval_set_types {
-  void operator()(py::module &m, PyObject* metaclass) {
+  void operator()(nb::module_& m) {
     using IntSet = reticula::interval_set<TimeT>;
-    py::class_<IntSet>(
-        m, python_type_str<IntSet>().c_str(), py::metaclass(metaclass))
-      .def(py::init<>(),
-          py::call_guard<py::gil_scoped_release>())
+    nb::class_<IntSet>(
+        m, python_type_str<IntSet>().c_str())
+      .def(nb::init<>(),
+          nb::call_guard<nb::gil_scoped_release>())
       .def("insert",
           &IntSet::insert,
           "start"_a, "end"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("merge",
           &IntSet::merge,
           "other"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("covers",
           &IntSet::covers,
           "time"_a,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("cover",
           &IntSet::cover,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__iter__", [](const IntSet& c) {
-            return py::make_iterator(c.begin(), c.end());
-          }, py::keep_alive<0, 1>())
+            return nb::make_iterator(
+                    nb::type<IntSet>(), "iterator",
+                    c.begin(), c.end());
+          }, nb::keep_alive<0, 1>())
       .def("__contains__",
           &IntSet::covers,
           "time"_a,
-          py::call_guard<py::gil_scoped_release>())
-      .def(py::self == py::self,
-          py::call_guard<py::gil_scoped_release>())
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(nb::self == nb::self,
+          nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const IntSet& c) {
           return fmt::format("{}", c);
       }).def_static("value_type", []() {
@@ -55,11 +57,9 @@ struct declare_interval_set_types {
   }
 };
 
-void declare_typed_interval_sets(py::module& m) {
-  auto metaclass = common_metaclass("_reticula_ext.interval_set_metaclass");
-
+void declare_typed_interval_sets(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_interval_set_types>,
-      types::time_types>>{}(m, (PyObject*)metaclass);
+      types::time_types>>{}(m);
 }
