@@ -43,7 +43,9 @@ list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
 
 find_package(nanobind CONFIG REQUIRED)
 
-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON) # turns off nanobind LTO flags
+if (NOT MSVC)
+  set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
+endif()
 
 FetchContent_MakeAvailable(reticula fmt metal)
 
