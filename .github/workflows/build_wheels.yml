@@ -30,6 +30,11 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      - name: Set up Visual Studio shell on Windows
+        uses: egor-tensin/vs-shell@v2
+        with:
+          arch: x64
+
       - name: Build Wheels
         uses: pypa/cibuildwheel@v2.12.3
 
