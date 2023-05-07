@@ -55,14 +55,14 @@ test-command = "pytest tests"
 build-verbosity = 3
 
 [tool.cibuildwheel.linux]
-arches = ["x86_64"]
+archs = ["x86_64"]
 repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 
 [tool.cibuildwheel.macos]
-arches = ["universal2"]
+archs = ["universal2"]
 repair-wheel-command = "delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}"
 
 [tool.cibuildwheel.windows]
-arches = ["AMD64"]
+archs = ["AMD64"]
 before-build = "pip install delvewheel"
 repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"
