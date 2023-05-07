@@ -43,6 +43,7 @@ requires = [
     "wheel",
     "cmake>=3.26",
     "scikit-build>=0.17",
+    "ninja",
     "nanobind @ git+https://github.com/wjakob/nanobind@74235fabbcdfbb2fa8533c52b9c4797d3570e712"
 ]
 

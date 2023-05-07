@@ -35,6 +35,12 @@ jobs:
         with:
           arch: x64
 
+      - name: set x64 cl.exe as CXX
+        if: ${{ matrix.os == "reticula-build-windows-2022" }}
+        run: |
+          "CXX=$((Get-Command cl).Path)" >> "$GITHUB_ENV"
+          "CC=$((Get-Command cl).Path)" >> "$GITHUB_ENV"
+
       - name: Build Wheels
         uses: pypa/cibuildwheel@v2.12.3
 
