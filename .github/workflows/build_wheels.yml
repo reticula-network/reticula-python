@@ -36,7 +36,7 @@ jobs:
           arch: x64
 
       - name: set x64 cl.exe as CXX
-        if: ${{ matrix.os == "reticula-build-windows-2022" }}
+        if: matrix.os == 'reticula-build-windows-2022'
         run: |
           "CXX=$((Get-Command cl).Path)" >> "$GITHUB_ENV"
           "CC=$((Get-Command cl).Path)" >> "$GITHUB_ENV"
