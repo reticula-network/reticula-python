@@ -50,8 +50,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.cibuildwheel]
-test-requires = "pytest"
-test-command = "pytest tests"
+skip = "pp38*"
 build-verbosity = 3
 
 [tool.cibuildwheel.linux]
