@@ -5,10 +5,10 @@ For Python developers
 ---------------------
 
 The very first step is to find a suitable development environment. Reticula is
-currently compatible with Linux systems based on GNU C Library 2.17 or higher,
-which at the moment means practically any distribution released in the past 6
-years except for Alpine Linux. If you have no preferences on the subject, we
-recommend a long-term support (LTS) version of Ubuntu, such as 22.04.
+currently compatible with Windows and Linux systems based on GNU C Library 2.17
+or higher, which at the moment means practically any distribution released in
+the past 6 years except for Alpine Linux. If you have no preferences on the
+subject, we recommend a long-term support (LTS) version of Ubuntu, such as 22.04.
 
 
 Setting up the environment

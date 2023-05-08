@@ -4,9 +4,9 @@ Installation
 Python binding
 --------------
 
-Pre-compiled binding "Wheel"s are available for 64-bit Linux systems with glibc
-version 2.17 or above. You can install the most recent stable release from the
-PyPi index using pip:
+Pre-compiled binding "Wheel"s are available for 64-bit Windows and Linux systems
+with glibc version 2.17 or above. You can install the most recent stable release
+from the PyPi index using pip:
 
 .. code-block:: console
 
