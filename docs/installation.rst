@@ -16,8 +16,8 @@ PyPi index using pip:
 The first command makes sure your pip installation is up-to-date, the second
 command installs the most recent version of Reticula from the repository.
 
-The binding currently supports Python versions 3.8, 3.9 and 3.10, with an aim to
-provide experimental support for PyPy versions 3.8 and 3.9 and Python 3.11.
+The binding currently supports Python versions 3.8, 3.9, 3.10 and 3.11, with 
+experimental support for PyPy version 3.9.
 
 If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the

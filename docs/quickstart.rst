@@ -29,10 +29,10 @@ installed:
    $ python --version
    Python 3.8.10
 
-Acceptable values are, at the moment, 3.8, 3.9 or 3.10, though there is
-experimental support for PyPy 3.8 and 3.9 as well. If your Python version is
-not in this range, you can install proper Python version using the tools
-provided by your operating system.
+Acceptable values are, at the moment, 3.8, 3.9, 3.10 or 3.11, though there is
+experimental support for PyPy 3.9 as well. If your Python version is not in this
+range, you can install proper Python version using the tools provided by your
+operating system.
 
 .. note::
    In Ubuntu and other Debian based Linux distributions, by default all Python
