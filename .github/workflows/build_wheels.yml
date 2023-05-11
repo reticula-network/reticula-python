@@ -7,13 +7,13 @@ env:
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: Build wheels for ${{ matrix.py }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022, macos-13-xl]
-        python: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "pp39-*"]
+        py: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "pp39-*"]
 
     steps:
       - uses: actions/setup-python@v4
@@ -41,7 +41,7 @@ jobs:
 
       - name: Build Wheels
         env:
-          CIBW_BUILD: ${{ matrix.python }}
+          CIBW_BUILD: ${{ matrix.py }}
         uses: python -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v3
