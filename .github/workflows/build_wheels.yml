@@ -3,6 +3,7 @@ on: [workflow_dispatch]
 
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 1
+  MACOSX_DEPLOYMENT_TARGET: "10.15"
 
 
 jobs:
