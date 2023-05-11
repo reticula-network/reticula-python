@@ -12,7 +12,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022]
+        os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022, macos-13-xl]
+        python: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "pp39-*"]
 
     steps:
       - name: Collect Workflow Telemetry
@@ -34,6 +35,8 @@ jobs:
           "CC=$((Get-Command cl).Path)" >> "$env:GITHUB_ENV"
 
       - name: Build Wheels
+        env:
+          CIBW_BUILD: ${{ matrix.python }}
         uses: pypa/cibuildwheel@v2.12.3
 
       - uses: actions/upload-artifact@v3
