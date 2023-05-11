@@ -42,7 +42,7 @@ jobs:
       - name: Build Wheels
         env:
           CIBW_BUILD: ${{ matrix.py }}
-        uses: python -m cibuildwheel --output-dir wheelhouse
+        run: python -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v3
         with:
