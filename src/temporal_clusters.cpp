@@ -14,7 +14,7 @@ using namespace nanobind::literals;
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_temporal_cluster_types {
   void operator()(nb::module_ &m) {
-    using EdgeT = AdjT::EdgeType;
+    using EdgeT = typename AdjT::EdgeType;
     using Cluster = reticula::temporal_cluster<EdgeT, AdjT>;
     nb::class_<Cluster>(
         m, python_type_str<Cluster>().c_str())

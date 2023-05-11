@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_component_algorithms {
   void operator()(nb::module_& m) {
-    using EdgeT = AdjT::EdgeType;
+    using EdgeT = typename AdjT::EdgeType;
     m.def("out_component",
         &reticula::out_component<EdgeT, AdjT>,
         "implicit_event_graph"_a, "root"_a,

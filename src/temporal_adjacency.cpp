@@ -13,7 +13,7 @@ using namespace nanobind::literals;
 template <reticula::temporal_network_edge EdgeT>
 struct declare_temporal_adjacency_class {
   void operator()(nb::module_& m) {
-    using Simple = reticula::temporal_adjacency::simple<EdgeT>;
+    using Simple = typename reticula::temporal_adjacency::simple<EdgeT>;
     nb::class_<Simple>(
         m, python_type_str<Simple>().c_str())
       .def(nb::init<>())

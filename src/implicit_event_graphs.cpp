@@ -16,7 +16,7 @@ using namespace nanobind::literals;
 template <reticula::temporal_adjacency::temporal_adjacency AdjT>
 struct declare_implicit_event_graph_class {
   void operator()(nb::module_ &m) {
-    using EdgeT = AdjT::EdgeType;
+    using EdgeT = typename AdjT::EdgeType;
     using Net = reticula::implicit_event_graph<EdgeT, AdjT>;
     nb::class_<Net>(
         m, python_type_str<Net>().c_str())
