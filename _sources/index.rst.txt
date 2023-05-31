@@ -35,10 +35,10 @@ Python package from the Python Package Index, using the command:
 
    $ python -m pip install --upgrade reticula
 
-The Python package is available on most relatively modern Windows and Linux
-systems, i.e., almost anything released since 2016, running on x64 CPUs. Support
-for MacOS operating system and the ARM architecture will be introduced in future
-versions.
+The Python package is available on most relatively modern Windows, MacOS and
+Linux systems. MacOS package provides universal binaries supporting both ARM
+and x64 hardware. Support for the ARM architecture on Windows and Linux will be
+introduced in future versions.
 
 A brief example: Let us generate
 :ref:`an Erdős--Rényi network <generation/gnp:Random Erdős--Rényi network>` and
