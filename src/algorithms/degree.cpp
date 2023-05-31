@@ -113,8 +113,8 @@ void declare_typed_degree_algorithms(nb::module_& m) {
         types::first_order_undirected_edges,
         types::second_order_undirected_edges,
         types::first_order_undirected_hyperedges,
-        first_order_undirected_temporal_edges,
-        first_order_undirected_temporal_hyperedges>>>{}(m);
+        types::first_order_undirected_temporal_edges,
+        types::first_order_undirected_temporal_hyperedges>>>{}(m);
 
   types::run_each<
     metal::transform<
