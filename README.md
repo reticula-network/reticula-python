@@ -4,8 +4,8 @@
 
 ## Installation
 
-The library offers pre-compiled Wheels for x64 Windows and Linux. The library
-currently supports Python version 3.8 or newer and experimentally, PyPy 3.9.
+The library offers pre-compiled Wheels for x64 Windows, MacOS and Linux. The library
+currently supports Python version 3.8 or newer.
 
 ```console
 $ pip install reticula
