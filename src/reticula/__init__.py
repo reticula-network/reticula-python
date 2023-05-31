@@ -323,7 +323,7 @@ for _vert_t in _all_vertex_types:
     setattr(_sys.modules[__name__], f"_from_networkx_{_vert_t.__name__}",
             _partial(_from_networkx, vert_type=_vert_t))
 from_networkx = _generic_attribute(
-        attr_prefix="_from_networkx_",
+        attr_prefix="_from_networkx",
         arg_names=("vertex_type",),
         options={(t,) for t in _all_vertex_types},
         function_module=_sys.modules[__name__],
