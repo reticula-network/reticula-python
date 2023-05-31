@@ -50,11 +50,11 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.cibuildwheel]
-skip = "pp38*"
 build-verbosity = 3
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64"]
+skip = "*-musllinux_*"
 repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 
 [tool.cibuildwheel.macos]
