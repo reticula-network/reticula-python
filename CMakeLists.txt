@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG 61d37b4a5c4c550a8807e6cd7505e90ca899dad9)
+  GIT_TAG c208666076110c026d87644d19be2e272dd9f12d)
 
 FetchContent_Declare(
   fmt
@@ -91,6 +91,7 @@ nanobind_add_module(_reticula_ext
   src/algorithms.cpp
   src/algorithms/assortativity.cpp
   src/algorithms/degree.cpp
+  src/algorithms/edge_degree.cpp
   src/algorithms/basic_temporal.cpp
   src/algorithms/density.cpp
   src/algorithms/directed_connectivity.cpp

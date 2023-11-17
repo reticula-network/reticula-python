@@ -250,6 +250,10 @@ from ._reticula_ext import (
         in_degree, out_degree, incident_degree, degree,
         in_degree_sequence, out_degree_sequence, incident_degree_sequence,
         in_out_degree_pair_sequence, degree_sequence,
+        edge_in_degree, edge_out_degree, edge_incident_degree, edge_degree,
+        edge_in_degree_sequence, edge_out_degree_sequence,
+        edge_incident_degree_sequence, edge_in_out_degree_pair_sequence,
+        edge_degree_sequence,
         density, degree_assortativity, attribute_assortativity)
 
 from ._reticula_ext import (

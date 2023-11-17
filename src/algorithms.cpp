@@ -29,6 +29,7 @@ struct declare_degree_sequence_algorithms {
 
 void declare_typed_assortativity_algorithms(nb::module_& m);
 void declare_typed_degree_algorithms(nb::module_& m);
+void declare_typed_edge_degree_algorithms(nb::module_& m);
 void declare_typed_basic_temporal_network_algorithms(nb::module_& m);
 void declare_typed_density_algorithms(nb::module_& m);
 void declare_typed_directed_connectivity_algorithms(nb::module_& m);
@@ -43,6 +44,7 @@ void declare_algorithms(nb::module_& m) {
 
   declare_typed_assortativity_algorithms(m);
   declare_typed_degree_algorithms(m);
+  declare_typed_edge_degree_algorithms(m);
   declare_typed_basic_temporal_network_algorithms(m);
   declare_typed_density_algorithms(m);
   declare_typed_directed_connectivity_algorithms(m);

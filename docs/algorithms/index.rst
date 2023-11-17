@@ -5,6 +5,7 @@ Algorithms
    :maxdepth: 1
 
    vertex_degrees
+   edge_degrees
    graphicallity
    graph_properties
    assortativity
