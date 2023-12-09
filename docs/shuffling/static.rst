@@ -38,7 +38,7 @@ of rewirings equal to 100 times the number of edges in the network.
 
 
 Joint degree-sequence preserving shuffling
-==========================================
+------------------------------------------
 
 
 .. tab-set::
