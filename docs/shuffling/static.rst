@@ -31,10 +31,10 @@ Degree-sequence preserving shuffling
           degree_sequence_preserving_shuffling(\
              const network<EdgeT>& temp, Gen& generator, std::size_t rewires)
 
-Produces a degree-sequence preserving shuffling of the given undirected static
-network. The variant with the ``rewires`` parameter performs the given number
-of rewirings. The variant without the ``rewires`` parameter performs a number
-of rewirings equal to 100 times the number of edges in the network.
+Produces a degree-sequence preserving shuffling of the given undirected dyadic
+static network. The variant with the ``rewires`` parameter performs the given
+number of rewirings. The variant without the ``rewires`` parameter performs a
+number of rewirings equal to 100 times the number of edges in the network.
 
 
 Joint degree-sequence preserving shuffling
@@ -67,3 +67,9 @@ Joint degree-sequence preserving shuffling
           network<EdgeT> microcanonical_reference_models::\
           joint_degree_sequence_preserving_shuffling(\
              const network<EdgeT>& temp, Gen& generator, std::size_t rewires)
+
+Produces a joint degree-sequence preserving shuffling of the given undirected,
+dyadic static network. The variant with the ``rewires`` parameter performs the
+given number of rewirings. The variant without the ``rewires`` parameter
+performs a number of rewirings equal to 100 times the number of edges in the
+network.
