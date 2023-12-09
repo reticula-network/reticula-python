@@ -9,11 +9,9 @@ Degree-sequence preserving shuffling
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: microcanonical_reference_models.
-       degree_sequence_preserving_shuffling(\
+    .. py:function:: microcanonical_reference_models.degree_sequence_preserving_shuffling(\
           static_network, random_state)
-    .. py:function:: microcanonical_reference_models.\
-       degree_sequence_preserving_shuffling(\
+    .. py:function:: microcanonical_reference_models.degree_sequence_preserving_shuffling(\
           static_network, random_state, rewires: int)
 
   .. tab-item:: C++
@@ -48,11 +46,9 @@ Joint degree-sequence preserving shuffling
   .. tab-item:: Python
     :sync: python
 
-    .. py:function:: microcanonical_reference_models.\
-       joint_degree_sequence_preserving_shuffling(\
+    .. py:function:: microcanonical_reference_models.joint_degree_sequence_preserving_shuffling(\
           static_network, random_state)
-    .. py:function:: microcanonical_reference_models.\
-       joint_degree_sequence_preserving_shuffling(\
+    .. py:function:: microcanonical_reference_models.joint_degree_sequence_preserving_shuffling(\
           static_network, random_state, rewires: int)
 
   .. tab-item:: C++
