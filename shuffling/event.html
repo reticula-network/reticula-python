@@ -1,29 +1,24 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Event shuffling" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/shuffling/event.html" />
 <meta property="og:site_name" content="Reticula" />
 <meta property="og:description" content="Instant-event shuffling: Python C++ Produces a random shuffling of the temporal network where each event is attributed to two randomly selected vertices from the original network. Equivalent to mic..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://docs.reticula.network/_images/social_previews/summary_shuffling_event_f754a103.png" />
-<meta property="og:image:alt" content="Instant-event shuffling: Python C++ Produces a random shuffling of the temporal network where each event is attributed to two randomly selected vertices from..." />
 <meta name="description" content="Instant-event shuffling: Python C++ Produces a random shuffling of the temporal network where each event is attributed to two randomly selected vertices from the original network. Equivalent to mic..." />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Link Shuffling" href="link.html" /><link rel="prev" title="Randomising networks" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Timeline Shuffling" href="timeline.html" /><link rel="prev" title="Temporal Network Link Shuffling" href="link.html" />
         <link rel="canonical" href="https://docs.reticula.network/shuffling/event.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Event shuffling - Reticula</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -191,8 +186,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Randomising networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="static.html">Static Network Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="link.html">Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
@@ -206,6 +203,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/vertex_degrees.html">Vertex degrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/edge_degrees.html">Edge degrees (orders)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/assortativity.html">Assortativity</a></li>
@@ -263,16 +261,16 @@
         </div>
         <article role="main">
           <section id="event-shuffling">
-<h1>Event shuffling<a class="headerlink" href="#event-shuffling" title="Permalink to this heading">#</a></h1>
+<h1>Event shuffling<a class="headerlink" href="#event-shuffling" title="Link to this heading">#</a></h1>
 <section id="instant-event-shuffling">
-<h2>Instant-event shuffling<a class="headerlink" href="#instant-event-shuffling" title="Permalink to this heading">#</a></h2>
+<h2>Instant-event shuffling<a class="headerlink" href="#instant-event-shuffling" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py" id="microcanonical_reference_models.instant_event_shuffling">
-<span class="sig-prename descclassname"><span class="pre">microcanonical_reference_models.</span></span><span class="sig-name descname"><span class="pre">instant_event_shuffling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#microcanonical_reference_models.instant_event_shuffling" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">microcanonical_reference_models.instant_event_shuffling(temporal_network,</span> <span class="pre">random_state)</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -281,7 +279,7 @@ Python</label><div class="sd-tab-content docutils">
 C++</label><div class="sd-tab-content docutils">
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen">
-<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><span class="n"><span class="pre">temporal_network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">requires</span></span><span class="w"> </span><span class="n"><span class="pre">is_dyadic_v</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="../types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">microcanonical_reference_models</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">instant_event_shuffling</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">temp</span></span>, <a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::Gen"><span class="n"><span class="pre">Gen</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">generator</span></span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="Permalink to this definition">#</a><br /></dt>
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../types.html#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><span class="n"><span class="pre">temporal_network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uniform_random_bit_generator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">requires</span></span><span class="w"> </span><span class="n"><span class="pre">is_dyadic_v</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="../types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">microcanonical_reference_models</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">instant_event_shuffling</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">temp</span></span>, <a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="microcanonical_reference_models::instant_event_shuffling::Gen"><span class="n"><span class="pre">Gen</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">generator</span></span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -299,23 +297,23 @@ conserved.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="link.html">
+          <a class="next-page" href="timeline.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Link Shuffling</div>
+                <div class="title">Timeline Shuffling</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="link.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Randomising networks</div>
+                <div class="title">Temporal Network Link Shuffling</div>
                 
               </div>
             </a>
@@ -357,7 +355,7 @@ conserved.</p>
             <ul>
 <li><a class="reference internal" href="#">Event shuffling</a><ul>
 <li><a class="reference internal" href="#instant-event-shuffling">Instant-event shuffling</a><ul>
-<li><a class="reference internal" href="#microcanonical_reference_models.instant_event_shuffling"><code class="docutils literal notranslate"><span class="pre">microcanonical_reference_models.instant_event_shuffling()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models23instant_event_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen"><code class="docutils literal notranslate"><span class="pre">instant_event_shuffling()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -371,13 +369,13 @@ conserved.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+</div><script src="../_static/documentation_options.js?v=82662543"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

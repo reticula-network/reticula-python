@@ -1,5 +1,5 @@
-Link Shuffling
-==============
+Temporal Network Link Shuffling
+===============================
 
 Link shuffling
 --------------

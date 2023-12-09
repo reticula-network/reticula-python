@@ -1,29 +1,24 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Networks and network types" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/types.html" />
 <meta property="og:site_name" content="Reticula" />
 <meta property="og:description" content="Reticula support static and temporal networks involving two (dyadic) or more (hypergraph) vertices in each event. The events can have an inherent directionality and possibly a time delay. It is als..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://docs.reticula.network/_images/social_previews/summary_types_9ecb6bfe.png" />
-<meta property="og:image:alt" content="Reticula support static and temporal networks involving two (dyadic) or more (hypergraph) vertices in each event. The events can have an inherent directional..." />
 <meta name="description" content="Reticula support static and temporal networks involving two (dyadic) or more (hypergraph) vertices in each event. The events can have an inherent directionality and possibly a time delay. It is als..." />
-<meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Input/Output and interoperation" href="io.html" /><link rel="prev" title="Quick Start" href="quickstart.html" />
         <link rel="canonical" href="https://docs.reticula.network/types.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Networks and network types - Reticula</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -191,8 +186,10 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html">Static Network Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/event.html">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
@@ -206,6 +203,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/edge_degrees.html">Edge degrees (orders)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/assortativity.html">Assortativity</a></li>
@@ -263,7 +261,7 @@
         </div>
         <article role="main">
           <section id="networks-and-network-types">
-<h1>Networks and network types<a class="headerlink" href="#networks-and-network-types" title="Permalink to this heading">#</a></h1>
+<h1>Networks and network types<a class="headerlink" href="#networks-and-network-types" title="Link to this heading">#</a></h1>
 <p>Reticula support static and temporal networks involving two (dyadic) or more
 (hypergraph) vertices in each event. The events can have an inherent
 directionality and possibly a time delay.</p>
@@ -273,7 +271,7 @@ concepts and defines certain type traits.</p>
 <p>In this section, we will discuss the properties of the different edge and
 network types.</p>
 <section id="general-properties-of-networks">
-<h2>General properties of networks<a class="headerlink" href="#general-properties-of-networks" title="Permalink to this heading">#</a></h2>
+<h2>General properties of networks<a class="headerlink" href="#general-properties-of-networks" title="Link to this heading">#</a></h2>
 <p>All network types are immutable. This means that all functions operating or
 seemingly “modifying” networks actually return a modified <strong>copy</strong> of the input
 networks.</p>
@@ -309,7 +307,7 @@ scientific citation temporal networks can use <code class="code highlight python
 temporal edges and <code class="code highlight python docutils literal highlight-python"><span class="n">citation_network</span></code> for the network type.</p>
 </div>
 <section id="construction">
-<h3>Construction<a class="headerlink" href="#construction" title="Permalink to this heading">#</a></h3>
+<h3>Construction<a class="headerlink" href="#construction" title="Link to this heading">#</a></h3>
 <p>Networks can be initialised empty, by a list of edges, or by a list of edges and
 vertices. In addition to explicitly stating a list of edge objects, you can use
 tuples that implicitly convert to the correct edge type:</p>
@@ -342,7 +340,7 @@ vice versa.</p>
 </div>
 </section>
 <section id="edges-and-vertices">
-<h3>Edges and vertices<a class="headerlink" href="#edges-and-vertices" title="Permalink to this heading">#</a></h3>
+<h3>Edges and vertices<a class="headerlink" href="#edges-and-vertices" title="Link to this heading">#</a></h3>
 <p>Edges and vertices are accessible through member functions of the same name.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span> <span class="c1"># list of two edges</span>
 <span class="n">g3</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="c1"># list six vertices</span>
@@ -356,7 +354,7 @@ former will be sorted by cause time and the latter by effect time of the events.
 In static networks they return the same output.</p>
 </section>
 <section id="incident-edges">
-<h3>Incident edges<a class="headerlink" href="#incident-edges" title="Permalink to this heading">#</a></h3>
+<h3>Incident edges<a class="headerlink" href="#incident-edges" title="Link to this heading">#</a></h3>
 <p>Edges incident to a vertex can be accessed using the <code class="code highlight python docutils literal highlight-python"><span class="n">incident_edges</span></code>
 methods. For directed network types, methods <code class="code highlight python docutils literal highlight-python"><span class="n">out_edges</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">in_edges</span></code>
 distinguish between inward and outward edges, while <code class="code highlight python docutils literal highlight-python"><span class="n">indicent_edges</span></code> does
@@ -368,7 +366,7 @@ not.</p>
 </div>
 </section>
 <section id="successors-predecessors-and-neighbours">
-<h3>Successors, predecessors and neighbours<a class="headerlink" href="#successors-predecessors-and-neighbours" title="Permalink to this heading">#</a></h3>
+<h3>Successors, predecessors and neighbours<a class="headerlink" href="#successors-predecessors-and-neighbours" title="Link to this heading">#</a></h3>
 <p>The set of neighbours of a vertex in the network can be achieved using the
 method <code class="code highlight python docutils literal highlight-python"><span class="n">neighbours</span></code>. Methods <code class="code highlight python docutils literal highlight-python"><span class="n">successors</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">predecessors</span></code> provide
 directed network equivalents.</p>
@@ -379,7 +377,7 @@ directed network equivalents.</p>
 </div>
 </section>
 <section id="vertex-degree">
-<h3>Vertex degree<a class="headerlink" href="#vertex-degree" title="Permalink to this heading">#</a></h3>
+<h3>Vertex degree<a class="headerlink" href="#vertex-degree" title="Link to this heading">#</a></h3>
 <p>There are multiple ways of defining the degrees for vertices depending on the
 type of network at hand. All network types have the following degree types
 defined:</p>
@@ -409,147 +407,147 @@ for more information on these and other relevant functions.</p>
 </section>
 </section>
 <section id="network-types">
-<h2>Network types<a class="headerlink" href="#network-types" title="Permalink to this heading">#</a></h2>
+<h2>Network types<a class="headerlink" href="#network-types" title="Link to this heading">#</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE7network">
-<span id="_CPPv3I_12network_edgeE7network"></span><span id="_CPPv2I_12network_edgeE7network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE7network" title="network::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_12network_edgeE7network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_12network_edgeE7network"></span><span id="_CPPv2I_12network_edgeE7network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE7network" title="network::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_12network_edgeE7network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <section id="undirected-static-networks">
-<h3>Undirected static networks<a class="headerlink" href="#undirected-static-networks" title="Permalink to this heading">#</a></h3>
+<h3>Undirected static networks<a class="headerlink" href="#undirected-static-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE18undirected_network">
-<span id="_CPPv3I_14network_vertexE18undirected_network"></span><span id="_CPPv2I_14network_vertexE18undirected_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE18undirected_network" title="undirected_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE18undirected_network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertexE18undirected_network"></span><span id="_CPPv2I_14network_vertexE18undirected_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE18undirected_network" title="undirected_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE18undirected_network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="undirected_network-vertex_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">undirected_network[vertex_type]</span></span><a class="headerlink" href="#undirected_network-vertex_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">undirected_network[vertex_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-static-networks">
-<h3>Directed static networks<a class="headerlink" href="#directed-static-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed static networks<a class="headerlink" href="#directed-static-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE16directed_network">
-<span id="_CPPv3I_14network_vertexE16directed_network"></span><span id="_CPPv2I_14network_vertexE16directed_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE16directed_network" title="directed_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE16directed_network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertexE16directed_network"></span><span id="_CPPv2I_14network_vertexE16directed_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE16directed_network" title="directed_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE16directed_network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_network-vertex_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_network[vertex_type]</span></span><a class="headerlink" href="#directed_network-vertex_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_network[vertex_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="undirected-static-hyper-networks">
-<h3>Undirected static hyper-networks<a class="headerlink" href="#undirected-static-hyper-networks" title="Permalink to this heading">#</a></h3>
+<h3>Undirected static hyper-networks<a class="headerlink" href="#undirected-static-hyper-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE23undirected_hypernetwork">
-<span id="_CPPv3I_14network_vertexE23undirected_hypernetwork"></span><span id="_CPPv2I_14network_vertexE23undirected_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE23undirected_hypernetwork" title="undirected_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE23undirected_hypernetwork" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertexE23undirected_hypernetwork"></span><span id="_CPPv2I_14network_vertexE23undirected_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE23undirected_hypernetwork" title="undirected_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE23undirected_hypernetwork" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="undirected_hypernetwork-vertex_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">undirected_hypernetwork[vertex_type]</span></span><a class="headerlink" href="#undirected_hypernetwork-vertex_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">undirected_hypernetwork[vertex_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-static-hyper-networks">
-<h3>Directed static hyper-networks<a class="headerlink" href="#directed-static-hyper-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed static hyper-networks<a class="headerlink" href="#directed-static-hyper-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertexE21directed_hypernetwork">
-<span id="_CPPv3I_14network_vertexE21directed_hypernetwork"></span><span id="_CPPv2I_14network_vertexE21directed_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE21directed_hypernetwork" title="directed_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE21directed_hypernetwork" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertexE21directed_hypernetwork"></span><span id="_CPPv2I_14network_vertexE21directed_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertexE21directed_hypernetwork" title="directed_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertexE21directed_hypernetwork" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_hypernetwork-vertex_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_hypernetwork[vertex_type]</span></span><a class="headerlink" href="#directed_hypernetwork-vertex_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_hypernetwork[vertex_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="undirected-temporal-networks">
-<h3>Undirected temporal networks<a class="headerlink" href="#undirected-temporal-networks" title="Permalink to this heading">#</a></h3>
+<h3>Undirected temporal networks<a class="headerlink" href="#undirected-temporal-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E27undirected_temporal_network">
-<span id="_CPPv3I_14network_vertex0E27undirected_temporal_network"></span><span id="_CPPv2I_14network_vertex0E27undirected_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E27undirected_temporal_network"></span><span id="_CPPv2I_14network_vertex0E27undirected_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="undirected_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="undirected_temporal_network-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">undirected_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#undirected_temporal_network-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">undirected_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-temporal-networks">
-<h3>Directed temporal networks<a class="headerlink" href="#directed-temporal-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed temporal networks<a class="headerlink" href="#directed-temporal-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E25directed_temporal_network">
-<span id="_CPPv3I_14network_vertex0E25directed_temporal_network"></span><span id="_CPPv2I_14network_vertex0E25directed_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E25directed_temporal_network"></span><span id="_CPPv2I_14network_vertex0E25directed_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="directed_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E25directed_temporal_network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_temporal_network-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#directed_temporal_network-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-delayed-temporal-networks">
-<h3>Directed delayed temporal networks<a class="headerlink" href="#directed-delayed-temporal-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed delayed temporal networks<a class="headerlink" href="#directed-delayed-temporal-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E33directed_delayed_temporal_network">
-<span id="_CPPv3I_14network_vertex0E33directed_delayed_temporal_network"></span><span id="_CPPv2I_14network_vertex0E33directed_delayed_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_delayed_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="directed_delayed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="directed_delayed_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E33directed_delayed_temporal_network"></span><span id="_CPPv2I_14network_vertex0E33directed_delayed_temporal_network"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_delayed_temporal_network</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="directed_delayed_temporal_network::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="directed_delayed_temporal_network::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_delayed_temporal_network-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_delayed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#directed_delayed_temporal_network-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_delayed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="undirected-temporal-hyper-networks">
-<h3>Undirected temporal hyper-networks<a class="headerlink" href="#undirected-temporal-hyper-networks" title="Permalink to this heading">#</a></h3>
+<h3>Undirected temporal hyper-networks<a class="headerlink" href="#undirected-temporal-hyper-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork">
-<span id="_CPPv3I_14network_vertex0E32undirected_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E32undirected_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="undirected_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="undirected_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E32undirected_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E32undirected_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="undirected_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="undirected_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="undirected_temporal_hypernetwork-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">undirected_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#undirected_temporal_hypernetwork-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">undirected_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-temporal-hyper-networks">
-<h3>Directed temporal hyper-networks<a class="headerlink" href="#directed-temporal-hyper-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed temporal hyper-networks<a class="headerlink" href="#directed-temporal-hyper-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork">
-<span id="_CPPv3I_14network_vertex0E30directed_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E30directed_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="directed_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="directed_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E30directed_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E30directed_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="directed_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="directed_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_temporal_hypernetwork-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#directed_temporal_hypernetwork-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 <section id="directed-delayed-temporal-hyper-networks">
-<h3>Directed delayed temporal hyper-networks<a class="headerlink" href="#directed-delayed-temporal-hyper-networks" title="Permalink to this heading">#</a></h3>
+<h3>Directed delayed temporal hyper-networks<a class="headerlink" href="#directed-delayed-temporal-hyper-networks" title="Link to this heading">#</a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork">
-<span id="_CPPv3I_14network_vertex0E38directed_delayed_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E38directed_delayed_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_delayed_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="directed_delayed_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="directed_delayed_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_14network_vertex0E38directed_delayed_temporal_hypernetwork"></span><span id="_CPPv2I_14network_vertex0E38directed_delayed_temporal_hypernetwork"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><span class="n"><span class="pre">network_vertex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VertT</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TimeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_delayed_temporal_hypernetwork</span></span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="directed_delayed_temporal_hypernetwork::VertT"><span class="n"><span class="pre">VertT</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="directed_delayed_temporal_hypernetwork::TimeT"><span class="n"><span class="pre">TimeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="directed_delayed_temporal_hypernetwork-vertex_type-time_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed_delayed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span><a class="headerlink" href="#directed_delayed_temporal_hypernetwork-vertex_type-time_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">directed_delayed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></span></dt>
 <dd></dd></dl>
 
 </section>
 </section>
 <section id="vertex-types">
-<span id="id1"></span><h2>Vertex types<a class="headerlink" href="#vertex-types" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>Vertex types<a class="headerlink" href="#vertex-types" title="Link to this heading">#</a></h2>
 <section id="simple-types">
-<h3>Simple types<a class="headerlink" href="#simple-types" title="Permalink to this heading">#</a></h3>
+<h3>Simple types<a class="headerlink" href="#simple-types" title="Link to this heading">#</a></h3>
 <p>The only requirement for a valid vertex type in C++ is to satisfy
 <a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_vertex</span></code></a>. This means that the numeric types,
 <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">tuple</span></code> and all standard library
@@ -558,26 +556,26 @@ requires a predefined list of types at compile time, meaning that we have to
 make a choice as to what vertex types would be available. At the moment certain
 fundamental types are defined</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="int64">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">int64</span></span><a class="headerlink" href="#int64" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">int64</span></span></dt>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span></code> 64-bit signed integers.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="string">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">string</span></span><a class="headerlink" href="#string" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">string</span></span></dt>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span></code>.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pair-type1-type2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pair[type1,</span> <span class="pre">type2]</span></span><a class="headerlink" href="#pair-type1-type2" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pair[type1,</span> <span class="pre">type2]</span></span></dt>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Type1</span><span class="p">,</span><span class="w"> </span><span class="n">Type2</span><span class="o">&gt;</span></code>.</p>
 </dd></dl>
 
 </section>
 <section id="higher-order-networks">
-<h3>Higher-order networks<a class="headerlink" href="#higher-order-networks" title="Permalink to this heading">#</a></h3>
+<h3>Higher-order networks<a class="headerlink" href="#higher-order-networks" title="Link to this heading">#</a></h3>
 <p>In addition to the vertex types listed above, the Python binding supports
 one level of higher-order network, where vertices of the network can be any of
 the defined edge types as long as that edge type uses one of the above “simple”
@@ -585,32 +583,32 @@ vertex types. The C++ library supports any level of higher-order networks.</p>
 </section>
 </section>
 <section id="time-types">
-<h2>Time Types<a class="headerlink" href="#time-types" title="Permalink to this heading">#</a></h2>
+<h2>Time Types<a class="headerlink" href="#time-types" title="Link to this heading">#</a></h2>
 <p>In C++ it is possible to use any arithmetic type for timestamps. In the Python
-binding, in addition to the previously mentioned <a class="reference internal" href="#int64" title="int64"><code class="xref py py-class docutils literal notranslate"><span class="pre">int64</span></code></a> integer type
+binding, in addition to the previously mentioned <code class="xref py py-class docutils literal notranslate"><span class="pre">int64</span></code> integer type
 you can use one of the following pre-defined types:</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="double">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">double</span></span><a class="headerlink" href="#double" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">double</span></span></dt>
 <dd><p>Corresponding to <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">double</span></code> double precision floating-point type, almost
 always an implementation of the IEEE-754 binary64 format.</p>
 </dd></dl>
 
 </section>
 <section id="concepts">
-<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">#</a></h2>
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading">#</a></h2>
 <section id="vertices">
-<h3>Vertices<a class="headerlink" href="#vertices" title="Permalink to this heading">#</a></h3>
+<h3>Vertices<a class="headerlink" href="#vertices" title="Link to this heading">#</a></h3>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E14network_vertex">
-<span id="_CPPv3I0E14network_vertex"></span><span id="_CPPv2I0E14network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E14network_vertex" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E14network_vertex"></span><span id="_CPPv2I0E14network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E14network_vertex" title="Link to this definition">#</a><br /></dt>
 <dd><p>Any type that is totally ordered (satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code>)
 and hashable with the struct <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">hash</span></code> can be a network vertex.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E22integer_network_vertex">
-<span id="_CPPv3I0E22integer_network_vertex"></span><span id="_CPPv2I0E22integer_network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">integer_network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E22integer_network_vertex" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E22integer_network_vertex"></span><span id="_CPPv2I0E22integer_network_vertex"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">integer_network_vertex</span></span></span><a class="headerlink" href="#_CPPv4I0E22integer_network_vertex" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E14network_vertex" title="network_vertex"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_vertex</span></code></a> that is also an arithmetic integer type,
 i.e., trait <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">is_integer</span></code> should have a true value
 for that type.</p>
@@ -618,10 +616,10 @@ for that type.</p>
 
 </section>
 <section id="edges">
-<h3>Edges<a class="headerlink" href="#edges" title="Permalink to this heading">#</a></h3>
+<h3>Edges<a class="headerlink" href="#edges" title="Link to this heading">#</a></h3>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E12network_edge">
-<span id="_CPPv3I0E12network_edge"></span><span id="_CPPv2I0E12network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E12network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E12network_edge"></span><span id="_CPPv2I0E12network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E12network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>Any type can be a network edge if it is totally ordered (satisfies
 <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">totally_ordered</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code>), hashable with both <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">hash</span></code> and
 <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">hash</span></code>, defines a <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">VertexType</span></code> member type and certain
@@ -634,21 +632,21 @@ function members: <code class="code highlight cpp docutils literal highlight-cpp
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E21directed_network_edge">
-<span id="_CPPv3I0E21directed_network_edge"></span><span id="_CPPv2I0E21directed_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21directed_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E21directed_network_edge"></span><span id="_CPPv2I0E21directed_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21directed_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that might have distinct in- and out-incident
 sets of vertices.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E23undirected_network_edge">
-<span id="_CPPv3I0E23undirected_network_edge"></span><span id="_CPPv2I0E23undirected_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E23undirected_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E23undirected_network_edge"></span><span id="_CPPv2I0E23undirected_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E23undirected_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that cannot have distinct in- and out-incident
 sets of vertices, i.e., in- and out-incident vertices are always equal.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E21temporal_network_edge">
-<span id="_CPPv3I0E21temporal_network_edge"></span><span id="_CPPv2I0E21temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E21temporal_network_edge"></span><span id="_CPPv2I0E21temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E21temporal_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that carries time information, by defining
 member types <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">TimeType</span></code> which should be an arithmatic type and
 <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">StaticProjectionType</span></code> which should be a <code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_edge</span></code> and
@@ -658,64 +656,64 @@ member functions <code class="code highlight cpp docutils literal highlight-cpp"
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E30directed_temporal_network_edge">
-<span id="_CPPv3I0E30directed_temporal_network_edge"></span><span id="_CPPv2I0E30directed_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30directed_temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E30directed_temporal_network_edge"></span><span id="_CPPv2I0E30directed_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30directed_temporal_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">temporal_network_edge</span></code></a> that is also a
 <a class="reference internal" href="#_CPPv4I0E21directed_network_edge" title="directed_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">directed_network_edge</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E32undirected_temporal_network_edge">
-<span id="_CPPv3I0E32undirected_temporal_network_edge"></span><span id="_CPPv2I0E32undirected_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E32undirected_temporal_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E32undirected_temporal_network_edge"></span><span id="_CPPv2I0E32undirected_temporal_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_temporal_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E32undirected_temporal_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E21temporal_network_edge" title="temporal_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">temporal_network_edge</span></code></a> that is also a
 <a class="reference internal" href="#_CPPv4I0E23undirected_network_edge" title="undirected_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">undirected_network_edge</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E19static_network_edge">
-<span id="_CPPv3I0E19static_network_edge"></span><span id="_CPPv2I0E19static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E19static_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E19static_network_edge"></span><span id="_CPPv2I0E19static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E19static_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E12network_edge" title="network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">network_edge</span></code></a> that does not carry time information by not
 defining member function <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">effect_time</span><span class="p">()</span></code>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E28directed_static_network_edge">
-<span id="_CPPv3I0E28directed_static_network_edge"></span><span id="_CPPv2I0E28directed_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E28directed_static_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E28directed_static_network_edge"></span><span id="_CPPv2I0E28directed_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">directed_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E28directed_static_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E19static_network_edge" title="static_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_network_edge</span></code></a> that is also a
 <a class="reference internal" href="#_CPPv4I0E21directed_network_edge" title="directed_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">directed_network_edge</span></code></a>.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E30undirected_static_network_edge">
-<span id="_CPPv3I0E30undirected_static_network_edge"></span><span id="_CPPv2I0E30undirected_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30undirected_static_network_edge" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E30undirected_static_network_edge"></span><span id="_CPPv2I0E30undirected_static_network_edge"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">undirected_static_network_edge</span></span></span><a class="headerlink" href="#_CPPv4I0E30undirected_static_network_edge" title="Link to this definition">#</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#_CPPv4I0E19static_network_edge" title="static_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">static_network_edge</span></code></a> that is also a
 <a class="reference internal" href="#_CPPv4I0E23undirected_network_edge" title="undirected_network_edge"><code class="xref cpp cpp-concept docutils literal notranslate"><span class="pre">undirected_network_edge</span></code></a>.</p>
 </dd></dl>
 
 </section>
 <section id="degree-weight-ranges">
-<h3>Degree/weight ranges<a class="headerlink" href="#degree-weight-ranges" title="Permalink to this heading">#</a></h3>
+<h3>Degree/weight ranges<a class="headerlink" href="#degree-weight-ranges" title="Link to this heading">#</a></h3>
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E12degree_range">
-<span id="_CPPv3I0E12degree_range"></span><span id="_CPPv2I0E12degree_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12degree_range" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E12degree_range"></span><span id="_CPPv2I0E12degree_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12degree_range" title="Link to this definition">#</a><br /></dt>
 <dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with integer values.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E17degree_pair_range">
-<span id="_CPPv3I0E17degree_pair_range"></span><span id="_CPPv2I0E17degree_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17degree_pair_range" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E17degree_pair_range"></span><span id="_CPPv2I0E17degree_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degree_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17degree_pair_range" title="Link to this definition">#</a><br /></dt>
 <dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with pairs of integers as
 values, representing in- and out-degree of each vertex.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E12weight_range">
-<span id="_CPPv3I0E12weight_range"></span><span id="_CPPv2I0E12weight_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12weight_range" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E12weight_range"></span><span id="_CPPv2I0E12weight_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_range</span></span></span><a class="headerlink" href="#_CPPv4I0E12weight_range" title="Link to this definition">#</a><br /></dt>
 <dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with arithmetic values.</p>
 </dd></dl>
 
 <dl class="cpp concept">
 <dt class="sig sig-object cpp" id="_CPPv4I0E17weight_pair_range">
-<span id="_CPPv3I0E17weight_pair_range"></span><span id="_CPPv2I0E17weight_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17weight_pair_range" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I0E17weight_pair_range"></span><span id="_CPPv2I0E17weight_pair_range"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="k"><span class="pre">concept</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">weight_pair_range</span></span></span><a class="headerlink" href="#_CPPv4I0E17weight_pair_range" title="Link to this definition">#</a><br /></dt>
 <dd><p>A range (i.e., satisfies <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span></code>) with pairs of arithmetic
 values, Corresponding to in- and out-degree weigts for each vertex.</p>
 </dd></dl>
@@ -795,66 +793,80 @@ values, Corresponding to in- and out-degree weigts for each vertex.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#network-types">Network types</a><ul>
+<li><a class="reference internal" href="#_CPPv4I_12network_edgeE7network"><code class="docutils literal notranslate"><span class="pre">network</span></code></a></li>
 <li><a class="reference internal" href="#undirected-static-networks">Undirected static networks</a><ul>
-<li><a class="reference internal" href="#undirected_network-vertex_type"><code class="docutils literal notranslate"><span class="pre">undirected_network[vertex_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertexE18undirected_network"><code class="docutils literal notranslate"><span class="pre">undirected_network</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-static-networks">Directed static networks</a><ul>
-<li><a class="reference internal" href="#directed_network-vertex_type"><code class="docutils literal notranslate"><span class="pre">directed_network[vertex_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertexE16directed_network"><code class="docutils literal notranslate"><span class="pre">directed_network</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#undirected-static-hyper-networks">Undirected static hyper-networks</a><ul>
-<li><a class="reference internal" href="#undirected_hypernetwork-vertex_type"><code class="docutils literal notranslate"><span class="pre">undirected_hypernetwork[vertex_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertexE23undirected_hypernetwork"><code class="docutils literal notranslate"><span class="pre">undirected_hypernetwork</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-static-hyper-networks">Directed static hyper-networks</a><ul>
-<li><a class="reference internal" href="#directed_hypernetwork-vertex_type"><code class="docutils literal notranslate"><span class="pre">directed_hypernetwork[vertex_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertexE21directed_hypernetwork"><code class="docutils literal notranslate"><span class="pre">directed_hypernetwork</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#undirected-temporal-networks">Undirected temporal networks</a><ul>
-<li><a class="reference internal" href="#undirected_temporal_network-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E27undirected_temporal_network"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_network</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-temporal-networks">Directed temporal networks</a><ul>
-<li><a class="reference internal" href="#directed_temporal_network-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">directed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E25directed_temporal_network"><code class="docutils literal notranslate"><span class="pre">directed_temporal_network</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-delayed-temporal-networks">Directed delayed temporal networks</a><ul>
-<li><a class="reference internal" href="#directed_delayed_temporal_network-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">directed_delayed_temporal_network[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E33directed_delayed_temporal_network"><code class="docutils literal notranslate"><span class="pre">directed_delayed_temporal_network</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#undirected-temporal-hyper-networks">Undirected temporal hyper-networks</a><ul>
-<li><a class="reference internal" href="#undirected_temporal_hypernetwork-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E32undirected_temporal_hypernetwork"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_hypernetwork</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-temporal-hyper-networks">Directed temporal hyper-networks</a><ul>
-<li><a class="reference internal" href="#directed_temporal_hypernetwork-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">directed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E30directed_temporal_hypernetwork"><code class="docutils literal notranslate"><span class="pre">directed_temporal_hypernetwork</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-delayed-temporal-hyper-networks">Directed delayed temporal hyper-networks</a><ul>
-<li><a class="reference internal" href="#directed_delayed_temporal_hypernetwork-vertex_type-time_type"><code class="docutils literal notranslate"><span class="pre">directed_delayed_temporal_hypernetwork[vertex_type,</span> <span class="pre">time_type]</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_14network_vertex0E38directed_delayed_temporal_hypernetwork"><code class="docutils literal notranslate"><span class="pre">directed_delayed_temporal_hypernetwork</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#vertex-types">Vertex types</a><ul>
-<li><a class="reference internal" href="#simple-types">Simple types</a><ul>
-<li><a class="reference internal" href="#int64"><code class="docutils literal notranslate"><span class="pre">int64</span></code></a></li>
-<li><a class="reference internal" href="#string"><code class="docutils literal notranslate"><span class="pre">string</span></code></a></li>
-<li><a class="reference internal" href="#pair-type1-type2"><code class="docutils literal notranslate"><span class="pre">pair[type1,</span> <span class="pre">type2]</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#simple-types">Simple types</a></li>
 <li><a class="reference internal" href="#higher-order-networks">Higher-order networks</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#time-types">Time Types</a><ul>
-<li><a class="reference internal" href="#double"><code class="docutils literal notranslate"><span class="pre">double</span></code></a></li>
+<li><a class="reference internal" href="#time-types">Time Types</a></li>
+<li><a class="reference internal" href="#concepts">Concepts</a><ul>
+<li><a class="reference internal" href="#vertices">Vertices</a><ul>
+<li><a class="reference internal" href="#_CPPv4I0E14network_vertex"><code class="docutils literal notranslate"><span class="pre">network_vertex</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E22integer_network_vertex"><code class="docutils literal notranslate"><span class="pre">integer_network_vertex</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#concepts">Concepts</a><ul>
-<li><a class="reference internal" href="#vertices">Vertices</a></li>
-<li><a class="reference internal" href="#edges">Edges</a></li>
-<li><a class="reference internal" href="#degree-weight-ranges">Degree/weight ranges</a></li>
+<li><a class="reference internal" href="#edges">Edges</a><ul>
+<li><a class="reference internal" href="#_CPPv4I0E12network_edge"><code class="docutils literal notranslate"><span class="pre">network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E21directed_network_edge"><code class="docutils literal notranslate"><span class="pre">directed_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E23undirected_network_edge"><code class="docutils literal notranslate"><span class="pre">undirected_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E21temporal_network_edge"><code class="docutils literal notranslate"><span class="pre">temporal_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E30directed_temporal_network_edge"><code class="docutils literal notranslate"><span class="pre">directed_temporal_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E32undirected_temporal_network_edge"><code class="docutils literal notranslate"><span class="pre">undirected_temporal_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E19static_network_edge"><code class="docutils literal notranslate"><span class="pre">static_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E28directed_static_network_edge"><code class="docutils literal notranslate"><span class="pre">directed_static_network_edge</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E30undirected_static_network_edge"><code class="docutils literal notranslate"><span class="pre">undirected_static_network_edge</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#degree-weight-ranges">Degree/weight ranges</a><ul>
+<li><a class="reference internal" href="#_CPPv4I0E12degree_range"><code class="docutils literal notranslate"><span class="pre">degree_range</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E17degree_pair_range"><code class="docutils literal notranslate"><span class="pre">degree_pair_range</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E12weight_range"><code class="docutils literal notranslate"><span class="pre">weight_range</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I0E17weight_pair_range"><code class="docutils literal notranslate"><span class="pre">weight_pair_range</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -868,12 +880,12 @@ values, Corresponding to in- and out-degree weigts for each vertex.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
+</div><script src="_static/documentation_options.js?v=82662543"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     </body>
 </html>

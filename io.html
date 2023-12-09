@@ -1,29 +1,24 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Input/Output and interoperation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/io.html" />
 <meta property="og:site_name" content="Reticula" />
 <meta property="og:description" content="Edgelist input/output: Reading an edgelist file: Python C++ Dyadic static and temporal networks can be read from space separated files where each row represents an edge. Note that vertices with no ..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://docs.reticula.network/_images/social_previews/summary_io_b142e2dc.png" />
-<meta property="og:image:alt" content="Edgelist input/output: Reading an edgelist file: Python C++ Dyadic static and temporal networks can be read from space separated files where each row represe..." />
 <meta name="description" content="Edgelist input/output: Reading an edgelist file: Python C++ Dyadic static and temporal networks can be read from space separated files where each row represents an edge. Note that vertices with no ..." />
-<meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Randomness" href="randomness.html" /><link rel="prev" title="Networks and network types" href="types.html" />
         <link rel="canonical" href="https://docs.reticula.network/io.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Input/Output and interoperation - Reticula</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -191,8 +186,10 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html">Static Network Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/event.html">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
@@ -206,6 +203,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/edge_degrees.html">Edge degrees (orders)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/assortativity.html">Assortativity</a></li>
@@ -263,18 +261,18 @@
         </div>
         <article role="main">
           <section id="input-output-and-interoperation">
-<h1>Input/Output and interoperation<a class="headerlink" href="#input-output-and-interoperation" title="Permalink to this heading">#</a></h1>
+<h1>Input/Output and interoperation<a class="headerlink" href="#input-output-and-interoperation" title="Link to this heading">#</a></h1>
 <section id="edgelist-input-output">
-<h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Permalink to this heading">#</a></h2>
+<h2>Edgelist input/output<a class="headerlink" href="#edgelist-input-output" title="Link to this heading">#</a></h2>
 <section id="reading-an-edgelist-file">
-<h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Permalink to this heading">#</a></h3>
+<h3>Reading an edgelist file<a class="headerlink" href="#reading-an-edgelist-file" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py" id="read_edgelist-edge_type">
-<span class="sig-name descname"><span class="pre">read_edgelist[edge_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#read_edgelist-edge_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">read_edgelist[edge_type](path:</span> <span class="pre">str)</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -283,7 +281,7 @@ Python</label><div class="sd-tab-content docutils">
 C++</label><div class="sd-tab-content docutils">
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE13read_edgelistNSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="read_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_edgelist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -293,14 +291,14 @@ each row represents an edge. Note that vertices with no neighbours cannot be
 represented in this format.</p>
 </section>
 <section id="writing-an-edgelist-file">
-<h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Permalink to this heading">#</a></h3>
+<h3>Writing an edgelist file<a class="headerlink" href="#writing-an-edgelist-file" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py" id="write_edgelist">
-<span class="sig-name descname"><span class="pre">write_edgelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#write_edgelist" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_edgelist(network,</span> <span class="pre">path:</span> <span class="pre">str)</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -309,7 +307,7 @@ Python</label><div class="sd-tab-content docutils">
 C++</label><div class="sd-tab-content docutils">
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE">
-<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span id="_CPPv2I_12network_edgeE14write_edgelistRK7networkI5EdgeTENSt10filesystem4pathE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="types.html#_CPPv4I0E12network_edge" title="network_edge"><span class="n"><span class="pre">network_edge</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EdgeT</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_edgelist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I_12network_edgeE7network" title="network"><span class="n"><span class="pre">network</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="write_edgelist::EdgeT"><span class="n"><span class="pre">EdgeT</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">g</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE" title="Link to this definition">#</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -320,10 +318,10 @@ be represented in this format.</p>
 </section>
 </section>
 <section id="interoperation-with-networkx">
-<h2>Interoperation with NetworkX<a class="headerlink" href="#interoperation-with-networkx" title="Permalink to this heading">#</a></h2>
+<h2>Interoperation with NetworkX<a class="headerlink" href="#interoperation-with-networkx" title="Link to this heading">#</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="to_networkx">
-<span class="sig-name descname"><span class="pre">to_networkx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#to_networkx" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">to_networkx(network,</span> <span class="pre">create_using</span> <span class="pre">=</span> <span class="pre">None)</span></span></dt>
 <dd><p>Creates a NetworkX graph from a dyadic static network. If <code class="code highlight python docutils literal highlight-python"><span class="n">created_using</span></code>
 is not provided, the type of the output is selected based in directionality of
 the input <code class="code highlight python docutils literal highlight-python"><span class="n">network</span></code>. For directed networks, the output would would be of
@@ -334,8 +332,8 @@ imported at the time the function is called.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="from_networkx-vertex_type">
-<span class="sig-name descname"><span class="pre">from_networkx[vertex_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#from_networkx-vertex_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">from_networkx[vertex_type](g)</span></span></dt>
 <dd><p>Creates a dyadic static network from a NetworkX graph. The directedness of the
 network is decided based on whether graph <code class="code highlight python docutils literal highlight-python"><span class="n">g</span></code> is directed, i.e., whether
 <code class="code highlight python docutils literal highlight-python"><span class="n">networkx</span><span class="o">.</span><span class="n">is_directed</span><span class="p">(</span><span class="n">g</span><span class="p">)</span></code> returns <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p>
@@ -410,20 +408,16 @@ imported at the time the the function is called.</p>
 <li><a class="reference internal" href="#">Input/Output and interoperation</a><ul>
 <li><a class="reference internal" href="#edgelist-input-output">Edgelist input/output</a><ul>
 <li><a class="reference internal" href="#reading-an-edgelist-file">Reading an edgelist file</a><ul>
-<li><a class="reference internal" href="#read_edgelist-edge_type"><code class="docutils literal notranslate"><span class="pre">read_edgelist[edge_type]()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_12network_edgeE13read_edgelist7networkI5EdgeTENSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">read_edgelist()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#writing-an-edgelist-file">Writing an edgelist file</a><ul>
-<li><a class="reference internal" href="#write_edgelist"><code class="docutils literal notranslate"><span class="pre">write_edgelist()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4I_12network_edgeE14write_edgelistvRK7networkI5EdgeTENSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">write_edgelist()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#interoperation-with-networkx">Interoperation with NetworkX</a><ul>
-<li><a class="reference internal" href="#to_networkx"><code class="docutils literal notranslate"><span class="pre">to_networkx()</span></code></a></li>
-<li><a class="reference internal" href="#from_networkx-vertex_type"><code class="docutils literal notranslate"><span class="pre">from_networkx[vertex_type]()</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#interoperation-with-networkx">Interoperation with NetworkX</a></li>
 </ul>
 </li>
 </ul>
@@ -435,12 +429,12 @@ imported at the time the the function is called.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
+</div><script src="_static/documentation_options.js?v=82662543"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     </body>
 </html>

@@ -4,7 +4,8 @@ Randomising networks
 .. toctree::
    :maxdepth: 1
 
-   event
+   static
    link
+   event
    timeline
 

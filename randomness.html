@@ -1,29 +1,24 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Randomness" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/randomness.html" />
 <meta property="og:site_name" content="Reticula" />
 <meta property="og:description" content="Simulating physical systems with computers often involve generating random numbers or randomly sampling from a set. This poses a challenge to programmers, in that computers, as mostly deterministic..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://docs.reticula.network/_images/social_previews/summary_randomness_6cb847c9.png" />
-<meta property="og:image:alt" content="Simulating physical systems with computers often involve generating random numbers or randomly sampling from a set. This poses a challenge to programmers, in..." />
 <meta name="description" content="Simulating physical systems with computers often involve generating random numbers or randomly sampling from a set. This poses a challenge to programmers, in that computers, as mostly deterministic..." />
-<meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Generating networks" href="generation/index.html" /><link rel="prev" title="Input/Output and interoperation" href="io.html" />
         <link rel="canonical" href="https://docs.reticula.network/randomness.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Randomness - Reticula</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -191,8 +186,10 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html">Static Network Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/event.html">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
@@ -206,6 +203,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/edge_degrees.html">Edge degrees (orders)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/assortativity.html">Assortativity</a></li>
@@ -263,7 +261,7 @@
         </div>
         <article role="main">
           <section id="randomness">
-<h1>Randomness<a class="headerlink" href="#randomness" title="Permalink to this heading">#</a></h1>
+<h1>Randomness<a class="headerlink" href="#randomness" title="Link to this heading">#</a></h1>
 <p>Simulating physical systems with computers often involve generating random
 numbers or randomly sampling from a set. This poses a challenge to programmers,
 in that computers, as mostly deterministic creatures, are quite bad at this sort
@@ -301,10 +299,10 @@ are no guarantees.</p>
 and pass them on to Reticula functions, as Reticula is not a general purpose
 numerical computation library.</p>
 <section id="pseudorandom-number-generators">
-<h2>Pseudorandom number generators<a class="headerlink" href="#pseudorandom-number-generators" title="Permalink to this heading">#</a></h2>
+<h2>Pseudorandom number generators<a class="headerlink" href="#pseudorandom-number-generators" title="Link to this heading">#</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="mersenne_twister">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mersenne_twister</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">seed:</span> <span class="pre">int</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mersenne_twister" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mersenne_twister([seed:</span> <span class="pre">int])</span></span></dt>
 <dd><p>Creates an instance of 64-bit Mersenne twister <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Takuji Nishimura. Tables of 64-bit mersenne twisters. ACM Transactions on Modeling and Computer Simulation (TOMACS), 10(4):348–357, 2000. doi:10.1145/369534.369540.">1</a>]</span>.
 Bindings over C++ standard library implementation.</p>
 <p>We recommand using one pseudorandom number generator per thread in
@@ -315,19 +313,19 @@ non-deterministic source, e.g., a hardware device, if one is available.</p>
 
 </section>
 <section id="distributions">
-<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this heading">#</a></h2>
+<h2>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="geometric_distribution-integral_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geometric_distribution[integral_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geometric_distribution-integral_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">geometric_distribution[integral_type](p:</span> <span class="pre">float)</span></span></dt>
 <dd><p>A discrete distribution of the number of required Bernoulli trials with
 probability <code class="code highlight python docutils literal highlight-python"><span class="n">p</span></code> to get one success. This distribution has a mean of
 <span class="math notranslate nohighlight">\(\frac{1}{p}\)</span>. It’s the discrete analogue to
-<a class="reference internal" href="#exponential_distribution-floating_point_type" title="exponential_distribution[floating_point_type]"><code class="xref py py-class docutils literal notranslate"><span class="pre">exponential_distribution[floating_point_type]</span></code></a></p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">exponential_distribution[floating_point_type]</span></code></p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="exponential_distribution-floating_point_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exponential_distribution[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda:</span> <span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exponential_distribution-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">exponential_distribution[floating_point_type](lambda:</span> <span class="pre">float)</span></span></dt>
 <dd><p>A continuous distribution indicating the time between two consecutive events
 if that event happens at a constant rate, i.e., a Poisson point process. The
 parameter <code class="code highlight python docutils literal highlight-python"><span class="k">lambda</span></code> indicates the rate and the distribution has a mean of
@@ -335,23 +333,23 @@ parameter <code class="code highlight python docutils literal highlight-python">
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="power_law_with_specified_mean-floating_point_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power_law_with_specified_mean-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">power_law_with_specified_mean[floating_point_type](exponent:</span> <span class="pre">float,</span> <span class="pre">mean:</span> <span class="pre">float)</span></span></dt>
 <dd><p>A power-law distribution with minimum-value cutoff, selected in a way to
 produce values with mean <code class="code highlight python docutils literal highlight-python"><span class="n">mean</span></code>. The parameter <code class="code highlight python docutils literal highlight-python"><span class="n">exponent</span></code>, indicating
 the power-law exponent has to be larger than 2.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="residual_power_law_with_specified_mean-floating_point_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">residual_power_law_with_specified_mean[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#residual_power_law_with_specified_mean-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">residual_power_law_with_specified_mean[floating_point_type](exponent:</span> <span class="pre">float,</span> <span class="pre">mean:</span> <span class="pre">float)</span></span></dt>
 <dd><p>Residual distribution of the distribution
-<a class="reference internal" href="#power_law_with_specified_mean-floating_point_type" title="power_law_with_specified_mean[floating_point_type]"><code class="xref py py-class docutils literal notranslate"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></code></a>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></code>.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="hawkes_univariate_exponential-floating_point_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hawkes_univariate_exponential[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hawkes_univariate_exponential-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hawkes_univariate_exponential[floating_point_type](mu:</span> <span class="pre">float,</span> <span class="pre">alpha:</span> <span class="pre">float,</span> <span class="pre">theta:</span> <span class="pre">float,</span> <span class="pre">phi:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0)</span></span></dt>
 <dd><p>A univariate exponential formulation of Hawkes self-exciting process. The
 parameter <code class="code highlight python docutils literal highlight-python"><span class="n">mu</span></code> indicates background (or exogenous) intensity of events,
 indicating the random probability of events happening without being caused
@@ -363,22 +361,22 @@ time.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="uniform_real_distribution-floating_point_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uniform_real_distribution[floating_point_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uniform_real_distribution-floating_point_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">uniform_real_distribution[floating_point_type](a:</span> <span class="pre">float,</span> <span class="pre">b:</span> <span class="pre">float)</span></span></dt>
 <dd><p>Returns floating point value selected uniformly at random from the range
 <span class="math notranslate nohighlight">\([a, b)\)</span>.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="uniform_int_distribution-integral_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uniform_int_distribution[integral_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#uniform_int_distribution-integral_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">uniform_int_distribution[integral_type](a:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span></span></dt>
 <dd><p>Returns an integer value selected uniformly at random from the range
 <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="delta_distribution-numeric_type">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delta_distribution[numeric_type]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delta_distribution-numeric_type" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delta_distribution[numeric_type](mean:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">float)</span></span></dt>
 <dd><p>Always returns the value of <code class="code highlight python docutils literal highlight-python"><span class="n">mean</span></code>.</p>
 </dd></dl>
 
@@ -447,21 +445,8 @@ time.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Randomness</a><ul>
-<li><a class="reference internal" href="#pseudorandom-number-generators">Pseudorandom number generators</a><ul>
-<li><a class="reference internal" href="#mersenne_twister"><code class="docutils literal notranslate"><span class="pre">mersenne_twister</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#distributions">Distributions</a><ul>
-<li><a class="reference internal" href="#geometric_distribution-integral_type"><code class="docutils literal notranslate"><span class="pre">geometric_distribution[integral_type]</span></code></a></li>
-<li><a class="reference internal" href="#exponential_distribution-floating_point_type"><code class="docutils literal notranslate"><span class="pre">exponential_distribution[floating_point_type]</span></code></a></li>
-<li><a class="reference internal" href="#power_law_with_specified_mean-floating_point_type"><code class="docutils literal notranslate"><span class="pre">power_law_with_specified_mean[floating_point_type]</span></code></a></li>
-<li><a class="reference internal" href="#residual_power_law_with_specified_mean-floating_point_type"><code class="docutils literal notranslate"><span class="pre">residual_power_law_with_specified_mean[floating_point_type]</span></code></a></li>
-<li><a class="reference internal" href="#hawkes_univariate_exponential-floating_point_type"><code class="docutils literal notranslate"><span class="pre">hawkes_univariate_exponential[floating_point_type]</span></code></a></li>
-<li><a class="reference internal" href="#uniform_real_distribution-floating_point_type"><code class="docutils literal notranslate"><span class="pre">uniform_real_distribution[floating_point_type]</span></code></a></li>
-<li><a class="reference internal" href="#uniform_int_distribution-integral_type"><code class="docutils literal notranslate"><span class="pre">uniform_int_distribution[integral_type]</span></code></a></li>
-<li><a class="reference internal" href="#delta_distribution-numeric_type"><code class="docutils literal notranslate"><span class="pre">delta_distribution[numeric_type]</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#pseudorandom-number-generators">Pseudorandom number generators</a></li>
+<li><a class="reference internal" href="#distributions">Distributions</a></li>
 </ul>
 </li>
 </ul>
@@ -473,13 +458,13 @@ time.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
+</div><script src="_static/documentation_options.js?v=82662543"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

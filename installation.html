@@ -1,29 +1,24 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Installation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/installation.html" />
 <meta property="og:site_name" content="Reticula" />
 <meta property="og:description" content="Python binding: Pre-compiled binding “Wheel”s are available for x64 Windows, x64 or ARM MacOS 10.15 or newer and x64 Linux systems with glibc version 2.17 or above. You can install the most recent ..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://docs.reticula.network/_images/social_previews/summary_installation_e49f25a3.png" />
-<meta property="og:image:alt" content="Python binding: Pre-compiled binding “Wheel”s are available for x64 Windows, x64 or ARM MacOS 10.15 or newer and x64 Linux systems with glibc version 2.17 or..." />
 <meta name="description" content="Python binding: Pre-compiled binding “Wheel”s are available for x64 Windows, x64 or ARM MacOS 10.15 or newer and x64 Linux systems with glibc version 2.17 or above. You can install the most recent ..." />
-<meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quick Start" href="quickstart.html" /><link rel="prev" title="Reticula: Temporal network and hypergraphs" href="index.html" />
         <link rel="canonical" href="https://docs.reticula.network/installation.html" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Installation - Reticula</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -191,8 +186,10 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="shuffling/index.html">Randomising networks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html">Static Network Link Shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/static.html#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/event.html">Event shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shuffling/link.html">Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shuffling/timeline.html">Timeline Shuffling</a></li>
 </ul>
 </li>
@@ -206,6 +203,7 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/vertex_degrees.html">Vertex degrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/edge_degrees.html">Edge degrees (orders)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graphicallity.html">Graphicallity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/graph_properties.html">Graph properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms/assortativity.html">Assortativity</a></li>
@@ -263,9 +261,9 @@
         </div>
         <article role="main">
           <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
 <section id="python-binding">
-<h2>Python binding<a class="headerlink" href="#python-binding" title="Permalink to this heading">#</a></h2>
+<h2>Python binding<a class="headerlink" href="#python-binding" title="Link to this heading">#</a></h2>
 <p>Pre-compiled binding “Wheel”s are available for x64 Windows, x64 or ARM
 MacOS 10.15 or newer and x64 Linux systems with glibc version 2.17 or above.
 You can install the most recent stable release from the PyPi index using pip:</p>
@@ -281,7 +279,7 @@ can also build and install the binding from scrach. Chack out the
 <a class="reference internal" href="#development"><span class="std std-ref">Development</span></a> section for more information.</p>
 </section>
 <section id="the-c-library">
-<h2>The C++ library<a class="headerlink" href="#the-c-library" title="Permalink to this heading">#</a></h2>
+<h2>The C++ library<a class="headerlink" href="#the-c-library" title="Link to this heading">#</a></h2>
 <p>You can include the C++ library in your code using CMake <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html">FetchContent</a> module.
 To do this, you need to specify how to fetch Reticula in your
 <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
@@ -304,9 +302,9 @@ recommand that you use the most recent release branch v#.# for a new project.</p
 </div>
 </section>
 <section id="development">
-<h2>Development<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h2>
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading">#</a></h2>
 <section id="building-the-python-binding-from-scratch">
-<h3>Building the Python binding from scratch<a class="headerlink" href="#building-the-python-binding-from-scratch" title="Permalink to this heading">#</a></h3>
+<h3>Building the Python binding from scratch<a class="headerlink" href="#building-the-python-binding-from-scratch" title="Link to this heading">#</a></h3>
 <p>In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
 of GCC ( &gt;= 10.2) is installed and accessible and that you have access to
@@ -336,7 +334,7 @@ every time. Consider adding the flag <code class="xref std std-option docutils l
 <strong class="command">pip install</strong> command.</p>
 </section>
 <section id="building-c-library-tests">
-<h3>Building C++ library tests<a class="headerlink" href="#building-c-library-tests" title="Permalink to this heading">#</a></h3>
+<h3>Building C++ library tests<a class="headerlink" href="#building-c-library-tests" title="Link to this heading">#</a></h3>
 <p>To build the tests for the C++ library, make sure you have CMake version 3.14 or
 newer installed on your system. All you need to do then, is to clone the
 library, make a build directory and build the tests:</p>
@@ -444,12 +442,12 @@ re-run the build command.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
+</div><script src="_static/documentation_options.js?v=82662543"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     </body>
 </html>
