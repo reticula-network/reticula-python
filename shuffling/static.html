@@ -7,8 +7,8 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.reticula.network/shuffling/static.html" />
 <meta property="og:site_name" content="Reticula" />
-<meta property="og:description" content="Degree-sequence preserving shuffling: Python C++ Produces a degree-sequence preserving shuffling of the given undirected static network. The variant with the rewires parameter performs the given nu..." />
-<meta name="description" content="Degree-sequence preserving shuffling: Python C++ Produces a degree-sequence preserving shuffling of the given undirected static network. The variant with the rewires parameter performs the given nu..." />
+<meta property="og:description" content="Degree-sequence preserving shuffling: Python C++ Produces a degree-sequence preserving shuffling of the given undirected dyadic static network. The variant with the rewires parameter performs the g..." />
+<meta name="description" content="Degree-sequence preserving shuffling: Python C++ Produces a degree-sequence preserving shuffling of the given undirected dyadic static network. The variant with the rewires parameter performs the g..." />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Temporal Network Link Shuffling" href="link.html" /><link rel="prev" title="Randomising networks" href="index.html" />
         <link rel="canonical" href="https://docs.reticula.network/shuffling/static.html" />
 
@@ -187,7 +187,6 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Randomising networks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Randomising networks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Static Network Link Shuffling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="link.html">Temporal Network Link Shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="event.html">Event shuffling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timeline.html">Timeline Shuffling</a></li>
@@ -294,14 +293,13 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>Produces a degree-sequence preserving shuffling of the given undirected static
-network. The variant with the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter performs the given number
-of rewirings. The variant without the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter performs a number
-of rewirings equal to 100 times the number of edges in the network.</p>
-</section>
+<p>Produces a degree-sequence preserving shuffling of the given undirected dyadic
+static network. The variant with the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter performs the given
+number of rewirings. The variant without the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter performs a
+number of rewirings equal to 100 times the number of edges in the network.</p>
 </section>
 <section id="joint-degree-sequence-preserving-shuffling">
-<h1>Joint degree-sequence preserving shuffling<a class="headerlink" href="#joint-degree-sequence-preserving-shuffling" title="Link to this heading">#</a></h1>
+<h2>Joint degree-sequence preserving shuffling<a class="headerlink" href="#joint-degree-sequence-preserving-shuffling" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
@@ -332,6 +330,12 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
+<p>Produces a joint degree-sequence preserving shuffling of the given undirected,
+dyadic static network. The variant with the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter performs the
+given number of rewirings. The variant without the <code class="docutils literal notranslate"><span class="pre">rewires</span></code> parameter
+performs a number of rewirings equal to 100 times the number of edges in the
+network.</p>
+</section>
 </section>
 
         </article>
@@ -401,11 +405,11 @@ C++</label><div class="sd-tab-content docutils">
 <li><a class="reference internal" href="#_CPPv4I_31undirected_static_network_edgec_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models36degree_sequence_preserving_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3GenNSt6size_tE"><code class="docutils literal notranslate"><span class="pre">degree_sequence_preserving_shuffling()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a class="reference internal" href="#joint-degree-sequence-preserving-shuffling">Joint degree-sequence preserving shuffling</a><ul>
 <li><a class="reference internal" href="#_CPPv4I_31undirected_static_network_edgec_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models42joint_degree_sequence_preserving_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3Gen"><code class="docutils literal notranslate"><span class="pre">joint_degree_sequence_preserving_shuffling()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_31undirected_static_network_edgec_NSt28uniform_random_bit_generatorEEIQ11is_dyadic_vI5EdgeTEEN31microcanonical_reference_models42joint_degree_sequence_preserving_shufflingE7networkI5EdgeTERK7networkI5EdgeTER3GenNSt6size_tE"><code class="docutils literal notranslate"><span class="pre">joint_degree_sequence_preserving_shuffling()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
