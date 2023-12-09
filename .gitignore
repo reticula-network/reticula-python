@@ -46,3 +46,6 @@ __pycache__/
 .hypothesis
 
 wheelhouse
+
+.cache
+compile_commands.json
