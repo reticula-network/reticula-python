@@ -74,7 +74,8 @@ nanobind_add_module(_reticula_ext
   src/type_lists.cpp
 
   src/generators.cpp
-  src/microcanonical_reference_models.cpp
+  src/static_microcanonical_reference_models.cpp
+  src/temporal_microcanonical_reference_models.cpp
   src/simple_generators.cpp
   src/random_networks.cpp
   src/random_activation_networks.cpp

@@ -10,7 +10,7 @@ using namespace nanobind::literals;
 template <
   reticula::temporal_network_edge EdgeT,
   std::uniform_random_bit_generator Gen>
-struct declare_mrrm_algorithms {
+struct declare_temporal_mrrm_algorithms {
   void operator()(nb::module_& m) {
     m.def("instant_event_shuffling",
         &reticula::mrrms::instant_event_shuffling<EdgeT, Gen>,
@@ -64,12 +64,12 @@ struct declare_mrrm_algorithms {
   }
 };
 
-void declare_typed_mrrm_algorithms(nb::module_& m) {
+void declare_typed_temporal_mrrm_algorithms(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::partial<
         metal::lambda<metal::apply>,
-        metal::lambda<declare_mrrm_algorithms>>,
+        metal::lambda<declare_temporal_mrrm_algorithms>>,
       metal::cartesian<
         metal::join<
           types::first_order_undirected_temporal_edges,
