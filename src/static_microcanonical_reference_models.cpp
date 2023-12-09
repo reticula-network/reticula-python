@@ -27,7 +27,7 @@ struct declare_static_mrrm_algorithms {
 	"rewirings"_a,
 	nb::call_guard<nb::gil_scoped_release>());
 
-    m.def("degree_sequence_preserving_shuffling",
+    m.def("joint_degree_sequence_preserving_shuffling",
 	nb::overload_cast<
             const reticula::network<EdgeT>&, Gen&>(
 	  &reticula::mrrms::joint_degree_sequence_preserving_shuffling<
@@ -35,7 +35,7 @@ struct declare_static_mrrm_algorithms {
 	"static_network"_a, "random_state"_a,
 	nb::call_guard<nb::gil_scoped_release>());
 
-    m.def("degree_sequence_preserving_shuffling",
+    m.def("joint_degree_sequence_preserving_shuffling",
 	nb::overload_cast<
             const reticula::network<EdgeT>&, Gen&, std::size_t>(
 	  &reticula::mrrms::joint_degree_sequence_preserving_shuffling<
