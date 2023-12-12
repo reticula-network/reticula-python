@@ -9,57 +9,11 @@ edges.
 
 The functions presented here accept both static dyadic and hypernetworks.
 
-Component types
----------------
-
-.. tab-set::
-
-  .. tab-item:: Python
-    :sync: python
-
-    .. py:class:: component[vert_type]
-
-  .. tab-item:: C++
-    :sync: cpp
-
-    .. cpp:class:: template <network_vertex VertT> component
-
-
-A *component* is a set of network vertices. Components are iterable both in C++,
-through satisfying the :cpp:`std::ranges::forward_range` and
-:cpp:`std::ranges::sized_range` concepts, and in Python by implementing
-:py:`__iter__`.
-
-
-
-.. tab-set::
-
-  .. tab-item:: Python
-    :sync: python
-
-    .. py:class:: component_size[vert_type]
-
-  .. tab-item:: C++
-    :sync: cpp
-
-    .. cpp:class:: template <network_vertex VertT> component_size
-
-
-.. tab-set::
-
-  .. tab-item:: Python
-    :sync: python
-
-    .. py:class:: component_size_estimate[vert_type]
-
-  .. tab-item:: C++
-    :sync: cpp
-
-    .. cpp:class:: template <network_vertex VertT> component_estimate
-
+Temporal reachability functions
+-------------------------------
 
 Weak-connectivity
------------------
+^^^^^^^^^^^^^^^^^
 
 .. tab-set::
 
@@ -151,11 +105,11 @@ those edges, i.e., there exists an undirected path between every pair of
 vertices.
 
 In- and out-components
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 
 From a single source
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 
 .. tab-set::
 
@@ -189,7 +143,7 @@ From a single source
 Calculate the in- or out-component of a vertex in a static directed network.
 
 From all vertices
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 .. tab-set::
 
@@ -222,7 +176,7 @@ Calculates the in- or out-components of all vertices in a static directed
 network.
 
 In- and out-component sizes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 
 .. tab-set::
 
@@ -256,7 +210,7 @@ directed network. Compared to calculating all in- or out-components, this uses
 less memory in some cases.
 
 In- and out-component size estimates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 
 .. tab-set::
 
@@ -293,11 +247,11 @@ out-component sizes, this uses much less memory and is much faster to run in
 many cases.
 
 Undirected static networks
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Connected component of a specific vertex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 
 .. tab-set::
 
@@ -324,7 +278,7 @@ reach all others.
 
 
 All connected components
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 
 .. tab-set::
 
@@ -383,7 +337,7 @@ exist, one of them is arbitrarily returned.
 Returns :cpp:`true` if all vertices of the network are reachable from all other.
 
 Source-destination reachability
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tab-set::
 
@@ -407,7 +361,7 @@ vertex :cpp:`source` by following edges in the legal direction. This function
 accepts all static network types.
 
 Shortest path length
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 .. tab-set::
 
@@ -452,3 +406,93 @@ source vertex to their shortest path length from the source vertex.
 
 Returns a dictionary (an unordered map) mapping all vertices that can reach the
 destination vertex to their shortest path length to the destination vertex.
+
+
+Static Component types
+----------------------
+
+.. tab-set::
+
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: component[vert_type](\
+      vertices: list[vert_type] = [], size_hint: int = 0)
+
+      .. py:method:: insert(vertex: vert_type)
+      .. py:method:: insert(vertices: list[vert_type])
+        :noindex:
+      .. py:method:: merge(other: component[vert_type])
+      .. py:method:: __eq__(other: component[vert_type])
+      .. py:method:: __iter__()
+      .. py:method:: __len__()
+      .. py:method:: __contains__(vertex: vert_type)
+      .. py:staticmethod:: vertex_type() -> type
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component
+
+      .. cpp:type:: VertexType
+      .. cpp:type:: IteratorType
+
+      .. cpp:function:: void insert(const VertT& vert)
+      .. cpp:function:: template <ranges::input_range Range>\
+        requires std::convertible_to<ranges::range_value_t<Range>, VertT>\
+        void insert(Range&& verts)
+      .. cpp:function:: void merge(const component<VertT>& other)
+      .. cpp:function:: bool operator==(const component<VertT>& other) const
+      .. cpp:function:: std::size_t size() const
+      .. cpp:function:: bool contains(const VertT& vert) const
+      .. cpp:function:: IteratorType begin() const
+      .. cpp:function:: IteratorType end() const
+
+      
+
+
+A *component* is a set of network vertices. Components are iterable both in C++,
+through satisfying the :cpp:`std::ranges::forward_range` and
+:cpp:`std::ranges::sized_range` concepts, and in Python by implementing
+:py:`__iter__`.
+
+
+
+.. tab-set::
+
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: component_size[vert_type]
+
+      .. py:method:: size() -> int
+      .. py:staticmethod:: vertex_type() -> type
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component_size
+
+      .. cpp:type:: VertexType
+      .. explicit component_size(const component<VertT>& c)
+      .. cpp:function:: std::size_t size() const
+
+
+.. tab-set::
+
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: component_size_estimate[vert_type]
+
+      .. py:method:: size_estimate() -> float
+      .. py:staticmethod:: vertex_type() -> type
+      
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <network_vertex VertT> component_size_estimate
+
+      .. cpp:type:: VertexType
+      .. cpp:function:: double size_estimate() const

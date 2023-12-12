@@ -303,7 +303,7 @@ possible ordered pairs of distinct vertices.</p>
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="time_window">
-<span class="sig-name descname"><span class="pre">time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#time_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -330,7 +330,7 @@ the maximum event time.</p>
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="cause_time_window">
-<span class="sig-name descname"><span class="pre">cause_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#cause_time_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cause_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#cause_time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -355,7 +355,7 @@ temporal network events don’t have delays, this is indistinguishable from
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="effect_time_window">
-<span class="sig-name descname"><span class="pre">effect_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#effect_time_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">effect_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#effect_time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -411,7 +411,7 @@ projected into a directed hypergraph.</p>
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="link_timeline">
-<span class="sig-name descname"><span class="pre">link_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[temporal_network.edge_type()]</span></span></span><a class="headerlink" href="#link_timeline" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">link_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list[temporal_network.edge_type()]</span></span></span><a class="headerlink" href="#link_timeline" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -433,7 +433,7 @@ C++</label><div class="sd-tab-content docutils">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
 <dt class="sig sig-object py" id="link_timelines">
-<span class="sig-name descname"><span class="pre">link_timelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[temporal_network.edge_type().static_projection_type(),</span>&#160;&#160;&#160;&#160; <span class="pre">List[temporal_network.edge_type()]]]</span></span></span><a class="headerlink" href="#link_timelines" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">link_timelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list[tuple[temporal_network.edge_type().static_projection_type(),</span>&#160;&#160;&#160;&#160; <span class="pre">list[temporal_network.edge_type()]]]</span></span></span><a class="headerlink" href="#link_timelines" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -447,9 +447,9 @@ C++</label><div class="sd-tab-content docutils">
 
 </div>
 </div>
-<p>For each link, each static edge in the <span class="xref std std-ref">static projection</span> of the network, this function returns
-a list of the events that correspond to (project to) that link ordered by cause
-time of the events.</p>
+<p>For each link, each static edge in the <a class="reference internal" href="#static-projection-of-a-temporal-network"><span class="std std-ref">static projection</span></a> of the
+network, this function returns a list of the events that correspond to
+(project to) that link ordered by cause time of the events.</p>
 </section>
 </section>
 
