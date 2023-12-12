@@ -291,8 +291,8 @@ or to certain functions that can accept an implicit event graph object.</p></li>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">event_graph(temporal_network,</span> <span class="pre">temporal_adjacency)</span> <span class="pre">-&gt;</span> <span class="pre">directed_network[temporal_network.edge_type()]</span></span></dt>
+<dt class="sig sig-object py" id="event_graph">
+<span class="sig-name descname"><span class="pre">event_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temporal_adjacency</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">directed_network[temporal_network.edge_type()]</span></span></span><a class="headerlink" href="#event_graph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -325,8 +325,8 @@ networks.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">make_implicit_event_graph(temporal_network,</span> <span class="pre">temporal_adjacency)</span> <span class="pre">-&gt;</span> <span class="pre">implicit_event_graph[</span>&#160; <span class="pre">temporal_network.edge_type(),</span>&#160;&#160; <span class="pre">type(temporal_adjacency::temporal_adjacency)]</span></span></dt>
+<dt class="sig sig-object py" id="make_implicit_event_graph">
+<span class="sig-name descname"><span class="pre">make_implicit_event_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temporal_adjacency</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">implicit_event_graph[</span>&#160; <span class="pre">temporal_network.edge_type(),</span>&#160;&#160; <span class="pre">type(temporal_adjacency::temporal_adjacency)]</span></span></span><a class="headerlink" href="#make_implicit_event_graph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -351,13 +351,13 @@ function that are designed to receive one.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-4">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">in_component(implicit_event_graph,</span> <span class="pre">root)</span> <span class="pre">-&gt;</span> <span class="pre">component[type(root)]</span></span></dt>
+<dt class="sig sig-object py" id="in_component">
+<span class="sig-name descname"><span class="pre">in_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">component[type(root)]</span></span></span><a class="headerlink" href="#in_component" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">out_component(implicit_event_graph,</span> <span class="pre">root)</span> <span class="pre">-&gt;</span> <span class="pre">component[type(root)]</span></span></dt>
+<dt class="sig sig-object py" id="out_component">
+<span class="sig-name descname"><span class="pre">out_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">component[type(root)]</span></span></span><a class="headerlink" href="#out_component" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -384,13 +384,13 @@ the event <code class="code highlight cpp docutils literal highlight-cpp"><span 
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">in_components(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="in_components">
+<span class="sig-name descname"><span class="pre">in_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#in_components" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">out_components(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="out_components">
+<span class="sig-name descname"><span class="pre">out_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#out_components" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -418,13 +418,13 @@ effect that was first transmitted by that event. The algorithm is described in
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">in_component_sizes(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="in_component_sizes">
+<span class="sig-name descname"><span class="pre">in_component_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#in_component_sizes" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">out_component_sizes(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="out_component_sizes">
+<span class="sig-name descname"><span class="pre">out_component_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#out_component_sizes" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -452,13 +452,13 @@ by that event. The algorithm is described in <span id="id5">[<a class="reference
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-10">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">in_component_size_estimates(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size_estimate[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="in_component_size_estimates">
+<span class="sig-name descname"><span class="pre">in_component_size_estimates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size_estimate[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#in_component_size_estimates" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">out_component_size_estimates(implicit_event_graph)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size_estimate[implicit_event_graph.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="out_component_size_estimates">
+<span class="sig-name descname"><span class="pre">out_component_size_estimates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[</span>&#160; <span class="pre">implicit_event_graph.edge_type(),</span>&#160;&#160; <span class="pre">component_size_estimate[implicit_event_graph.edge_type()]]]</span></span></span><a class="headerlink" href="#out_component_size_estimates" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -487,8 +487,8 @@ transmitted by that event. The algorithm is described in
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-12">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">weakly_connected_component(implicit_event_graph,</span> <span class="pre">root)</span> <span class="pre">-&gt;</span> <span class="pre">component[implicit_event_graph.edge_type()]</span></span></dt>
+<dt class="sig sig-object py" id="weakly_connected_component">
+<span class="sig-name descname"><span class="pre">weakly_connected_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">component[implicit_event_graph.edge_type()]</span></span></span><a class="headerlink" href="#weakly_connected_component" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -510,8 +510,8 @@ upper-bound on reachability in a network <span id="id7">[<a class="reference int
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-14">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">weakly_connected_components(</span>&#160; <span class="pre">implicit_event_graph,</span> <span class="pre">singletons:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True)</span> <span class="pre">-&gt;</span> <span class="pre">List[component[implicit_event_graph.edge_type()]]</span></span></dt>
+<dt class="sig sig-object py" id="weakly_connected_components">
+<span class="sig-name descname"><span class="pre">weakly_connected_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">implicit_event_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[component[implicit_event_graph.edge_type()]]</span></span></span><a class="headerlink" href="#weakly_connected_components" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -597,21 +597,33 @@ weakly-connected components consisting of a single event should be returned.</p>
             <ul>
 <li><a class="reference internal" href="#">Event graphs</a><ul>
 <li><a class="reference internal" href="#explicit-event-graph">Explicit event graph</a><ul>
+<li><a class="reference internal" href="#event_graph"><code class="docutils literal notranslate"><span class="pre">event_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE11event_graph16directed_networkI5EdgeTERK7networkI5EdgeTERK4AdjT"><code class="docutils literal notranslate"><span class="pre">event_graph()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#implicit-event-graph">Implicit event graph</a><ul>
+<li><a class="reference internal" href="#make_implicit_event_graph"><code class="docutils literal notranslate"><span class="pre">make_implicit_event_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE25make_implicit_event_graph20implicit_event_graphI5EdgeT4AdjTERK7networkI5EdgeTERK4AdjT"><code class="docutils literal notranslate"><span class="pre">make_implicit_event_graph()</span></code></a></li>
 <li><a class="reference internal" href="#implicit-event-graph-functions">Implicit event graph functions</a><ul>
+<li><a class="reference internal" href="#in_component"><code class="docutils literal notranslate"><span class="pre">in_component()</span></code></a></li>
+<li><a class="reference internal" href="#out_component"><code class="docutils literal notranslate"><span class="pre">out_component()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE12in_component9componentI5EdgeTERK20implicit_event_graphI5EdgeT4AdjTERK5EdgeT"><code class="docutils literal notranslate"><span class="pre">in_component()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE13out_component9componentI5EdgeTERK20implicit_event_graphI5EdgeT4AdjTERK5EdgeT"><code class="docutils literal notranslate"><span class="pre">out_component()</span></code></a></li>
+<li><a class="reference internal" href="#in_components"><code class="docutils literal notranslate"><span class="pre">in_components()</span></code></a></li>
+<li><a class="reference internal" href="#out_components"><code class="docutils literal notranslate"><span class="pre">out_components()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE13in_componentsNSt6vectorINSt4pairI5EdgeT9componentI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">in_components()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE14out_componentsNSt6vectorINSt4pairI5EdgeT9componentI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">out_components()</span></code></a></li>
+<li><a class="reference internal" href="#in_component_sizes"><code class="docutils literal notranslate"><span class="pre">in_component_sizes()</span></code></a></li>
+<li><a class="reference internal" href="#out_component_sizes"><code class="docutils literal notranslate"><span class="pre">out_component_sizes()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE18in_component_sizesNSt6vectorINSt4pairI5EdgeT14component_sizeI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">in_component_sizes()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE19out_component_sizesNSt6vectorINSt4pairI5EdgeT14component_sizeI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">out_component_sizes()</span></code></a></li>
+<li><a class="reference internal" href="#in_component_size_estimates"><code class="docutils literal notranslate"><span class="pre">in_component_size_estimates()</span></code></a></li>
+<li><a class="reference internal" href="#out_component_size_estimates"><code class="docutils literal notranslate"><span class="pre">out_component_size_estimates()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE27in_component_size_estimatesNSt6vectorINSt4pairI5EdgeT23component_size_estimateI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">in_component_size_estimates()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE28out_component_size_estimatesNSt6vectorINSt4pairI5EdgeT23component_size_estimateI5EdgeTEEEEERK20implicit_event_graphI5EdgeT4AdjTE"><code class="docutils literal notranslate"><span class="pre">out_component_size_estimates()</span></code></a></li>
+<li><a class="reference internal" href="#weakly_connected_component"><code class="docutils literal notranslate"><span class="pre">weakly_connected_component()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE26weakly_connected_component9componentI5EdgeTERK20implicit_event_graphI5EdgeT4AdjTERK5EdgeT"><code class="docutils literal notranslate"><span class="pre">weakly_connected_component()</span></code></a></li>
+<li><a class="reference internal" href="#weakly_connected_components"><code class="docutils literal notranslate"><span class="pre">weakly_connected_components()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edge_N18temporal_adjacency18temporal_adjacencyEE27weakly_connected_componentsNSt6vectorI9componentI5EdgeTEEERK20implicit_event_graphI5EdgeT4AdjTEb"><code class="docutils literal notranslate"><span class="pre">weakly_connected_components()</span></code></a></li>
 </ul>
 </li>

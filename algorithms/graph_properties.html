@@ -268,8 +268,8 @@
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">density(network)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></span></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -302,8 +302,8 @@ possible ordered pairs of distinct vertices.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">time_window(temporal_network)</span> <span class="pre">-&gt;</span> <span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></dt>
+<dt class="sig sig-object py" id="time_window">
+<span class="sig-name descname"><span class="pre">time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -329,8 +329,8 @@ the maximum event time.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-4">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">cause_time_window(temporal_network)</span> <span class="pre">-&gt;</span> <span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></dt>
+<dt class="sig sig-object py" id="cause_time_window">
+<span class="sig-name descname"><span class="pre">cause_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#cause_time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -348,14 +348,14 @@ C++</label><div class="sd-tab-content docutils">
 network has no events (edges), this function throws a
 <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span></code> in C++ and a <code class="code highlight python docutils literal highlight-python"><span class="ne">ValueError</span></code> in Python. If the
 temporal network events don’t have delays, this is indistinguishable from
-<code class="xref py py-func docutils literal notranslate"><span class="pre">time_window()</span></code>.</p>
+<a class="reference internal" href="#time_window" title="time_window"><code class="xref py py-func docutils literal notranslate"><span class="pre">time_window()</span></code></a>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">effect_time_window(temporal_network)</span> <span class="pre">-&gt;</span> <span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></dt>
+<dt class="sig sig-object py" id="effect_time_window">
+<span class="sig-name descname"><span class="pre">effect_time_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple[temporal_network.time_type(),</span> <span class="pre">temporal_network.time_type()]</span></span></span><a class="headerlink" href="#effect_time_window" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -373,7 +373,7 @@ C++</label><div class="sd-tab-content docutils">
 network has no events (edges), this function throws a
 <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span></code> in C++ and a <code class="code highlight python docutils literal highlight-python"><span class="ne">ValueError</span></code> in Python. If the
 temporal network events don’t have delays, this is indistinguishable from
-<code class="xref py py-func docutils literal notranslate"><span class="pre">time_window()</span></code>.</p>
+<a class="reference internal" href="#time_window" title="time_window"><code class="xref py py-func docutils literal notranslate"><span class="pre">time_window()</span></code></a>.</p>
 </section>
 <section id="static-projection-of-a-temporal-network">
 <h2>Static projection of a temporal network<a class="headerlink" href="#static-projection-of-a-temporal-network" title="Link to this heading">#</a></h2>
@@ -382,8 +382,8 @@ temporal network events don’t have delays, this is indistinguishable from
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">static_projection(temporal_network)</span></span></dt>
+<dt class="sig sig-object py" id="static_projection">
+<span class="sig-name descname"><span class="pre">static_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#static_projection" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -410,8 +410,8 @@ projected into a directed hypergraph.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-10">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">link_timeline(temporal_network,</span> <span class="pre">link)</span> <span class="pre">-&gt;</span> <span class="pre">List[temporal_network.edge_type()]</span></span></dt>
+<dt class="sig sig-object py" id="link_timeline">
+<span class="sig-name descname"><span class="pre">link_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[temporal_network.edge_type()]</span></span></span><a class="headerlink" href="#link_timeline" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -432,8 +432,8 @@ C++</label><div class="sd-tab-content docutils">
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-12">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">link_timelines(temporal_network)</span> <span class="pre">-&gt;</span> <span class="pre">List[Tuple[temporal_network.edge_type().static_projection_type(),</span>&#160;&#160;&#160;&#160; <span class="pre">List[temporal_network.edge_type()]]]</span></span></dt>
+<dt class="sig sig-object py" id="link_timelines">
+<span class="sig-name descname"><span class="pre">link_timelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temporal_network</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[Tuple[temporal_network.edge_type().static_projection_type(),</span>&#160;&#160;&#160;&#160; <span class="pre">List[temporal_network.edge_type()]]]</span></span></span><a class="headerlink" href="#link_timelines" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -516,22 +516,29 @@ time of the events.</p>
             <ul>
 <li><a class="reference internal" href="#">Graph properties</a><ul>
 <li><a class="reference internal" href="#density">Density</a><ul>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">density()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_14network_vertexE7densitydRK18undirected_networkI5VertTE"><code class="docutils literal notranslate"><span class="pre">density()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_14network_vertexE7densitydRK16directed_networkI5VertTE"><code class="docutils literal notranslate"><span class="pre">density()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#temporal-network-observation-window">Temporal network observation window</a><ul>
+<li><a class="reference internal" href="#time_window"><code class="docutils literal notranslate"><span class="pre">time_window()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edgeE11time_windowNSt4pairIN5EdgeT8TimeTypeEN5EdgeT8TimeTypeEEERK7networkI5EdgeTE"><code class="docutils literal notranslate"><span class="pre">time_window()</span></code></a></li>
+<li><a class="reference internal" href="#cause_time_window"><code class="docutils literal notranslate"><span class="pre">cause_time_window()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edgeE17cause_time_windowNSt4pairIN5EdgeT8TimeTypeEN5EdgeT8TimeTypeEEERK7networkI5EdgeTE"><code class="docutils literal notranslate"><span class="pre">cause_time_window()</span></code></a></li>
+<li><a class="reference internal" href="#effect_time_window"><code class="docutils literal notranslate"><span class="pre">effect_time_window()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edgeE18effect_time_windowNSt4pairIN5EdgeT8TimeTypeEN5EdgeT8TimeTypeEEERK7networkI5EdgeTE"><code class="docutils literal notranslate"><span class="pre">effect_time_window()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#static-projection-of-a-temporal-network">Static projection of a temporal network</a><ul>
+<li><a class="reference internal" href="#static_projection"><code class="docutils literal notranslate"><span class="pre">static_projection()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_12network_edgeE18effect_time_window7networkIN5EdgeT20StaticProjectionTypeEERK7networkI5EdgeTE"><code class="docutils literal notranslate"><span class="pre">effect_time_window()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#temporal-network-link-timelines">Temporal network link timelines</a><ul>
+<li><a class="reference internal" href="#link_timeline"><code class="docutils literal notranslate"><span class="pre">link_timeline()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edgeE13link_timelineNSt6vectorI5EdgeTEERK7networkI5EdgeTERKN5EdgeT20StaticProjectionTypeE"><code class="docutils literal notranslate"><span class="pre">link_timeline()</span></code></a></li>
+<li><a class="reference internal" href="#link_timelines"><code class="docutils literal notranslate"><span class="pre">link_timelines()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_21temporal_network_edgeE14link_timelinesNSt6vectorINSt4pairIN5EdgeT20StaticProjectionTypeENSt6vectorI5EdgeTEEEEEERK7networkI5EdgeTE"><code class="docutils literal notranslate"><span class="pre">link_timelines()</span></code></a></li>
 </ul>
 </li>

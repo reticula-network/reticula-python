@@ -268,8 +268,8 @@
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">random_degree_sequence_graph[vert_type](</span>&#160;&#160; <span class="pre">degree_sequence:</span> <span class="pre">List[int],</span> <span class="pre">random_state)</span> <span class="pre">-&gt;</span> <span class="pre">undirected_network[vert_type]</span></span></dt>
+<dt class="sig sig-object py" id="random_degree_sequence_graph">
+<span class="sig-name descname"><span class="pre">random_degree_sequence_graph</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">vert_type</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree_sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../types.html#undirected_network" title="undirected_network"><span class="pre">undirected_network</span></a><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_degree_sequence_graph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -309,8 +309,8 @@ resulting network, otherwise it returns an instance of <code class="code highlig
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">random_directed_degree_sequence_graph[vert_type](</span>&#160;&#160; <span class="pre">in_out_degree_sequence:</span> <span class="pre">List[Tuple[int,</span> <span class="pre">int]],</span> <span class="pre">random_state)</span> <span class="pre">-&gt;</span> <span class="pre">directed_network[vert_type]</span></span></dt>
+<dt class="sig sig-object py" id="random_directed_degree_sequence_graph">
+<span class="sig-name descname"><span class="pre">random_directed_degree_sequence_graph</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">vert_type</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_out_degree_sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../types.html#directed_network" title="directed_network"><span class="pre">directed_network</span></a><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_directed_degree_sequence_graph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -411,11 +411,13 @@ resulting network, otherwise it returns an instance of <code class="code highlig
             <ul>
 <li><a class="reference internal" href="#">Random degree-sequence network</a><ul>
 <li><a class="reference internal" href="#undirected-degree-sequence-network">Undirected degree-sequence network</a><ul>
+<li><a class="reference internal" href="#random_degree_sequence_graph"><code class="docutils literal notranslate"><span class="pre">random_degree_sequence_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaa12degree_rangeI5RangeENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEE28random_degree_sequence_graph18undirected_networkI5VertTER5RangeR3Gen"><code class="docutils literal notranslate"><span class="pre">random_degree_sequence_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaa12degree_rangeI5RangeENSt14convertible_toINSt6ranges13range_value_tI5RangeEE5VertTEEE32try_random_degree_sequence_graphNSt8optionalI18undirected_networkI5VertTEEER5RangeR3GenNSt6size_tE"><code class="docutils literal notranslate"><span class="pre">try_random_degree_sequence_graph()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-degree-sequence-network">Directed degree-sequence network</a><ul>
+<li><a class="reference internal" href="#random_directed_degree_sequence_graph"><code class="docutils literal notranslate"><span class="pre">random_directed_degree_sequence_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaa17degree_pair_rangeI9PairRangeE14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEE37random_directed_degree_sequence_graph16directed_networkI5VertTER9PairRangeR3Gen"><code class="docutils literal notranslate"><span class="pre">random_directed_degree_sequence_graph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt6ranges13forward_rangeE_NSt28uniform_random_bit_generatorEEIQaa17degree_pair_rangeI9PairRangeE14is_pairlike_ofINSt6ranges13range_value_tI9PairRangeEE5VertT5VertTEE32try_random_degree_sequence_graphNSt8optionalI16directed_networkI5VertTEEER9PairRangeR3GenNSt6size_tE"><code class="docutils literal notranslate"><span class="pre">try_random_degree_sequence_graph()</span></code></a></li>
 </ul>

@@ -268,8 +268,8 @@
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">random_uniform_hypergraph[vert_type](</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">edge_degree:</span> <span class="pre">int,</span> <span class="pre">edge_prob:</span> <span class="pre">float,</span> <span class="pre">random_state)</span> <span class="pre">-&gt;</span> <span class="pre">undirected_hypernetwork[vert_type]</span></span></dt>
+<dt class="sig sig-object py" id="random_uniform_hypergraph">
+<span class="sig-name descname"><span class="pre">random_uniform_hypergraph</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">vert_type</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_prob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../types.html#undirected_hypernetwork" title="undirected_hypernetwork"><span class="pre">undirected_hypernetwork</span></a><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_uniform_hypergraph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -296,8 +296,8 @@ networks to uniform hypergraphs.</p>
 </input><label class="sd-tab-label" data-sync-id="python" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">random_directed_uniform_hypergraph[vert_type](</span> <span class="pre">size:</span> <span class="pre">int,</span> <span class="pre">edge_in_degree:</span> <span class="pre">int,</span> <span class="pre">edge_out_degree:</span> <span class="pre">int,</span>&#160; <span class="pre">edge_prob:</span> <span class="pre">float,</span> <span class="pre">random_state)</span> <span class="pre">-&gt;</span> <span class="pre">directed_hypernetwork[vert_type]</span></span></dt>
+<dt class="sig sig-object py" id="random_directed_uniform_hypergraph">
+<span class="sig-name descname"><span class="pre">random_directed_uniform_hypergraph</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">vert_type</span></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_in_degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_out_degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_prob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../types.html#directed_hypernetwork" title="directed_hypernetwork"><span class="pre">directed_hypernetwork</span></a><span class="p"><span class="pre">[</span></span><span class="pre">vert_type</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#random_directed_uniform_hypergraph" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -384,10 +384,12 @@ of the arrow) and <code class="code highlight cpp docutils literal highlight-cpp
             <ul>
 <li><a class="reference internal" href="#">Random uniform hypergraphs</a><ul>
 <li><a class="reference internal" href="#undirected-random-uniform-hypergraph">Undirected random uniform hypergraph</a><ul>
+<li><a class="reference internal" href="#random_uniform_hypergraph"><code class="docutils literal notranslate"><span class="pre">random_uniform_hypergraph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt28uniform_random_bit_generatorEE25random_uniform_hypergraph23undirected_hypernetworkI5VertTE5VertT5VertTdR3Gen"><code class="docutils literal notranslate"><span class="pre">random_uniform_hypergraph()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#directed-random-uniform-hypergraph">Directed random uniform hypergraph</a><ul>
+<li><a class="reference internal" href="#random_directed_uniform_hypergraph"><code class="docutils literal notranslate"><span class="pre">random_directed_uniform_hypergraph()</span></code></a></li>
 <li><a class="reference internal" href="#_CPPv4I_22integer_network_vertex_NSt28uniform_random_bit_generatorEE34random_directed_uniform_hypergraph21directed_hypernetworkI5VertTE5VertT5VertT5VertTdR3Gen"><code class="docutils literal notranslate"><span class="pre">random_directed_uniform_hypergraph()</span></code></a></li>
 </ul>
 </li>
