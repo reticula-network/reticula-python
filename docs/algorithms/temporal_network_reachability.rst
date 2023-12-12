@@ -9,13 +9,13 @@ Temporal reachability functions
 -------------------------------
 
 The library comes with a variety of functions that calculates the
-`temporal clusters`_, the spreading cluster of an effect starting from a single
-vertex at a specific time, assuming that the spreading "effect" stays in each
-node for duration dictated by the `temporal adjacency`_ of that spreading
-process.
+`temporal cluster types`_, the spreading cluster of an effect starting from a
+single vertex at a specific time, assuming that the spreading "effect" stays
+in each node for duration dictated by the `temporal adjacency`_ of that
+spreading process.
 
 The variants are similar to those of :ref:`static network reachability
-<algorithms/static_network_reachability:Static etwork reachability>`, with the
+<algorithms/static_network_reachability:Static network reachability>`, with the
 possibility of starting from one vertex at one time, or calculating or
 estimating spreading clusters from all vertices at all starting times.
 
@@ -307,7 +307,7 @@ Geometric adjacency
   .. tab-item:: Python
     :sync: python
 
-    .. py:class:: temporal_adjacency.exponential[edge_type](\
+    .. py:class:: temporal_adjacency.geometric[edge_type](\
           rate: time_type, seed: int)
 
   .. tab-item:: C++
@@ -346,98 +346,160 @@ functions :cpp:`linger(EdgeType e, VetexType v)` and
 latter describing a worst case (upper-bound) on the duration that a vertex
 :cpp:`v` can remain affected by an effect.
 
-Temporal clusters
------------------
+Temporal cluster types
+----------------------
 
 Clusters are to temporal networks what a component is to a static network. They
 store subsets of the temporal network. While storing a subset of a static
 network required only storing a set of vertices, a subset of a temporal network
 also requires temporal information.
 
-.. cpp:class:: template <temporal_network_edge EdgeT, \
-   temporal_adjacency::temporal_adjacency AdjT> temporal_cluster
+.. tab-set::
 
-   .. cpp:type:: VertexType
+  .. tab-item:: Python
+    :sync: python
 
-   .. cpp:type:: AdjacencyType
+    .. py:class:: temporal_cluster[temporal_adjacency](\
+        temporal_adjacency: adjacency_type, size_hint: int = 0)
 
-   .. cpp:type:: IteratorType
+      .. py:method:: insert(event: edge_type)
+      .. py:method:: insert(events: list[edge_type])
+        :noindex:
 
-   .. cpp:function:: template <std::ranges::input_range Range> \
-        requires std::convertible_to<std::ranges::range_value_t<Range>, EdgeT> \
-        void insert(Range& events)
-
-   .. cpp:function:: void insert(const EdgeT& e)
-
-   .. cpp:function:: void merge(const temporal_cluster<EdgeT, AdjT>& other)
-
-   .. cpp:function:: bool operator==(\
-         const temporal_cluster<EdgeT, AdjT>& c) const
-
-   .. cpp:function:: std::size_t size() const
-
-   .. cpp:function:: bool contains(const EdgeT& e) const
-
-   .. cpp:function:: bool covers(typename EdgeT::VertexType v, typename \
-         EdgeT::TimeType t) const
-
-   .. cpp:function:: bool empty() const
-
-   .. cpp:function:: IteratorType begin() const
-
-   .. cpp:function:: IteratorType end() const
-
-   .. cpp:function:: const std::unordered_map<typename EdgeT::VertexType, \
-            interval_set<typename EdgeT::TimeType>, \
-         hash<typename EdgeT::VertexType>>& \
-         interval_sets() const
-
-   .. cpp:function:: std::pair<\
-            typename EdgeT::TimeType, typename EdgeT::TimeType>\
-         lifetime() const;
-
-   .. cpp:function:: std::size_t volume() const
-
-   .. cpp:function:: typename EdgeT::TimeType mass() const
+      .. py:method:: merge(other: temporal_cluster[adjacency_type])
+      .. py:method:: covers(vertex: vert_type, time: time_type) -> bool
+      .. py:method:: interval_sets() -> dict[vert_type, interval_set[time_type]]
+      .. py:method:: lifetime() -> tuple[time_type, time_type]
+      .. py:method:: volume() -> int
+      .. py:method:: mass() -> time_type
+      .. py:method:: __eq__(other: temporal_cluster[adjacency_type]) -> bool
+      .. py:method:: __len__() -> int
+      .. py:method:: __contains__(event: edge_type) -> bool
+      .. py:staticmethod:: vertex_type() -> type
+      .. py:staticmethod:: adjacency_type() -> type
 
 
-.. cpp:class:: template <temporal_network_edge EdgeT, \
-         temporal_adjacency::temporal_adjacency AdjT> temporal_cluster_size
 
-   .. cpp:type:: VertexType
+  .. tab-item:: C++
+    :sync: cpp
 
-   .. cpp:type:: AdjacencyType
+    .. cpp:class:: template <temporal_network_edge EdgeT, \
+       temporal_adjacency::temporal_adjacency AdjT> temporal_cluster
 
-   .. cpp:function:: explicit temporal_cluster_size(\
-         const temporal_cluster<EdgeT, AdjT>& c)
+       .. cpp:type:: VertexType
 
-   .. cpp:function:: std::size_t size() const
+       .. cpp:type:: AdjacencyType
 
-   .. cpp:function:: std::pair<\
-            typename EdgeT::TimeType, typename EdgeT::TimeType> \
-          lifetime() const
+       .. cpp:type:: IteratorType
 
-   .. cpp:function:: std::size_t volume() const
+       .. cpp:function:: template <std::ranges::input_range Range> \
+            requires std::convertible_to<std::ranges::range_value_t<Range>, EdgeT> \
+            void insert(Range& events)
 
-   .. cpp:function:: typename EdgeT::TimeType mass() const
+       .. cpp:function:: void insert(const EdgeT& e)
+
+       .. cpp:function:: void merge(const temporal_cluster<EdgeT, AdjT>& other)
+
+       .. cpp:function:: bool operator==(\
+             const temporal_cluster<EdgeT, AdjT>& c) const
+
+       .. cpp:function:: std::size_t size() const
+
+       .. cpp:function:: bool contains(const EdgeT& e) const
+
+       .. cpp:function:: bool covers(typename EdgeT::VertexType v, typename \
+             EdgeT::TimeType t) const
+
+       .. cpp:function:: bool empty() const
+
+       .. cpp:function:: IteratorType begin() const
+
+       .. cpp:function:: IteratorType end() const
+
+       .. cpp:function:: const std::unordered_map<typename EdgeT::VertexType, \
+                interval_set<typename EdgeT::TimeType>, \
+             hash<typename EdgeT::VertexType>>& \
+             interval_sets() const
+
+       .. cpp:function:: std::pair<\
+                typename EdgeT::TimeType, typename EdgeT::TimeType>\
+             lifetime() const;
+
+       .. cpp:function:: std::size_t volume() const
+
+       .. cpp:function:: typename EdgeT::TimeType mass() const
 
 
-.. cpp:class:: template <temporal_network_edge EdgeT, \
-         temporal_adjacency::temporal_adjacency AdjT>\
-      temporal_cluster_size_estimate
+.. tab-set::
 
-   .. cpp:type:: VertexType
+  .. tab-item:: Python
+    :sync: python
 
-   .. cpp:type:: AdjacencyType
+    .. py:class:: temporal_cluster_size[temporal_adjacency]
 
-   .. cpp:function:: double size_estimate() const
+          .. py:method:: lifetime() -> tuple[time_type, time_type]
+          .. py:method:: volume() -> int
+          .. py:method:: mass() -> time_type
+          .. py:staticmethod:: vertex_type() -> type
+          .. py:staticmethod:: adjacency_type() -> type
+            
 
-   .. cpp:function:: std::pair<\
-            typename EdgeT::TimeType, typename EdgeT::TimeType> \
-          lifetime() const
+  .. tab-item:: C++
+    :sync: cpp
 
-   .. cpp:function:: double volume_estimate() const
+    .. cpp:class:: template <temporal_network_edge EdgeT, \
+             temporal_adjacency::temporal_adjacency AdjT> temporal_cluster_size
 
-   .. cpp:function:: double mass_estimate() const
+       .. cpp:type:: VertexType
 
-   .. cpp:function:: EdgeT::TimeType temporal_resolution() const
+       .. cpp:type:: AdjacencyType
+
+       .. cpp:function:: explicit temporal_cluster_size(\
+             const temporal_cluster<EdgeT, AdjT>& c)
+
+       .. cpp:function:: std::size_t size() const
+
+       .. cpp:function:: std::pair<\
+                typename EdgeT::TimeType, typename EdgeT::TimeType> \
+              lifetime() const
+
+       .. cpp:function:: std::size_t volume() const
+
+       .. cpp:function:: typename EdgeT::TimeType mass() const
+
+
+.. tab-set::
+
+  .. tab-item:: Python
+    :sync: python
+
+    .. py:class:: temporal_cluster_size_estimate[temporal_adjacency]
+
+        .. py:method:: lifetime() -> tuple[time_type, time_type]
+        .. py:method:: volume_estimate() -> float
+        .. py:method:: mass_estimate() -> float
+        .. py:staticmethod:: vertex_type() -> type
+        .. py:staticmethod:: adjacency_type() -> type
+
+  .. tab-item:: C++
+    :sync: cpp
+
+    .. cpp:class:: template <temporal_network_edge EdgeT, \
+             temporal_adjacency::temporal_adjacency AdjT>\
+          temporal_cluster_size_estimate
+
+       .. cpp:type:: VertexType
+
+       .. cpp:type:: AdjacencyType
+
+       .. cpp:function:: double size_estimate() const
+
+       .. cpp:function:: std::pair<\
+                typename EdgeT::TimeType, typename EdgeT::TimeType> \
+              lifetime() const
+
+       .. cpp:function:: double volume_estimate() const
+
+       .. cpp:function:: double mass_estimate() const
+
+       .. cpp:function:: EdgeT::TimeType temporal_resolution() const

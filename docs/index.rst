@@ -43,7 +43,7 @@ introduced in future versions.
 A brief example: Let us generate
 :ref:`an Erdős--Rényi network <generation/gnp:Random Erdős--Rényi network>` and
 find its :ref:`largest connected component
-<algorithms/static_network_reachability:All connected components>`:
+<algorithms/static_network_reachability:Undirected static networks>`:
 
 .. code-block:: python
    :caption: example.py

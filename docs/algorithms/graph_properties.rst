@@ -40,7 +40,7 @@ Temporal network observation window
     :sync: python
 
     .. py:function:: time_window(temporal_network) -> \
-      Tuple[temporal_network.time_type(), temporal_network.time_type()]
+      tuple[temporal_network.time_type(), temporal_network.time_type()]
 
   .. tab-item:: C++
     :sync: cpp
@@ -64,7 +64,7 @@ If the temporal network has no events (edges), this function throws a
     :sync: python
 
     .. py:function:: cause_time_window(temporal_network) -> \
-      Tuple[temporal_network.time_type(), temporal_network.time_type()]
+      tuple[temporal_network.time_type(), temporal_network.time_type()]
 
   .. tab-item:: C++
     :sync: cpp
@@ -86,7 +86,7 @@ temporal network events don't have delays, this is indistinguishable from
     :sync: python
 
     .. py:function:: effect_time_window(temporal_network) -> \
-      Tuple[temporal_network.time_type(), temporal_network.time_type()]
+      tuple[temporal_network.time_type(), temporal_network.time_type()]
 
   .. tab-item:: C++
     :sync: cpp
@@ -133,7 +133,7 @@ Temporal network link timelines
     :sync: python
 
     .. py:function:: link_timeline(temporal_network, link) -> \
-        List[temporal_network.edge_type()]
+        list[temporal_network.edge_type()]
 
   .. tab-item:: C++
     :sync: cpp
@@ -153,8 +153,8 @@ Returns a list of events that correspond to (project to) the static link
     :sync: python
 
     .. py:function:: link_timelines(temporal_network) -> \
-      List[Tuple[temporal_network.edge_type().static_projection_type(), \
-          List[temporal_network.edge_type()]]]
+      list[tuple[temporal_network.edge_type().static_projection_type(), \
+          list[temporal_network.edge_type()]]]
 
   .. tab-item:: C++
     :sync: cpp
@@ -165,6 +165,6 @@ Returns a list of events that correspond to (project to) the static link
       link_timelines(const network<EdgeT>& temporal_network)
 
 For each link, each static edge in the :ref:`static projection
-<Static projection of a temporal network>` of the network, this function returns
-a list of the events that correspond to (project to) that link ordered by cause
-time of the events.
+<algorithms/graph_properties:Static projection of a temporal network>` of the
+network, this function returns a list of the events that correspond to
+(project to) that link ordered by cause time of the events.
