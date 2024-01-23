@@ -7,7 +7,7 @@ Random Barabási--Albert network
     :sync: python
 
     .. py:function:: random_barabasi_albert_graph[vert_type](\
-          n: int, p: float, random_state) \
+          n: int, m: int, random_state) \
        -> undirected_network[vert_type]
 
   .. tab-item:: C++
