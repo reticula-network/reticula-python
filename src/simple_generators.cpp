@@ -11,7 +11,7 @@ namespace nb = nanobind;
 using namespace nanobind::literals;
 
 template <typename VertT>
-struct declare_generators {
+struct declare_simple_generators {
   void operator()(nb::module_& m) {
     m.def(("square_grid_graph_"+python_type_str<VertT>()).c_str(),
         &reticula::square_grid_graph<VertT>,
@@ -43,6 +43,6 @@ struct declare_generators {
 void declare_typed_generators(nb::module_& m) {
   types::run_each<
     metal::transform<
-      metal::lambda<declare_generators>,
+      metal::lambda<declare_simple_generators>,
       types::integer_vert_types>>{}(m);
 }
