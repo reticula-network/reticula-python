@@ -12,6 +12,9 @@ Timeline shuffling
     .. py:function:: microcanonical_reference_models.timeline_shuffling(\
           temporal_network, random_state)
 
+    .. py:function:: microcanonical_reference_models.timeline_shuffling(\
+          temporal_network, random_state, t_start, t_end)
+
   .. tab-item:: C++
     :sync: cpp
 
@@ -22,11 +25,26 @@ Timeline shuffling
           microcanonical_reference_models::timeline_shuffling(\
              const network<EdgeT>& temp, Gen& generator)
 
+    .. cpp:function:: template <temporal_network_edge EdgeT, \
+          std::uniform_random_bit_generator Gen> \
+          requires is_dyadic_v<EdgeT> \
+          network<EdgeT> \
+          microcanonical_reference_models::timeline_shuffling(\
+             const network<EdgeT>& temp, Gen& generator, \
+             typename EdgeT::TimeType t_start, typename EdgeT::TimeType t_end);
+
 Produces a random shuffling of the temporal network where the events are
 shuffled by assigning new, uniformly random timetamps and moving it to a
 randomly selected link with a non-empty timeline. Equivalent to the
 micocanonical reference model with the canonical name :math:`P[\mathcal{L},
-E]`.
+E]`. The observation window, the window where the original measurement of the
+temporal network was made, is passed through parameters :cpp:`t_start` and
+:cpp:`t_end`.
+
+Alternatively, another variant of the function exist that uses the minimum and
+maximum cause time of all the events to automatically set values for parameters
+:cpp:`t_start` and :cpp:`t_end`, for cases where information about observation
+window is not available.
 
 The set of vertices, total number of events and the static projection of
 the temporal network are conserved.
