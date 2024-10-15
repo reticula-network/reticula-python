@@ -46,3 +46,6 @@ class generic_attribute:
            "\n\nValid options are:\n\n" + "\n".join(
                ["    [" + ", ".join([t.__name__ for t in type_list]) + "]"
                    for type_list in self.options]))
+    def __repr__(self) -> str:
+        return f"{self.api_module_name}.{self.attr_prefix}"\
+            f"[{", ".join(self.arg_names)}]"
