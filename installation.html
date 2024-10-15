@@ -12,7 +12,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quick Start" href="quickstart.html" /><link rel="prev" title="Reticula: Temporal network and hypergraphs" href="index.html" />
         <link rel="canonical" href="https://docs.reticula.network/installation.html" />
 
-    <!-- Generated with Sphinx 8.1.0 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>Installation - Reticula</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
@@ -318,7 +318,7 @@ You can install the most recent stable release from the PyPi index using pip:</p
 </div>
 <p>The first command makes sure your pip installation is up-to-date, the second
 command installs the most recent version of Reticula from the repository.</p>
-<p>The binding currently supports Python versions 3.8, 3.9, 3.10 and 3.11.</p>
+<p>The binding currently supports Python versions 3.10, 3.11, 3.12 and 3.13.</p>
 <p>If you need to install the library on a system with no pre-compiled Wheels, you
 can also build and install the binding from scrach. Chack out the
 <a class="reference internal" href="#development"><span class="std std-ref">Development</span></a> section for more information.</p>
@@ -353,30 +353,40 @@ recommand that you use the most recent release branch v#.# for a new project.</p
 <p>In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
 of GCC ( &gt;= 10.2) is installed and accessible and that you have access to
-approximatly infinite RAM (&gt; 40GB) and time.</p>
+approximatly infinite memory (&gt; 40GB) and about 20 minutes.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/reticula-network/reticula-python.git
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>reticula-python
 <span class="gp">$ </span>mkdir<span class="w"> </span>dist
 <span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
 <span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>.<span class="w"> </span>-w<span class="w"> </span>dist/
-<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>auditwheel<span class="w"> </span>dist/*.whl
-<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>wheelhouse/*.whl
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>dist/*.whl
 </pre></div>
 </div>
 <p>If you actively developing the Python binding (perhaps to send a pull request?
 Thank you very much!) you might want to avoid re-building everything from
 scratch every single time. In this scenario, I recommand disabling build
-isolation and cleaning steps of <strong class="command">pip wheel</strong> by using this command
-instead:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>.<span class="w"> </span>-w<span class="w"> </span>dist/<span class="w"> </span>--verbose<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-clean
+isolation of <strong class="command">pip wheel</strong> by using this command instead:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>-w<span class="w"> </span>dist/<span class="w"> </span>--verbose<span class="w"> </span>--no-build-isolation<span class="w"> </span>-Cbuild-dir<span class="o">=</span>build<span class="w"> </span>.
 </pre></div>
 </div>
-<p>This needs you to manually have the required python packages installed. You can
-find a list of these packages and acceptable version in the
+<p>Or just directly re-install the package on your system, meaning that in every
+iteration you just need to run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--verbose<span class="w"> </span>--force-reinstall<span class="w"> </span>--no-build-isolation<span class="w"> </span>-Cbuild-dir<span class="o">=</span>build<span class="w"> </span>.
+</pre></div>
+</div>
+<p>This requires you to have the required python packages manually installed. You
+can find a list of these packages and acceptable version in the
 <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file under the <code class="code docutils literal notranslate"><span class="pre">[build-system]</span></code> table.</p>
-<p>You might also need to re-install the created wheel without bumping the version
-every time. Consider adding the flag <code class="xref std std-option docutils literal notranslate"><span class="pre">--force-reinstall</span></code> to the
-<strong class="command">pip install</strong> command.</p>
+<p>When building a wheel you intend to distribute, you might want to copy the
+external shared libraries using the <cite>auditwheel</cite> tool to ensure compatibility
+across different Linux distributions. Refer to the <cite>auditwheel</cite> documentation
+for more details.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$  </span>python<span class="w"> </span>-m<span class="w"> </span>auditwheel<span class="w"> </span>repair<span class="w"> </span>--plat<span class="w"> </span>manylinux_2_39_x86_64<span class="w"> </span>dist/*.whl
+</pre></div>
+</div>
+<p>You can use the most recent platform compatible with all the computers that
+will be using the wheel instead of <code class="code docutils literal notranslate"><span class="pre">manylinux_2_39_x86_64</span></code>. A better
+option is to use <a class="reference external" href="https://cibuildwheel.readthedocs.io/en/stable/">cibuildwheel</a> for building wheels across different platforms.</p>
 </section>
 <section id="building-c-library-tests">
 <h3>Building C++ library tests<a class="headerlink" href="#building-c-library-tests" title="Link to this heading">¶</a></h3>
