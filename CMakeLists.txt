@@ -21,25 +21,9 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/brunocodutra/metal.git
   GIT_TAG v2.1.4)
 
-# Perform a release build by default
-if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
-  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
-endif()
-
-# Create CMake targets for all Python components needed by nanobind
-if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.26 AND Python_INTERPRETER_ID STREQUAL "Python")
-  find_package(Python 3.10 COMPONENTS Interpreter Development.Module Development.SABIModule REQUIRED)
-else()
-  find_package(Python 3.10 COMPONENTS Interpreter Development.Module REQUIRED)
-endif()
-
-
-execute_process(
-  COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
-  OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE NB_DIR)
-
-list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
+find_package(Python 3.10
+  REQUIRED COMPONENTS Interpreter Development.Module
+  OPTIONAL_COMPONENTS Development.SABIModule)
 
 find_package(nanobind CONFIG REQUIRED)
 
