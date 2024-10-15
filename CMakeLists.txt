@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.15)
 
 project(reticula_python LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG c5122c24c474880980d08f18df29163f94dee21e)
+  GIT_TAG 0c7d2d4c0594b8156894adc09c74d7a924dcc4d1)
 
 FetchContent_Declare(
   fmt
@@ -29,9 +29,9 @@ endif()
 
 # Create CMake targets for all Python components needed by nanobind
 if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.26 AND Python_INTERPRETER_ID STREQUAL "Python")
-  find_package(Python 3.8 COMPONENTS Interpreter Development.Module Development.SABIModule REQUIRED)
+  find_package(Python 3.10 COMPONENTS Interpreter Development.Module Development.SABIModule REQUIRED)
 else()
-  find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
+  find_package(Python 3.10 COMPONENTS Interpreter Development.Module REQUIRED)
 endif()
 
 
@@ -52,6 +52,7 @@ FetchContent_MakeAvailable(reticula fmt metal)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 nanobind_add_module(_reticula_ext
+  STABLE_ABI
   NB_STATIC
 
   src/main.cpp
@@ -103,17 +104,7 @@ target_link_libraries(_reticula_ext
 set_target_properties(_reticula_ext
   PROPERTIES CXX_VISIBILITY_PRESET hidden)
 
-install(TARGETS _reticula_ext DESTINATION .)
-
-set(lib_path "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
-list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${lib_path}" is_system)
-if ("${is_system}" STREQUAL "-1")
-  # The following is necessary for installation in a virtual
-  # environment `python -m pip venv env`
-  set_target_properties(_reticula_ext PROPERTIES
-      INSTALL_RPATH_USE_LINK_PATH TRUE
-      INSTALL_RPATH "${lib_path}")
-endif()
+install(TARGETS _reticula_ext DESTINATION reticula)
 
 set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
 set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "${CMAKE_COMMAND} -E time")

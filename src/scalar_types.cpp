@@ -4,6 +4,7 @@
 
 #include "type_str/scalars.hpp"
 #include "type_utils.hpp"
+#include "scalar_wrapper.hpp"
 
 namespace nb = nanobind;
 using namespace nanobind::literals;
@@ -11,7 +12,7 @@ using namespace nanobind::literals;
 template <typename T>
 struct declare_scalar_types {
   void operator()(nb::module_ &m) {
-    nb::class_<T>(m,
+    nb::class_<scalar_wrapper<T>>(m,
         python_type_str<T>().c_str())
       .def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<T>{}());
