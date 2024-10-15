@@ -3,7 +3,7 @@ name = "reticula"
 version = "0.10.1"
 description="Analyse temporal network and hypergraphs efficiently."
 authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 readme = "README.md"
 keywords = [
@@ -41,15 +41,17 @@ test = ["pytest", "hypothesis", "pytest-xdist", "scipy"]
 requires = [
     "setuptools>=67",
     "wheel",
-    "cmake>=3.26",
-    "scikit-build>=0.17",
-    "ninja",
-    "nanobind==1.5.2"
+    "scikit-build-core>=0.10.7",
+    "nanobind==2.2.0"
 ]
+build-backend = "scikit_build_core.build"
 
-build-backend = "setuptools.build_meta"
+[tool.scikit-build]
+wheel.py-api = "cp312"
+build-dir = "build/{wheel_tag}"
 
 [tool.cibuildwheel]
+skip = "pp3*"
 build-verbosity = 3
 
 [tool.cibuildwheel.linux]
@@ -60,6 +62,9 @@ repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 [tool.cibuildwheel.macos]
 archs = ["universal2"]
 repair-wheel-command = "delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}"
+
+[tool.cibuildwheel.macos.environment]
+MACOSX_DEPLOYMENT_TARGET = "10.15"
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]

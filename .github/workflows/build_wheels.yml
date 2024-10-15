@@ -2,9 +2,7 @@ name: Build Wheels
 on: [workflow_dispatch]
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 1
-  MACOSX_DEPLOYMENT_TARGET: "10.15"
-
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
 
 jobs:
   build_wheels:
@@ -14,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022, macos-13-xl]
-        py: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "cp312-*"]
+        py: ["cp310-*", "cp311-*", "cp312-*"]
 
     steps:
       - uses: actions/setup-python@v4
