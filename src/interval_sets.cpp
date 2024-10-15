@@ -53,6 +53,9 @@ struct declare_interval_set_types {
         return types::handle_for<typename IntSet::ValueType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<IntSet>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<IntSet>{}();
       });
   }
 };

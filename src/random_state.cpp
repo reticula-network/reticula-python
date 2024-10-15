@@ -18,5 +18,7 @@ void declare_random_states(nb::module_& m) {
          "seed"_a, nb::call_guard<nb::gil_scoped_release>())
     .def_static("__class_repr__", []() {
       return fmt::format("<class '{}'>", type_str<std::mt19937_64>{}());
+    }).def_static("__class_name__", []() {
+      return type_str<std::mt19937_64>{}();
     });
 }

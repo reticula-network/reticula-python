@@ -97,6 +97,8 @@ struct declare_network_class {
         return fmt::format("{}", a);
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Net>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<Net>{}();
       }).def_static("edge_type", []() {
         return types::handle_for<typename Net::EdgeType>();
       }).def_static("vertex_type", []() {

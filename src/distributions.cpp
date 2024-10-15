@@ -25,6 +25,9 @@ struct declare_integral_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
             type_str<std::geometric_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<std::geometric_distribution<ResultType>>{}();
       });
 
     nb::class_<reticula::delta_distribution<ResultType>>(m,
@@ -38,6 +41,9 @@ struct declare_integral_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
           type_str<reticula::delta_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<reticula::delta_distribution<ResultType>>{}();
       });
 
     nb::class_<std::uniform_int_distribution<ResultType>>(m,
@@ -55,6 +61,9 @@ struct declare_integral_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
             type_str<std::uniform_int_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<std::uniform_int_distribution<ResultType>>{}();
       });
   }
 };
@@ -74,6 +83,9 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
             type_str<std::exponential_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<std::exponential_distribution<ResultType>>{}();
       });
 
     nb::class_<reticula::power_law_with_specified_mean<ResultType>>(m,
@@ -94,6 +106,10 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<
           reticula::power_law_with_specified_mean<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<
+          reticula::power_law_with_specified_mean<ResultType>>{}();
       });
 
     nb::class_<reticula::residual_power_law_with_specified_mean<ResultType>>(m,
@@ -117,6 +133,10 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<
           reticula::residual_power_law_with_specified_mean<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<
+          reticula::residual_power_law_with_specified_mean<ResultType>>{}();
       });
 
     nb::class_<reticula::hawkes_univariate_exponential<ResultType>>(m,
@@ -143,6 +163,9 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<
           reticula::hawkes_univariate_exponential<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<reticula::hawkes_univariate_exponential<ResultType>>{}();
       });
 
     nb::class_<reticula::delta_distribution<ResultType>>(m,
@@ -157,6 +180,9 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
             type_str<reticula::delta_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<reticula::delta_distribution<ResultType>>{}();
       });
 
     nb::class_<std::uniform_real_distribution<ResultType>>(m,
@@ -174,6 +200,9 @@ struct declare_floating_point_distributions {
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>",
           type_str<std::uniform_real_distribution<ResultType>>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<std::uniform_real_distribution<ResultType>>{}();
       });
   }
 };

@@ -31,10 +31,18 @@ class generic_attribute:
         else:
             raise AttributeError(
                     "Provided template type is not a valid "
-                    "option. Valid options are:\n" + "\n".join(
-                        ["\t[" + ", ".join([t.__name__ for t in type_list]) + "]"
-                         for type_list in self.options]))
+                    "option. Valid options are:\n\n" +
+                    self.options_list())
         return self.function_module.__getattribute__(attr_name)
+
+    def options_list(self):
+        opts = []
+        for type_list in self.options:
+            opts.append(
+                "[" + ", ".join([t.__class_name__() for t in type_list]) + "]")
+        opts = sorted(opts, key=lambda s: (s.count("["), s))
+
+        return "\n".join(opts)
 
     def __call__(self, *args, **kwargs):
         raise TypeError(
@@ -43,9 +51,8 @@ class generic_attribute:
            "and type information before parentheses, e.g.:\n\n"
            f"    {self.api_module_name}.{self.attr_prefix}"
            f"[{', '.join(self.arg_names)}]"
-           "\n\nValid options are:\n\n" + "\n".join(
-               ["    [" + ", ".join([t.__name__ for t in type_list]) + "]"
-                   for type_list in self.options]))
+           "\n\nValid options are:\n\n" + 
+                self.options_list())
     def __repr__(self) -> str:
         return f"{self.api_module_name}.{self.attr_prefix}"\
             f"[{", ".join(self.arg_names)}]"

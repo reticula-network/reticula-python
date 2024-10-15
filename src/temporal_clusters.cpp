@@ -80,6 +80,8 @@ struct declare_temporal_cluster_types {
         return types::handle_for<typename Cluster::AdjacencyType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Cluster>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<Cluster>{}();
       });
 
     using ClusterSize = reticula::temporal_cluster_size<EdgeT, AdjT>;
@@ -104,6 +106,8 @@ struct declare_temporal_cluster_types {
         return types::handle_for<typename ClusterSize::AdjacencyType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<ClusterSize>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<ClusterSize>{}();
       });
 
 
@@ -130,6 +134,8 @@ struct declare_temporal_cluster_types {
         return types::handle_for<typename ClusterSizeEstimate::AdjacencyType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<ClusterSizeEstimate>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<ClusterSizeEstimate>{}();
       });
   }
 };

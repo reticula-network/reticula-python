@@ -5,6 +5,22 @@ from .generic_attribute import generic_attribute as _generic_attribute
 from . import temporal_adjacency
 from . import microcanonical_reference_models
 
+# import scalar type "tags"
+from ._reticula_ext import (
+        int64, double, string)
+
+# patch the nb_type_0 metaclass to show the "correct" name for classes
+setattr(type(int64), "__repr__", lambda kls: kls.__class_repr__())
+
+_simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
+pair = _generic_attribute(
+        attr_prefix="pair",
+        arg_names=("vertex_type", "vertex_type"),
+        options={(i, j)
+                 for i in _simple_vertex_types for j in _simple_vertex_types},
+        function_module=_reticula_ext,
+        api_module_name=__name__)
+
 _static_edge_prefixes = [
         "directed_edge", "undirected_edge",
         "directed_hyperedge", "undirected_hyperedge"]
@@ -28,10 +44,6 @@ for _e in _static_edge_prefixes:
                 options={(t,) for t in _all_vertex_types},
                 function_module=_reticula_ext,
                 api_module_name=__name__))
-
-# import scalar type "tags"
-from ._reticula_ext import (
-        int64, double, string)
 
 from ._reticula_ext import (
         mersenne_twister)
@@ -162,16 +174,6 @@ is_dyadic = _generic_attribute(
         attr_prefix="is_dyadic",
         arg_names=("edge_type",),
         options={(t,) for t in _all_edge_types},
-        function_module=_reticula_ext,
-        api_module_name=__name__)
-
-
-_simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
-pair = _generic_attribute(
-        attr_prefix="pair",
-        arg_names=("vertex_type", "vertex_type"),
-        options={(i, j)
-                 for i in _simple_vertex_types for j in _simple_vertex_types},
         function_module=_reticula_ext,
         api_module_name=__name__)
 

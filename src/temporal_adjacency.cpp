@@ -29,6 +29,8 @@ struct declare_temporal_adjacency_class {
         return types::handle_for<typename Simple::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Simple>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<Simple>{}();
       });
 
     using LWT = reticula::temporal_adjacency::limited_waiting_time<EdgeT>;
@@ -52,6 +54,8 @@ struct declare_temporal_adjacency_class {
         return types::handle_for<typename LWT::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<LWT>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<LWT>{}();
       });
 
     if constexpr (std::is_floating_point_v<typename EdgeT::TimeType>) {
@@ -76,6 +80,8 @@ struct declare_temporal_adjacency_class {
           return types::handle_for<typename Exp::VertexType>();
         }).def_static("__class_repr__", []() {
           return fmt::format("<class '{}'>", type_str<Exp>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<Exp>{}();
         });
     }
 
@@ -101,6 +107,8 @@ struct declare_temporal_adjacency_class {
           return types::handle_for<typename Geom::VertexType>();
         }).def_static("__class_repr__", []() {
           return fmt::format("<class '{}'>", type_str<Geom>{}());
+        }).def_static("__class_name__", []() {
+          return type_str<Geom>{}();
         });
     }
   }

@@ -70,6 +70,9 @@ struct declare_component_types {
         return types::handle_for<typename Component::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Component>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<Component>{}();
       });
 
     nb::implicitly_convertible<
@@ -87,6 +90,9 @@ struct declare_component_types {
         return types::handle_for<typename ComponentSize::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<ComponentSize>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<ComponentSize>{}();
       });
 
     using ComponentSizeEstimate =
@@ -103,6 +109,9 @@ struct declare_component_types {
         return types::handle_for<typename ComponentSizeEstimate::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<ComponentSizeEstimate>{}());
+      })
+      .def_static("__class_name__", []() {
+        return type_str<ComponentSizeEstimate>{}();
       });
   }
 };

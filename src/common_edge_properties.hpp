@@ -50,6 +50,8 @@ nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
       return fmt::format("{}", a);
     }).def_static("__class_repr__", []() {
       return fmt::format("<class '{}'>", type_str<EdgeT>{}());
+    }).def_static("__class_name__", []() {
+      return type_str<EdgeT>{}();
     }).def_static("vertex_type", []() {
       return types::handle_for<typename EdgeT::VertexType>();
     });

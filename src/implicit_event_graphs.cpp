@@ -67,6 +67,8 @@ struct declare_implicit_event_graph_class {
         return types::handle_for<typename Net::VertexType>();
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Net>{}());
+      }).def_static("__class_name__", []() {
+        return type_str<Net>{}();
       });
   }
 };
