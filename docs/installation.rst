@@ -73,8 +73,7 @@ approximatly infinite RAM (> 40GB) and time.
    $ mkdir dist
    $ python -m pip install --upgrade pip
    $ python -m pip wheel . -w dist/
-   $ python -m auditwheel dist/*.whl
-   $ python -m pip install wheelhouse/*.whl
+   $ python -m pip install dist/*.whl
 
 If you actively developing the Python binding (perhaps to send a pull request?
 Thank you very much!) you might want to avoid re-building everything from
@@ -93,6 +92,21 @@ find a list of these packages and acceptable version in the
 You might also need to re-install the created wheel without bumping the version
 every time. Consider adding the flag :option:`--force-reinstall` to the
 :command:`pip install` command.
+
+When building a wheel you intend to distribute, you might want to copy the
+external shared libraries using the `auditwheel` tool to ensure compatibility
+across different Linux distributions. Refer to the `auditwheel` documentation
+for more details.
+
+.. code-block:: console
+
+   $  python -m auditwheel repair --plat manylinux_2_39_x86_64 dist/*.whl
+
+You can use the most recent platform compatible with all the computers that
+will be using the wheel instead of :code:`manylinux_2_39_x86_64`. A better
+option is to use `cibuildwheel`_ for building wheels across different platforms.
+
+.. _cibuildwheel: https://cibuildwheel.readthedocs.io/en/stable/
 
 Building C++ library tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
