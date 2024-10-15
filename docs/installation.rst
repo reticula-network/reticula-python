@@ -64,7 +64,7 @@ Building the Python binding from scratch
 In order to build the Python binding on a development machine, you need to make
 sure Python development headers are installed and accessible, a modern version
 of GCC ( >= 10.2) is installed and accessible and that you have access to
-approximatly infinite RAM (> 40GB) and time.
+approximatly infinite memory (> 40GB) and about 20 minutes.
 
 .. code-block:: console
 
@@ -78,20 +78,22 @@ approximatly infinite RAM (> 40GB) and time.
 If you actively developing the Python binding (perhaps to send a pull request?
 Thank you very much!) you might want to avoid re-building everything from
 scratch every single time. In this scenario, I recommand disabling build
-isolation and cleaning steps of :command:`pip wheel` by using this command
-instead:
+isolation of :command:`pip wheel` by using this command instead:
 
 .. code-block:: console
 
-   $ python -m pip wheel . -w dist/ --verbose --no-build-isolation --no-clean
+   $ python -m pip wheel -w dist/ --verbose --no-build-isolation -Cbuild-dir=build .
 
-This needs you to manually have the required python packages installed. You can
-find a list of these packages and acceptable version in the
+Or just directly re-install the package on your system, meaning that in every
+iteration you just need to run:
+
+.. code-block:: console
+
+   $ python -m pip install --verbose --force-reinstall --no-build-isolation -Cbuild-dir=build .
+
+This requires you to have the required python packages manually installed. You
+can find a list of these packages and acceptable version in the
 :file:`pyproject.toml` file under the :code:`[build-system]` table.
-
-You might also need to re-install the created wheel without bumping the version
-every time. Consider adding the flag :option:`--force-reinstall` to the
-:command:`pip install` command.
 
 When building a wheel you intend to distribute, you might want to copy the
 external shared libraries using the `auditwheel` tool to ensure compatibility
