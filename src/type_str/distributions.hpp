@@ -122,7 +122,7 @@ struct fmt::formatter<std::exponential_distribution<ResultType>> {
   auto format(
       const std::exponential_distribution<ResultType>& a,
       FormatContext& ctx) const -> decltype(ctx.out()) {
-    return fmt::format_to(ctx.out(), "{}(lambda={})",
+    return fmt::format_to(ctx.out(), "{}(lmbda={})",
         type_str<std::exponential_distribution<ResultType>>{}(), a.lambda());
   }
 };

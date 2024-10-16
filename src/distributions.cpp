@@ -73,9 +73,9 @@ struct declare_floating_point_distributions {
   void operator()(nb::module_& m) {
     nb::class_<std::exponential_distribution<ResultType>>(
         m, python_type_str<std::exponential_distribution<ResultType>>().c_str())
-      .def(nb::init<ResultType>(), "lambda"_a,
+      .def(nb::init<ResultType>(), "lmbda"_a,
           nb::call_guard<nb::gil_scoped_release>())
-      .def("lambda", &std::exponential_distribution<ResultType>::lambda,
+      .def("lmbda", &std::exponential_distribution<ResultType>::lambda,
           nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](
             const std::exponential_distribution<ResultType>& a) {
