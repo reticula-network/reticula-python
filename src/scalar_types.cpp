@@ -16,8 +16,7 @@ struct declare_scalar_types {
         python_type_str<T>().c_str())
       .def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<T>{}());
-      })
-      .def_static("__class_name__", []() {
+      }).def_static("__class_name__", []() {
         return type_str<T>{}();
       });
   }
