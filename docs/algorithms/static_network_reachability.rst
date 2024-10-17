@@ -247,7 +247,7 @@ out-component sizes, this uses much less memory and is much faster to run in
 many cases.
 
 Undirected static networks
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Connected component of a specific vertex
