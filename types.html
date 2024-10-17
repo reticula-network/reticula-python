@@ -330,6 +330,18 @@ existing <a class="reference external" href="https://docs.python.org/3/library/t
 Temporal networks also need to know about the time type that they should store.
 For example <code class="code highlight python docutils literal highlight-python"><span class="n">undirected_temporal_network</span><span class="p">[</span><span class="n">int64</span><span class="p">,</span> <span class="n">double</span><span class="p">]</span></code>
 marks a continuous time undirected temporal network with integer vertices.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike most Python classes and methods, Reticula type annotations are <strong>more
+often than not mandatory</strong>. This stems from the fact that, e.g., a
+<code class="code highlight python docutils literal highlight-python"><span class="n">undirected_network</span><span class="p">[</span><span class="n">int64</span><span class="p">]</span></code> object is an instance of an inherently
+different C++ class compared to a <code class="code highlight python docutils literal highlight-python"><span class="n">undirected_network</span><span class="p">[</span><span class="n">string</span><span class="p">]</span></code>, with
+possibly different underlying memory layout.</p>
+<p>For many of the methods we have elected to use an automatic dispatch method
+based on argument types whenever possible, similar to how C++ handles
+function overloading based on parameters. In a few cases, this has proved
+trickey.</p>
+</div>
 <p>If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to repeatedly-used types in your code. This way you
 can avoid repeating yourself without compromising on type safety:</p>
@@ -943,7 +955,7 @@ values, Corresponding to in- and out-degree weigts for each vertex.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=261ea15a"></script>
+</div><script src="_static/documentation_options.js?v=f3b36f1a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

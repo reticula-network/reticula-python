@@ -31,6 +31,18 @@ Temporal networks also need to know about the time type that they should store.
 For example :py:`undirected_temporal_network[int64, double]`
 marks a continuous time undirected temporal network with integer vertices.
 
+.. note::
+   Unlike most Python classes and methods, Reticula type annotations are **more
+   often than not mandatory**. This stems from the fact that, e.g., a
+   :py:`undirected_network[int64]` object is an instance of an inherently
+   different C++ class compared to a :py:`undirected_network[string]`, with
+   possibly different underlying memory layout.
+
+   For many of the methods we have elected to use an automatic dispatch method
+   based on argument types whenever possible, similar to how C++ handles
+   function overloading based on parameters. In a few cases, this has proved
+   trickey.
+
 If the type syntax looks verbose, remember that you can, and probably should,
 assign a human-readable name to repeatedly-used types in your code. This way you
 can avoid repeating yourself without compromising on type safety:
