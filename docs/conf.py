@@ -65,7 +65,7 @@ rst_prolog = """
 """
 
 
-# REs for Python signatures with types
+# # REs for Python signatures with types
 import re
 typed_py_re = re.compile(
     r'''^ ([\w.]*\.)?            # class name(s)
@@ -76,8 +76,8 @@ typed_py_re = re.compile(
           )? $                   # and nothing more
           ''', re.VERBOSE)
 
-import sphinx.domains.python
-sphinx.domains.python.py_sig_re = typed_py_re
+import sphinx.domains.python._object as po
+po.py_sig_re = typed_py_re
 
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 3
