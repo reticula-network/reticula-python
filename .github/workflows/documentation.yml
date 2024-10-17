@@ -8,28 +8,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-    - uses: actions/checkout@v2.4.2
-    - uses: actions/setup-python@v3
-      with:
-        python-version: '3.11'  # sphinxcontrib-bibtex is not compatible with 3.12 https://github.com/mcmtroffaes/sphinxcontrib-bibtex/issues/345
-        architecture: 'x64'
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
 
-    - name: Prerequisits
-      run: pip install sphinx sphinxcontrib-bibtex furo sphinx-copybutton
-        sphinx_design sphinxext-opengraph sphinx-sitemap toml
+      - name: Prerequisits
+        run: pip install -r docs/requirements.txt
+
+      - name: Build
+        working-directory: docs/
+        run: make html
+
+      - name: Upload
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_build/html
 
 
-    - name: Build ⚙️
-      working-directory: docs/
-      run: make html
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
 
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.2
-      with:
-          branch: gh-pages
-          folder: docs/_build/html
-          clean: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+            branch: gh-pages
+            folder: docs/_build/html
+            clean: false
