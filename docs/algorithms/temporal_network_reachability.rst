@@ -442,7 +442,7 @@ also requires temporal information.
           .. py:method:: mass() -> time_type
           .. py:staticmethod:: vertex_type() -> type
           .. py:staticmethod:: adjacency_type() -> type
-            
+
 
   .. tab-item:: C++
     :sync: cpp
