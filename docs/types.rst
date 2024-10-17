@@ -186,6 +186,63 @@ vaguely-defined and should be avoided.
 See :ref:`vertex degree algorithms <algorithms/vertex_degrees:Vertex degrees>`
 for more information on these and other relevant functions.
 
+.. _vertex-types:
+
+Vertex types
+------------
+
+Simple types
+^^^^^^^^^^^^
+The only requirement for a valid vertex type in C++ is to satisfy
+:cpp:concept:`network_vertex`. This means that the numeric types,
+:cpp:`std::string`, :cpp:`std::pair`, :cpp:`std::tuple` and all standard library
+ordered containers are accepted. On the other hand the python implementation
+requires a predefined list of types at compile time, meaning that we have to
+make a choice as to what vertex types would be available. At the moment certain
+fundamental types are defined. This includes an integral type, a string type
+and pairs of these types.
+
+.. py:class:: int64
+
+  Corresponding to :cpp:`std::int64_t` 64-bit signed integers.
+
+.. py:class:: string
+
+  Corresponding to :cpp:`std::string`.
+
+.. py:type:: simple_vertex_type
+   :canonical: int64 | string
+
+.. py:class:: pair[type1, type2]
+
+  Corresponding to :cpp:`std::pair<Type1, Type2>`.
+
+.. py:type:: vertex_type
+   :canonical: simple_vertex_type | pair[simple_vertex_type, simple_vertex_type] | first_order_edges
+
+Higher-order networks
+^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the vertex types listed above, the Python binding supports
+one level of higher-order network, where vertices of the network can be any of
+the defined edge types as long as that edge type uses one of the above "simple"
+vertex types. The C++ library supports any level of higher-order networks.
+
+Time types
+----------
+In C++ it is possible to use any arithmetic type for timestamps. In the Python
+binding, in addition to the previously mentioned :py:class:`int64` integer type
+you can use one of the following pre-defined types:
+
+
+.. py:class:: double
+
+  Corresponding to :cpp:`double` double precision floating-point type, almost
+  always an implementation of the IEEE-754 binary64 format.
+
+.. py:type:: time_type
+   :canonical: int64 | double
+
 Network types
 -------------
 
@@ -273,53 +330,6 @@ Directed delayed temporal hyper-networks
    A list of acceptible vertex types and time types
    A list of edge/network types, their properties (what they store)
 
-
-.. _vertex-types:
-
-Vertex types
-------------
-
-Simple types
-^^^^^^^^^^^^
-The only requirement for a valid vertex type in C++ is to satisfy
-:cpp:concept:`network_vertex`. This means that the numeric types,
-:cpp:`std::string`, :cpp:`std::pair`, :cpp:`std::tuple` and all standard library
-ordered containers are accepted. On the other hand the python implementation
-requires a predefined list of types at compile time, meaning that we have to
-make a choice as to what vertex types would be available. At the moment certain
-fundamental types are defined
-
-.. py:class:: int64
-
-  Corresponding to :cpp:`std::int64_t` 64-bit signed integers.
-
-.. py:class:: string
-
-  Corresponding to :cpp:`std::string`.
-
-.. py:class:: pair[type1, type2]
-
-  Corresponding to :cpp:`std::pair<Type1, Type2>`.
-
-Higher-order networks
-^^^^^^^^^^^^^^^^^^^^^
-
-In addition to the vertex types listed above, the Python binding supports
-one level of higher-order network, where vertices of the network can be any of
-the defined edge types as long as that edge type uses one of the above "simple"
-vertex types. The C++ library supports any level of higher-order networks.
-
-Time Types
-----------
-In C++ it is possible to use any arithmetic type for timestamps. In the Python
-binding, in addition to the previously mentioned :py:class:`int64` integer type
-you can use one of the following pre-defined types:
-
-
-.. py:class:: double
-
-  Corresponding to :cpp:`double` double precision floating-point type, almost
-  always an implementation of the IEEE-754 binary64 format.
 
 Concepts
 --------
