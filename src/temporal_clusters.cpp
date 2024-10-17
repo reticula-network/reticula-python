@@ -1,5 +1,6 @@
 #include "bind_core.hpp"
 #include <nanobind/operators.h>
+#include <nanobind/make_iterator.h>
 
 #include <fmt/format.h>
 #include <reticula/temporal_clusters.hpp>
@@ -73,6 +74,9 @@ struct declare_temporal_cluster_types {
       .def("__repr__", [](const Cluster& c) {
           return fmt::format("{}", c);
       })
+      .def("__iter__", [](const Cluster &c) {
+          return nb::make_iterator(nb::type<EdgeT>(), "edge_iterator", c);
+      }, nb::keep_alive<0, 1>())
       .def_static("vertex_type", []() {
         return types::handle_for<typename Cluster::VertexType>();
       })
@@ -95,6 +99,8 @@ struct declare_temporal_cluster_types {
           nb::call_guard<nb::gil_scoped_release>())
       .def("mass",
           &ClusterSize::mass,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def("__len__", &ClusterSize::size,
           nb::call_guard<nb::gil_scoped_release>())
       .def("__repr__", [](const ClusterSize& c) {
           return fmt::format("{}", c);
