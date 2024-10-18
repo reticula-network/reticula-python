@@ -5,3 +5,4 @@ Examples
    :maxdepth: 1
 
    isotropic
+   temporal_network
