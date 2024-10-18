@@ -13,6 +13,17 @@ values of :math:`p` and plotting the largest component sizes.
    :language: python
    :linenos:
 
+This, after doing a lot of processing, produces a figure that looks like this,
+minus the axis labels and other niceties:
+
+.. image:: isotropic.svg
+   :width: 600
+   :alt: A line plot with x axis between 0 to 2e-6 labelled "edge probability
+         p", and the y axis ranging from 0 to 800000 labelled "largest connected
+         component size". The y values of the line are close to zero from x=0 to
+         x=1e-6, then they suddenly start increasing.
+
+
 While this script definitly works, it is only utilising one CPU core. We can use
 more CPU cores (and run the code faster) using multi-processing. This, however,
 would be wasteful, as it entails running multiple independent python processes,
