@@ -49,6 +49,7 @@ With burn-in
 
     .. py:function:: random_link_activation_temporal_network(base_net, max_t, \
          iet_dist, random_state, size_hint: int = 0)
+       :no-index:
 
   .. tab-item:: C++
     :sync: cpp
@@ -65,11 +66,12 @@ With burn-in
 
 Generates a random link-activation temporal network without a residual time
 distribution, by burning-in the inter-event time distribution for :cpp:`max_t`
-time before recording events. The output event have times values from 0 to
+time before recording events. The output events have times values from 0 to
 :cpp:`max_t` (exclusive).
 
 See the list of distributions :ref:`in the relevant section of the documentation
 <randomness:Distributions>`.
 
-This approach might not work on all distributions. It is up to the user to think
-about whether this suits their use case.
+.. warning::
+   This approach might not work on all distributions. It is up to the user to think
+   about whether this suits their use case.

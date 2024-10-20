@@ -18,7 +18,8 @@ Generating networks
    uniform_hypergraph
 
    fully_mixed
-   activation
+   link_activation
+   node_activation
 
 The library allows users to generate a variety of synthetic networks. In this
 section you can see a different functions for generating deterministic or random
