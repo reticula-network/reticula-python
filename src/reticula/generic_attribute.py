@@ -1,7 +1,8 @@
 import typing as _typing
+import collections
 
 
-class generic_attribute:
+class generic_attribute(collections.abc.Mapping):
     def __init__(
             self, attr_prefix: str,
             arg_names: _typing.Tuple[str, ...],
@@ -30,7 +31,7 @@ class generic_attribute:
                 "_".join([k.__name__ for k in keys])
         else:
             raise AttributeError(
-                    "Provided template type is not a valid "
+                    f"Provided template type {str(keys)} is not a valid "
                     "option. Valid options are:\n\n" +
                     self.options_list())
         return self.function_module.__getattribute__(attr_name)
@@ -51,8 +52,14 @@ class generic_attribute:
            "and type information before parentheses, e.g.:\n\n"
            f"    {self.api_module_name}.{self.attr_prefix}"
            f"[{', '.join(self.arg_names)}]"
-           "\n\nValid options are:\n\n" + 
-                self.options_list())
+           "\n\nValid options are:\n\n" + self.options_list())
+
     def __repr__(self) -> str:
         return f"{self.api_module_name}.{self.attr_prefix}"\
             f"[{", ".join(self.arg_names)}]"
+
+    def __len__(self) -> int:
+        return len(self.options)
+
+    def __iter__(self):
+        return iter(self.options)
