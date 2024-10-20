@@ -4,7 +4,6 @@
 #include <fmt/format.h>
 
 #include "type_str/random_state.hpp"
-#include "type_utils.hpp"
 
 namespace nb = nanobind;
 using namespace nanobind::literals;
@@ -16,6 +15,7 @@ void declare_random_states(nb::module_& m) {
     }, nb::call_guard<nb::gil_scoped_release>())
     .def(nb::init<std::mt19937_64::result_type>(),
          "seed"_a, nb::call_guard<nb::gil_scoped_release>())
+    .def("__call__", [](std::mt19937_64& self) { return self(); })
     .def_static("__class_repr__", []() {
       return fmt::format("<class '{}'>", type_str<std::mt19937_64>{}());
     }).def_static("__class_name__", []() {
