@@ -36,6 +36,7 @@ FetchContent_MakeAvailable(reticula fmt metal)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 nanobind_add_module(_reticula_ext
+  NB_DOMAIN reticula
   STABLE_ABI
   NB_STATIC
 
@@ -86,7 +87,8 @@ nanobind_add_module(_reticula_ext
 target_link_libraries(_reticula_ext
   PRIVATE reticula fmt Metal)
 set_target_properties(_reticula_ext
-  PROPERTIES CXX_VISIBILITY_PRESET hidden)
+  PROPERTIES CXX_VISIBILITY_PRESET hidden
+  VISIBILITY_INLINES_HIDDEN ON)
 
 install(TARGETS _reticula_ext DESTINATION reticula)
 
