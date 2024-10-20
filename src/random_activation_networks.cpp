@@ -23,6 +23,13 @@ struct declare_activations_with_residual {
         "base_net"_a, "max_t"_a, "iet_dist"_a, "res_dist"_a,
         "random_state"_a, "size_hint"_a = 0,
         nb::call_guard<nb::gil_scoped_release>());
+
+    m.def("random_node_activation_temporal_network",
+        &reticula::random_node_activation_temporal_network<
+          EdgeT, Dist, ResDist, Gen>,
+        "base_net"_a, "max_t"_a, "iet_dist"_a, "res_dist"_a,
+        "random_state"_a, "size_hint"_a = 0,
+        nb::call_guard<nb::gil_scoped_release>());
   }
 };
 
@@ -34,6 +41,13 @@ struct declare_activations {
   void operator()(nb::module_& m) {
     m.def("random_link_activation_temporal_network",
         &reticula::random_link_activation_temporal_network<
+          EdgeT, Dist, Gen>,
+        "base_net"_a, "max_t"_a, "iet_dist"_a,
+        "random_state"_a, "size_hint"_a = 0,
+        nb::call_guard<nb::gil_scoped_release>());
+
+    m.def("random_node_activation_temporal_network",
+        &reticula::random_node_activation_temporal_network<
           EdgeT, Dist, Gen>,
         "base_net"_a, "max_t"_a, "iet_dist"_a,
         "random_state"_a, "size_hint"_a = 0,

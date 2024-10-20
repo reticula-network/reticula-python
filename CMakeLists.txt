@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG c7ce86688b10f3e53bad87f965cd82efde21c1ea)
+  GIT_TAG 9967986f4487fcfa96ee72f5d5a849109523fc9f)
 
 FetchContent_Declare(
   fmt
