@@ -1,4 +1,4 @@
-Isotropic bond-percolation in G(n, p) networks
+Isotropic bond percolation in G(n, p) networks
 ==============================================
 
 The goal of this example is to visualise what happens to the largest component
@@ -16,12 +16,15 @@ values of :math:`p` and plotting the largest component sizes.
 This, after doing a lot of processing, produces a figure that looks like this,
 minus the axis labels and other niceties:
 
-.. image:: isotropic.svg
-   :width: 600
+.. figure:: isotropic.svg
    :alt: A line plot with x axis between 0 to 2e-6 labelled "edge probability
          p", and the y axis ranging from 0 to 800000 labelled "largest connected
          component size". The y values of the line are close to zero from x=0 to
          x=1e-6, then they suddenly start increasing.
+
+   Results of the isotropic bond percolation in random :math:`G(n, p)` graphs.
+   The evolution of the largest connected component size shows that the
+   connectivity of the system changes rapidly around :math:`p = 10^{-6}`.
 
 
 While this script definitly works, it is only utilising one CPU core. We can use
