@@ -13,8 +13,8 @@ values of :math:`p` and plotting the largest component sizes.
    :language: python
    :linenos:
 
-This, after doing a lot of processing, produces a figure that looks like this,
-minus the axis labels and other niceties:
+This script, after doing a lot of computation, produces a figure that looks
+like this, minus the axis labels and other niceties:
 
 .. figure:: isotropic.svg
    :alt: A line plot with x axis between 0 to 2e-6 labelled "edge probability
