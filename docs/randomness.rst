@@ -24,8 +24,8 @@ random number generators implemented by Python or NumPy, as Reticula cannot
 manipulate Python objects in any way that matters. Similar situation is also in
 place for distributions. We have provided bindings to some pseudorandom number
 generators and distributions for use with this library, some bindings over C++
-standard library implementation (e.g., :py:class:`geomtric_distribution` and
-:py:class:`exponential_distirbution`) and some based on our own implementation.
+standard library implementation (e.g., :py:class:`geometric_distribution` and
+:py:class:`exponential_distribution`) and some based on our own implementation.
 
 .. warning::
    Reticula currently relies on C++ standard library distributions and
@@ -37,34 +37,50 @@ standard library implementation (e.g., :py:class:`geomtric_distribution` and
    we will try our best keep the Python build environment consistant, but there
    are no guarantees.
 
-For now, the only real thing you can do with these classes are to create them
-and pass them on to Reticula functions, as Reticula is not a general purpose
-numerical computation library.
-
-Pseudorandom number generators
+Pseudorandom bit generators
 ------------------------------
+
+The pseudorandom bit generators can be initialised using an integer seed. If no
+seed is provided, the generator is seeded using a non-deterministic source,
+e.g., a hardware device, if one is available. If no non-deterministic source is
+available, it might rely on an implementation defined deterministic source.
+
+You can use the :py:`__call__` method to get raw values, e.g.:
+
+.. code-block:: pycon
+
+   >>> gen = ret.mersenne_twister(42)
+   >>> gen()
+   13930160852258120406
+   >>> gen()
+   11788048577503494824
+   >>> gen()
+   13874630024467741450
+
 
 .. py:class:: mersenne_twister([seed: int])
 
-   Creates an instance of 64-bit Mersenne twister :cite:p:`nishimura2000tables`.
-   Bindings over C++ standard library implementation.
+   Creates an instance of 64-bit Mersenne twister
+   :cite:p:`nishimura2000tables`. Bindings over C++ standard library
+   implementation.
 
-   We recommand using one pseudorandom number generator per thread in
+   We recommand using one pseudorandom bit generator per thread in
    multi-threaded environment.
 
-   If no :py:`seed` is provided, the generator is seeded using a
-   non-deterministic source, e.g., a hardware device, if one is available.
+   .. py:method:: __call__() -> int
+
+      Advances the internal state and returns the generated value.
 
 
-Distributions
--------------
+Distributions and stochastic generators
+---------------------------------------
 
 .. py:class:: geometric_distribution[integral_type](p: float)
 
    A discrete distribution of the number of required Bernoulli trials with
    probability :py:`p` to get one success. This distribution has a mean of
    :math:`\frac{1}{p}`. It's the discrete analogue to
-   :py:class:`exponential_distribution[floating_point_type]`
+   :py:class:`exponential_distribution`
 
 .. py:class:: exponential_distribution[floating_point_type](lambda: float)
 
@@ -84,7 +100,7 @@ Distributions
    exponent: float, mean: float)
 
    Residual distribution of the distribution
-   :py:class:`power_law_with_specified_mean[floating_point_type]`.
+   :py:class:`power_law_with_specified_mean`.
 
 .. py:class:: hawkes_univariate_exponential[floating_point_type](\
    mu: float, alpha: float, theta: float, phi: float = 0.0)
@@ -95,7 +111,7 @@ Distributions
    through self-excitement, parameter :py:`alpha` indicates the infectivity
    factor, often interpreted as the expected number of induced self-exciting
    events per each event, :py:`theta` indicates the rate parameter of the delay
-   and :py:`phi` specifies the history of the distribution until this point in
+   and :py:`phi` specifies the history of the generator until this point in
    time.
 
 .. py:class:: uniform_real_distribution[floating_point_type](a: float, b: float)
