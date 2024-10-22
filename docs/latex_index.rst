@@ -1,12 +1,13 @@
-Reticula: Temporal network and hypergraphs
-==========================================
+:orphan:
 
-.. include:: preamble.rst
+Reticula
+========
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
+   latex_preamble
    installation
    quickstart
    types

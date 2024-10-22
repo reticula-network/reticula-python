@@ -7,8 +7,9 @@ For Python developers
 The very first step is to find a suitable development environment. Reticula is
 currently compatible with Windows and Linux systems based on GNU C Library 2.17
 or higher, which at the moment means practically any distribution released in
-the past 6 years except for Alpine Linux. If you have no preferences on the
-subject, we recommend a long-term support (LTS) version of Ubuntu, such as 22.04.
+the past 7 years except for Alpine Linux. If you have no preferences on the
+subject, we recommend a long-term support (LTS) version of Ubuntu, such as
+24.04.
 
 
 Setting up the environment
@@ -16,8 +17,8 @@ Setting up the environment
 
 In this section, we will explore the most basic form of installation of
 Reticula. Unfortunately, the current state of Python development environment is
-`not as intuitive as it can be <https://xkcd.com/1987/>`_, so if you are working
-on a computer that is administered by someone else, such a University
+`not as intuitive as it can be <https://xkcd.com/1987/>`_, so if you are
+working on a computer that is administered by someone else, such a University
 workstation or laptop, ask your system administrators what is the best way to
 install a package for your specific setup.
 
@@ -27,12 +28,11 @@ installed:
 .. code-block:: console
 
    $ python --version
-   Python 3.8.10
+   Python 3.12.2
 
-Acceptable values are, at the moment, 3.8, 3.9, 3.10 or 3.11, though there is
-experimental support for PyPy 3.9 as well. If your Python version is not in this
-range, you can install proper Python version using the tools provided by your
-operating system.
+Acceptable values are, at the moment, 3.10 or 3.11, 3.12 and 3.13. If your
+Python version is not in this range, you can install proper Python version
+using the tools provided by your operating system.
 
 .. note::
    In Ubuntu and other Debian based Linux distributions, by default all Python
@@ -68,7 +68,8 @@ First, let's open a Python console, also called a REPL:
 .. code-block:: console
 
    $ python
-   Python 3.8.10 (default, Jun  4 2021, 15:09:15)
+   Python 3.12.2 main, Feb 22 2024, 03:41:47) [GCC 13.2.0] on linux
+   Type "help", "copyright", "credits" or "license" for more information.
    >>>
 
 You can now enter Python commands one by one and have the results shown to you
@@ -83,17 +84,17 @@ try to create a network:
    <undirected_network[int64] with 100 verts and 200 edges>
 
 Let's try to dissect these commands. First, we imported Reticula but instructed
-python to use the alias :py:`ret` to refer to it. This can help you avoid having
-to type :py:`reticula` over and over again.
+python to use the alias :py:`ret` to refer to it. This can help you avoid
+having to type :py:`reticula` over and over again.
 
 Second, we called the function :py:`regular_ring_lattice[ret.int64]`. This
 syntax might look a bit weird or unnatural to people coming from a dynamic
-typing background. Remember that Reticula in Python is a thin shell over C++, so
-some functions need more information about what type of network or edges you
+typing background. Remember that Reticula in Python is a thin shell over C++,
+so some functions need more information about what type of network or edges you
 want to construct, especially where this is not deducible from the things you
 passed in as arguments. This is refelcted in the type of the output network
-:py:`g`, which is a :py:`ret.undirected_network[ret.int64]`, i.e., an undirected
-dyadic static network with 64-bit signed integers as vertices.
+:py:`g`, which is a :py:`ret.undirected_network[ret.int64]`, i.e., an
+undirected dyadic static network with 64-bit signed integers as vertices.
 
 Here, we instructed Reticula to construct a 4-regular ring lattice with 100
 vertices, where each vertex is a 64-bit signed integer. You can compare this,
@@ -168,8 +169,8 @@ reproduce your results.
 Using the algorithms
 ^^^^^^^^^^^^^^^^^^^^
 
-Let's now use some of the algorithms. Let's generate a thinner network and study
-connectivity in this static network:
+Let's now use some of the algorithms. Let's generate a thinner network and
+study connectivity in this static network:
 
 .. code-block:: pycon
 
@@ -194,8 +195,8 @@ component sizes are distributed, then get the largest component:
    991, 990, ...})>
 
 So a component, which is just a set of vertices, also carries the same type
-information as all other types. We can inspect the membership in a component and
-turn it into a plain old Python list of numbers:
+information as all other types. We can inspect the membership in a component
+and turn it into a plain old Python list of numbers:
 
 .. code-block:: pycon
 

@@ -16,12 +16,19 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-      - name: Prerequisits
+      - name: Latex Prerequisits
+        run: sudo apt install -y latexmk texlive-latex-extra
+
+      - name: Python Prerequisits
         run: pip install -r docs/requirements.txt
 
       - name: Build
         working-directory: docs/
-        run: make html
+        run: make html latexpdf
+
+      - name: Copy PDF
+        working-directory: docs/
+        run: cp _build/latex/reticula.pdf _build/html/_static/reticula.pdf
 
       - name: Upload
         id: deployment

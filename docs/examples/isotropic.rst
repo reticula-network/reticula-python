@@ -16,7 +16,7 @@ values of :math:`p` and plotting the largest component sizes.
 This script, after doing a lot of computation, produces a figure that looks
 like this, minus the axis labels and other niceties:
 
-.. figure:: isotropic.svg
+.. figure:: isotropic.*
    :alt: A line plot with x axis between 0 to 2e-6 labelled "edge probability
          p", and the y axis ranging from 0 to 800000 labelled "largest connected
          component size". The y values of the line are close to zero from x=0 to

@@ -29,6 +29,26 @@ author = "Arash Badie-Modiri"
 release = project_data["project"]["version"]
 
 
+master_doc = 'index'
+
+latex_documents = [
+    ("latex_index", 'reticula.tex',
+     project, author, 'manual', True),
+]
+
+latex_elements = {
+    'papersize': 'a4paper',
+    'pointsize': '11pt',
+    'figure_align': 'htbp',
+    'preamble': '',
+}
+
+latex_elements['preamble'] += r"""
+\usepackage{amsfonts}
+\usepackage{parskip}
+\usepackage{microtype}
+"""
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -49,7 +69,9 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store",
+                    'preamble.rst']
+
 
 primary_domain = None
 
@@ -145,6 +167,11 @@ ogp_site_url = html_baseurl
 
 # sitemap configs
 sitemap_url_scheme = "{link}"
+
+sitemap_excludes = [
+    "latex_index.html",
+    "latex_preamble.html",
+]
 
 # copybutton configs
 copybutton_exclude = ".linenos, .gp, .go"
