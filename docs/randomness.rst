@@ -28,14 +28,15 @@ standard library implementation (e.g., :py:class:`geometric_distribution` and
 :py:class:`exponential_distribution`) and some based on our own implementation.
 
 .. warning::
+
    Reticula currently relies on C++ standard library distributions and
    pseudorandom number generators, execept for a few distributions that are
    implemented by Reticula. This has negative implecations for reproducability
-   across platforms. At some point in the future, these will have to change into
-   ones with reproducability guarantees tied to Reticula version and not the
-   platform or the standard library implementation. Until this change happens,
-   we will try our best keep the Python build environment consistant, but there
-   are no guarantees.
+   across platforms. At some point in the future, these will have to change
+   into ones with reproducability guarantees tied to Reticula version and not
+   the platform or the standard library implementation. Until this change
+   happens, we will try our best keep the Python build environment consistant,
+   but there are no guarantees.
 
 Pseudorandom bit generators
 ------------------------------
@@ -44,6 +45,15 @@ The pseudorandom bit generators can be initialised using an integer seed. If no
 seed is provided, the generator is seeded using a non-deterministic source,
 e.g., a hardware device, if one is available. If no non-deterministic source is
 available, it might rely on an implementation defined deterministic source.
+
+.. warning::
+
+   The default initialisation behaviour of random bit generator are completely
+   different in C++ and Python. In Python, default initialisation, e.g.,
+   :py:`ret.mersenne_twister()` generates a random state seeded with a
+   non-deterministic source like ``/dev/urandom`` on Linux. In C++, default
+   initialisation of bit generators is equivalent to using a constant seed.
+
 
 You can use the :py:`__call__` method to get raw values, e.g.:
 
