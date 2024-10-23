@@ -22,7 +22,7 @@ import toml
 project_data = toml.load("../pyproject.toml")
 
 project = "Reticula"
-copyright = "2023"
+html_show_copyright = False
 author = "Arash Badie-Modiri"
 
 # The full version, including alpha/beta/rc tags
