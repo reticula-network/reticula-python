@@ -2,7 +2,8 @@ name: Run tests
 on: [workflow_dispatch]
 
 env:
-  SKBUILD_CMAKE_DEFINE: CMAKE_C_COMPILER_LAUNCHER=ccache;CMAKE_CXX_COMPILER_LAUNCHER=ccache
+  CMAKE_BUILD_PARALLEL_LEVEL: 8
+  SKBUILD_CMAKE_ARGS: "-DCMAKE_C_COMPILER_LAUNCHER=ccache;-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
 
 jobs:
   build_wheels:
@@ -26,7 +27,7 @@ jobs:
         run: python -m pip install -U pip
 
       - name: Build and install reticula
-        run: python -m pip install .[test] -vvv
+        run: python -m pip install .[test] -v
 
       - name: Run tests
         run: python -m pytest .
