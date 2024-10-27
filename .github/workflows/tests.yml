@@ -6,6 +6,8 @@ env:
   SKBUILD_CMAKE_ARGS: "-DCMAKE_C_COMPILER_LAUNCHER=ccache;-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
   CCACHE_NOHASHDIR: "true"
   CCACHE_COMPILERCHECK: "content"
+  CCACHE_DEBUG: 1
+  CCACHE_DEBUGDIR: "${{ github.workspace }}/ccache-debug"
 
 jobs:
   run_tests:
@@ -32,16 +34,12 @@ jobs:
 
       - name: Build and install reticula
         run: python -m pip install .[test] -v
-        env:
-          CCACHE_DEBUG: 1
-          CCACHE_DEBUGDIR: "./ccache-debug"
 
       - name: Archive CCache debug files
         uses: actions/upload-artifact@v4
         with:
           name: ccache-debug
-          path: ccache-debug
-
+          path: ${{ github.workspace }}/ccache-debug
 
       - name: Run tests
         run: python -m pytest .
