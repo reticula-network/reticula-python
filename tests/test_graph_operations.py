@@ -1,4 +1,4 @@
-from hypothesis import given, assume, note
+from hypothesis import given, assume, note, reproduce_failure
 import math
 
 from hypothesis import strategies as st
@@ -82,10 +82,23 @@ def test_degree_assortativity(net):
                     d1.append(net.degree(i))
                     d2.append(net.degree(j))
 
+    # We have to manually check the case where d1 or d2 are constant, since
+    # SciPy pearsonr currently has an issue with n == 2 constant arrays:
+    # https://github.com/scipy/scipy/pull/21763
+    def is_constant(d):
+        if not d:
+            return True  # Consider empty list as constant
+        first_element = d[0]
+        return all(element == first_element for element in d)
+
     import warnings
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        sp = stats.pearsonr(d1, d2)[0] if len(d1) > 1 else float("nan")
+
+        sp = float("nan")
+        if len(d1) > 1 and not is_constant(d1) and not is_constant(d2):
+            sp = stats.pearsonr(d1, d2)[0]
     r = ret.degree_assortativity(net)
+    print(d1, d2, sp, r)
 
     assert (math.isnan(sp) and math.isnan(r)) or sp == pytest.approx(r)
