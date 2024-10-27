@@ -4,6 +4,7 @@ on: [workflow_dispatch]
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 8
   SKBUILD_CMAKE_ARGS: "-DCMAKE_C_COMPILER_LAUNCHER=ccache;-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+  CCACHE_NOHASHDIR: "true"
 
 jobs:
   run_tests:
