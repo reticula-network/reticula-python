@@ -2,7 +2,7 @@ name: Run tests
 on: [workflow_dispatch]
 
 jobs:
-  build_wheels:
+  run_tests:
     name: Running tests
     runs-on: reticula-build-ubuntu-22.04
 
