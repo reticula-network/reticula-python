@@ -11,6 +11,7 @@ jobs:
         with:
           python-version: '3.12'
           architecture: 'x64'
+          cache: 'pip'
 
       - uses: actions/checkout@v4
 
