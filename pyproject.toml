@@ -35,7 +35,7 @@ repository = "https://github.com/reticula-network/reticula-python"
 bug-tracker= "https://github.com/reticula-network/reticula-python/issues"
 
 [project.optional-dependencies]
-test = ["pytest", "hypothesis", "pytest-xdist", "scipy"]
+test = ["pytest", "hypothesis", "pytest-xdist"]
 
 [build-system]
 requires = [
