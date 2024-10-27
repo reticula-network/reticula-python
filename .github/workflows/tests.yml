@@ -1,10 +1,6 @@
 name: Run tests
 on: [workflow_dispatch]
 
-env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 8
-  SKBUILD_CMAKE_ARGS: "-DCMAKE_C_COMPILER_LAUNCHER=ccache;-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
-
 jobs:
   build_wheels:
     name: Running tests
@@ -18,16 +14,36 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Setup ccache
-        uses: hendrikmuhs/ccache-action@v1.2
-        with:
-          key: ${{ github.job }}
-
       - name: Update pip
         run: python -m pip install -U pip
 
+      - name: install pip-compile
+        run: python -m pip install pip-tools
+
+      - name: compile dependency list
+        run: pip-compile --all-build-deps --all-extras --strip-extras pyproject.toml -o comp-req.txt
+
+      - name: install build deps
+        run: python -m pip install -r comp-req.txt
+
+      - name: Restore cached build-dir
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: build
+          key: ${{ github.job }}-build-dir
+
       - name: Build and install reticula
-        run: python -m pip install .[test] -v
+        env:
+          CMAKE_BUILD_PARALLEL_LEVEL: 8
+        run: python -m pip install . --verbose --force-reinstall --no-build-isolation -Cbuild-dir=build/{wheel_tag}
+
+      - name: Save build-dir
+        id: cache-save
+        uses: actions/cache/save@v4
+        with:
+          path: build
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
 
       - name: Run tests
         run: python -m pytest .
