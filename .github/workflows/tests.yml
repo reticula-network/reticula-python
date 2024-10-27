@@ -35,7 +35,7 @@ jobs:
           key: ${{ github.job }}-build-dir
 
       - name: check build-dir
-        run: ls build/*
+        run: ls build
 
       - name: Build and install reticula
         env:
