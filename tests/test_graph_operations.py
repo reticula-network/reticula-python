@@ -99,3 +99,40 @@ def test_degree_assortativity(net):
     print(d1, d2, sp, r)
 
     assert (math.isnan(sp) and math.isnan(r)) or sp == pytest.approx(r)
+
+
+@given(undirected_network(max_verts=30))
+def test_connected_components(net):
+    ccs = ret.connected_components(net)
+
+    # check that it is a partition
+    assert set(net.vertices()) == set().union(*ccs)
+
+    lcc = ret.largest_connected_component(net)
+    if ccs:
+        assert lcc == max(ccs, key=len)
+    else:
+        assert list(lcc) == []
+
+    connected_subgraph = ret.vertex_induced_subgraph(net, lcc)
+    assert ret.is_connected(connected_subgraph)
+
+    from itertools import product
+    for cc in ccs:
+        for v in cc:
+            assert ret.connected_component(net, v) == cc
+
+        for v1, v2 in product(cc, repeat=2):
+            assert ret.is_reachable(net, v1, v2)
+
+    from itertools import combinations
+    for c1, c2 in combinations(ccs, r=2):
+        for v1, v2 in product(c1, c2):
+            assert not ret.is_reachable(net, v1, v2)
+            assert not ret.is_reachable(net, v2, v1)
+
+
+@given(undirected_network(self_loops=False))
+def test_graphicality(net):
+    degs = ret.degree_sequence(net)
+    assert ret.is_graphic(degs)
