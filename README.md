@@ -1,6 +1,10 @@
-# Python bindings for [Reticula][reticula]
+# Python bindings for [Reticula][reticula] [![Documentations][docs-badge]][docs-website] [![Paper][paper-badge]][paper-link]
 
 [reticula]: https://github.com/reticula-network/reticula
+[paper-badge]: https://img.shields.io/badge/Paper-SoftwareX-informational
+[paper-link]: https://www.sciencedirect.com/science/article/pii/S2352711022002199
+[docs-badge]: https://img.shields.io/badge/Docs-docs.reticula.network-success
+[docs-website]: https://docs.reticula.network
 
 ## Installation
 
