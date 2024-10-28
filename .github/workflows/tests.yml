@@ -45,11 +45,5 @@ jobs:
       - name: Build and install reticula
         run: python -m pip install .[test] -v
 
-      - name: Archive CCache debug files
-        uses: actions/upload-artifact@v4
-        with:
-          name: ccache-debug
-          path: ${{ github.workspace }}/ccache-debug
-
       - name: Run tests
         run: python -m pytest .
