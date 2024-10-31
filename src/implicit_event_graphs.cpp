@@ -59,6 +59,11 @@ struct declare_implicit_event_graph_class {
           &Net::neighbours,
           "event"_a, "just_first"_a = true,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const Net& self) {
+          return Net(self);
+      }).def("__deepcopy__", [](const Net& self, nb::dict) {
+          return Net(self);
+      }, "memo"_a)
       .def("__repr__", [](const Net& a) {
         return fmt::format("{}", a);
       }).def_static("edge_type", []() {

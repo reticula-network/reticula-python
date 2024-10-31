@@ -47,6 +47,11 @@ struct declare_interval_set_types {
           nb::call_guard<nb::gil_scoped_release>())
       .def(nb::self == nb::self,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const IntSet& self) {
+          return IntSet(self);
+      }).def("__deepcopy__", [](const IntSet& self, nb::dict) {
+          return IntSet(self);
+      }, "memo"_a)
       .def("__repr__", [](const IntSet& c) {
           return fmt::format("{}", c);
       }).def_static("value_type", []() {

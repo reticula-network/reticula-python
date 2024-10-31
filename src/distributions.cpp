@@ -29,6 +29,12 @@ struct declare_integral_distributions {
         nb::call_guard<nb::gil_scoped_release>())
     .def("p", &std::geometric_distribution<ResultType>::p,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const std::geometric_distribution<ResultType>& self) {
+        return std::geometric_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const std::geometric_distribution<ResultType>& self, nb::dict) {
+        return std::geometric_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](const std::geometric_distribution<ResultType>& a) {
       return fmt::format("{}", a);
     }).def_static("__class_repr__", []() {
@@ -49,6 +55,12 @@ struct declare_integral_distributions {
     delta.def(nb::init<ResultType>(), "mean"_a)
     .def("mean", &reticula::delta_distribution<ResultType>::mean,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const reticula::delta_distribution<ResultType>& self) {
+        return reticula::delta_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const reticula::delta_distribution<ResultType>& self, nb::dict) {
+        return reticula::delta_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const reticula::delta_distribution<ResultType>& a) {
       return fmt::format("{}", a);
@@ -72,6 +84,12 @@ struct declare_integral_distributions {
         nb::call_guard<nb::gil_scoped_release>())
     .def("b", &std::uniform_int_distribution<ResultType>::b,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const std::uniform_int_distribution<ResultType>& self) {
+        return std::uniform_int_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const std::uniform_int_distribution<ResultType>& self, nb::dict) {
+        return std::uniform_int_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const std::uniform_int_distribution<ResultType>& a) {
       return fmt::format("{}", a);
@@ -98,6 +116,12 @@ struct declare_floating_point_distributions {
         nb::call_guard<nb::gil_scoped_release>())
     .def("lmbda", &std::exponential_distribution<ResultType>::lambda,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const std::exponential_distribution<ResultType>& self) {
+        return std::exponential_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const std::exponential_distribution<ResultType>& self, nb::dict) {
+        return std::exponential_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const std::exponential_distribution<ResultType>& a) {
       return fmt::format("{}", a);
@@ -124,6 +148,14 @@ struct declare_floating_point_distributions {
     .def("mean",
         &reticula::power_law_with_specified_mean<ResultType>::mean,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](
+          const reticula::power_law_with_specified_mean<ResultType>& self) {
+        return reticula::power_law_with_specified_mean<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const reticula::power_law_with_specified_mean<ResultType>& self,
+          nb::dict) {
+        return reticula::power_law_with_specified_mean<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const reticula::power_law_with_specified_mean<ResultType>& a) {
       return fmt::format("{}", a);
@@ -153,6 +185,14 @@ struct declare_floating_point_distributions {
     .def("mean",
         &reticula::residual_power_law_with_specified_mean<ResultType>::mean,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](
+          const reticula::residual_power_law_with_specified_mean<ResultType>& self) {
+        return reticula::residual_power_law_with_specified_mean<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const reticula::residual_power_law_with_specified_mean<ResultType>& self,
+          nb::dict) {
+        return reticula::residual_power_law_with_specified_mean<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const reticula::residual_power_law_with_specified_mean<
             ResultType>& a) {
@@ -188,6 +228,14 @@ struct declare_floating_point_distributions {
     .def("phi",
         &reticula::hawkes_univariate_exponential<ResultType>::phi,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](
+          const reticula::hawkes_univariate_exponential<ResultType>& self) {
+        return reticula::hawkes_univariate_exponential<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const reticula::hawkes_univariate_exponential<ResultType>& self,
+          nb::dict) {
+        return reticula::hawkes_univariate_exponential<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const reticula::hawkes_univariate_exponential<ResultType>& a) {
       return fmt::format("{}", a);
@@ -208,6 +256,12 @@ struct declare_floating_point_distributions {
         nb::call_guard<nb::gil_scoped_release>())
     .def("mean", &reticula::delta_distribution<ResultType>::mean,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const reticula::delta_distribution<ResultType>& self) {
+        return reticula::delta_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const reticula::delta_distribution<ResultType>& self, nb::dict) {
+        return reticula::delta_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const reticula::delta_distribution<ResultType>& a) {
       return fmt::format("{}", a);
@@ -231,6 +285,12 @@ struct declare_floating_point_distributions {
         nb::call_guard<nb::gil_scoped_release>())
     .def("b", &std::uniform_real_distribution<ResultType>::b,
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const std::uniform_real_distribution<ResultType>& self) {
+        return std::uniform_real_distribution<ResultType>(self);
+    }).def("__deepcopy__", [](
+          const std::uniform_real_distribution<ResultType>& self, nb::dict) {
+        return std::uniform_real_distribution<ResultType>(self);
+    }, "memo"_a)
     .def("__repr__", [](
           const std::uniform_real_distribution<ResultType>& a) {
       return fmt::format("{}", a);

@@ -27,6 +27,13 @@ struct declare_temporal_adjacency_class {
         return types::handle_for<typename Simple::EdgeType>();
       }).def_static("vertex_type", []() {
         return types::handle_for<typename Simple::VertexType>();
+      }).def("__copy__", [](const Simple& self) {
+          return Simple(self);
+      }).def("__deepcopy__", [](const Simple& self, nb::dict) {
+          return Simple(self);
+      }, "memo"_a)
+      .def("__repr__", [](const Simple& a) {
+        return fmt::format("{}", a);
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<Simple>{}());
       }).def_static("__class_name__", []() {
@@ -52,6 +59,13 @@ struct declare_temporal_adjacency_class {
         return types::handle_for<typename LWT::EdgeType>();
       }).def_static("vertex_type", []() {
         return types::handle_for<typename LWT::VertexType>();
+      }).def("__copy__", [](const LWT& self) {
+          return LWT(self);
+      }).def("__deepcopy__", [](const LWT& self, nb::dict) {
+          return LWT(self);
+      }, "memo"_a)
+      .def("__repr__", [](const LWT& a) {
+        return fmt::format("{}", a);
       }).def_static("__class_repr__", []() {
         return fmt::format("<class '{}'>", type_str<LWT>{}());
       }).def_static("__class_name__", []() {
@@ -78,6 +92,13 @@ struct declare_temporal_adjacency_class {
           return types::handle_for<typename Exp::EdgeType>();
         }).def_static("vertex_type", []() {
           return types::handle_for<typename Exp::VertexType>();
+        }).def("__copy__", [](const Exp& self) {
+            return Exp(self);
+        }).def("__deepcopy__", [](const Exp& self, nb::dict) {
+            return Exp(self);
+        }, "memo"_a)
+        .def("__repr__", [](const Exp& a) {
+          return fmt::format("{}", a);
         }).def_static("__class_repr__", []() {
           return fmt::format("<class '{}'>", type_str<Exp>{}());
       }).def_static("__class_name__", []() {
@@ -105,6 +126,13 @@ struct declare_temporal_adjacency_class {
           return types::handle_for<typename Geom::EdgeType>();
         }).def_static("vertex_type", []() {
           return types::handle_for<typename Geom::VertexType>();
+        }).def("__copy__", [](const Geom& self) {
+            return Geom(self);
+        }).def("__deepcopy__", [](const Geom& self, nb::dict) {
+            return Geom(self);
+        }, "memo"_a)
+        .def("__repr__", [](const Geom& a) {
+          return fmt::format("{}", a);
         }).def_static("__class_repr__", []() {
           return fmt::format("<class '{}'>", type_str<Geom>{}());
         }).def_static("__class_name__", []() {
