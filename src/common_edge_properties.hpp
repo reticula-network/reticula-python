@@ -2,6 +2,7 @@
 #include <reticula/network_concepts.hpp>
 
 #include "bind_core.hpp"
+#include "nanobind/operators.h"
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
@@ -46,6 +47,11 @@ nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
         nb::call_guard<nb::gil_scoped_release>())
     .def(nb::hash(nb::self),
         nb::call_guard<nb::gil_scoped_release>())
+    .def("__copy__", [](const EdgeT& self) {
+        return EdgeT(self);
+    }).def("__deepcopy__", [](const EdgeT& self, nb::dict) {
+        return EdgeT(self);
+    }, "memo"_a)
     .def("__repr__", [](const EdgeT& a) {
       return fmt::format("{}", a);
     }).def_static("__class_repr__", []() {

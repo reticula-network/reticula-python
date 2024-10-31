@@ -71,6 +71,11 @@ struct declare_temporal_cluster_types {
           &Cluster::contains,
           "event"_a,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const Cluster& self) {
+          return Cluster(self);
+      }).def("__deepcopy__", [](const Cluster& self, nb::dict) {
+          return Cluster(self);
+      }, "memo"_a)
       .def("__repr__", [](const Cluster& c) {
           return fmt::format("{}", c);
       })
@@ -102,6 +107,11 @@ struct declare_temporal_cluster_types {
           nb::call_guard<nb::gil_scoped_release>())
       .def("__len__", &ClusterSize::size,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const ClusterSize& self) {
+          return ClusterSize(self);
+      }).def("__deepcopy__", [](const ClusterSize& self, nb::dict) {
+          return ClusterSize(self);
+      }, "memo"_a)
       .def("__repr__", [](const ClusterSize& c) {
           return fmt::format("{}", c);
       })
@@ -130,6 +140,11 @@ struct declare_temporal_cluster_types {
       .def("mass_estimate",
           &ClusterSizeEstimate::mass_estimate,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const ClusterSizeEstimate& self) {
+          return ClusterSizeEstimate(self);
+      }).def("__deepcopy__", [](const ClusterSizeEstimate& self, nb::dict) {
+          return ClusterSizeEstimate(self);
+      }, "memo"_a)
       .def("__repr__", [](const ClusterSizeEstimate& c) {
           return fmt::format("{}", c);
       })

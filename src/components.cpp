@@ -64,6 +64,11 @@ struct declare_component_types {
       .def("__contains__", &Component::contains,
           "vertex"_a,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const Component& self) {
+          return Component(self);
+      }).def("__deepcopy__", [](const Component& self, nb::dict) {
+          return Component(self);
+      }, "memo"_a)
       .def("__repr__", [](const Component& c) {
           return fmt::format("{}", c);
       }).def_static("vertex_type", []() {
@@ -84,6 +89,11 @@ struct declare_component_types {
         python_type_str<ComponentSize>().c_str())
       .def("size", &ComponentSize::size,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const ComponentSize& self) {
+          return ComponentSize(self);
+      }).def("__deepcopy__", [](const ComponentSize& self, nb::dict) {
+          return ComponentSize(self);
+      }, "memo"_a)
       .def("__repr__", [](const ComponentSize& c) {
           return fmt::format("{}", c);
       }).def_static("vertex_type", []() {
@@ -102,6 +112,11 @@ struct declare_component_types {
       .def("size_estimate",
           &ComponentSizeEstimate::size_estimate,
           nb::call_guard<nb::gil_scoped_release>())
+      .def("__copy__", [](const ComponentSizeEstimate& self) {
+          return ComponentSizeEstimate(self);
+      }).def("__deepcopy__", [](const ComponentSizeEstimate& self, nb::dict) {
+          return ComponentSizeEstimate(self);
+      }, "memo"_a)
       .def("__repr__", [](const ComponentSizeEstimate& c) {
           return fmt::format("{}", c);
       })
