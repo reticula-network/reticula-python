@@ -2,17 +2,15 @@ name: Run tests
 on: [workflow_dispatch]
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 8
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
   SKBUILD_CMAKE_ARGS: "-DCMAKE_C_COMPILER_LAUNCHER=ccache;-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
   CCACHE_NOHASHDIR: "true"
   CCACHE_COMPILERCHECK: "content"
-  CCACHE_DEBUG: 1
-  CCACHE_DEBUGDIR: "${{ github.workspace }}/ccache-debug"
 
 jobs:
   run_tests:
     name: Running tests
-    runs-on: reticula-build-ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
