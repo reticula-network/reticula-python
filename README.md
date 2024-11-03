@@ -81,7 +81,7 @@ True
 [(3.099055278145548, 1.7976931348623157e+308)]
 ```
 
-Let's now try limited waiting-time (with dt = 5.0) reachability:
+Let's now try limited waiting-time (with $dt = 5.0$) reachability:
 ```pycon
 >>> import reticula as ret
 >>> state = ret.mersenne_twister(42)
