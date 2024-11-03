@@ -11,7 +11,7 @@ class Construction:
     """
 
     def setup(self):
-        self.n = 2**16
+        self.n = 2**14
         k = 32
         self.g = ret.regular_ring_lattice[ret.int64](size=self.n, degree=k)
         self.verts = list(self.g.vertices())
@@ -65,7 +65,7 @@ class Graphicallity:
 
 class Algorithms:
     def setup(self):
-        self.n = 2**16
+        self.n = 2**14
         k = 32
         self.g = ret.regular_ring_lattice[ret.int64](size=self.n, degree=k)
         self.g_isolated = ret.undirected_network[ret.int64](

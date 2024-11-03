@@ -9,9 +9,9 @@ class Constrction:
     """
 
     def setup(self):
-        self.n = 2**11
-        rate = 16/self.n
-        max_t = 128
+        self.n = 2**10
+        rate = 4/self.n
+        max_t = 32
         gen = ret.mersenne_twister(42)
         self.g = ret.random_fully_mixed_temporal_network[ret.int64](
             size=self.n, rate=rate, max_t=max_t, random_state=gen)
@@ -58,8 +58,8 @@ class Constrction:
 class Algorithms:
     def setup(self):
         n = 2**11
-        rate = 16/n
-        max_t = 128
+        rate = 4/n
+        max_t = 64
         gen = ret.mersenne_twister(42)
         self.g = ret.random_fully_mixed_temporal_network[ret.int64](
             size=n, rate=rate, max_t=max_t, random_state=gen)
@@ -76,3 +76,51 @@ class Algorithms:
 
     def time_link_timelines(self):
         ret.link_timelines(self.g)
+
+
+class Reachability:
+    params = [
+        ret.temporal_adjacency.simple[
+            ret.undirected_temporal_edge[ret.int64, ret.double]](),
+        ret.temporal_adjacency.limited_waiting_time[
+            ret.undirected_temporal_edge[ret.int64, ret.double]](dt=1.0),
+        ret.temporal_adjacency.exponential[
+            ret.undirected_temporal_edge[ret.int64, ret.double]](
+                rate=1.0, seed=12345)
+    ]
+
+    param_names = ["adjacency"]
+
+    def setup(self, adj):
+        gen = ret.mersenne_twister(42)
+
+        max_t = 32
+        small_n = 2**6
+        small_rate = 4/small_n
+        self.small_g = ret.random_fully_mixed_temporal_network[ret.int64](
+            size=small_n, rate=small_rate, max_t=max_t, random_state=gen)
+
+    def time_out_cluster(self, adj):
+        ret.out_cluster(self.small_g, adj, vertex=0, time=0)
+
+    def time_out_clusters(self, adj):
+        ret.out_clusters(self.small_g, adj)
+
+    def peakmem_out_clusters(self, adj):
+        ret.out_clusters(self.small_g, adj)
+
+    def time_out_cluster_sizes(self, adj):
+        ret.out_cluster_sizes(self.small_g, adj)
+
+    def peakmem_out_cluster_sizes(self, adj):
+        ret.out_cluster_sizes(self.small_g, adj)
+
+    def time_out_cluster_size_estimates(self, adj):
+        ret.out_cluster_size_estimates(self.small_g, adj,
+                                       time_resolution=0.5,
+                                       seed=42)
+
+    def peakmem_out_cluster_size_estimates(self, adj):
+        ret.out_cluster_size_estimates(self.small_g, adj,
+                                       time_resolution=0.5,
+                                       seed=42)
