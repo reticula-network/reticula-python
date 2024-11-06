@@ -357,5 +357,4 @@ more nuanced. In exponential limited waiting-time adjacency, similar to the the
 usual formulation of the SIS process, each node stays infected and contagious
 for a length of time drawn from an exponential distribution with a given mean.
 The difference arrises when thinking of how "re-infections" affect this
-process. This is however, a topic very involved topic, perhaps enough for a
-research paper or maybe several.
+process. This is, however, a very involved topic.
