@@ -39,6 +39,7 @@ nanobind_add_module(_reticula_ext
   NB_DOMAIN reticula
   STABLE_ABI
   NB_STATIC
+  NOMINSIZE
 
   src/main.cpp
 
