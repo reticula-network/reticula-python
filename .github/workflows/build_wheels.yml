@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [reticula-build-ubuntu-22.04, reticula-build-windows-2022, macos-13-xl]
+        os: [reticula-build-windows-2022]
         py: ["cp310-*", "cp311-*", "cp312-*"]
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         with:
           theme: dark
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Visual Studio shell on Windows
         uses: egor-tensin/vs-shell@v2
@@ -44,13 +44,13 @@ jobs:
         run: python -m pip install -U pip
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.16.2
+        run: python -m pip install cibuildwheel==2.21.3
 
       - name: Build Wheels
         env:
           CIBW_BUILD: ${{ matrix.py }}
         run: python -m cibuildwheel --output-dir wheelhouse
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
