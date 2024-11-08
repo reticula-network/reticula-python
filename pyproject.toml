@@ -1,6 +1,6 @@
 [project]
 name = "reticula"
-version = "0.12.0"
+version = "0.12.1"
 description="Analyse temporal network and hypergraphs efficiently."
 authors = [{name="Arash Badie-Modiri", email="arashbm@gmail.com"}]
 requires-python = ">=3.10"
@@ -51,12 +51,10 @@ wheel.py-api = "cp312"
 build-dir = "build/{wheel_tag}"
 
 [tool.cibuildwheel]
-skip = "pp3*"
 build-verbosity = 3
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64"]
-skip = "*-musllinux_*"
 repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 
 [tool.cibuildwheel.macos]
