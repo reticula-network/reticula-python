@@ -23,3 +23,11 @@ Fully-mixed temporal network
 Generates a random temporal network of size :cpp:`size` where each link
 (connection between two vertices) is activated on times determined by an
 exponential inter-event time distribution at constant rate :cpp:`rate`.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ret.random_fully_mixed_temporal_network[ret.int64](
+  ...       size=128, rate=0.1, max_t=1000, random_state=gen)
+  <undirected_temporal_network[int64, double] with 128 verts and 812952 edges>

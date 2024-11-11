@@ -22,6 +22,13 @@ Random k-regular network
 Generates a random :math:`k`-regular network, a random sample out of the space
 of all graphs where all nodes have exactly degree equal to :cpp:`degree`.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ret.random_regular_graph[ret.int64](size=128, degree=4, random_state=gen)
+  <undirected_network[int64] with 128 verts and 256 edges>
+
 The generation of a random :math:`k`-regular graph becomes more and more
 difficult as the density increases. In C++, you can use the :code:`try_`
 variant of this function to limit runtime to a limited set of tries:

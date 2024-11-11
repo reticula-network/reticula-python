@@ -7,6 +7,7 @@ Reticula: Temporal network and hypergraphs
    :maxdepth: 2
    :hidden:
 
+   Home <self>
    installation
    quickstart
    types

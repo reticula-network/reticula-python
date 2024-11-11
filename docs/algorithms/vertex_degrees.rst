@@ -46,6 +46,24 @@ defined:
         const typename EdgeT::VertexType& vert)
 
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> net = ret.cycle_graph[ret.int64](size=8)
+  >>> ret.in_degree(net, 0)
+  2
+  >>> ret.out_degree(net, 0)
+  2
+  >>> ret.incident_degree(net, 0)
+  2
+  >>> dir = ret.complete_directed_graph[ret.int64](size=8)
+  >>> ret.in_degree(dir, 0)
+  7
+  >>> ret.out_degree(dir, 0)
+  7
+  >>> ret.incident_degree(dir, 0)
+  7
+
 For undirected networks, **degree** of a vertex referes to the incident-degree
 of that vertex. For directed networks, the word degree on its own is
 vaguely-defined.
@@ -65,6 +83,13 @@ vaguely-defined.
         std::size_t degree(const network<EdgeT>& net, \
         const typename EdgeT::VertexType& vert)
 
+
+.. code-block:: pycon
+
+   >>> import reticula as ret
+   >>> net = ret.cycle_graph[ret.int64](size=8)
+   >>> ret.degree(net, 0)
+   2
 
 
 Degree sequences
@@ -107,8 +132,25 @@ vertices.
         in_out_degree_pair_sequence(\
           const network<EdgeT>& net)
 
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> g = ret.random_directed_gnp_graph[ret.int64](
+  ...           n=8, p=0.5, random_state=gen)
+  >>> ret.in_degree_sequence(g)
+  [4, 4, 4, 3, 3, 3, 4, 2]
+  >>> ret.out_degree_sequence(g)
+  [0, 2, 4, 5, 3, 2, 5, 6]
+  >>> ret.incident_degree_sequence(g)
+  [4, 6, 8, 8, 6, 5, 9, 8]
+  >>> ret.in_out_degree_pair_sequence(g)
+  [(4, 0), (4, 2), (4, 4), (3, 5), (3, 3), (3, 2), (4, 5), (2, 6)]
+
 Similar to :cpp:func:`degree`, degree sequence without a prefix is only defined
-for undirected networks.
+for undirected networks. All other degree-sequence functions are defined for
+all network types.
 
 .. tab-set::
 
@@ -123,3 +165,12 @@ for undirected networks.
     .. cpp:function:: template <undirected_network_edge EdgeT> \
         std::vector<std::size_t> degree_sequence(const network<EdgeT>& net)
 
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> g = ret.random_gnp_graph[ret.int64](
+  ...           n=8, p=0.5, random_state=gen)
+  >>> ret.degree_sequence(g)
+  [2, 4, 5, 3, 4, 2, 5, 3]

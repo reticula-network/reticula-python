@@ -41,6 +41,31 @@ e.g., :cpp:`std::vector<double>` in C++ and :py:`List[float]` in python. The
 parameter :cpp:`self_loops` controls the existance of self loops in the
 resulting network and defults to :cpp:`false`.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> g = ret.random_expected_degree_sequence_graph[ret.int64](
+  ...            weight_sequence=[2, 2, 1, 1], random_state=gen)
+  >>> g
+  <undirected_network[int64] with 4 verts and 3 edges>
+
+Note that the degree sequence is not necessarily the same as the input, but
+only on expectation!
+
+.. code-block:: pycon
+
+  >>> gen = ret.mersenne_twister(42)
+  >>> g = ret.random_expected_degree_sequence_graph[ret.int64](
+  ...            weight_sequence=[2, 2, 1, 1], random_state=gen)
+  >>> ret.degree_sequence(g)
+  [2, 3, 2, 1]
+  >>> g = ret.random_expected_degree_sequence_graph[ret.int64](
+  ...            weight_sequence=[2, 2, 1, 1], random_state=gen)
+  >>> ret.degree_sequence(g)
+  [3, 1, 1, 1]
+
+
 Directed expected degree-sequence network
 -----------------------------------------
 
@@ -82,6 +107,18 @@ representing expected in- and out-degree of one vertex.
 The parameter :cpp:`self_loops` controls the existance of self loops in the
 resulting network and defults to :cpp:`false`.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> g = ret.random_directed_expected_degree_sequence_graph[ret.int64](
+  ...            in_out_weight_sequence=[(2, 2), (2, 2), (1, 1), (1, 1)],
+  ...            random_state=gen)
+  >>> g
+  <undirected_network[int64] with 4 verts and 6 edges>
+  >>> ret.in_out_degree_pair_sequence(g)
+  [(2, 2), (1, 3), (2, 1), (1, 1)]
+
 
 Undirected expected degree-sequence hypergraph
 ----------------------------------------------
@@ -121,12 +158,39 @@ the vertex degree sequence and the edge degree sequence on expectation apprach
 the weight sequences :cpp:`vertex_weight_sequence` and
 :cpp:`edge_weight_sequence`.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ret.random_expected_degree_sequence_hypergraph[ret.int64](
+  ...            vertex_weight_sequence=[2, 2, 1, 1],
+  ...            edge_weight_sequence=[2, 2, 1, 1],
+  ...            random_state=gen)
+  <undirected_hypernetwork[int64] with 4 verts and 3 edges>
+
+
 .. note::
-  The algorithm used for this method can produce multi-edges, i.e., edges with
-  the exact same set of incident vertices. As the library currently does not
-  support multi-edges, only one of each set of multi-edge is represented in the
-  output. This should only be a concern for small networks combined with many
-  edges with low edge degrees.
+
+   The algorithm used for this method can produce multi-edges, i.e., edges with
+   the exact same set of incident vertices. As the library currently does not
+   support multi-edges, only one of each set of multi-edge is represented in
+   the output. This should only be a concern for small networks combined with
+   many edges with low edge degrees.
+
+   The code also currently might produces an edge with no incident vertices.
+
+   .. code-block:: pycon
+
+     >>> import reticula as ret
+     >>> gen = ret.mersenne_twister(42)
+     >>> g = ret.random_expected_degree_sequence_hypergraph[ret.int64](
+     ...            vertex_weight_sequence=[2, 2, 1, 1],
+     ...            edge_weight_sequence=[2, 2, 1, 1],
+     ...            random_state=gen)
+     >>> ret.ret.degree_sequence(g)
+     [2, 2, 0, 1]
+     >>> ret.edge_degree_sequence(g)
+     [0, 2, 3]
 
 Directed expected degree-sequence hypergraph
 ----------------------------------------------
@@ -176,9 +240,36 @@ numericals, e.g., :cpp:`std::vector<std::pair<double, double>>` in C++ and
 :py:`List[Tuple[float, float]]` in python, with each element of the list/vector
 representing expected in- and out-degree of one vertex/edge.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ret.random_directed_expected_degree_sequence_hypergraph[ret.int64](
+  ...            vertex_in_out_weight_sequence=[(2, 2), (2, 2), (1, 1), (1, 1)],
+  ...            edge_in_out_weight_sequence=[(2, 2), (2, 2), (1, 1), (1, 1)],
+  ...            random_state=gen)
+  <directed_hypernetwork[int64] with 4 verts and 4 edges>
+
 .. note::
-  The algorithm used for this method can produce multi-edges, i.e., edges with
-  the exact same set of incident vertices. As the library currently does not
-  support multi-edges, only one of each set of multi-edge is represented in the
-  output. This should only be a concern for small networks combined with many
-  edges with low edge degrees.
+
+   The algorithm used for this method can produce multi-edges, i.e., edges with
+   the exact same set of incident vertices. As the library currently does not
+   support multi-edges, only one of each set of multi-edge is represented in
+   the output. This should only be a concern for small networks combined with
+   many edges with low edge degrees.
+
+   The code also currently might produces an edge with no in- and/or
+   out-incident vertices.
+
+   .. code-block:: pycon
+
+    >>> import reticula as ret
+    >>> gen = ret.mersenne_twister(42)
+    >>> g = ret.random_directed_expected_degree_sequence_hypergraph[ret.int64](
+    ...            vertex_in_out_weight_sequence=[(2, 2), (2, 2), (1, 1), (1, 1)],
+    ...            edge_in_out_weight_sequence=[(2, 2), (2, 2), (1, 1), (1, 1)],
+    ...            random_state=gen)
+    >>> ret.in_out_degree_pair_sequence(g)
+    [(2, 2), (2, 2), (1, 1), (1, 1)]
+    >>> ret.edge_in_out_degree_pair_sequence(g)
+    [(0, 2), (3, 3), (4, 2), (2, 0)]

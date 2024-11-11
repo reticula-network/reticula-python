@@ -1,6 +1,26 @@
 Add/Remove operations
 =====================
 
+Networks in Reticula are immutable. This means that operations that add or
+remove vertices or edges from a network do not modify the original nework but
+return a new network. The advantage of immutability is that it makes it easier
+to reason about the code and to avoid bugs that arise from side-effects.
+
+On the other hand, immutability makes certain operations, such as those
+presented here, less efficient. As currently implemented in Reticula, an
+add/remove operation essentially triggers a copy of the entire original network
+object. In practice, the performance difference is not usually a problem, as
+copyting even quite large networks objects are quiet fast, but it is something
+to keep in mind.
+
+When performing add/remove operations on very large networks, please also keep
+in mind the simultanious existence of both "copies" when calculating the peak
+memory usage of the code using these operations.
+
+As a rule of thumb, if you need to perform a sequence of add/remove operations
+on a network, it is better to do as many operations as possible in fewer batches,
+e.g. instead of adding one edge at a time, add all edges at once.
+
 Adding and removings edges
 --------------------------
 
@@ -24,6 +44,18 @@ Adding and removings edges
 Returns a copy of :cpp:`net` with edges from :cpp:`edges` along with all their
 incident vertices added in.
 
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> net = ret.cycle_graph[ret.int64](size=8)
+  >>> net
+  <undirected_network[int64] with 8 verts and 8 edges>
+  >>> edges = [(0, 5), (1, 6), (2, 4)]
+  >>> net = ret.with_edges(net, edges)
+  >>> net
+  <undirected_network[int64] with 8 verts and 11 edges>
+
 .. tab-set::
 
   .. tab-item:: Python
@@ -43,6 +75,17 @@ incident vertices added in.
 
 Returns a copy of :cpp:`net` with edges from :cpp:`edges` removed. The returned
 graph has all the vertices of the original graph.
+
+.. code-block:: pycon
+
+   >>> import reticula as ret
+   >>> net = ret.cycle_graph[ret.int64](size=8)
+   >>> net
+   <undirected_network[int64] with 8 verts and 8 edges>
+   >>> edges = [(0, 1), (2, 3)]
+   >>> net = ret.without_edges(net, edges)
+   >>> net
+   <undirected_network[int64] with 8 verts and 6 edges>
 
 
 Adding and removing vertices
@@ -68,6 +111,18 @@ Adding and removing vertices
 Returns a copy of :cpp:`net` with vertices from :cpp:`verts` added in.
 
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> net = ret.cycle_graph[ret.int64](size=8)
+  >>> net
+  <undirected_network[int64] with 8 verts and 8 edges>
+  >>> verts = [8, 9, 10]
+  >>> net = ret.with_vertices(net, verts)
+  >>> net
+  <undirected_network[int64] with 11 verts and 8 edges>
+
+
 .. tab-set::
 
   .. tab-item:: Python
@@ -87,3 +142,14 @@ Returns a copy of :cpp:`net` with vertices from :cpp:`verts` added in.
 
 Returns a copy of :cpp:`net` with vertices from :cpp:`verts`, along with all
 their incident edges removed.
+
+.. code-block:: pycon
+
+   >>> import reticula as ret
+   >>> net = ret.cycle_graph[ret.int64](size=8)
+   >>> net
+   <undirected_network[int64] with 8 verts and 8 edges>
+   >>> verts = [0, 1, 2]
+   >>> net = ret.without_vertices(net, verts)
+   >>> net
+   <undirected_network[int64] with 5 verts and 4 edges>

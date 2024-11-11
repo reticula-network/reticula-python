@@ -31,6 +31,14 @@ possible ordered pairs of distinct vertices.
 
 Note that in the presense of self-links, density might be higher than 1.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> g = ret.cycle_graph[ret.int64](size=128)
+  >>> ret.density(g)
+  0.015748031496062992
+
+
 Temporal network observation window
 -----------------------------------
 

@@ -27,6 +27,31 @@ generators and distributions for use with this library, some bindings over C++
 standard library implementation (e.g., :py:class:`geometric_distribution` and
 :py:class:`exponential_distribution`) and some based on our own implementation.
 
+
+.. admonition:: Example: Working with random numbers
+   :class: tip
+
+   While the main use-case for bit generators and distributions is to be passed
+   to other Reticula methods, you can also use them directly as callable
+   objects. For example, to generate random samples from the exponential
+   distribution, you can use the following code:
+
+   .. code-block:: pycon
+
+      >>> import reticula as ret
+      >>> gen = ret.mersenne_twister(42)  # seed the generator
+      >>> gen()  # Returns a random 64-bit integer
+      13930160852258120406
+      >>> dist = ret.exponential_distribution[ret.double](lmbda=2.0)
+      >>> dist(gen)  # Random sample from the exponential distribution
+      0.5094821440086138
+      >>> dist(gen)
+      0.6974560955843683
+
+   Use random bit generators, e.g., :py:class:`mersenne_twister` as a source of
+   randomness for other distributions. Use the same pattern to generate random
+   samples from other distributions.
+
 .. warning::
 
    Reticula currently relies on C++ standard library distributions and
@@ -39,7 +64,7 @@ standard library implementation (e.g., :py:class:`geometric_distribution` and
    but there are no guarantees.
 
 Pseudorandom bit generators
-------------------------------
+---------------------------
 
 The pseudorandom bit generators can be initialised using an integer seed. If no
 seed is provided, the generator is seeded using a non-deterministic source,
@@ -92,7 +117,7 @@ Distributions and stochastic generators
    :math:`\frac{1}{p}`. It's the discrete analogue to
    :py:class:`exponential_distribution`
 
-.. py:class:: exponential_distribution[floating_point_type](lambda: float)
+.. py:class:: exponential_distribution[floating_point_type](lmbda: float)
 
    A continuous distribution indicating the time between two consecutive events
    if that event happens at a constant rate, i.e., a Poisson point process. The

@@ -24,3 +24,9 @@ The parameter :cpp:`degree` needs to be an even number and :cpp:`degree` needs
 to be smaller than :cpp:`size`, otherwise the function fails by raising a
 :py:`ValueError` exception in Python or a :cpp:`std::invalid_argument` exception
 in C++.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> ret.regular_ring_lattice[ret.int64](size=128, degree=6)
+  <undirected_network[int64] with 128 verts and 384 edges>

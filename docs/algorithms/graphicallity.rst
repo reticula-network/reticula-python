@@ -22,6 +22,14 @@ Checks if the sequence can be the degree sequence of a valid undirected graph,
 containing no multi-edges or loops, based on the Erdős--Gallai algorithm
 :cite:p:`erdos1960graphs,choudum1986simple`.
 
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> ret.is_graphic([2, 2, 1, 1])
+  True
+  >>> ret.is_graphic([2, 2, 1, 2])
+  False
+
 
 Directed degree-pair sequence
 -----------------------------
@@ -49,3 +57,11 @@ and Wang :cite:p:`kleitman1973algorithms`.
 A degree pair sequence is a range (list) of pairs (2-tuples) of integers,
 where the first element of each item represents in-degree and the second item
 out-degree of one vertex.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> ret.is_digraphic([(0, 1), (2, 0), (0, 1), (1, 1)])
+  True
+  >>> ret.is_digraphic([(0, 1), (2, 0), (0, 1), (1, 2)])
+  False

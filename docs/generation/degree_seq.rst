@@ -33,8 +33,16 @@ same number of nodes as the length of the :cpp:`degree_sequence`.
 
 If the input :cpp:`degree_sequence` is not graphical, i.e., it is not possible
 to create a graph that produces that sequence, the function fails by raising a
-:py:`ValueError` exception in Python or a :cpp:`std::invalid_argument` exception
-in C++.
+:py:`ValueError` exception in Python or a :cpp:`std::invalid_argument`
+exception in C++.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ret.random_degree_sequence_graph[ret.int64](
+  ...       degree_sequence=[2, 2, 1, 1], random_state=gen)
+  <undirected_network[int64] with 4 verts and 3 edges>
 
 The implementation is based on Ref. :cite:`bayati2010sequential`.
 
@@ -91,11 +99,25 @@ pair-like objects, for example a vector of pairs
 (:cpp:`std::vector<std::pair<VertT, VertT>>`) or a list of :py:`int` 2-tuple in
 Python.
 
+If the input :cpp:`in-out-degree_sequence` is not di-graphical, i.e., it is not
+possible to create a directed graph that produces that in- and out-degree
+sequence, the funciton fails by raising a :py:`ValueError` exception in Python
+or a :cpp:`std::invalid_argument` exception in C++.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> gen = ret.mersenne_twister(42)
+  >>> ds = [(0, 0), (2, 0), (0, 1), (1, 1), (0, 2), (1, 0)]
+  >>> ret.random_directed_degree_sequence_graph[ret.int64](
+  ...       in_out_degree_sequence=ds, random_state=gen)
+  <directed_network[int64] with 6 verts and 4 edges>
+
 The implementation is based on an extension of Ref.
 :cite:p:`bayati2010sequential`.
 
 Similar to `undirected degree-sequence network`_, this function also provides a
-`try_` variant:
+`try_` variant in C++:
 
 .. cpp:function:: template <\
       integer_network_vertex VertT, \
@@ -108,11 +130,6 @@ Similar to `undirected degree-sequence network`_, this function also provides a
    try_random_degree_sequence_graph(\
       PairRange& in_out_degree_sequence, Gen& generator, \
       std::size_t max_tries)
-
-If the input :cpp:`in-out-degree_sequence` is not di-graphical, i.e., it is not
-possible to create a directed graph that produces that in- and out-degree
-sequence, the funciton fails by raising a :py:`ValueError` exception in Python
-or a :cpp:`std::invalid_argument` exception in C++.
 
 If this function succeeds in :cpp:`max_tries` tries, it will return the
 resulting network, otherwise it returns an instance of :cpp:`std::nullopt_t`.

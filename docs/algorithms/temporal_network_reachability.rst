@@ -26,6 +26,11 @@ one of those points, can spread to our target. The contrast between this and
 forward and backwards process is similar to the contrast between calculating in-
 and out-components on a directed acyclic graph.
 
+.. hint::
+
+   Check out a more in-depth :doc:`temporal network reachability example
+   </examples/temporal_network>` to learn more!
+
 From/to a single point
 ^^^^^^^^^^^^^^^^^^^^^^
 

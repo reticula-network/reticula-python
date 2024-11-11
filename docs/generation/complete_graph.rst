@@ -22,6 +22,12 @@ Undirected complete graph
 Generates a network of size :cpp:`size` vertices where all possible edges are
 present.
 
+.. code-block:: pycon
+
+   >>> import reticula as ret
+   >>> ret.complete_graph[ret.int64](size=128)
+   <undirected_network[int64] with 128 verts and 8128 edges>
+
 
 Complete directed graph
 -----------------------
@@ -42,3 +48,9 @@ Complete directed graph
 
 Generates a directed network of size :cpp:`size` vertices where all possible
 edges are present.
+
+.. code-block:: pycon
+
+   >>> import reticula as ret
+   >>> ret.complete_directed_graph[ret.int64](size=128)
+   <directed_network[int64] with 128 verts and 16256 edges>

@@ -18,3 +18,9 @@ Cycle graphs
 
 Generates a cycle graph of size :cpp:`size`: A 2-regular graph where each vertex
 is connected to the one before and after it.
+
+.. code-block:: pycon
+
+  >>> import reticula as ret
+  >>> ret.cycle_graph[ret.int64](size=128)
+  <undirected_network[int64] with 128 verts and 128 edges>
