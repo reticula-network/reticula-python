@@ -78,8 +78,8 @@ struct declare_random_network_models {
 
     m.def(("random_directed_uniform_hypergraph_"+
           python_type_str<VertT>()).c_str(),
-        &reticula::random_uniform_hypergraph<VertT, Gen>,
-        "size"_a, "edge_in_degree"_a, "edge_out_degree"_a, "edge_prob"_a
+        &reticula::random_directed_uniform_hypergraph<VertT, Gen>,
+        "size"_a, "edge_in_degree"_a, "edge_out_degree"_a, "edge_prob"_a,
         "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
 
