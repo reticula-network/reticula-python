@@ -258,7 +258,9 @@ from ._reticula_ext import (
         edge_in_degree_sequence, edge_out_degree_sequence,
         edge_incident_degree_sequence, edge_in_out_degree_pair_sequence,
         edge_degree_sequence,
-        density, degree_assortativity, attribute_assortativity)
+        density, degree_assortativity, attribute_assortativity,
+        in_in_degree_assortativity, in_out_degree_assortativity,
+        out_out_degree_assortativity, out_in_degree_assortativity)
 
 from ._reticula_ext import (
         is_acyclic, topological_order, out_component, out_components,
