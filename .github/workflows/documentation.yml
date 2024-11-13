@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +17,7 @@ jobs:
           architecture: 'x64'
 
       - name: Latex Prerequisits
-        run: sudo apt install -y latexmk texlive-latex-extra
+        run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-extra
 
       - name: Python Prerequisits
         run: pip install -r docs/requirements.txt
