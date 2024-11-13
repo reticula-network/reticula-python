@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.28)
 
 project(reticula_python LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
   reticula
   GIT_REPOSITORY https://github.com/reticula-network/reticula.git
-  GIT_TAG c3079ea3839b8e5d5d322d837ff29541a82040cd)
+  GIT_TAG e0e2697aed3e4a13398c07d1b2715ac4195d8d19)
 
 FetchContent_Declare(
   fmt
@@ -19,7 +19,8 @@ FetchContent_Declare(
 FetchContent_Declare(
   metal
   GIT_REPOSITORY https://github.com/brunocodutra/metal.git
-  GIT_TAG v2.1.4)
+  GIT_TAG v2.1.4
+  EXCLUDE_FROM_ALL)
 
 find_package(Python 3.10
   REQUIRED COMPONENTS Interpreter Development.Module
