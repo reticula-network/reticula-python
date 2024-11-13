@@ -121,3 +121,42 @@ class Algorithms:
 
     def time_shortest_path_lengths_to(self):
         ret.shortest_path_lengths_to(self.g, 0)
+
+
+class RandomGraphs:
+    def setup(self):
+        self.gen = ret.mersenne_twister(42)
+        self.ds = [4]*1000
+        self.dds = [(4, 4)]*1000
+
+    def time_barabasi_albert(self):
+        ret.random_barabasi_albert_graph[ret.int64](
+            n=4000, m=4, random_state=self.gen)
+
+    def time_erdos_renyi(self):
+        ret.random_gnp_graph[ret.int64](
+            n=4000, p=0.001, random_state=self.gen)
+
+    def time_directed_erdos_renyi(self):
+        ret.random_directed_gnp_graph[ret.int64](
+            n=4000, p=0.001, random_state=self.gen)
+
+    def time_random_regular(self):
+        ret.random_regular_graph[ret.int64](
+            size=4000, degree=4, random_state=self.gen)
+
+    def time_random_expected_degree_sequence_graph(self):
+        ret.random_expected_degree_sequence_graph[ret.int64](
+            weight_sequence=self.ds, random_state=self.gen)
+
+    def time_random_directed_expected_degree_sequence_graph(self):
+        ret.random_directed_expected_degree_sequence_graph[ret.int64](
+            in_out_weight_sequence=self.dds, random_state=self.gen)
+
+    def time_random_degree_sequence_graph(self):
+        ret.random_degree_sequence_graph[ret.int64](
+            degree_sequence=self.ds, random_state=self.gen)
+
+    def time_random_directed_degree_sequence_graph(self):
+        ret.random_directed_degree_sequence_graph[ret.int64](
+            in_out_degree_sequence=self.dds, random_state=self.gen)
