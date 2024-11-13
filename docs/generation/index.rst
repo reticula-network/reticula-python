@@ -3,6 +3,7 @@ Generating networks
 
 .. toctree::
    :maxdepth: 1
+   :caption: Simple static networks
 
    path
    cycle
@@ -10,12 +11,21 @@ Generating networks
    square_grid_graph
    complete_graph
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Random static networks
+
    gnp
    barabasi
    regular
    degree_seq
    expected_degree_seq
    uniform_hypergraph
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Random temporal networks
 
    fully_mixed
    link_activation
