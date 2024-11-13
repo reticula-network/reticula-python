@@ -33,7 +33,7 @@ master_doc = 'index'
 
 latex_documents = [
     ("latex_index", 'reticula.tex',
-     project, author, 'manual', True),
+     project, author, 'howto', True),
 ]
 
 latex_elements = {
