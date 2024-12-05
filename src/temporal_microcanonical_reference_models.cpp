@@ -16,19 +16,53 @@ struct declare_temporal_mrrm_algorithms {
         &reticula::mrrms::instant_event_shuffling<EdgeT, Gen>,
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
+
     m.def("link_shuffling",
         &reticula::mrrms::link_shuffling<EdgeT, Gen>,
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
+
     m.def("connected_link_shuffling",
-        &reticula::mrrms::connected_link_shuffling<EdgeT, Gen>,
+        nb::overload_cast<const reticula::network<EdgeT>&, Gen&>(
+            &reticula::mrrms::connected_link_shuffling<EdgeT, Gen>),
+        "temporal_network"_a, "random_state"_a,
+        nb::call_guard<nb::gil_scoped_release>());
+    m.def("connected_link_shuffling",
+        nb::overload_cast<const reticula::network<EdgeT>&, Gen&,
+              const std::vector<typename EdgeT::StaticProjectionType>&>(
+            &reticula::mrrms::connected_link_shuffling<EdgeT, Gen >),
+        "temporal_network"_a, "random_state"_a, "unobserved_links"_a,
+        nb::call_guard<nb::gil_scoped_release>());
+
+    m.def("topology_constrained_link_shuffling",
+        nb::overload_cast<const reticula::network<EdgeT>&, Gen&>(
+            &reticula::mrrms::topology_constrained_link_shuffling<EdgeT, Gen>),
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
     m.def("topology_constrained_link_shuffling",
-        &reticula::mrrms::topology_constrained_link_shuffling<EdgeT, Gen>,
-        "temporal_network"_a, "random_state"_a,
+        nb::overload_cast<const reticula::network<EdgeT>&, Gen&,
+              const std::vector<typename EdgeT::StaticProjectionType>&>(
+            &reticula::mrrms::topology_constrained_link_shuffling<EdgeT, Gen>),
+        "temporal_network"_a, "random_state"_a, "unordered_links"_a,
         nb::call_guard<nb::gil_scoped_release>());
 
+
+    m.def("timeline_shuffling",
+        nb::overload_cast<
+                const reticula::network<EdgeT>&, Gen&,
+                typename EdgeT::TimeType, typename EdgeT::TimeType,
+                const std::vector<typename EdgeT::StaticProjectionType>&>(
+            &reticula::mrrms::timeline_shuffling<EdgeT, Gen>),
+        "temporal_network"_a, "random_state"_a,
+        "t_start"_a, "t_end"_a, "unobserved_links"_a,
+        nb::call_guard<nb::gil_scoped_release>());
+    m.def("timeline_shuffling",
+        nb::overload_cast<
+                const reticula::network<EdgeT>&, Gen&,
+                const std::vector<typename EdgeT::StaticProjectionType>&>(
+            &reticula::mrrms::timeline_shuffling<EdgeT, Gen>),
+        "temporal_network"_a, "random_state"_a, "unobserved_links"_a,
+        nb::call_guard<nb::gil_scoped_release>());
     m.def("timeline_shuffling",
         nb::overload_cast<
                 const reticula::network<EdgeT>&, Gen&,
@@ -41,6 +75,7 @@ struct declare_temporal_mrrm_algorithms {
             &reticula::mrrms::timeline_shuffling<EdgeT, Gen>),
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
+
     m.def("weight_constrained_timeline_shuffling",
         nb::overload_cast<
             const reticula::network<EdgeT>&, Gen&,
@@ -53,10 +88,12 @@ struct declare_temporal_mrrm_algorithms {
           &reticula::mrrms::weight_constrained_timeline_shuffling<EdgeT, Gen>),
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
+
     m.def("activity_constrained_timeline_shuffling",
         &reticula::mrrms::activity_constrained_timeline_shuffling<EdgeT, Gen>,
         "temporal_network"_a, "random_state"_a,
         nb::call_guard<nb::gil_scoped_release>());
+
     m.def("inter_event_shuffling",
         &reticula::mrrms::inter_event_shuffling<EdgeT, Gen>,
         "temporal_network"_a, "random_state"_a,
