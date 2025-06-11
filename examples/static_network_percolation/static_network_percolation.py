@@ -12,11 +12,11 @@ def cc_analysis(n: int, p: float, seed: int):
     # The Reticula magic is happening in this paragraph:
     state = ret.mersenne_twister(seed)
     g = ret.random_gnp_graph[ret.int64](n, p, state)
-    ccs = [len(cc) for cc in ret.connected_components(g)]
+    ccs = np.array([len(cc) for cc in ret.connected_components(g)])
 
-    largest_comp_size = max(ccs)
-    sum_squares = sum([s**2 for s in ccs])
-    sum_cubes = sum([s**3 for s in ccs])
+    largest_comp_size = np.max(ccs)
+    sum_squares = np.sum(ccs**2)
+    sum_cubes = np.sum(ccs**3)
     nom = sum_squares - largest_comp_size**2
     denom = n - largest_comp_size
     classic_chi = nom/denom if denom > 0 else 0.0
