@@ -16,10 +16,13 @@ _simple_vertex_types = set(_reticula_ext.types.simple_vertex_types)
 pair = _generic_attribute(
         attr_prefix="pair",
         arg_names=("vertex_type", "vertex_type"),
-        options={(i, j)
-                 for i in _simple_vertex_types for j in _simple_vertex_types},
+        options={(i, i) for i in _simple_vertex_types},
         function_module=_reticula_ext,
         api_module_name=__name__)
+
+_pair_vertex_types = set([
+    getattr(_reticula_ext, f"pair_{i.__name__}_{i.__name__}")
+    for i in _simple_vertex_types])
 
 _static_edge_prefixes = [
         "directed_edge", "undirected_edge",
@@ -92,13 +95,14 @@ _temporal_edge_prefixes = [
 
 _time_types = set(_reticula_ext.types.time_types)
 
+_temporal_edge_verts = _simple_vertex_types | _pair_vertex_types
 for _e in _temporal_edge_prefixes:
     setattr(_sys.modules[__name__],
             _e, _generic_attribute(
                 attr_prefix=_e,
                 arg_names=("vertex_type", "time_type"),
                 options={(v, t)
-                         for v in _all_vertex_types for t in _time_types},
+                         for v in _temporal_edge_verts for t in _time_types},
                 function_module=_reticula_ext,
                 api_module_name=__name__))
     _n = _e[:-4] + "network"
@@ -107,7 +111,7 @@ for _e in _temporal_edge_prefixes:
                 attr_prefix=_n,
                 arg_names=("vertex_type", "time_type"),
                 options={(v, t)
-                         for v in _all_vertex_types for t in _time_types},
+                         for v in _temporal_edge_verts for t in _time_types},
                 function_module=_reticula_ext,
                 api_module_name=__name__))
 
@@ -202,7 +206,8 @@ for _a in _random_network_generic_attrs:
                 arg_names=("integer_vertex_type",),
                 options={(t,) for t in _integer_vertex_types},
                 function_module=_reticula_ext,
-                api_module_name=__name__))
+                api_module_name=__name__,
+                default_callable=getattr(_reticula_ext, _a+"_int64")))
 
 _integer_vertex_generic_generators = [
         "square_grid_graph", "path_graph", "cycle_graph",
@@ -215,7 +220,8 @@ for _a in _integer_vertex_generic_generators:
                 arg_names=("integer_vertex_type",),
                 options={(t,) for t in _integer_vertex_types},
                 function_module=_reticula_ext,
-                api_module_name=__name__))
+                api_module_name=__name__,
+                default_callable=getattr(_reticula_ext, _a+"_int64")))
 
 from ._reticula_ext import (
     random_link_activation_temporal_network,
