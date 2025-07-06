@@ -3,7 +3,6 @@
 
 #include <utility>
 #include <random>
-#include <concepts>
 
 #include <metal.hpp>
 
@@ -55,15 +54,15 @@ namespace types {
 
   using pair_vert_types =
     metal::transform<
-      metal::partial<
-        metal::lambda<metal::apply>,
-        metal::lambda<std::pair>>,
-      metal::cartesian<simple_vert_types, simple_vert_types>>;
+      metal::bind<
+        metal::lambda<std::pair>,
+	metal::_1, metal::_1>,
+      simple_vert_types>;
 
-  using compount_vert_type = metal::join<pair_vert_types>;
+  using compound_vert_type = metal::join<pair_vert_types>;
 
   using first_order_vert_types =
-      metal::join<simple_vert_types, compount_vert_type>;
+      metal::join<simple_vert_types, compound_vert_type>;
 
   // first-order static edges
   using first_order_undirected_edges =

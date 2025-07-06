@@ -51,12 +51,10 @@ void declare_operations(nb::module_& m) {
 
   types::run_each<
     metal::transform<
-      metal::partial<
-        metal::lambda<metal::apply>,
-        metal::lambda<declare_cartesian_product>>,
-      metal::cartesian<
-        types::simple_vert_types,
-        types::simple_vert_types>>>{}(m);
+      metal::bind<
+        metal::lambda<declare_cartesian_product>,
+        metal::_1, metal::_1>,
+      types::simple_vert_types>>{}(m);
 
   declare_typed_add_operation_algorithms(m);
   declare_typed_remove_operation_algorithms(m);
