@@ -7,12 +7,27 @@ class generic_attribute(collections.abc.Mapping):
             self, attr_prefix: str,
             arg_names: _typing.Tuple[str, ...],
             options: _typing.Iterable[_typing.Tuple[type, ...]],
-            function_module, api_module_name):
+            function_module, api_module_name,
+            default_callable: _typing.Callable = None):
         self.options = set(options)
         self.attr_prefix = attr_prefix
         self.arg_names = arg_names
         self.function_module = function_module
         self.api_module_name = api_module_name
+
+        if default_callable is None:
+            dynamic = type(
+                f"{self.__class__.__name__}_default_{id(self)}",
+                (self.__class__,),
+                {"__call__": generic_attribute.default_call},
+            )
+        else:
+            dynamic = type(
+                f"{self.__class__.__name__}_func_{id(self)}",
+                (self.__class__,),
+                {"__call__": default_callable},
+            )
+        self.__class__ = dynamic
 
     def __getitem__(self, keys):
         if not isinstance(keys, tuple):
@@ -45,7 +60,7 @@ class generic_attribute(collections.abc.Mapping):
 
         return "\n".join(opts)
 
-    def __call__(self, *args, **kwargs):
+    def default_call(self, *args, **kwargs):
         raise TypeError(
            "No type information was paased to a generic function or type.\n"
            "This usually means that you forgot to add square brackets\n"
