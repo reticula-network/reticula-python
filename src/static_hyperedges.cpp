@@ -52,5 +52,5 @@ void declare_typed_static_hyperedges(nb::module_& m) {
   types::run_each<
     metal::transform<
       metal::lambda<declare_static_hyperedges>,
-      types::all_vert_types>>{}(m);
+      types::first_order_vert_types>>{}(m);
 }

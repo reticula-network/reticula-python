@@ -20,9 +20,9 @@ pair = _generic_attribute(
         function_module=_reticula_ext,
         api_module_name=__name__)
 
-_pair_vertex_types = set([
+_pair_vertex_types = set(
     getattr(_reticula_ext, f"pair_{i.__name__}_{i.__name__}")
-    for i in _simple_vertex_types])
+    for i in _simple_vertex_types)
 
 _static_edge_prefixes = [
         "directed_edge", "undirected_edge",
@@ -32,6 +32,9 @@ _integer_vertex_types = set(_reticula_ext.types.integer_vertex_types)
 _all_vertex_types = set(_reticula_ext.types.vertex_types)
 
 for _e in _static_edge_prefixes:
+    _vert_types = _simple_vertex_types | _pair_vertex_types
+    if _e in {"directed_edge", "undirected_edge"}:
+        _vert_types = _all_vertex_types
     setattr(_sys.modules[__name__],
             _e, _generic_attribute(
                 attr_prefix=_e,
@@ -47,6 +50,16 @@ for _e in _static_edge_prefixes:
                 options={(t,) for t in _all_vertex_types},
                 function_module=_reticula_ext,
                 api_module_name=__name__))
+
+_static_network_types = set(
+    getattr(_reticula_ext, f"{_e[:-4]}network_{_t.__name__}")
+    for _e in ["directed_edge", "undirected_edge"]
+    for _t in _all_vertex_types)
+
+_static_network_types |= set(
+    getattr(_reticula_ext, f"{_e[:-4]}network_{_t.__name__}")
+    for _e in ["directed_hyperedge", "undirected_hyperedge"]
+    for _t in _simple_vertex_types | _pair_vertex_types)
 
 from ._reticula_ext import (
         mersenne_twister)
@@ -115,6 +128,13 @@ for _e in _temporal_edge_prefixes:
                 function_module=_reticula_ext,
                 api_module_name=__name__))
 
+_temporal_network_types = set(
+    getattr(_reticula_ext, f"{_e[:-4]}network_{_v.__name__}_{_t.__name__}")
+    for _e in _temporal_edge_prefixes
+    for _v in _temporal_edge_verts
+    for _t in _time_types)
+
+_all_network_types = _static_network_types | _temporal_network_types
 
 _vertex_generic_attrs = [
         "component", "component_size", "component_size_estimate"]
@@ -149,37 +169,51 @@ is_network_edge = _generic_attribute(
         arg_names=("edge_type",),
         options={(t,) for t in _all_edge_types},
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_network_edge)
 is_static_edge = _generic_attribute(
         attr_prefix="is_static_edge",
         arg_names=("edge_type",),
         options=set((t,) for t in _all_edge_types),
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_static_edge)
 is_temporal_edge = _generic_attribute(
         attr_prefix="is_temporal_edge",
         arg_names=("edge_type",),
         options={(t,) for t in _all_edge_types},
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_temporal_edge)
+
 is_instantaneous = _generic_attribute(
         attr_prefix="is_instantaneous",
         arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
+        options={(t,) for t in _all_edge_types | _all_network_types},
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_instantaneous)
 is_undirected = _generic_attribute(
         attr_prefix="is_undirected",
         arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
+        options={(t,) for t in _all_edge_types | _all_network_types},
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_undirected)
+is_directed = _generic_attribute(
+        attr_prefix="is_directed",
+        arg_names=("edge_type",),
+        options={(t,) for t in _all_edge_types | _all_network_types},
+        function_module=_reticula_ext,
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_directed)
 is_dyadic = _generic_attribute(
         attr_prefix="is_dyadic",
         arg_names=("edge_type",),
-        options={(t,) for t in _all_edge_types},
+        options={(t,) for t in _all_edge_types | _all_network_types},
         function_module=_reticula_ext,
-        api_module_name=__name__)
+        api_module_name=__name__,
+        default_callable=_reticula_ext.is_dyadic)
 
 
 _random_network_generic_attrs = [
