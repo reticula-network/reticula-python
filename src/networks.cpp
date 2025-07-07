@@ -109,6 +109,28 @@ struct declare_network_class {
       }).def_static("vertex_type", []() {
         return types::handle_for<typename Net::VertexType>();
       });
+
+    m.def(fmt::format("is_instantaneous_{}",
+                python_type_str<Net>()).c_str(),
+            []{ return reticula::is_instantaneous_v<Net>; });
+    m.def(fmt::format("is_undirected_{}",
+                python_type_str<Net>()).c_str(),
+            []{ return reticula::is_undirected_v<Net>; });
+    m.def(fmt::format("is_directed_{}",
+                python_type_str<Net>()).c_str(),
+            []{ return reticula::is_directed_v<Net>; });
+    m.def(fmt::format("is_dyadic_{}",
+                python_type_str<Net>()).c_str(),
+            []{ return reticula::is_dyadic_v<Net>; });
+
+    m.def("is_instantaneous",
+            [](const Net&){ return reticula::is_instantaneous_v<Net>; });
+    m.def("is_undirected",
+            [](const Net&){ return reticula::is_undirected_v<Net>; });
+    m.def("is_directed",
+            [](const Net&){ return reticula::is_directed_v<Net>; });
+    m.def("is_dyadic",
+            [](const Net&){ return reticula::is_dyadic_v<Net>; });
   }
 };
 

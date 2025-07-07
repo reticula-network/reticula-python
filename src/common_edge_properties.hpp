@@ -1,4 +1,3 @@
-#include <reticula/type_traits.hpp>
 #include <reticula/network_concepts.hpp>
 
 #include "bind_core.hpp"
@@ -119,9 +118,28 @@ nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
   m.def(fmt::format("is_undirected_{}",
               python_type_str<EdgeT>()).c_str(),
           []{ return reticula::is_undirected_v<EdgeT>; });
+  m.def(fmt::format("is_directed_{}",
+              python_type_str<EdgeT>()).c_str(),
+          []{ return reticula::is_directed_v<EdgeT>; });
   m.def(fmt::format("is_dyadic_{}",
               python_type_str<EdgeT>()).c_str(),
           []{ return reticula::is_dyadic_v<EdgeT>; });
+
+
+  m.def("is_network_edge",
+          [](const EdgeT&){ return reticula::network_edge<EdgeT>; });
+  m.def("is_static_edge",
+          [](const EdgeT&){ return reticula::static_network_edge<EdgeT>; });
+  m.def("is_temporal_edge",
+          [](const EdgeT&){ return reticula::temporal_network_edge<EdgeT>; });
+  m.def("is_instantaneous",
+          [](const EdgeT&){ return reticula::is_instantaneous_v<EdgeT>; });
+  m.def("is_undirected",
+          [](const EdgeT&){ return reticula::is_undirected_v<EdgeT>; });
+  m.def("is_directed",
+          [](const EdgeT&){ return reticula::is_directed_v<EdgeT>; });
+  m.def("is_dyadic",
+          [](const EdgeT&){ return reticula::is_dyadic_v<EdgeT>; });
 
   return cls;
 }
