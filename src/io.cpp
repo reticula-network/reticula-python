@@ -8,6 +8,7 @@
 
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -27,6 +28,7 @@ struct declare_io_functions {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 using simple_temporal_type_parameter_combinations =
   metal::cartesian<types::simple_vert_types, types::time_types>;

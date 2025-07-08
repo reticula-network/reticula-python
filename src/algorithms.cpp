@@ -9,6 +9,7 @@
 
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -26,6 +27,7 @@ struct declare_degree_sequence_algorithms {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_assortativity_algorithms(nb::module_& m);
 void declare_typed_degree_algorithms(nb::module_& m);

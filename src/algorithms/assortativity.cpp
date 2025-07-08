@@ -7,6 +7,7 @@
 
 #include "../type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -35,6 +36,7 @@ struct declare_undirected_assortativity_algorithms {
           nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 template <reticula::directed_static_network_edge EdgeT>
 struct declare_directed_assortativity_algorithms {

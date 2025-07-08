@@ -7,6 +7,7 @@
 
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -58,6 +59,7 @@ struct declare_implicit_event_graph_component_algorithms {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_implicit_event_graph_components(nb::module_& m) {
   types::run_each<

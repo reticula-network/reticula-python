@@ -10,6 +10,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -64,6 +65,7 @@ struct declare_interval_set_types {
       });
   }
 };
+}
 
 void declare_typed_interval_sets(nb::module_& m) {
   types::run_each<

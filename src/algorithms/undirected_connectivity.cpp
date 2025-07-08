@@ -6,6 +6,7 @@
 
 #include "../type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -44,6 +45,7 @@ struct declare_undirected_connectivity_algorithms {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_undirected_connectivity_algorithms(nb::module_& m) {
   types::run_each<

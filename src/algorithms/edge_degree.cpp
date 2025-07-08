@@ -4,6 +4,7 @@
 
 #include "../type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -55,6 +56,7 @@ struct declare_edge_degree_algorithms {
           nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_edge_degree_algorithms(nb::module_& m) {
   types::run_each<

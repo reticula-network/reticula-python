@@ -5,6 +5,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 
 template <typename T>
@@ -13,6 +14,7 @@ struct add_to_type_list {
     m.attr(list_name.c_str()).attr("append")(types::handle_for<T>());
   }
 };
+}
 
 void declare_type_lists(nb::module_& m) {
   nb::setattr(m, "simple_vertex_types", nb::list());

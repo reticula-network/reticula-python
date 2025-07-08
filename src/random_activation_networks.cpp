@@ -7,6 +7,7 @@
 #include "type_str/distributions.hpp"
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -104,6 +105,7 @@ struct declare_typed_activations_for_edge {
           types::random_state_types>>>{}(m);
   }
 };
+}
 
 void declare_typed_activation_networks(nb::module_& m) {
   types::run_each<

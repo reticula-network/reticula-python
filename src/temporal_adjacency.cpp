@@ -7,6 +7,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -141,6 +142,7 @@ struct declare_temporal_adjacency_class {
     }
   }
 };
+}
 
 void declare_typed_temporal_adjacency_class(nb::module_& m) {
   // declare network

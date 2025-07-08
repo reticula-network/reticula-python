@@ -9,6 +9,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -160,6 +161,7 @@ struct declare_temporal_cluster_types {
       });
   }
 };
+}
 
 void declare_typed_temporal_clusters(nb::module_& m) {
   types::run_each<

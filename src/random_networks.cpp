@@ -6,6 +6,7 @@
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -111,6 +112,7 @@ struct declare_random_network_models {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_random_networks(nb::module_& m) {
   types::run_each<

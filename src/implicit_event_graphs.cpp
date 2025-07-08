@@ -10,6 +10,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -77,6 +78,7 @@ struct declare_implicit_event_graph_class {
       });
   }
 };
+}
 
 void declare_typed_implicit_event_graphs(nb::module_& m) {
   types::run_each<

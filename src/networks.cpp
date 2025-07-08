@@ -10,6 +10,7 @@
 #include "type_utils.hpp"
 #include "type_handles.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -133,6 +134,7 @@ struct declare_network_class {
             [](const Net&){ return reticula::is_dyadic_v<Net>; });
   }
 };
+}
 
 void declare_typed_networks(nb::module_& m) {
   types::run_each<

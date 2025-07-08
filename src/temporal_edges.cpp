@@ -9,6 +9,7 @@
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -75,6 +76,7 @@ struct declare_temporal_edges {
       reticula::directed_delayed_temporal_edge<VertT, TimeT>>();
   }
 };
+}
 
 void declare_typed_temporal_edges(nb::module_& m) {
   types::run_each<

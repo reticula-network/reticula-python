@@ -7,6 +7,7 @@
 #include "type_str/distributions.hpp"
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -306,6 +307,7 @@ struct declare_floating_point_distributions {
         types::random_state_types>>{}(uniform_real);
   }
 };
+}
 
 void declare_typed_distributions(nb::module_& m) {
   using scalar_types = types::unique<metal::join<

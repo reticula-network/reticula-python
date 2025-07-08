@@ -10,6 +10,7 @@
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -46,6 +47,7 @@ struct declare_static_hyperedges {
       reticula::directed_hyperedge<VertT>>();
   }
 };
+}
 
 
 void declare_typed_static_hyperedges(nb::module_& m) {

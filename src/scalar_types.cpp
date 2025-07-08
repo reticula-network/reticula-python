@@ -6,6 +6,7 @@
 #include "type_utils.hpp"
 #include "scalar_wrapper.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -21,6 +22,7 @@ struct declare_scalar_types {
       });
   }
 };
+}
 
 void declare_typed_scalar(nb::module_& m) {
   using scalar_types = types::unique<metal::join<

@@ -7,6 +7,7 @@
 #include "type_str/edges.hpp"
 #include "type_utils.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -39,6 +40,7 @@ struct declare_simple_generators {
         nb::call_guard<nb::gil_scoped_release>());
   }
 };
+}
 
 void declare_typed_generators(nb::module_& m) {
   types::run_each<

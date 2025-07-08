@@ -10,6 +10,7 @@
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
+namespace {
 namespace nb = nanobind;
 using namespace nanobind::literals;
 
@@ -51,6 +52,7 @@ struct declare_static_edges {
       reticula::directed_edge<VertT>>();
   }
 };
+}
 
 
 void declare_typed_static_edges(nb::module_& m) {
