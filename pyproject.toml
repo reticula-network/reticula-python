@@ -42,7 +42,7 @@ requires = [
     "setuptools>=67",
     "wheel",
     "scikit-build-core>=0.10.7",
-    "nanobind==2.2.0"
+    "nanobind==2.7.0"
 ]
 build-backend = "scikit_build_core.build"
 
