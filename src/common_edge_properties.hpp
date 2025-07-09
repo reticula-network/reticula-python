@@ -14,7 +14,7 @@ template <typename EdgeT>
 nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
   nb::class_<EdgeT> cls(m, python_type_str<EdgeT>().c_str());
 
-  cls.def(nb::init<EdgeT>(),
+  cls.def(nb::init<const EdgeT&>(),
         "edge"_a,
         nb::call_guard<nb::gil_scoped_release>())
     .def("mutated_verts",

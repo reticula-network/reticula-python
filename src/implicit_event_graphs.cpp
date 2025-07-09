@@ -21,6 +21,8 @@ struct declare_implicit_event_graph_class {
     using Net = reticula::implicit_event_graph<EdgeT, AdjT>;
     nb::class_<Net>(
         m, python_type_str<Net>().c_str())
+      .def(nb::init<const Net&>(),
+          nb::call_guard<nb::gil_scoped_release>())
       .def(nb::init<std::vector<EdgeT>, AdjT>(),
           "events"_a, "temporal_adjacency"_a,
           nb::call_guard<nb::gil_scoped_release>())

@@ -23,7 +23,7 @@ struct declare_temporal_cluster_types {
       .def(nb::init<AdjT, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<Cluster>(),
+      .def(nb::init<const Cluster&>(),
           "temporal_cluester"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def(nb::init<std::vector<EdgeT>, AdjT, std::size_t>(),
