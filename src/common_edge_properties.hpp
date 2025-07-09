@@ -4,7 +4,6 @@
 #include "nanobind/operators.h"
 #include "type_str/scalars.hpp"
 #include "type_str/edges.hpp"
-#include "type_utils.hpp"
 #include "type_handles.hpp"
 
 namespace nb = nanobind;
@@ -17,15 +16,18 @@ nb::class_<EdgeT> define_basic_edge_concept(nb::module_& m) {
   cls.def(nb::init<const EdgeT&>(),
         "edge"_a,
         nb::call_guard<nb::gil_scoped_release>())
-    .def("mutated_verts",
-        &EdgeT::mutated_verts,
-        nb::call_guard<nb::gil_scoped_release>())
-    .def("mutator_verts",
-        &EdgeT::mutator_verts,
-        nb::call_guard<nb::gil_scoped_release>())
-    .def("incident_verts",
-        &EdgeT::incident_verts,
-        nb::call_guard<nb::gil_scoped_release>())
+    .def("mutated_verts", [](const EdgeT& self) {
+      auto mv = self.mutated_verts();
+      return std::vector<typename EdgeT::VertexType>(mv.begin(), mv.end());
+    }, nb::call_guard<nb::gil_scoped_release>())
+    .def("mutator_verts", [](const EdgeT& self) {
+      auto mv = self.mutator_verts();
+      return std::vector<typename EdgeT::VertexType>(mv.begin(), mv.end());
+    }, nb::call_guard<nb::gil_scoped_release>())
+    .def("incident_verts", [](const EdgeT& self) {
+      auto iv = self.incident_verts();
+      return std::vector<typename EdgeT::VertexType>(iv.begin(), iv.end());
+    }, nb::call_guard<nb::gil_scoped_release>())
     .def("is_incident",
         &EdgeT::is_incident,
         "vert"_a,

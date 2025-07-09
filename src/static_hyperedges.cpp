@@ -5,8 +5,6 @@
 
 #include <reticula/static_hyperedges.hpp>
 
-#include "type_str/scalars.hpp"
-#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
@@ -35,12 +33,14 @@ struct declare_static_hyperedges {
         new (edge) reticula::directed_hyperedge<VertT>{
           std::get<0>(t), std::get<1>(t)};
       }, "tuple"_a, nb::call_guard<nb::gil_scoped_release>())
-      .def("heads",
-          &reticula::directed_hyperedge<VertT>::heads,
-          nb::call_guard<nb::gil_scoped_release>())
-      .def("tails",
-          &reticula::directed_hyperedge<VertT>::tails,
-          nb::call_guard<nb::gil_scoped_release>());
+      .def("heads", [](const reticula::directed_hyperedge<VertT>& self) {
+        auto heads = self.heads();
+        return std::vector<VertT>(heads.begin(), heads.end());
+      }, nb::call_guard<nb::gil_scoped_release>())
+      .def("tails", [](const reticula::directed_hyperedge<VertT>& self) {
+        auto tails = self.tails();
+        return std::vector<VertT>(tails.begin(), tails.end());
+      }, nb::call_guard<nb::gil_scoped_release>());
 
     nb::implicitly_convertible<
       std::pair<std::vector<VertT>, std::vector<VertT>>,

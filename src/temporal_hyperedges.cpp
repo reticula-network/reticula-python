@@ -4,8 +4,6 @@
 
 #include <reticula/temporal_hyperedges.hpp>
 
-#include "type_str/scalars.hpp"
-#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
@@ -44,12 +42,16 @@ struct declare_temporal_hyperedges {
            new (edge) reticula::directed_temporal_hyperedge<VertT, TimeT>{
                   std::get<0>(t), std::get<1>(t), std::get<2>(t)};
         }, "tuple"_a, nb::call_guard<nb::gil_scoped_release>())
-      .def("heads",
-          &reticula::directed_temporal_hyperedge<VertT, TimeT>::heads,
-          nb::call_guard<nb::gil_scoped_release>())
-      .def("tails",
-          &reticula::directed_temporal_hyperedge<VertT, TimeT>::tails,
-          nb::call_guard<nb::gil_scoped_release>());
+      .def("heads", [](
+                const reticula::directed_temporal_hyperedge<VertT, TimeT>& self) {
+           auto heads = self.heads();
+           return std::vector<VertT>(heads.begin(), heads.end());
+        }, nb::call_guard<nb::gil_scoped_release>())
+      .def("tails", [](
+                const reticula::directed_temporal_hyperedge<VertT, TimeT>& self) {
+           auto tails = self.tails();
+           return std::vector<VertT>(tails.begin(), tails.end());
+        }, nb::call_guard<nb::gil_scoped_release>());
 
     nb::implicitly_convertible<
       std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT>,
@@ -67,12 +69,16 @@ struct declare_temporal_hyperedges {
                           std::get<0>(t), std::get<1>(t),
                           std::get<2>(t), std::get<3>(t)};
         }, "tuple"_a, nb::call_guard<nb::gil_scoped_release>())
-      .def("heads",
-          &reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>::heads,
-          nb::call_guard<nb::gil_scoped_release>())
-      .def("tails",
-          &reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>::tails,
-          nb::call_guard<nb::gil_scoped_release>());
+      .def("heads", [](
+                const reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>& self) {
+           auto heads = self.heads();
+           return std::vector<VertT>(heads.begin(), heads.end());
+        }, nb::call_guard<nb::gil_scoped_release>())
+      .def("tails", [](
+                const reticula::directed_delayed_temporal_hyperedge<VertT, TimeT>& self) {
+           auto tails = self.tails();
+           return std::vector<VertT>(tails.begin(), tails.end());
+        }, nb::call_guard<nb::gil_scoped_release>());
 
     nb::implicitly_convertible<
       std::tuple<std::vector<VertT>, std::vector<VertT>, TimeT, TimeT>,

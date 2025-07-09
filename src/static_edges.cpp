@@ -5,8 +5,6 @@
 
 #include <reticula/static_edges.hpp>
 
-#include "type_str/scalars.hpp"
-#include "type_str/edges.hpp"
 #include "type_utils.hpp"
 #include "common_edge_properties.hpp"
 
