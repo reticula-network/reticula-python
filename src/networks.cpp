@@ -24,12 +24,12 @@ struct declare_network_class {
       .def(nb::init<const Net&>(),
           "network"_a,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<std::vector<EdgeT>>(),
+      .def(nb::init<const std::vector<EdgeT>&>(),
           "edges"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def(nb::init<
-            std::vector<EdgeT>,
-            std::vector<typename EdgeT::VertexType>>(),
+            const std::vector<EdgeT>&,
+            const std::vector<typename EdgeT::VertexType>&>(),
           "edges"_a, "verts"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("vertices",

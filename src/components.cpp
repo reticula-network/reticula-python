@@ -26,14 +26,14 @@ struct declare_component_types {
            new (c) Component(size_hint);
        }, "size_hint"_a = 0,
            nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<Component>(),
+      .def(nb::init<const Component&>(),
           "component"_a,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<std::vector<VertT>, std::size_t>(),
+      .def(nb::init<const std::vector<VertT>&, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<std::unordered_set<
-            VertT, reticula::hash<VertT>>, std::size_t>(),
+      .def(nb::init<const std::unordered_set<
+            VertT, reticula::hash<VertT>>&, std::size_t>(),
           "vertices"_a, "size_hint"_a = 0,
           nb::call_guard<nb::gil_scoped_release>())
       .def("insert",

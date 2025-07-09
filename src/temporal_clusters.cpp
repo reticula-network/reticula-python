@@ -20,13 +20,13 @@ struct declare_temporal_cluster_types {
     using Cluster = reticula::temporal_cluster<EdgeT, AdjT>;
     nb::class_<Cluster>(
         m, python_type_str<Cluster>().c_str())
-      .def(nb::init<AdjT, std::size_t>(),
+      .def(nb::init<const AdjT&, std::size_t>(),
           "temporal_adjacency"_a, "size_hint"_a = 0,
           nb::call_guard<nb::gil_scoped_release>())
       .def(nb::init<const Cluster&>(),
           "temporal_cluester"_a,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<std::vector<EdgeT>, AdjT, std::size_t>(),
+      .def(nb::init<const std::vector<EdgeT>&, const AdjT&, std::size_t>(),
           "events"_a,
           "temporal_adjacency"_a,
           "size_hint"_a = 0,

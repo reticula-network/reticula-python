@@ -23,16 +23,16 @@ struct declare_implicit_event_graph_class {
         m, python_type_str<Net>().c_str())
       .def(nb::init<const Net&>(),
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<std::vector<EdgeT>, AdjT>(),
+      .def(nb::init<const std::vector<EdgeT>&, AdjT>(),
           "events"_a, "temporal_adjacency"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def(nb::init<
-            std::vector<EdgeT>,
-            std::vector<typename EdgeT::VertexType>,
-            AdjT>(),
+            const std::vector<EdgeT>&,
+            const std::vector<typename EdgeT::VertexType>&,
+            const AdjT&>(),
           "events"_a, "verts"_a, "temporal_adjacency"_a,
           nb::call_guard<nb::gil_scoped_release>())
-      .def(nb::init<reticula::network<EdgeT>, AdjT>(),
+      .def(nb::init<const reticula::network<EdgeT>&, const AdjT&>(),
           "temporal_network"_a, "temporal_adjacency"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("events_cause",

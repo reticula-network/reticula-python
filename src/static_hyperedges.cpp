@@ -18,7 +18,7 @@ template <typename VertT>
 struct declare_static_hyperedges {
   void operator()(nb::module_ &m) {
     define_basic_edge_concept<reticula::undirected_hyperedge<VertT>>(m)
-      .def(nb::init<std::vector<VertT>>(),
+      .def(nb::init<const std::vector<VertT>&>(),
            "verts"_a, nb::call_guard<nb::gil_scoped_release>());
 
     nb::implicitly_convertible<
@@ -26,12 +26,12 @@ struct declare_static_hyperedges {
       reticula::undirected_hyperedge<VertT>>();
 
     define_basic_edge_concept<reticula::directed_hyperedge<VertT>>(m)
-      .def(nb::init<std::vector<VertT>, std::vector<VertT>>(),
+      .def(nb::init<const std::vector<VertT>&, const std::vector<VertT>&>(),
            "tails"_a, "heads"_a,
            nb::call_guard<nb::gil_scoped_release>())
       .def("__init__", [](
           reticula::directed_hyperedge<VertT>* edge,
-          std::tuple<std::vector<VertT>, std::vector<VertT>> t) {
+          const std::tuple<std::vector<VertT>, std::vector<VertT>>& t) {
         new (edge) reticula::directed_hyperedge<VertT>{
           std::get<0>(t), std::get<1>(t)};
       }, "tuple"_a, nb::call_guard<nb::gil_scoped_release>())
