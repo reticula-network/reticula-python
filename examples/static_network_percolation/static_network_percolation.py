@@ -8,6 +8,7 @@ import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def cc_analysis(n: int, p: float, seed: int):
     # The Reticula magic is happening in this paragraph:
     state = ret.mersenne_twister(seed)
@@ -25,16 +26,17 @@ def cc_analysis(n: int, p: float, seed: int):
     isotropic_chi = 1/small_field * (1/n*sum_squares - 1/(n**2)*sum_cubes)
     return largest_comp_size, classic_chi, expected_comp_size, isotropic_chi
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-            description="Analysis of connected component size and other "
-            "isometric percolation properties in G(n, p) networks.")
+        description="Analysis of connected component size and other "
+        "isometric percolation properties in G(n, p) networks.")
     parser.add_argument("figure", type=str, help="output figure filename")
     parser.add_argument("output", type=str, help="output json filename")
     parser.add_argument("--size", type=int, default=10000, help="system size")
     parser.add_argument("--ens", type=int, default=100, help="ensemble size")
     parser.add_argument("-j", "--jobs", type=int, default=os.cpu_count(),
-            help="number of parallel workers")
+                        help="number of parallel workers")
     args = parser.parse_args()
 
     seeds = range(args.ens)
@@ -51,10 +53,10 @@ if __name__ == "__main__":
         for p in p_values:
             for seed in seeds:
                 futures.append((p,
-                    executor.submit(cc_analysis, size, p, seed)))
+                                executor.submit(cc_analysis, size, p, seed)))
 
         for p, f in tqdm.tqdm(futures):
-            largest_comp_size, classic_chi,\
+            largest_comp_size, classic_chi, \
                 exp_comp_size, isotropic_chi = f.result()
 
             if p not in largest_comps:
@@ -73,40 +75,38 @@ if __name__ == "__main__":
                 isotropic_chis[p] = []
             isotropic_chis[p].append(isotropic_chi)
 
-
     fig, axes = plt.subplots(2, 2, figsize=(8, 8), sharex=True,
-            gridspec_kw={"wspace": 0.3, "hspace": 0.3})
+                             gridspec_kw={"wspace": 0.3, "hspace": 0.3})
 
     ax_max, ax_classic_chi, ax_exp, ax_isotropic_chi = axes.flatten()
 
     ax_max.plot(
-            p_values - 1/(size-1),
-            [np.mean(largest_comps[p]) for p in p_values])
+        p_values - 1/(size-1),
+        [np.mean(largest_comps[p]) for p in p_values])
     ax_max.set_xlabel("$p - p_c$")
     ax_max.set_ylabel("Largest connected component size")
 
     ax_classic_chi.plot(
-            p_values - 1/(size-1),
-            [np.mean(classic_chis[p]) for p in p_values])
+        p_values - 1/(size-1),
+        [np.mean(classic_chis[p]) for p in p_values])
     ax_classic_chi.set_xlabel("$p - p_c$")
     ax_classic_chi.set_ylabel("Susceptibility "
-            "($\\frac{\\sum_{i>0} s_i^2}{\\sum_{i > 0} s_i}$)")
+                              "($\\frac{\\sum_{i>0} s_i^2}{\\sum_{i > 0} s_i}$)")
 
     ax_exp.plot(
-            p_values - 1/(size-1),
-            [np.mean(expected_comps[p]) for p in p_values])
+        p_values - 1/(size-1),
+        [np.mean(expected_comps[p]) for p in p_values])
     ax_exp.set_xlabel("$p - p_c$")
     ax_exp.set_ylabel("Expected component size")
 
     ax_isotropic_chi.plot(
-            p_values - 1/(size-1),
-            [np.mean(isotropic_chis[p]) for p in p_values])
+        p_values - 1/(size-1),
+        [np.mean(isotropic_chis[p]) for p in p_values])
     ax_isotropic_chi.set_xlabel("$p - p_c$")
     ax_isotropic_chi.set_ylabel("Susceptibility "
-            "($\\sum_i s_i^2 - \\frac{1}{n} \\sum_i s_i^3$)")
+                                "($\\sum_i s_i^2 - \\frac{1}{n} \\sum_i s_i^3$)")
 
     fig.savefig(args.figure)
-
 
     report = {
         "size": size,
