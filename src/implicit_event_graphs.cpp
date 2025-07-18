@@ -36,14 +36,20 @@ struct declare_implicit_event_graph_class {
           "temporal_network"_a, "temporal_adjacency"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("events_cause",
-          &Net::events_cause,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto edges = self.events_cause();
+             return std::vector<EdgeT>(edges.begin(), edges.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("events_effect",
-          &Net::events_effect,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto edges = self.events_effect();
+             return std::vector<EdgeT>(edges.begin(), edges.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("temporal_net_vertices",
-          &Net::temporal_net_vertices,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto verts = self.temporal_net_vertices();
+             return std::vector<typename Net::VertexType>(verts.begin(), verts.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("temporal_adjacency",
           &Net::temporal_adjacency,
           nb::call_guard<nb::gil_scoped_release>())

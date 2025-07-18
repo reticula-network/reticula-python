@@ -33,17 +33,25 @@ struct declare_network_class {
           "edges"_a, "verts"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("vertices",
-          &Net::vertices,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto verts = self.vertices();
+             return std::vector<typename Net::VertexType>(verts.begin(), verts.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("edges",
-          &Net::edges,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto edges = self.edges();
+             return std::vector<EdgeT>(edges.begin(), edges.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("edges_cause",
-          &Net::edges_cause,
-          nb::call_guard<nb::gil_scoped_release>())
+           [](const Net& self) {
+             auto edges = self.edges_cause();
+             return std::vector<EdgeT>(edges.begin(), edges.end());
+           }, nb::call_guard<nb::gil_scoped_release>())
       .def("edges_effect",
-          &Net::edges_effect,
-          nb::call_guard<nb::gil_scoped_release>())
+            [](const Net& self) {
+              auto edges = self.edges_effect();
+              return std::vector<EdgeT>(edges.begin(), edges.end());
+            }, nb::call_guard<nb::gil_scoped_release>())
       .def("incident_edges",
           &Net::incident_edges,
           "vert"_a,
