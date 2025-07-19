@@ -145,3 +145,44 @@ def directed_temporal_hypernetwork(draw: st.DrawFn,
                           st.floats(min_value=0, max_value=10))
     edges = st.lists(hyperedge, min_size=0, max_size=max_edges)
     return ret.directed_temporal_hypernetwork[VERT, TIME](draw(edges), verts)
+
+
+any_network = st.one_of(
+    undirected_network(),
+    directed_network(),
+    undirected_hypernetwork(),
+    directed_hypernetwork(),
+    undirected_temporal_network(),
+    directed_temporal_network(),
+    undirected_temporal_hypernetwork(),
+    directed_temporal_hypernetwork(),
+)
+
+any_directed_network = st.one_of(
+    directed_network(),
+    directed_temporal_network(),
+    directed_hypernetwork(),
+    directed_temporal_hypernetwork(),
+)
+
+
+any_undirected_network = st.one_of(
+    undirected_network(),
+    undirected_temporal_network(),
+    undirected_hypernetwork(),
+    undirected_temporal_hypernetwork(),
+)
+
+
+static_network = st.one_of(
+    undirected_network(),
+    directed_network(),
+    undirected_hypernetwork(),
+    directed_hypernetwork(),
+)
+
+any_dyadic_network = st.one_of(
+    undirected_network(),
+    directed_network(),
+    undirected_temporal_network(),
+    directed_temporal_network())

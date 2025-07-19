@@ -1,57 +1,15 @@
-from hypothesis import given, assume
 import math
 import statistics
 
+from hypothesis import given, assume
 from hypothesis import strategies as st
 import pytest
 
 import reticula as ret
 
 from network_strategies import (
-    undirected_network,
-    directed_network,
-    undirected_temporal_network,
-    directed_temporal_network,
-    undirected_hypernetwork,
-    directed_hypernetwork,
-    undirected_temporal_hypernetwork,
-    directed_temporal_hypernetwork
-)
-
-
-any_network = st.one_of(
-    undirected_network(),
-    directed_network(),
-    undirected_hypernetwork(),
-    directed_hypernetwork(),
-    undirected_temporal_network(),
-    directed_temporal_network(),
-    undirected_temporal_hypernetwork(),
-    directed_temporal_hypernetwork(),
-)
-
-any_directed_network = st.one_of(
-    directed_network(),
-    directed_temporal_network(),
-    directed_hypernetwork(),
-    directed_temporal_hypernetwork(),
-)
-
-
-any_undirected_network = st.one_of(
-    undirected_network(),
-    undirected_temporal_network(),
-    undirected_hypernetwork(),
-    undirected_temporal_hypernetwork(),
-)
-
-
-static_network = st.one_of(
-    undirected_network(),
-    directed_network(),
-    undirected_hypernetwork(),
-    directed_hypernetwork(),
-)
+    undirected_network, undirected_hypernetwork,
+    directed_network, any_network)
 
 
 @given(any_network)

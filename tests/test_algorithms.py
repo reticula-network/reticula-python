@@ -1,9 +1,10 @@
 import math
 
-import pytest
 import reticula as ret
+
+import pytest
 from hypothesis import given
-from network_strategies import undirected_network, directed_network
+from network_strategies import any_network, any_undirected_network
 
 
 def test_density():
@@ -152,21 +153,34 @@ def test_degree_sequence():
     assert set(inc_deg_seq) == {2, 2, 2}
 
 
-@given(undirected_network())
+@given(any_undirected_network)
 def test_degree_properties(net):
     for v in net.vertices():
         deg = ret.degree(net, v)
-        assert deg >= 0
         assert deg == len([e for e in net.edges() if v in e.incident_verts()])
 
 
-@given(directed_network())
+@given(any_network)
 def test_directed_degree_properties(net):
     for v in net.vertices():
         in_deg = ret.in_degree(net, v)
+        assert in_deg == len([
+            e for e in net.edges()
+            if v in e.mutated_verts()])
+
         out_deg = ret.out_degree(net, v)
-        assert in_deg >= 0
-        assert out_deg >= 0
+        assert out_deg == len([
+            e for e in net.edges()
+            if v in e.mutator_verts()])
+
+        inc_deg = ret.incident_degree(net, v)
+        assert inc_deg == len([
+            e for e in net.edges()
+            if v in e.incident_verts()])
+
+    for v in net.vertices():
+        assert ret.in_degree(net, v) >= 0
+        assert ret.out_degree(net, v) >= 0
 
 
 def test_attribute_assortativity():

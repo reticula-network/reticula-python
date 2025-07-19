@@ -75,3 +75,12 @@ def test_residual_power_law_with_specified_mean():
 
     values = [dist(gen) for _ in range(100)]
     assert all(v >= 0.0 for v in values)
+
+
+def test_hawkes_univariate_exponential():
+    gen = ret.mersenne_twister(42)
+    hawkes_dist = ret.hawkes_univariate_exponential[ret.double](
+        mu=1.0, alpha=0.5, theta=2.0)
+
+    values = [hawkes_dist(gen) for _ in range(100)]
+    assert all(v >= 0.0 for v in values)

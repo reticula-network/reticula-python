@@ -79,3 +79,142 @@ def test_graph_union():
     u = ret.graph_union(g1, g2)
     assert len(u.edges()) == len(g1.edges()) + 1
     assert set(u.vertices()) == set(g2.vertices())
+
+
+def test_square_grid_graph():
+    g = ret.square_grid_graph[ret.int64](side=3, dims=2)
+    assert len(g.vertices()) == 9
+    assert len(g.edges()) == 12
+
+
+def test_regular_ring_lattice():
+    g = ret.regular_ring_lattice[ret.int64](size=6, degree=2)
+    assert len(g.vertices()) == 6
+    assert all(ret.degree(g, v) == 2 for v in g.vertices())
+
+
+def test_random_barabasi_albert_graph():
+    gen = ret.mersenne_twister(42)
+    g = ret.random_barabasi_albert_graph[ret.int64](
+        n=10, m=2, random_state=gen)
+    assert len(g.vertices()) == 10
+    assert len(g.edges()) == 2*(10-2)
+
+
+def test_random_degree_sequence_graph():
+    gen = ret.mersenne_twister(42)
+    degree_seq = [2, 2, 2, 2]
+    g = ret.random_degree_sequence_graph[ret.int64](
+        degree_sequence=degree_seq, random_state=gen)
+    assert len(g.vertices()) == 4
+    assert all(ret.degree(g, v) == 2 for v in g.vertices())
+
+
+def test_random_directed_degree_sequence_graph():
+    gen = ret.mersenne_twister(42)
+    in_out_seq = [(1, 1), (1, 1), (1, 1)]
+    g = ret.random_directed_degree_sequence_graph[ret.int64](
+        in_out_degree_sequence=in_out_seq, random_state=gen)
+    assert len(g.vertices()) == 3
+    for v in g.vertices():
+        assert ret.in_degree(g, v) == 1
+        assert ret.out_degree(g, v) == 1
+
+
+def test_random_expected_degree_sequence_graph():
+    gen = ret.mersenne_twister(42)
+    weight_seq = [2.0, 2.0, 2.0, 2.0]
+    g = ret.random_expected_degree_sequence_graph[ret.int64](
+        weight_sequence=weight_seq, random_state=gen)
+    assert len(g.vertices()) == 4
+
+
+def test_random_directed_expected_degree_sequence_graph():
+    gen = ret.mersenne_twister(42)
+    in_out_weight_seq = [(1.0, 1.0), (1.0, 1.0), (1.0, 1.0)]
+    g = ret.random_directed_expected_degree_sequence_graph[ret.int64](
+        in_out_weight_sequence=in_out_weight_seq, random_state=gen)
+    assert len(g.vertices()) == 3
+
+
+def test_random_uniform_hypergraph():
+    gen = ret.mersenne_twister(42)
+    g = ret.random_uniform_hypergraph[ret.int64](
+        size=5, edge_degree=3, edge_prob=0.5, random_state=gen)
+    assert len(g.vertices()) == 5
+    for e in g.edges():
+        assert len(e.incident_verts()) == 3
+
+
+def test_random_directed_uniform_hypergraph():
+    gen = ret.mersenne_twister(42)
+    g = ret.random_directed_uniform_hypergraph[ret.int64](
+        size=5, edge_in_degree=2, edge_out_degree=2,
+        edge_prob=0.5, random_state=gen)
+    assert len(g.vertices()) == 5
+
+
+def test_random_expected_degree_sequence_hypergraph():
+    gen = ret.mersenne_twister(42)
+    vertex_weights = [3.0, 3.0, 3.0, 3.0]
+    edge_weights = [4.0, 4.0, 4.0]
+    g = ret.random_expected_degree_sequence_hypergraph[ret.int64](
+        vertex_weight_sequence=vertex_weights,
+        edge_weight_sequence=edge_weights, random_state=gen)
+    assert len(g.vertices()) == 4
+
+
+def test_random_directed_expected_degree_sequence_hypergraph():
+    gen = ret.mersenne_twister(42)
+    vertex_in_out_weights = [(1.0, 1.0), (1.0, 1.0),
+                             (1.0, 1.0)]
+    edge_in_out_weights = [(3.0, 3.0)]
+    g = ret.random_directed_expected_degree_sequence_hypergraph[ret.int64](
+        vertex_in_out_weight_sequence=vertex_in_out_weights,
+        edge_in_out_weight_sequence=edge_in_out_weights,
+        random_state=gen)
+    assert len(g.vertices()) == 3
+
+
+def test_random_fully_mixed_temporal_network():
+    gen = ret.mersenne_twister(42)
+    g = ret.random_fully_mixed_temporal_network[ret.int64](
+        size=4, rate=1.0, max_t=10.0, random_state=gen)
+    assert len(g.vertices()) == 4
+    t0, t1 = ret.time_window(g)
+    assert t0 >= 0.0
+    assert t1 <= 10.0
+
+
+def test_random_directed_fully_mixed_temporal_network():
+    gen = ret.mersenne_twister(42)
+    g = ret.random_directed_fully_mixed_temporal_network[ret.int64](
+        size=4, rate=1.0, max_t=10.0, random_state=gen)
+    assert len(g.vertices()) == 4
+    t0, t1 = ret.time_window(g)
+    assert t0 >= 0.0
+    assert t1 <= 10.0
+
+
+def test_random_link_activation_temporal_network():
+    gen = ret.mersenne_twister(42)
+    static_net = ret.complete_graph[ret.int64](size=3)
+    iet_dist = ret.exponential_distribution[ret.double](lmbda=1.0)
+    g = ret.random_link_activation_temporal_network(
+        base_net=static_net, max_t=5.0, iet_dist=iet_dist, random_state=gen)
+    assert len(g.vertices()) == 3
+    t0, t1 = ret.time_window(g)
+    assert t0 >= 0.0
+    assert t1 <= 5.0
+
+
+def test_random_node_activation_temporal_network():
+    gen = ret.mersenne_twister(42)
+    base_net = ret.complete_graph[ret.int64](size=4)
+    iet_dist = ret.exponential_distribution[ret.double](lmbda=1.0)
+    g = ret.random_node_activation_temporal_network(
+        base_net=base_net, max_t=5.0, iet_dist=iet_dist, random_state=gen)
+    assert len(g.vertices()) == 4
+    t0, t1 = ret.time_window(g)
+    assert t0 >= 0.0
+    assert t1 <= 5.0
