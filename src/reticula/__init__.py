@@ -375,6 +375,6 @@ for _vert_t in _all_vertex_types:
 from_networkx = _generic_attribute(
         attr_prefix="_from_networkx",
         arg_names=("vertex_type",),
-        options={(t,) for t in _all_vertex_types},
+        options={(t,) for t in _simple_vertex_types},
         function_module=_sys.modules[__name__],
         api_module_name=__name__)
