@@ -1,4 +1,4 @@
-from hypothesis import given, assume, note, reproduce_failure
+from hypothesis import given, assume
 import math
 import statistics
 
@@ -7,57 +7,77 @@ import pytest
 
 import reticula as ret
 
-
-@st.composite
-def undirected_network(draw: st.DrawFn,
-                       min_verts: int = 0, max_verts: int = 50,
-                       self_loops: bool = True):
-    if min_verts < 0:
-        raise ValueError("min_verts cannot be negative.")
-    if max_verts < min_verts:
-        raise ValueError("min_verts should not be larger than max_vert.")
-
-    verts = list(range(
-        draw(st.integers(min_value=min_verts, max_value=max_verts))))
-
-    max_edges = len(verts)*(len(verts)-1)//2
-    if self_loops:
-        max_edges += len(verts)
-
-    edges = st.lists(
-        st.tuples(
-            st.integers(min_value=0, max_value=len(verts)),
-            st.integers(min_value=0, max_value=len(verts))).filter(
-            lambda e: e[0] != e[1] or self_loops),
-        min_size=0, max_size=max_edges)
-
-    return ret.undirected_network[ret.int64](draw(edges), verts)
+from network_strategies import (
+    undirected_network,
+    directed_network,
+    undirected_temporal_network,
+    directed_temporal_network,
+    undirected_hypernetwork,
+    directed_hypernetwork,
+    undirected_temporal_hypernetwork,
+    directed_temporal_hypernetwork
+)
 
 
-@given(undirected_network())
+any_network = st.one_of(
+    undirected_network(),
+    directed_network(),
+    undirected_hypernetwork(),
+    directed_hypernetwork(),
+    undirected_temporal_network(),
+    directed_temporal_network(),
+    undirected_temporal_hypernetwork(),
+    directed_temporal_hypernetwork(),
+)
+
+any_directed_network = st.one_of(
+    directed_network(),
+    directed_temporal_network(),
+    directed_hypernetwork(),
+    directed_temporal_hypernetwork(),
+)
+
+
+any_undirected_network = st.one_of(
+    undirected_network(),
+    undirected_temporal_network(),
+    undirected_hypernetwork(),
+    undirected_temporal_hypernetwork(),
+)
+
+
+static_network = st.one_of(
+    undirected_network(),
+    directed_network(),
+    undirected_hypernetwork(),
+    directed_hypernetwork(),
+)
+
+
+@given(any_network)
 def test_union_idempotency(net):
     assert ret.graph_union(net, net) == net
 
 
-@given(undirected_network(self_loops=False))
+@given(directed_network(self_loops=False))
 def test_sum_of_degrees_and_edge_counts(net):
     sum_degs = sum(net.degree(v) for v in net.vertices())
     assert sum_degs == 2*len(net.edges())
 
 
-@given(undirected_network())
+@given(any_network)
 def test_copy_equivalency(net):
     assert type(net)(net.edges(), net.vertices()) == net
 
 
-@given(st.data(), undirected_network())
+@given(st.data(), any_network)
 def test_union_vertex_subgraph_equivalency(data, net):
     assume(net.vertices())
     verts = data.draw(st.lists(st.sampled_from(net.vertices())))
     assert ret.graph_union(net, ret.vertex_induced_subgraph(net, verts)) == net
 
 
-@given(st.data(), undirected_network())
+@given(st.data(), any_network)
 def test_union_edge_subgraph_equivalency(data, net):
     assume(net.edges())
     edges = data.draw(st.lists(st.sampled_from(net.edges())))
@@ -70,7 +90,7 @@ def test_union_components_equivalency(net):
             for v in comp} == set(net.vertices())
 
 
-@given(undirected_network())
+@given(st.one_of(undirected_network(), undirected_hypernetwork()))
 def test_degree_assortativity(net):
     assume(len(net.edges()) > 2)
     d1 = []
@@ -101,7 +121,7 @@ def test_degree_assortativity(net):
     assert (math.isnan(sp) and math.isnan(r)) or sp == pytest.approx(r)
 
 
-@given(undirected_network(max_verts=30))
+@given(undirected_network())
 def test_connected_components(net):
     ccs = ret.connected_components(net)
 
@@ -136,3 +156,9 @@ def test_connected_components(net):
 def test_graphicality(net):
     degs = ret.degree_sequence(net)
     assert ret.is_graphic(degs)
+
+
+@given(directed_network(self_loops=False))
+def test_digraphicality(net):
+    degs = ret.in_out_degree_pair_sequence(net)
+    assert ret.is_digraphic(degs)
